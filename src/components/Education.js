@@ -7,8 +7,7 @@ const EducationItem = ({ title, institution, date, description, skills }) => (
     <p className="text-gray-700 mb-2">{description}</p>
     {skills && skills.length > 0 && (
       <div>
-        <p className="text-sm font-semibold text-gray-600 mb-1">Skills:</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-2">
           {skills.map((skill, index) => (
             <span key={index} className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-semibold shadow-sm">
               {skill}
