@@ -1,11 +1,11 @@
 import React from 'react';
-import Hero from './components/Hero.js';
-import Navigation from './components/Navigation.js';
-import About from './components/About.js';
-import Experience from './components/Experience.js';
-import Education from './components/Education.js';
-import Activities from './components/Activities.js';
-import References from './components/References.js';
+import Hero from './components/Hero';
+import Navigation from './components/Navigation';
+import About from './components/About';
+import Experience from './components/Experience';
+import Education from './components/Education';
+import Activities from './components/Activities';
+import References from './components/References';
 
 const Portfolio = () => {
   return (
