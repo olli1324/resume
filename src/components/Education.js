@@ -36,7 +36,7 @@ const Education = () => {
         institution="Valdres Folkehøgskole"
         date="August 2021 – June 2022"
         description="Paragliding class of 2021. Lushoto Committee member."
-        skills={["Paragliding", "Team Collaboration", "Risk Management", "Outdoor Skills"]}
+        skills={["Paragliding", "Team Collaboration"]}
       />
     </section>
   );
