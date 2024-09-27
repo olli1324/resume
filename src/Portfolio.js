@@ -13,11 +13,11 @@ const Portfolio = () => {
       <Hero />
       <Navigation />
       <div className="max-w-4xl mx-auto py-12 px-8">
-        <About />
-        <Experience />
-        <Education />
-        <Activities />
-        <References />
+        <section id="about"><About /></section>
+        <section id="experience"><Experience /></section>
+        <section id="education"><Education /></section>
+        <section id="activities"><Activities /></section>
+        <section id="references"><References /></section>
       </div>
     </div>
   );

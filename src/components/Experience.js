@@ -23,7 +23,7 @@ const ExperienceItem = ({ title, company, date, description, skills }) => (
 const Experience = () => {
   return (
     <section id="experience" className="mb-16">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Work Experience</h2>
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Experience</h2>
       <ExperienceItem
         title="Leader"
         company="Ascend NTNU"
