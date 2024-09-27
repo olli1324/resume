@@ -13,9 +13,10 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="sticky top-0 bg-gray-100 z-10 border-b border-gray-200">
+    <nav className="sticky top-0 bg-gray-100 z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center h-16">
+        <div className="flex items-center justify-end h-16">
+          {/* Desktop menu */}
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
               {navItems.map((item) => (
@@ -29,6 +30,7 @@ const Navigation = () => {
               ))}
             </div>
           </div>
+          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -48,6 +50,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
+      {/* Mobile menu, show/hide based on menu state */}
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
