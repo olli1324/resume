@@ -14,3 +14,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul {
+    list-style: disc;  /* Use disc bullets */
+    margin: 1em 0;    
+    padding-left: 20px; 
+  }
