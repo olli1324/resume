@@ -2,10 +2,10 @@ import React from 'react';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import About from './components/About';
+import References from './components/References';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Activities from './components/Activities';
-import References from './components/References';
 
 const Portfolio = () => {
   return (
