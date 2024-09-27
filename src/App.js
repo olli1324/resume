@@ -1,5 +1,5 @@
 import React from 'react';
-import Portfolio from './Portfolio';
+import Portfolio from './Portfolio.js';
 
 function App() {
   return (
