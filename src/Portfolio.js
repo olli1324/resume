@@ -9,7 +9,7 @@ import References from './components/References';
 
 const Portfolio = () => {
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-gray-100 text-gray-900 min-h-screen">
       <Hero />
       <Navigation />
       <div className="max-w-4xl mx-auto py-12 px-8">
