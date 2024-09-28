@@ -27,7 +27,10 @@ const Education = () => {
         title="M.Sc. Cybernetics and Robotics"
         institution="NTNU Trondheim"
         date="August 2022 – Present"
-        description="Combining mathematics, control systems, natural sciences, and computer technology to analyze dynamic systems. Focused on diving deeper into machine learning."
+        description="
+        // 5-year Engineering Master's program.
+
+        Combining mathematics, control systems, natural sciences, and computer technology to analyze dynamic systems. Focused on diving deeper into machine learning."
         skills={["Control Systems", "Machine Learning", "Mathematics", "Computer Science", "Robotics"]}
       />
       <EducationItem

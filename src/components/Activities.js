@@ -76,7 +76,7 @@ const Activities = () => {
         title="Class Representative"
         organization="NTNU"
         date="2022 – Present"
-        description="Represented the interests of the Cybernetics Robotics Class of 2022."
+        description="Represent the interests of the Cybernetics Robotics Class of 2022."
         skills={["Communication", "Advocacy", "Problem-solving"]}
       />
     </section>
