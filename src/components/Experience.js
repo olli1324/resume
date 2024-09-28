@@ -24,20 +24,6 @@ const Experience = () => {
     <section id="experience" className="mb-16">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">Work Experience</h2>
       <ExperienceItem
-        title="Leader"
-        company="Ascend NTNU"
-        date="April 2024 – Present"
-        description="Leading one of NTNU's technical organizations, specializing in developing autonomous drones for international competitions. Managing and coordinating six teams, working closely with the board to strategically guide Ascend."
-        skills={["Leadership", "Project Management", "Drone Technology", "Team Coordination", "Strategic Planning", "Recruitment"]}
-      />
-      <ExperienceItem
-        title="Head of IT"
-        company="Nettverksdagene NTNU"
-        date="January 2024 – Present"
-        description="Board member and leader of the IT group for Nettverksdagene, a yearly career fair. Responsible for the development and maintenance of nettverksdagene.no."
-        skills={["Web Development", "IT Management", "Vue", "JavaScript", "Docker", "Event Planning"]}
-      />
-      <ExperienceItem
         title="Automation Engineer Intern"
         company="Ulmatec Handling Systems"
         date="June 2024 – July 2024"
