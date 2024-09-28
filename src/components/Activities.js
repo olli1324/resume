@@ -27,7 +27,7 @@ const Activities = () => {
         title="Leader"
         organization="Ascend NTNU"
         date="April 2024 – Present"
-        description="Leading one of NTNU's technical organizations, specializing in developing autonomous drones for international competitions. Managing and coordinating six teams, working closely with the board to strategically guide Ascend."
+        description="Leading one of NTNU’s technical organizations specializing in developing autonomous drones for international competitions. Managing a team of 46 students across six groups, working closely with the board to strategically guide Ascend NTNU."
         skills={["Leadership", "Project Management", "Drone Technology", "Team Coordination", "Strategic Planning", "Recruitment"]}
       />
       <ActivityItem
