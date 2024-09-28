@@ -31,7 +31,7 @@ const Experience = () => {
         skills={["LiDAR Technology", "Control Systems", "Prototyping", "Feasibility Studies", "Python", "Git", "Linux"]}
       />
       <ExperienceItem
-        title="Social Coordinator"
+        title="Event Coordinator"
         company="NTNU"
         date="September 2022 – June 2024"
         description="Event Coordinator for the Class of 2022 in the Cybernetics and Robotics program, responsible for planning and organizing various social events throughout the academic year."
@@ -43,6 +43,13 @@ const Experience = () => {
         date="September 2023 – March 2024"
         description="Represented NTNU to prospective students, traveling around Norway to visit high schools and provide valuable information about the university's programs and opportunities."
         skills={["Public Speaking", "University Program Knowledge", "Student Outreach", "Communication"]}
+      />
+      <Experience
+        title="Course Leader"
+        company="Forskerfabrikken"
+        date="June 2023"
+        description="Led a science course for primary school students, conducting engaging experiments and tutoring in natural sciences. This role involved implementing interactive learning experiences to spark curiosity and foster a love for science in young minds."
+        skills={["Teaching", "Experiment Facilitation"]}
       />
     </section>
   );
