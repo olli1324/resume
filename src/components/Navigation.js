@@ -25,8 +25,11 @@ const Navigation = () => {
     <nav className="sticky top-0 bg-gray-100 z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Desktop menu */}
-          <div className="hidden md:block flex-grow">
+          {/* Mobile menu - left aligned */}
+          <div className="w-10 h-10" />
+          
+          {/* Desktop menu - centered */}
+          <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <button
@@ -39,7 +42,8 @@ const Navigation = () => {
               ))}
             </div>
           </div>
-          {/* Download button */}
+          
+          {/* Download button - right aligned */}
           <div className="hidden md:block">
             <button
               onClick={handleDownload}
