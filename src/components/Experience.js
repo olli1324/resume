@@ -28,7 +28,7 @@ const Experience = () => {
         company="Ulmatec Handling Systems"
         date="June 2024 – July 2024"
         description="Worked on a distance measuring project using LiDAR technology and contributed to enhancing the control system of an A-frame winch by prototyping an anti-collision system. Conducted a feasibility study for an in-house chatbot to improve communication and efficiency within the service department."
-        skills={["LiDAR Technology", "Control Systems", "Prototyping", "Feasibility Studies", "Python", "Git", "Linux"]}
+        skills={["LiDAR Technology", "Control Systems", "Prototyping", "Feasibility Studies", "Python", "Git"]}
       />
       <ExperienceItem
         title="Event Coordinator"
