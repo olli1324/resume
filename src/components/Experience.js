@@ -44,7 +44,7 @@ const Experience = () => {
         description="Represented NTNU to prospective students, traveling around Norway to visit high schools and provide valuable information about the university's programs and opportunities."
         skills={["Public Speaking", "University Program Knowledge", "Student Outreach", "Communication"]}
       />
-      <Experience
+      <ExperienceItem
         title="Course Leader"
         company="Forskerfabrikken"
         date="June 2023"
