@@ -22,7 +22,21 @@ const ExperienceItem = ({ title, company, date, description, skills }) => (
 const Experience = () => {
   return (
     <section id="experience" className="mb-16">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Work Experience</h2>
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Experience</h2>
+      <ExperienceItem
+        title="Leader"
+        company="Ascend NTNU"
+        date="April 2024 – Present"
+        description="Leading one of NTNU's technical organizations, specializing in developing autonomous drones for international competitions. Managing and coordinating six teams, working closely with the board to strategically guide Ascend."
+        skills={["Leadership", "Project Management", "Drone Technology", "Team Coordination", "Strategic Planning", "Recruitment"]}
+      />
+      <ExperienceItem
+        title="Head of IT"
+        company="Nettverksdagene NTNU"
+        date="January 2024 – Present"
+        description="Board member and leader of the IT group for Nettverksdagene, a yearly career fair. Responsible for the development and maintenance of nettverksdagene.no."
+        skills={["Web Development", "IT Management", "Vue", "JavaScript", "Docker", "Event Planning"]}
+      />
       <ExperienceItem
         title="Automation Engineer Intern"
         company="Ulmatec Handling Systems"
@@ -31,7 +45,7 @@ const Experience = () => {
         skills={["LiDAR Technology", "Control Systems", "Prototyping", "Feasibility Studies", "Python", "Git", "Linux"]}
       />
       <ExperienceItem
-        title="Event Coordinator"
+        title="Social Coordinator"
         company="NTNU"
         date="September 2022 – June 2024"
         description="Event Coordinator for the Class of 2022 in the Cybernetics and Robotics program, responsible for planning and organizing various social events throughout the academic year."
@@ -44,14 +58,6 @@ const Experience = () => {
         description="Represented NTNU to prospective students, traveling around Norway to visit high schools and provide valuable information about the university's programs and opportunities."
         skills={["Public Speaking", "University Program Knowledge", "Student Outreach", "Communication"]}
       />
-      <Experience
-        title="Course Leader"
-        company="Forskerfabrikken"
-        date="June 2023"
-        description="Led a science course for primary school students, conducting engaging experiments and tutoring in natural sciences. This role involved implementing interactive learning experiences to spark curiosity and foster a love for science in young minds."
-        skills={["Teaching", "Experiment Facilitation"]}
-      />
-      
     </section>
   );
 };
