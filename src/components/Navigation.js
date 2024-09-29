@@ -12,10 +12,10 @@ const Navigation = () => {
   };
 
   const handleDownload = () => {
-    const pdfUrl = '/Oliver_Ekelund_Resume.pdf';
+    const pdfUrl = '/CV-Oliver_Ekelund.pdf';
     const link = document.createElement('a');
     link.href = pdfUrl;
-    link.setAttribute('download', 'Oliver_Ekelund_Resume.pdf');
+    link.setAttribute('download', 'CV-Oliver_Ekelund.pdf');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

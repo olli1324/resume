@@ -26,56 +26,56 @@ const Activities = () => {
       <ActivityItem
         title="Leader"
         organization="Ascend NTNU"
-        date="April 2024 – Present"
+        date="Apr. 2024 – Present"
         description="Leading one of NTNU’s technical organizations specializing in developing autonomous drones for international competitions. Managing a team of 46 students across six groups, working closely with the board to strategically guide Ascend NTNU."
         skills={["Leadership", "Project Management", "Drone Technology", "Team Coordination", "Strategic Planning", "Recruitment"]}
       />
       <ActivityItem
         title="Head of IT"
         organization="Nettverksdagene NTNU"
-        date="January 2024 – Present"
+        date="Jan. 2024 – Present"
         description="Board member and leader of the IT group for Nettverksdagene, a yearly career fair. Responsible for the development and maintenance of nettverksdagene.no."
         skills={["Web Development", "IT Management", "Vue", "JavaScript", "Docker", "Git", "GitHub", "Event Planning"]}
       />
       <ActivityItem
         title="Mentor"
         organization="Schibsted Connect"
-        date="September 2023 – June 2024"
+        date="Sep. 2023 – Jun. 2024"
         description="Participated in a mutual mentorship program with experienced professionals at Schibsted, offering hands-on learning opportunities and bringing new perspectives to enrich the experience for both parties."
         skills={["Mentoring", "Professional Networking", "Knowledge Sharing", "Industry Insights"]}
       />
       <ActivityItem
         title="Election- and Control Committee Member"
         organization="NTNUI Triathlon"
-        date="February 2024 – Present"
+        date="Feb. 2024 – Present"
         description="Propose the next board at the annual meeting and participate in awarding prizes to outstanding student athletes."
         skills={["Student Athlete Support"]}
       />
       <ActivityItem
         title="Head of Finance"
         organization="Kielderstyret - Sct. Omega"
-        date="2022 – 2024"
+        date="Sep. 2023 – Sep. 2024"
         description="The Kielder Committee manages and maintains Omega's student bar at Moholt. I was responsible for accounting and budgeting, as well as securing funding from various organizations."
         skills={["Financial Management", "Budgeting", "Accounting"]}
       />
       <ActivityItem
         title="Videographer"
         organization="UKA"
-        date="2023"
+        date="Feb. 2023 - Des. 2023"
         description="Video photographer for UKA 2023, Norway's largest cultural festival. My role involved filming and editing content of events leading up to and during UKA 2023."
-        skills={["Video Production", "Editing", "Creative Content"]}
+        skills={["Video Production", "DaVinci Resolve", "Editing", "Creative Content"]}
       />
       <ActivityItem
         title="Coordinator"
         organization="Fadderstyret - Sct. Omega"
-        date="2023"
+        date="Jan. 2023 - Sep. 2023"
         description="The Student Buddy Committee organizes the welcome period for the 400 new students who join the Omega student association each fall. I was responsible for planning and organizing activities, as well as securing sponsorships."
         skills={["Event Planning", "Team Coordination"]}
       />
       <ActivityItem
         title="Class Representative"
         organization="NTNU"
-        date="2022 – Present"
+        date="Aug. 2022 – Present"
         description="Represent the interests of the Cybernetics Robotics Class of 2022."
         skills={["Communication", "Advocacy", "Problem-solving"]}
       />

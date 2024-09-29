@@ -26,28 +26,28 @@ const Experience = () => {
       <ExperienceItem
         title="Automation Engineer Intern"
         company="Ulmatec Handling Systems"
-        date="June 2024 – July 2024"
+        date="Jun. 2024 – Jul. 2024"
         description="Worked on a distance measuring project using LiDAR technology and contributed to enhancing the control system of an A-frame winch by prototyping an anti-collision system. Conducted a feasibility study for an in-house chatbot to improve communication and efficiency within the service department."
-        skills={["LiDAR Technology", "Control Systems", "Prototyping", "Feasibility Studies", "Python", "Git"]}
+        skills={["LiDAR Technology", "Control Systems", "PLS", "Python", "Git"]}
       />
       <ExperienceItem
         title="Event Coordinator"
         company="NTNU"
-        date="September 2022 – June 2024"
+        date="Sep. 2022 – Jun. 2024"
         description="Event Coordinator for the Class of 2022 in the Cybernetics and Robotics program, responsible for planning and organizing various social events throughout the academic year."
         skills={["Event Planning", "Team Coordination", "Time Management", "Budgeting"]}
       />
       <ExperienceItem
         title="NTNU Ambassador"
         company="NTNU"
-        date="September 2023 – March 2024"
+        date="Sep. 2023 – Mar. 2024"
         description="Represented NTNU to prospective students, traveling around Norway to visit high schools and provide valuable information about the university's programs and opportunities."
         skills={["Public Speaking", "University Program Knowledge", "Student Outreach", "Communication"]}
       />
       <ExperienceItem
         title="Course Leader"
         company="Forskerfabrikken"
-        date="June 2023"
+        date="Jun. 2023"
         description="Led a science course for primary school students, conducting engaging experiments and tutoring in natural sciences. This role involved implementing interactive learning experiences to spark curiosity and foster a love for science in young minds."
         skills={["Teaching", "Experiment Facilitation"]}
       />

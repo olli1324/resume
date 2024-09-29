@@ -26,7 +26,7 @@ const Education = () => {
       <EducationItem
         title="M.Sc. Cybernetics and Robotics"
         institution="NTNU Trondheim"
-        date="August 2022 – Present"
+        date="Aug. 2022 – Present"
         description="
         5-year Engineering Master's program.
 
@@ -36,7 +36,7 @@ const Education = () => {
       <EducationItem
         title="Folk High School"
         institution="Valdres Folkehøgskole"
-        date="August 2021 – June 2022"
+        date="Aug. 2021 – Jun. 2022"
         description="Paragliding class of 2021. Lushoto Committee member."
         skills={["Paragliding", "Team Collaboration"]}
       />

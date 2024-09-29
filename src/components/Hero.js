@@ -5,11 +5,15 @@ const Hero = () => (
   <div className="py-16 px-4 sm:px-6 lg:px-8">
     <div className="max-w-4xl mx-auto">
       <div className="text-center">
-        <img
-          src={profilePicture}
-          alt="Oliver H. Ekelund"
-          className="mx-auto rounded-full w-32 h-32 sm:w-48 sm:h-48 object-cover shadow-lg"
-        />
+        <div className="mx-auto w-32 h-32 sm:w-48 sm:h-48">
+          <img
+            src={profilePicture}
+            alt="Oliver H. Ekelund"
+            className="mx-auto rounded-full w-full h-full object-cover shadow-lg"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <h1 className="mt-4 text-3xl sm:text-5xl font-bold text-gray-900">Oliver H. Ekelund</h1>
         <p className="mt-2 text-xl sm:text-2xl text-gray-600">Leader at Ascend NTNU | M. Sc. Cybernetics and Robotics student at NTNU</p>
         <div className="mt-6 flex justify-center space-x-4">
