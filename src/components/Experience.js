@@ -27,16 +27,10 @@ const Experience = () => {
         title="Automation Engineer Intern"
         company="Ulmatec Handling Systems"
         date="Jun. 2024 – Jul. 2024"
-        description="Worked on a distance measuring project using LiDAR technology and contributed to enhancing the control system of an A-frame winch by prototyping an anti-collision system. Conducted a feasibility study for an in-house chatbot to improve communication and efficiency within the service department."
+        description="I worked several projects across different areas of the company. The main project involved a distance measuring system using LiDAR technology.  I applied various methods to pre-process, segment, and extract data from the LiDAR sensors. As part of this project, I also explored ways to combine point cloud data with an RGB camera feed in different coordinate systems. In another project, I helped improve an A-frame winch's control system by developing a prototype for an anti-collision system. Separately, I conducted a feasibility study to assess the potential implementation of an in-house chatbot for the service department, aiming to improve internal communication and efficiency."
         skills={["LiDAR Technology", "Control Systems", "PLS", "Python", "Git"]}
       />
-      <ExperienceItem
-        title="Event Coordinator"
-        company="NTNU"
-        date="Sep. 2022 – Jun. 2024"
-        description="Event Coordinator for the Class of 2022 in the Cybernetics and Robotics program, responsible for planning and organizing various social events throughout the academic year."
-        skills={["Event Planning", "Team Coordination", "Time Management", "Budgeting"]}
-      />
+
       <ExperienceItem
         title="NTNU Ambassador"
         company="NTNU"
@@ -44,13 +38,24 @@ const Experience = () => {
         description="Represented NTNU to prospective students, traveling around Norway to visit high schools and provide valuable information about the university's programs and opportunities."
         skills={["Public Speaking", "University Program Knowledge", "Student Outreach", "Communication"]}
       />
+
       <ExperienceItem
         title="Course Leader"
         company="Forskerfabrikken"
         date="Jun. 2023"
         description="Led a science course for primary school students, conducting engaging experiments and tutoring in natural sciences. This role involved implementing interactive learning experiences to spark curiosity and foster a love for science in young minds."
         skills={["Teaching", "Experiment Facilitation"]}
+      />  
+
+      <ExperienceItem
+        title="Event Coordinator"
+        company="NTNU"
+        date="Sep. 2022 – Jun. 2024"
+        description="Event Coordinator for the Class of 2022 in the Cybernetics and Robotics program, responsible for planning and organizing various social events throughout the academic year."
+        skills={["Event Planning", "Team Coordination", "Time Management", "Budgeting"]}
       />
+
+
     </section>
   );
 };
