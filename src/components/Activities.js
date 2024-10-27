@@ -38,11 +38,11 @@ const Activities = () => {
         skills={["Web Development", "IT Management", "Vue", "JavaScript", "Docker", "Git", "GitHub", "Event Planning"]}
       />
       <ActivityItem
-        title="Mentor"
+        title="Mentor Candidate"
         organization="Schibsted Connect"
         date="Sep. 2023 – Jun. 2024"
-        description="Participated in a mutual mentorship program with experienced professionals at Schibsted, offering hands-on learning opportunities and bringing new perspectives to enrich the experience for both parties."
-        skills={["Mentoring", "Professional Networking", "Knowledge Sharing", "Industry Insights"]}
+        description="Participated in a mutual mentorship program with the CTO of Schibsted SMB, engaging in hands-on learning opportunities and bringing new perspectives to enrich the experience for both parties. Gained valuable insights into technical leadership and strategic business development within the media and technology sector."
+        skills={["Strategic Mentoring", "Professional Networking", "Business Strategy", "Knowledge Sharing", "Industry Insights"]}
       />
       <ActivityItem
         title="Election- and Control Committee Member"
