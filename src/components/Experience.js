@@ -24,11 +24,11 @@ const Experience = () => {
     <section id="experience" className="mb-16">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">Work Experience</h2>
       <ExperienceItem
-        title="System Developer"
+        title="Consultant"
         company="Wideangle"
         date="Oct. 2024 – Present"
-        description="Currently focused on business strategy and web development, working on implementing custom CRM, CMS and customer pipeline solutions for internal use to improve workflow efficiency. My role also includes consulting services for our clients. "
-        skills={["CRM/CMS Development", "Business Strategy", "Technical Consulting"]}
+        description="Currently focused on web development, working on implementing custom CRM, CMS and customer pipeline solutions for internal use to improve workflow efficiency. My role also includes consulting services for our clients. "
+        skills={["CRM/CMS Development", "Business Strategy", "Technical Consulting", "Digital Marketing"]}
       />
       <ExperienceItem
         title="Automation Engineer Intern"
