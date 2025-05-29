@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [],
+  "routes": [
+    {
+      "src": "/quizlet/*",
+      "dest": "/quizlet/$1"
+    },
+    {
+      "src": "/*",
+      "dest": "/index.html"
+    }
+  ]
+}
