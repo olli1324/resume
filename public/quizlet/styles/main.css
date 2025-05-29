@@ -249,12 +249,14 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
+    color: black;
 }
 
 .quiz-option:hover:not(.answered) {
     background: #e9ecef;
     border-color: #667eea;
     transform: translateX(5px);
+    color: black;
 }
 
 .quiz-option.correct {
@@ -385,4 +387,51 @@ body {
 .nav-back:hover {
     background: rgba(255,255,255,0.3);
     transform: translateX(-5px);
+}
+
+/* Question count loading states */
+.question-count {
+    transition: color 0.3s ease;
+}
+
+.question-count.empty {
+    color: #dc3545;
+}
+
+.question-count.few {
+    color: #ffc107;
+}
+
+.question-count.many {
+    color: #28a745;
+}
+
+.question-count.error {
+    color: #dc3545;
+    font-style: italic;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .must-know-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .key-concepts {
+        grid-template-columns: 1fr;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Improved transitions */
+.topic-card {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow 0.3s ease;
+}
+
+.quiz-option {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }

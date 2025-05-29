@@ -1,0 +1,542 @@
+[
+   {
+       "question": "What is the primary definition of reliability according to Randell et al.?",
+       "options": [
+           "A measure of system performance under normal conditions",
+           "A measure of the success with which the system conforms to some authoritative specification of its behaviour",
+           "The probability that a system will not fail during operation",
+           "The ability of a system to recover from errors"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Reliability is defined as a measure of the success with which the system conforms to some authoritative specification of its behaviour.",
+       "detailedExplanation": "According to Randell et al. (1978), reliability is fundamentally about conformance to specification. This definition emphasizes that reliability isn't just about not failing - it's about behaving exactly as specified. The specification should be complete, consistent, comprehensible and unambiguous, and importantly includes response times. This definition directly leads to the concept of system failure: when the behaviour of a system deviates from that which is specified for it, this is called a failure. This specification-based approach to reliability is crucial for embedded and real-time systems where precise behavior is essential."
+   },
+   {
+       "question": "What are the four main sources of faults in embedded systems?",
+       "options": [
+           "Hardware, software, network, and user errors",
+           "Inadequate specification, design errors in software, hardware component failure, and communication interference",
+           "Programming bugs, system crashes, power failures, and timing errors",
+           "Input errors, processing errors, output errors, and storage errors"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The four sources are: inadequate specification, design errors in software components, hardware component failures, and communication interference.",
+       "detailedExplanation": "These four fault sources represent the complete spectrum of potential problems in embedded systems: (1) Inadequate specification - the majority of software faults stem from poor specifications, including misunderstanding interactions with the environment; (2) Design errors in software components - bugs introduced during coding; (3) Hardware component failures - including processor failures; (4) Communication interference - transient or permanent problems in the supporting communication subsystem. Understanding these sources is crucial because different fault tolerance techniques are needed for each type, and the last three particularly impact programming language requirements for embedded systems."
+   },
+   {
+       "question": "What is the difference between a fault, error, and failure?",
+       "options": [
+           "They are all the same thing with different names",
+           "Fault is the cause, error is the manifestation, failure is the external effect",
+           "Error is the cause, fault is the manifestation, failure is the recovery",
+           "Failure is the cause, error is the detection, fault is the correction"
+       ],
+       "correctAnswer": 1,
+       "explanation": "A fault is the cause (faulty component), an error is the internal manifestation (wrong internal state), and failure is the external effect (deviation from specification).",
+       "detailedExplanation": "This fault-error-failure chain is fundamental to understanding system reliability: A fault is a component that will cause problems under certain circumstances - it's dormant until activated. When activated, the fault produces an error (an incorrect internal state). The error can propagate through the system's computational process, and eventually manifests at the system boundaries as a failure (observable deviation from specified behavior). This chain reaction means one system's failure becomes a fault in a surrounding system, creating cascading effects. Understanding this progression is essential for designing effective fault tolerance mechanisms."
+   },
+   {
+       "question": "What are the three types of faults based on duration?",
+       "options": [
+           "Hardware, software, and network faults",
+           "Transient, permanent, and intermittent faults",
+           "Critical, major, and minor faults",
+           "Design, implementation, and operational faults"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Faults are classified by duration as: transient (temporary), permanent (until repaired), and intermittent (recurring).",
+       "detailedExplanation": "Duration-based fault classification is crucial for real-time systems: (1) Transient faults occur at a particular time, remain for some period, then disappear (like electrical interference causing temporary hardware malfunction). (2) Permanent faults start at a particular time and remain until repaired (like a broken wire or software design error). (3) Intermittent faults are transient faults that recur from time to time (like heat-sensitive hardware that works, fails, cools down, then works again). This classification is important because different fault tolerance strategies are needed for each type - transient faults might be handled by retry mechanisms, while permanent faults require redundancy or replacement."
+   },
+   {
+       "question": "What is the difference between Bohrbugs and Heisenbugs?",
+       "options": [
+           "Bohrbugs are hardware related, Heisenbugs are software related",
+           "Bohrbugs are reproducible and easily detected, Heisenbugs activate under rare circumstances and disappear when investigated",
+           "Bohrbugs are permanent, Heisenbugs are temporary",
+           "Bohrbugs are critical errors, Heisenbugs are minor errors"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Bohrbugs are solid, reproducible, and easily detected. Heisenbugs only activate under rare circumstances and often disappear when you look at them.",
+       "detailedExplanation": "Named after physics analogies, these represent two fundamentally different types of software bugs: Bohrbugs (like the Bohr atom) are solid, reproducible, and easily detected by standard testing techniques. They consistently manifest the same way and can be systematically debugged. Heisenbugs (like Heisenberg's uncertainty principle) are ephemeral - they go away when you look at them. A classic example is improperly synchronized concurrent code that only fails when tasks execute in a specific timing sequence. Heisenbugs are particularly problematic because they're hard to reproduce in testing environments and may only appear under production load conditions."
+   },
+   {
+       "question": "What are the two main approaches to improving system reliability?",
+       "options": [
+           "Testing and debugging",
+           "Fault prevention and fault tolerance",
+           "Hardware redundancy and software redundancy",
+           "Error detection and error correction"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The two approaches are fault prevention (eliminating faults before operation) and fault tolerance (continuing operation despite faults).",
+       "detailedExplanation": "These represent fundamentally different philosophies: Fault prevention attempts to eliminate faults before the system becomes operational through fault avoidance (using reliable components, proven techniques, rigorous specifications) and fault removal (testing, verification, inspection). Fault tolerance accepts that some faults will remain and enables continued operation despite their presence, using redundancy to detect and recover from faults. Both approaches are necessary - fault prevention reduces the number of faults that must be tolerated, while fault tolerance handles the faults that prevention cannot eliminate. Real systems typically combine both approaches for maximum reliability."
+   },
+   {
+       "question": "What are the three levels of fault tolerance?",
+       "options": [
+           "Basic, intermediate, and advanced",
+           "Full fault tolerance, graceful degradation, and fail safe",
+           "Hardware, software, and network tolerance",
+           "Detection, isolation, and recovery"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The three levels are: full fault tolerance (no loss of functionality), graceful degradation (partial loss acceptable), and fail safe (safe shutdown).",
+       "detailedExplanation": "These levels represent different degrees of fault tolerance: (1) Full fault tolerance - the system continues operating with no significant loss of functionality or performance, though only for a limited period. (2) Graceful degradation (fail soft) - the system continues operating but accepts partial degradation of functionality or performance during recovery. This is common in complex systems like air traffic control. (3) Fail safe - the system maintains integrity while accepting temporary halt in operation, moving to a safe state. The choice depends on application requirements - safety-critical systems often need full fault tolerance, while others may accept graceful degradation for cost reasons."
+   },
+   {
+       "question": "What is N-version programming?",
+       "options": [
+           "Programming with multiple programming languages",
+           "The independent generation of N functionally equivalent programs from the same specification",
+           "Creating N different versions of the same program for different platforms",
+           "Testing a program N times with different inputs"
+       ],
+       "correctAnswer": 1,
+       "explanation": "N-version programming is the independent generation of N (≥2) functionally equivalent programs from the same initial specification.",
+       "detailedExplanation": "N-version programming implements design diversity for software fault tolerance. Multiple teams independently develop functionally equivalent programs from the same specification without interaction. During execution, all versions run concurrently with identical inputs, and a driver process compares their outputs. The consensus result (assuming one exists) is taken as correct. This approach is based on two key assumptions: (1) programs can be completely, consistently, and unambiguously specified, and (2) independently developed programs will fail independently. The effectiveness depends on using different programming languages, compilers, and even processors to maximize independence and avoid common-mode failures."
+   },
+   {
+       "question": "What is the consistent comparison problem in N-version programming?",
+       "options": [
+           "Different versions produce different output formats",
+           "Versions disagree on results near threshold values due to finite-precision arithmetic",
+           "Some versions run faster than others",
+           "Different versions use different algorithms"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The consistent comparison problem occurs when versions follow different execution paths due to finite-precision arithmetic near threshold values.",
+       "detailedExplanation": "This problem illustrates a fundamental challenge in N-version programming. When versions must make decisions based on sensor readings compared to threshold values, finite-precision arithmetic can cause different versions to calculate slightly different values. If these values fall on different sides of a threshold, versions will follow different execution paths and produce different (but all valid) results. For example, with temperature threshold T_th, if version 1 calculates T1 slightly below T_th and version 2 calculates T2 slightly above T_th, they'll take different corrective actions. Using tolerance margins (±Δ) doesn't solve the problem - it just moves the boundary. This demonstrates why exact voting can be problematic even when no actual faults exist."
+   },
+   {
+       "question": "What are the four phases of dynamic redundancy fault tolerance?",
+       "options": [
+           "Detection, analysis, recovery, prevention",
+           "Error detection, damage confinement and assessment, error recovery, fault treatment and continued service",
+           "Isolation, diagnosis, repair, testing",
+           "Prevention, tolerance, recovery, maintenance"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The four phases are: error detection, damage confinement and assessment, error recovery, and fault treatment and continued service.",
+       "detailedExplanation": "These phases provide a comprehensive approach to fault tolerance: (1) Error detection - identifying that a fault has manifested as an error using environmental detection (hardware/runtime system) or application detection (replication, timing, reversal, coding, reasonableness, structural, or dynamic reasonableness checks). (2) Damage confinement and assessment - determining extent of corruption and preventing spread through modular decomposition and atomic actions. (3) Error recovery - transforming the system to a state where normal operation can continue, using forward recovery (selective corrections) or backward recovery (restoration to previous safe state). (4) Fault treatment and continued service - eliminating the underlying fault through location and repair to prevent recurrence."
+   },
+   {
+       "question": "What is the difference between forward and backward error recovery?",
+       "options": [
+           "Forward moves to the next state, backward returns to the previous state",
+           "Forward recovery makes selective corrections to continue, backward recovery restores to a previous safe state",
+           "Forward recovery is automatic, backward recovery is manual",
+           "Forward recovery is for hardware faults, backward recovery is for software faults"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Forward recovery makes selective corrections to continue from the erroneous state, while backward recovery restores the system to a previous safe state.",
+       "detailedExplanation": "These represent two fundamentally different recovery philosophies: Forward error recovery attempts to continue from an erroneous state by making selective corrections. It's efficient and system-specific but requires accurate damage assessment and can't undo environmental effects (like missile launches). Examples include redundant pointers and self-correcting codes. Backward error recovery restores the system to a safe state prior to the error, then executes alternative code. It clears erroneous states and handles unanticipated faults (including design errors) but can't undo environmental effects and may be time-consuming. The choice depends on system requirements - real-time systems may need both approaches."
+   },
+   {
+       "question": "What is a recovery block?",
+       "options": [
+           "A block of code that handles exceptions",
+           "A block with automatic recovery point at entrance and acceptance test at exit",
+           "A backup copy of critical code",
+           "A section of code that can be rolled back"
+       ],
+       "correctAnswer": 1,
+       "explanation": "A recovery block has an automatic recovery point at entrance and acceptance test at exit, with alternative modules if the test fails.",
+       "detailedExplanation": "Recovery blocks provide a structured approach to backward error recovery. The structure includes: (1) Automatic recovery point establishment at block entrance, (2) Primary module execution, (3) Acceptance test at exit to verify correct system state, (4) If test fails, restore to recovery point and execute alternative module, (5) Repeat with additional alternatives if needed, (6) Block fails if all alternatives fail. The syntax is 'ensure <test> by <module> else by <alternative> ... else error'. This provides error detection (acceptance test), damage assessment (not needed due to restoration), error recovery (alternative modules), and fault treatment (standby spares). Recovery blocks can be nested for hierarchical fault tolerance."
+   },
+   {
+       "question": "What is the domino effect in concurrent systems?",
+       "options": [
+           "When one process failure causes all other processes to fail",
+           "When rollback of one process forces cascading rollbacks of communicating processes",
+           "When errors propagate through the system sequentially",
+           "When recovery takes longer than expected"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The domino effect occurs when rolling back one process requires cascading rollbacks of all communicating processes, potentially back to the beginning.",
+       "detailedExplanation": "The domino effect is a critical problem in concurrent systems using backward error recovery. When processes communicate and one needs to roll back, it must undo its communications with other processes. This forces those processes to roll back, which may require undoing their communications, causing further rollbacks. In the worst case, all processes roll back to the beginning of their interaction - equivalent to aborting all processes. The solution is to establish consistent recovery lines (recovery points across all processes that don't violate causality). This requires careful coordination and is closely linked to atomic actions. The domino effect illustrates why fault tolerance in concurrent systems is significantly more complex than in sequential systems."
+   },
+   {
+       "question": "What is an atomic action in the context of damage confinement?",
+       "options": [
+           "An action that cannot be interrupted",
+           "An action that appears indivisible with no interactions with the system during execution",
+           "An action that executes very quickly",
+           "An action that only affects one component"
+       ],
+       "correctAnswer": 1,
+       "explanation": "An atomic action appears indivisible to the rest of the system, with no information passing in or out during execution.",
+       "detailedExplanation": "Atomic actions (also called transactions or atomic transactions) are fundamental to damage confinement. The key property is that no interactions occur between the action and the system during execution - to external observers, the action appears to happen instantaneously. This constraint provides several benefits: (1) Damage confinement - errors cannot spread outside the atomic action during execution, (2) Consistent state transitions - the system moves from one consistent state to another, (3) Recovery simplification - if the action fails, the system state is unchanged. Atomic actions are implemented using communication and synchronization primitives and are essential when multiple components share resources. They provide both static structure (modular decomposition) and dynamic structure (runtime behavior) for fault-tolerant systems."
+   },
+   {
+       "question": "What is software aging and how does it relate to Heisenbugs?",
+       "options": [
+           "Software becomes slower over time due to fragmentation",
+           "Faults remain dormant for long periods then activate after significant use, often due to resource leaks",
+           "Software becomes more reliable as it matures",
+           "Code becomes harder to maintain as developers leave"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Software aging occurs when faults remain dormant for long periods and only activate after significant continual use, typically due to resource management issues.",
+       "detailedExplanation": "Software aging represents a particular type of Heisenbug where faults remain dormant for extended periods before activation. Unlike hardware, software doesn't physically deteriorate, but faults can accumulate effects over time. Common examples include memory leaks (small amounts of unreleased memory eventually exhaust system resources) and the Patriot missile system failure. In the Patriot case, the system was designed for mobile operations (few hours at a time) but was used continuously for many hours. Time calculation errors accumulated due to finite-precision arithmetic, causing the range gate to drift away from incoming missiles. After 20 hours of operation, targets became untrackable. This demonstrates how operational conditions different from design assumptions can trigger software aging faults."
+   },
+   {
+       "question": "What are the main types of error detection techniques?",
+       "options": [
+           "Manual and automatic detection",
+           "Environmental detection and application detection",
+           "Hardware and software detection",
+           "Preventive and reactive detection"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Error detection is classified as environmental detection (by hardware/runtime system) and application detection (by the application itself).",
+       "detailedExplanation": "Error detection techniques fall into two main categories: (1) Environmental detection - errors detected by the environment in which the program executes, including hardware detection (illegal instruction, arithmetic overflow, protection violation) and runtime system detection (array bounds error, null pointer, value out of range). (2) Application detection - errors detected by the application itself through various techniques: replication checks (N-version programming), timing checks (watchdog timers, deadline detection), reversal checks (calculating input from output), coding checks (checksums, parity), reasonableness checks (range validation, assertions), structural checks (data structure integrity), and dynamic reasonableness checks (comparing consecutive outputs). The effectiveness of fault tolerance depends heavily on error detection effectiveness."
+   },
+   {
+       "question": "What are the key assumptions of N-version programming?",
+       "options": [
+           "All versions will produce identical results",
+           "Programs can be completely specified and independently developed programs will fail independently",
+           "Hardware will never fail during execution",
+           "All programming languages are equivalent"
+       ],
+       "correctAnswer": 1,
+       "explanation": "N-version programming assumes programs can be completely, consistently, and unambiguously specified, and that independently developed programs will fail independently.",
+       "detailedExplanation": "N-version programming relies on two critical assumptions: (1) Complete specification - the program can be completely, consistently, comprehensively, and unambiguously specified. This is extremely challenging in practice, and specification errors will manifest in all versions. (2) Independent failures - programs developed independently will fail independently, meaning no relationship exists between faults in different versions. This assumption can be violated when versions use the same programming language (common compiler bugs), similar algorithms (common design approaches), or face the same difficult specification sections. Experimental results are mixed - some studies show the assumptions don't hold at adequate confidence levels, while others demonstrate significant reliability improvements. The approach works best with rigorous specifications, diverse development environments, and thorough testing."
+   },
+   {
+       "question": "What is the difference between static and dynamic redundancy?",
+       "options": [
+           "Static is hardware-based, dynamic is software-based",
+           "Static redundancy masks faults automatically, dynamic redundancy activates only when errors are detected",
+           "Static redundancy is permanent, dynamic redundancy is temporary",
+           "Static redundancy is cheaper, dynamic redundancy is more expensive"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Static redundancy uses redundant components to mask faults automatically, while dynamic redundancy only activates when errors are detected.",
+       "detailedExplanation": "These represent fundamentally different approaches to redundancy: Static (masking) redundancy uses redundant components inside a system to hide fault effects automatically. Triple Modular Redundancy (TMR) is a classic example - three identical components vote on outputs, masking single component failures. The redundancy operates continuously whether faults exist or not. Dynamic redundancy only activates when errors are detected, providing error detection rather than masking. Examples include checksums and parity bits. N-version programming represents static redundancy (all versions run continuously), while recovery blocks represent dynamic redundancy (alternatives only execute when acceptance tests fail). The choice affects performance, cost, and reliability characteristics."
+   },
+   {
+       "question": "What is inexact voting and why is it needed?",
+       "options": [
+           "Voting when not all versions complete on time",
+           "Voting techniques for comparing real numbers that may not be exactly equal",
+           "Voting when some versions crash",
+           "Voting with weighted preferences"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Inexact voting handles cases where votes require real number calculations that may produce slightly different but valid results.",
+       "detailedExplanation": "Inexact voting addresses the reality that different versions may produce slightly different results for real number calculations due to inexact hardware representation or algorithm sensitivity. Unlike integer arithmetic where exact comparison is possible, real number results often vary slightly between versions even when all are correct. Techniques include range checking using previous estimations or median values from all N results. However, finding general inexact voting approaches is difficult, and the consistent comparison problem shows that even tolerance-based approaches have limitations. This is why some applications are better suited to N-version programming than others - those requiring exact integer results are more amenable to the approach than those involving complex real number calculations."
+   },
+   {
+       "question": "What is the acceptance test in recovery blocks?",
+       "options": [
+           "A test to verify the program compiles correctly",
+           "A test to verify the system is in an acceptable state after block execution",
+           "A test to check if the program meets specifications",
+           "A test to validate input parameters"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The acceptance test verifies that the system is in an acceptable state after executing the primary module.",
+       "detailedExplanation": "The acceptance test is crucial to recovery block effectiveness and provides the error detection mechanism. It's executed after each module (primary or alternative) completes and determines whether the system state is acceptable for continued operation. Key characteristics: (1) It checks for 'acceptance' not 'correctness' - allowing degraded service, (2) Trade-off exists between comprehensive testing and minimal overhead, (3) Faulty acceptance tests can allow residual errors to pass undetected, (4) All error detection techniques from Section 2.5.1 can be used. The test design is critical - too simple and errors slip through, too complex and performance suffers. The test must be more reliable than the modules it's testing, as its failure compromises the entire fault tolerance mechanism."
+   },
+   {
+       "question": "What are the main failure modes in the value domain?",
+       "options": [
+           "High and low values",
+           "Value error and constraint error",
+           "Positive and negative errors",
+           "Integer and floating-point errors"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Value domain failures include value errors (incorrect values within expected range) and constraint errors (values outside expected range).",
+       "detailedExplanation": "Value domain failure modes classify how services can fail in terms of the values they produce: (1) Value error - the value associated with the service is wrong but still within the expected range of values. This is harder to detect as it appears reasonable. (2) Constraint error - the value is outside the range expected from the service, equivalent to typing errors in programming languages. While usually easier to recognize, constraint errors can still be devastating (like the Ariane 5 disaster caused by 64-bit to 16-bit conversion overflow). These classifications help system designers understand potential failure modes and design appropriate detection mechanisms. Constraint errors often trigger environmental detection, while value errors typically require application-level detection techniques."
+   },
+   {
+       "question": "What are the main failure modes in the time domain?",
+       "options": [
+           "Fast and slow failures",
+           "Too early, too late (performance error), and infinitely late (omission failure)",
+           "Intermittent and continuous failures",
+           "Synchronous and asynchronous failures"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Time domain failures are: too early, too late (performance error), and infinitely late (omission failure).",
+       "detailedExplanation": "Time domain failure modes classify how services can fail regarding timing: (1) Too early - service delivered before required time, which can be as problematic as late delivery in real-time systems. (2) Too late (performance error) - service delivered after the required time, missing deadlines. (3) Infinitely late (omission failure) - service never delivered, which is often the most serious timing failure. Additionally, there are commission/impromptu failures where unexpected services are delivered. These timing classifications are crucial for real-time systems where correctness depends not just on what is computed but when it's delivered. Different fault tolerance strategies are needed for each type - early delivery might require buffering, late delivery might trigger alternative actions, and omission might require redundant service providers."
+   },
+   {
+       "question": "What are the different system failure assumptions?",
+       "options": [
+           "Hardware failure, software failure, network failure",
+           "Fail uncontrolled, fail late, fail silent, fail stop, fail controlled, fail never",
+           "Critical failure, major failure, minor failure",
+           "Permanent failure, temporary failure, intermittent failure"
+       ],
+       "correctAnswer": 1,
+       "explanation": "System failure assumptions include: fail uncontrolled, fail late, fail silent, fail stop, fail controlled, and fail never.",
+       "detailedExplanation": "These failure assumptions help designers understand how systems might fail and design accordingly: (1) Fail uncontrolled - arbitrary errors in both value and time domains, including impromptu errors (worst case). (2) Fail late - correct values but may suffer timing errors. (3) Fail silent - correct services until it fails, then only omission failures occur (all subsequent services also fail). (4) Fail stop - fail silent properties plus other systems can detect the failure state. (5) Fail controlled - fails in a specified, controlled manner. (6) Fail never - always produces correct services (theoretical ideal). These assumptions guide system design - if you can ensure fail-stop behavior, other systems can detect and compensate for failures. Understanding failure modes helps in choosing appropriate fault tolerance mechanisms."
+   },
+   {
+       "question": "What is modular decomposition in damage confinement?",
+       "options": [
+           "Breaking the system into separate executables",
+           "Breaking the system into components with well-defined interfaces to limit error propagation",
+           "Dividing the code into functions and procedures",
+           "Separating user interface from business logic"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Modular decomposition structures the system into components with well-defined interfaces, making it harder for errors to spread indiscriminately.",
+       "detailedExplanation": "Modular decomposition is a fundamental damage confinement technique that provides static structure to software systems. Key principles: (1) System broken into components where each component has one or more modules, (2) Interaction between components occurs only through well-defined interfaces, (3) Internal details of modules are hidden and not directly accessible from outside. This structure makes it more difficult for an error in one component to be indiscriminately passed to another. While this static structure is important, it's often lost at runtime, which is why dynamic structuring techniques like atomic actions are equally important. Modular decomposition works best when combined with protection mechanisms that enforce access restrictions and atomic actions that control runtime interactions."
+   },
+   {
+       "question": "What is the key difference between reliability and safety?",
+       "options": [
+           "Reliability is for software, safety is for hardware",
+           "Reliability measures conformance to specification, safety focuses on preventing mishaps/catastrophic consequences",
+           "Reliability is quantitative, safety is qualitative",
+           "There is no difference - they are synonymous"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Reliability measures conformance to specification, while safety focuses on preventing conditions that can cause death, injury, damage, or environmental harm.",
+       "detailedExplanation": "While often considered synonymous, reliability and safety have different emphases: Reliability is defined as conformance to specification - the system does what it's supposed to do, usually expressed probabilistically. Safety is defined as freedom from conditions that can cause death, injury, occupational illness, damage to equipment/property, or environmental harm, often expressed in terms of mishaps. These can conflict - measures that increase reliability (likelihood of intended function) may decrease safety (increase risk of mishaps). For example, making a weapon more likely to fire when required (reliability) may increase accidental detonation risk (safety). The safest airplane never takes off, but it's not reliable. Understanding this distinction is crucial for designing systems where both reliability and safety matter."
+   },
+   {
+       "question": "What is dependability and what does it encompass?",
+       "options": [
+           "Just another term for reliability",
+           "The property that allows reliance to be placed on service delivery, encompassing reliability, safety, and security",
+           "The ability to depend on external systems",
+           "The measure of system availability"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Dependability is the property that allows reliance to be justifiably placed on service delivery, encompassing reliability, safety, security, availability, integrity, and maintainability.",
+       "detailedExplanation": "Dependability provides a comprehensive framework for system trustworthiness, encompassing multiple attributes: (1) Availability - readiness for usage, (2) Reliability - continuity of service delivery, (3) Safety - absence of catastrophic consequences, (4) Confidentiality - absence of unauthorized information disclosure, (5) Integrity - absence of improper system alterations, (6) Maintainability - ability to undergo repairs and evolution. Dependability is described through three components: threats (circumstances causing non-dependability like faults, errors, failures), means (methods to deliver dependable service including fault prevention, tolerance, removal, and forecasting), and attributes (ways to appraise dependable service quality). This holistic view recognizes that system trustworthiness involves more than just not failing."
+   },
+   {
+       "question": "What is the main challenge with software reliability measurement?",
+       "options": [
+           "Software is too complex to measure",
+           "Testing alone can only provide evidence for reliability estimates of at best 10^-4, while many systems require 10^-9",
+           "Software reliability changes over time",
+           "There are no standard measurement techniques"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Testing alone can only effectively demonstrate reliability of 10^-4 failures per hour, while systems like avionics require 10^-9 reliability - a gap of 5 orders of magnitude.",
+       "detailedExplanation": "Software reliability measurement faces fundamental challenges: Unlike hardware with random failures amenable to probabilistic analysis, software has systematic failures that are harder to characterize. Littlewood and Strigini argue that testing alone can only provide effective evidence for reliability estimates of at best 10^-4 (one failure per 10,000 hours of operation). However, avionics systems often require 10^-9 reliability. To increase assessment confidence by just one order of magnitude to 10^-5 would require observing 460,000 hours (over 50 years) of fault-free operation. For N-version systems, correlation between versions makes reliability estimation even more difficult - two 10^-4 versions don't combine to give 10^-8 service. This reliability assessment gap is one reason why fault tolerance techniques are essential."
+   },
+   {
+       "question": "What was the cause of the Patriot missile system failure?",
+       "options": [
+           "Hardware component failure",
+           "Software aging due to accumulated time calculation errors from finite-precision arithmetic",
+           "Network communication failure",
+           "Operator error"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The Patriot failure was caused by software aging - accumulated time calculation errors due to finite-precision arithmetic over extended operation periods.",
+       "detailedExplanation": "The Patriot missile failure exemplifies software aging: The system was designed for mobile operations in Europe, operating only a few hours at each location. During the Gulf War, it was used continuously for many hours. The system's internal clock kept time as an integer in tenths of seconds. To predict where incoming missiles would appear, this time had to be converted to real numbers. The 24-bit registers caused precision loss in the conversion. The longer the system ran, the larger the time value and the greater the inaccuracy. This affected the range gate calculation proportionally to target velocity and system runtime. After 20 hours of continuous operation, the target became outside the range gate, making interception impossible. The February 1991 failure killed 28 people. Like all software aging problems, restarting the system before 20 hours would have cleared the problem."
+   },
+    {
+       "question": "What is the driver process in N-version programming responsible for?",
+       "options": [
+           "Controlling system hardware",
+           "Invoking versions, waiting for completion, and comparing/acting on results",
+           "Managing system resources",
+           "Handling user interfaces"
+       ],
+       "correctAnswer": 1,
+       "explanation": "The driver process invokes each version, waits for completion, and compares and acts on the results.",
+       "detailedExplanation": "The driver process is central to N-version programming and handles the coordination and decision-making: (1) Invoking each of the N versions with the same inputs, (2) Waiting for versions to complete (or handling timeout situations), (3) Comparing results and making decisions based on the comparison outcome. The driver must handle various scenarios: all versions agree (normal case), majority agreement (mask minority failures), no consensus (error condition), and timing failures (some versions don't complete on time). The driver itself becomes a critical component - its failure can compromise the entire N-version system. Therefore, the driver should be kept as simple as possible and may itself need to be redundant. The driver's reliability and the voting algorithm's correctness are crucial to the overall system reliability."
+   },
+   {
+       "question": "What are comparison vectors, status indicators, and comparison points in N-version programming?",
+       "options": [
+           "Types of voting algorithms in N-version programming",
+           "Data structures for votes, actions for versions based on comparison results, and points where versions communicate with the driver",
+           "Different types of version implementations",
+           "Components of the acceptance test"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Comparison vectors are data structures representing votes, status indicators are actions versions must perform based on comparison results, and comparison points are where versions communicate with the driver.",
+       "detailedExplanation": "These three components define the interaction between versions and the driver in N-version programming: (1) Comparison vectors - data structures representing outputs/votes from versions plus associated attributes (like calculation confidence or data freshness). (2) Comparison status indicators - communicated from driver to versions, indicating required actions based on comparison results (continuation, termination, vote change to majority value). (3) Comparison points - specific points in version execution where they must communicate votes to the driver. The granularity of comparison points affects fault tolerance - fine granularity provides better error detection but reduces version independence and increases overhead, while coarse granularity allows more independence but may permit greater result divergence."
+   },
+   {
+       "question": "What is Triple Modular Redundancy (TMR)?",
+       "options": [
+           "Using three different programming languages",
+           "Three identical components with majority voting circuits to mask single component failures",
+           "Three levels of testing for software",
+           "Three backup copies of data"
+       ],
+       "correctAnswer": 1,
+       "explanation": "TMR uses three identical subcomponents with majority voting circuits that compare outputs and mask failures when one component differs from the other two.",
+       "detailedExplanation": "Triple Modular Redundancy (TMR) is a classic example of static hardware redundancy that masks faults automatically. It consists of three identical subcomponents and majority voting circuits. The voting circuits compare outputs from all three components - if one output differs from the other two, that output is masked out and the majority result is used. This approach assumes faults are not due to common design errors but are either transient or due to component deterioration. TMR can mask any single component failure but requires more redundancy to handle multiple failures (leading to N Modular Redundancy or NMR). The key advantage is automatic fault masking without explicit error detection, but it requires the assumption that at most one component will fail at a time."
+   },
+   {
+       "question": "What are the main advantages and disadvantages of N-version programming?",
+       "options": [
+           "Advantages: Fast execution; Disadvantages: High memory usage",
+           "Advantages: Handles unanticipated faults, masks errors automatically; Disadvantages: High cost, specification dependency, voting complexity",
+           "Advantages: Easy to implement; Disadvantages: Limited fault coverage",
+           "Advantages: Low overhead; Disadvantages: Complex algorithms"
+       ],
+       "correctAnswer": 1,
+       "explanation": "N-version programming can handle design faults and mask errors automatically, but requires high development costs, depends on perfect specifications, and faces voting algorithm challenges.",
+       "detailedExplanation": "N-version programming advantages: (1) Can tolerate unanticipated software design faults through diversity, (2) Provides automatic fault masking like hardware TMR, (3) No recovery time needed as all versions run continuously, (4) Can handle both anticipated and unanticipated faults. Disadvantages: (1) Very high development cost (nearly N times a single version), (2) Specification errors affect all versions, (3) Difficult to achieve true independence (common algorithms, languages, compilers), (4) Complex voting algorithms needed for inexact results, (5) Consistent comparison problem near threshold values, (6) High runtime resource requirements (N times normal), (7) Driver process becomes single point of failure. The approach works best for applications with exact results and adequate budgets."
+   },
+   {
+       "question": "What are the main advantages and disadvantages of recovery blocks?",
+       "options": [
+           "Advantages: Simple implementation; Disadvantages: Poor error detection",
+           "Advantages: Lower runtime overhead, flexible error detection, handles unanticipated faults; Disadvantages: Recovery time overhead, cannot undo environmental effects",
+           "Advantages: Fast recovery; Disadvantages: High memory usage",
+           "Advantages: Perfect fault coverage; Disadvantages: Complex voting"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Recovery blocks have lower runtime overhead and flexible error detection but suffer from recovery time costs and inability to undo environmental effects.",
+       "detailedExplanation": "Recovery blocks advantages: (1) Lower runtime overhead - only one module executes normally, (2) Flexible error detection through acceptance tests rather than rigid voting, (3) Can handle unanticipated faults including design errors, (4) Clear separation of concerns (primary algorithm vs. alternatives), (5) Acceptance tests can allow degraded service, (6) No voting complexity issues. Disadvantages: (1) Significant recovery time overhead for checkpointing and restoration, (2) Cannot undo environmental effects (missile launches, valve operations), (3) Acceptance test design is critical and difficult, (4) In concurrent systems, domino effect can cause cascading rollbacks, (5) May not be suitable for real-time systems with tight timing constraints, (6) Alternative modules still need to be developed (though cheaper than N-version approach)."
+   },
+   {
+       "question": "What is firewalling in the context of fault tolerance?",
+       "options": [
+           "Network security protection",
+           "Damage confinement techniques to minimize fault effects",
+           "Error detection mechanisms",
+           "Recovery point establishment"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Firewalling refers to damage confinement techniques that structure systems to minimize damage caused by faulty components.",
+       "detailedExplanation": "Firewalling (also known as damage confinement) involves structuring systems to limit the spread of errors from faulty components. Key techniques include: (1) Modular decomposition - breaking systems into components with well-defined interfaces to prevent indiscriminate error propagation, (2) Atomic actions - ensuring activities appear indivisible with no external interactions during execution, (3) Protection mechanisms - using access controls and permissions to restrict resource access, (4) Resource budgeting - limiting resource consumption by processes to prevent resource exhaustion attacks. The goal is to create barriers that prevent errors in one part of the system from corrupting other parts. This is analogous to physical firewalls that prevent fire spread - software firewalls prevent error spread. Effective firewalling makes damage assessment easier and recovery more predictable."
+   },
+   {
+       "question": "What are the two stages of fault prevention?",
+       "options": [
+           "Testing and debugging",
+           "Fault avoidance and fault removal",
+           "Error detection and error correction",
+           "Design and implementation"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Fault prevention consists of fault avoidance (limiting introduction of faults) and fault removal (finding and removing existing faults).",
+       "detailedExplanation": "Fault prevention involves two complementary stages: (1) Fault avoidance - attempts to limit the introduction of potentially faulty components during system construction. For hardware: use reliable components within cost/performance constraints, employ proven interconnection techniques, package hardware to screen interference. For software: use rigorous specifications (formal methods like B or Z), proven design methodologies (UML-based approaches), analysis tools (model checkers, proof checkers), languages with abstraction/modularity (Ada, Java), software engineering tools (configuration management). (2) Fault removal - procedures for finding and removing fault causes after construction through design reviews, program verification, code inspections, and especially system testing. However, testing can never be exhaustive and cannot remove all potential faults, particularly Heisenbugs and specification errors."
+   },
+   {
+       "question": "What is an exception in the context of fault tolerance?",
+       "options": [
+           "An unexpected system shutdown",
+           "The occurrence of an error condition that disrupts normal program flow",
+           "A hardware malfunction",
+           "A programming language feature"
+       ],
+       "correctAnswer": 1,
+       "explanation": "An exception is the occurrence of an error condition, where raising/signalling brings it to the invoker's attention and handling/catching is the response.",
+       "detailedExplanation": "An exception is defined as the occurrence of an error, whether anticipated (like out-of-range sensor readings) or unanticipated (like design errors). The exception handling process involves: (1) Raising/signalling/throwing - bringing the exception condition to the attention of the operation's invoker, (2) Handling/catching - the invoker's response to the exception. Exception handling provides a forward error recovery mechanism since the system isn't rolled back to a previous state - instead, control passes to the handler for recovery procedures. Exceptions can be used for: coping with abnormal environmental conditions, tolerating program design faults, and providing general-purpose error detection/recovery facilities. The key is that exceptions represent rare events in system functioning that may or may not be recoverable within the program."
+   },
+   {
+       "question": "What makes an ideal fault-tolerant component?",
+       "options": [
+           "High performance and low cost",
+           "Accepts service requests, provides normal or exception responses, and returns to consistent state before raising exceptions",
+           "Uses the latest technology",
+           "Has multiple backup systems"
+       ],
+       "correctAnswer": 1,
+       "explanation": "An ideal fault-tolerant component accepts service requests, may call other services, yields normal or exception responses, and crucially returns to consistent state before raising any exceptions.",
+       "detailedExplanation": "The ideal fault-tolerant component has these characteristics: (1) Accepts service requests from other components, (2) May call upon services of other components to fulfill requests, (3) Yields either normal responses or exception responses, (4) Handles two types of faults: interface exceptions (illegal service requests) and failure exceptions (component malfunctions or called service failures), (5) Most importantly, returns itself to a consistent state before raising any exceptions to ensure future service capability. The component must tolerate faults through forward or backward error recovery, and when it cannot tolerate faults, it raises failure exceptions in the calling component. This design ensures that components can continue operating after handling exceptions and that error recovery is properly structured throughout the system hierarchy."
+   },
+   {
+       "question": "What are the three components of dependability according to Laprie?",
+       "options": [
+           "Hardware, software, and network",
+           "Threats, means, and attributes",
+           "Prevention, tolerance, and recovery",
+           "Design, implementation, and testing"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Dependability consists of threats (circumstances causing non-dependability), means (methods to deliver dependable service), and attributes (ways to appraise service quality).",
+       "detailedExplanation": "Laprie's dependability framework consists of three components: (1) Threats - circumstances causing or resulting in non-dependability, including faults (causes), errors (manifestations), and failures (deviations from service). (2) Means - methods, tools, and solutions required to deliver dependable service with required confidence, including fault prevention (avoiding fault introduction), fault tolerance (service delivery despite faults), fault removal (reducing fault presence), and fault forecasting (estimating fault consequences). (3) Attributes - ways to appraise dependable service quality, including availability (readiness for usage), reliability (continuity of service), safety (absence of catastrophic consequences), confidentiality (absence of unauthorized disclosure), integrity (absence of improper alterations), and maintainability (ability to undergo repairs/evolution). This comprehensive framework helps analyze and design dependable systems systematically."
+   },
+   {
+       "question": "What is the difference between environmental and application error detection?",
+       "options": [
+           "Environmental is automatic, application is manual",
+           "Environmental detection is by hardware/runtime system, application detection is by the application itself using various checking techniques",
+           "Environmental is for hardware, application is for software",
+           "Environmental is faster, application is more accurate"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Environmental detection is performed by hardware or runtime systems, while application detection is performed by the application using techniques like replication, timing, and reasonableness checks.",
+       "detailedExplanation": "Error detection techniques are classified into two main categories: (1) Environmental detection - errors detected by the environment in which the program executes. This includes hardware detection (illegal instruction executed, arithmetic overflow, protection violation) and runtime system detection (array bounds error, null pointer referenced, value out of range). These are typically provided automatically by the execution environment. (2) Application detection - errors detected by the application itself using various techniques: replication checks (N-version programming), timing checks (watchdog timers, deadline detection), reversal checks (calculating input from output for validation), coding checks (checksums, parity bits), reasonableness checks (range validation, assertions), structural checks (data structure integrity), and dynamic reasonableness checks (comparing consecutive outputs for plausibility). The choice between techniques depends on the application requirements and the types of errors expected."
+   },
+   {
+       "question": "What is a watchdog timer in error detection?",
+       "options": [
+           "A timer that measures system performance",
+           "A timer that must be reset periodically by a component to indicate it's functioning correctly",
+           "A timer that schedules system maintenance",
+           "A timer that controls system startup"
+       ],
+       "correctAnswer": 1,
+       "explanation": "A watchdog timer must be continually reset by a software component to indicate proper functioning - if not reset within a certain period, the component is assumed to be in error.",
+       "detailedExplanation": "A watchdog timer is a timing check mechanism where a software component must continually reset a timer to indicate it's functioning correctly. If the timer is not reset within a specified period, the monitoring system assumes the component has failed or is stuck. This provides basic liveness detection - ensuring the component is still executing and responsive. However, watchdog timers have limitations: (1) They only detect that a component is running on time, not that it's functioning correctly, (2) A component might be executing but producing wrong results, (3) They don't detect logical errors or incorrect computations. Therefore, watchdog timers should be used in conjunction with other error detection techniques. In embedded and real-time systems, watchdog timers are often implemented in hardware and can reset the entire system if not serviced, providing a last-resort recovery mechanism."
+   },
+   {
+       "question": "What are reversal checks in error detection?",
+       "options": [
+           "Checking inputs in reverse order",
+           "Calculating what the input should be from the output and comparing with actual input",
+           "Running the algorithm backwards",
+           "Checking outputs in reverse chronological order"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Reversal checks calculate what the input should be from the output and compare it with the actual input to detect errors.",
+       "detailedExplanation": "Reversal checks are feasible in components where there's a one-to-one (isomorphic) relationship between input and output. The technique works by: (1) Taking the computed output, (2) Calculating what the input should have been to produce that output, (3) Comparing the calculated input with the actual input, (4) If they match (within tolerance for real numbers), the computation is likely correct. Example: for a component that finds the square root of a number, the reversal check squares the output and compares it with the original input. This technique is particularly effective for mathematical functions with well-defined inverse operations. Limitations include: (1) Only works with reversible operations, (2) May require inexact comparison for floating-point arithmetic, (3) The reversal calculation itself could contain errors, (4) Some functions don't have unique inverses."
+   },
+   {
+       "question": "What are the main problems with system testing for fault removal?",
+       "options": [
+           "Testing takes too long and costs too much",
+           "Testing can only show presence of faults not absence, impossible to test realistically, and requirements-stage errors may not manifest until operation",
+           "Testing requires too many resources",
+           "Testing is not comprehensive enough"
+       ],
+       "correctAnswer": 1,
+       "explanation": "System testing faces three fundamental problems: can only show fault presence not absence, realistic testing conditions are often impossible, and requirements errors may not appear until operational use.",
+       "detailedExplanation": "System testing for fault removal faces several fundamental limitations: (1) A test can only show the presence of faults, not their absence - you cannot prove a system is fault-free through testing alone. (2) Realistic testing conditions are often impossible - systems like the Strategic Defense Initiative cannot be tested under actual battle conditions, and simulations may not accurately represent real conditions (as seen with nuclear testing moving to simulation). (3) Requirements-stage errors may not manifest until operational use - the F18 aircraft example shows how erroneous assumptions about missile separation time were only discovered during actual operation, not testing. These limitations explain why fault prevention approaches will be unsuccessful when frequency or duration of repair times are unacceptable, or when systems are inaccessible for maintenance (like the Voyager spacecraft). This is why fault tolerance techniques are essential."
+   },
+   {
+       "question": "What is graceful degradation in fault tolerance?",
+       "options": [
+           "Slowly reducing system performance over time",
+           "The system continues operating with partial degradation of functionality or performance during recovery",
+           "Gradually shutting down system components",
+           "Reducing system complexity to improve reliability"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Graceful degradation (fail soft) means the system continues operating but accepts partial degradation of functionality or performance during recovery or repair.",
+       "detailedExplanation": "Graceful degradation represents a middle ground between full fault tolerance and fail-safe behavior. Characteristics include: (1) System continues operating despite faults, (2) Accepts partial loss of functionality or performance, (3) Allows operation during recovery or repair processes, (4) Often provides multiple levels of degradation. The Federal Aviation Administration's Advanced Automation System exemplifies this with three degradation levels: full functionality, minimum functionality for basic air traffic control, emergency functionality for aircraft separation only, and adjacent facility backup for catastrophic failures. Graceful degradation is particularly valuable for: (1) Complex systems that cannot achieve full fault tolerance indefinitely, (2) High-availability systems that must continue operating, (3) Systems that can suffer physical damage (like combat aircraft), (4) Cost-sensitive applications where full fault tolerance is too expensive. The key is defining acceptable degraded service levels that still meet critical requirements."
+   },
+   {
+       "question": "What is fail-safe behavior in fault tolerance?",
+       "options": [
+           "The system never fails under any circumstances",
+           "The system maintains integrity while accepting temporary halt, moving to a safe state",
+           "The system automatically repairs itself",
+           "The system continues operating at reduced capacity"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Fail-safe behavior means the system maintains its integrity while accepting temporary halt in operation, moving to a safe state when faults occur.",
+       "detailedExplanation": "Fail-safe systems prioritize safety over continued operation when faults occur. Key characteristics: (1) System maintains integrity and safety even when stopping operation, (2) Moves to a predefined safe state when errors are detected, (3) Accepts temporary halt in operation to prevent hazardous conditions, (4) Safe state is determined by the specific application domain. Example: The A310 Airbus slat and flap control computers detect landing errors and restore both wings to the same settings (safe state) before shutting down - asymmetric settings would be hazardous during landing. The safe state ensures that even if the system cannot continue normal operation, it won't create dangerous conditions. Fail-safe design is crucial for safety-critical systems where incorrect operation is more dangerous than no operation. The challenge is defining what constitutes a 'safe state' for each specific application and ensuring the system can reliably reach that state under fault conditions."
+   },
+   {
+       "question": "What software reliability growth models attempt to predict?",
+       "options": [
+           "How fast software will become obsolete",
+           "Software reliability based on error history when faults are identified and repaired",
+           "How much memory software will consume over time",
+           "The learning curve for software development teams"
+       ],
+       "correctAnswer": 1,
+       "explanation": "Software reliability growth models attempt to predict the reliability of a program based on its error history - when faults are identified and repaired during development and testing.",
+       "detailedExplanation": "Software reliability growth models are one of two main approaches to software reliability assessment. These models: (1) Track the pattern of fault discovery and repair during development and testing phases, (2) Use statistical techniques to model how reliability improves as faults are found and fixed, (3) Attempt to predict future reliability based on past fault discovery patterns, (4) Assume that removing faults improves reliability over time. The models analyze metrics like: time between failures, number of faults found per time period, and fault discovery rates. However, these models face challenges: (1) They assume fault removal always improves reliability (sometimes fixes introduce new faults), (2) They may not account for fault correlation or clustering, (3) The relationship between fault count and reliability is not always linear, (4) They work better for some types of software than others. Despite limitations, growth models provide valuable insights into software reliability trends during development."
+   }
+]

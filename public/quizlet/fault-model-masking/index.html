@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fault Tolerance & Software Fault Masking Quiz</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation back to topics -->
+        <a href="../" class="nav-back">← Back to Topics</a>
+        
+        <div class="header">
+            <h1>🔧 Fault Tolerance & Software Fault Masking Quiz</h1>
+            <p>Master distributed systems reliability and fault-tolerant design patterns</p>
+        </div>
+        
+        <!-- Introduction Section -->
+        <div id="intro-container" class="summary-section">
+            <h2>About This Quiz</h2>
+            <p>This comprehensive quiz covers fault tolerance mechanisms in distributed systems, testing your understanding of:</p>
+            
+            <div class="must-know">
+                <h3>Key Topics Covered</h3>
+                <div class="must-know-grid">
+                    <div class="must-know-item">
+                        <strong>Fault Models & Classification</strong>
+                        <p>Byzantine faults, expected vs unexpected faults, and failure taxonomies</p>
+                    </div>
+                    <div class="must-know-item">
+                        <strong>Process Pairs & System Redundancy</strong>
+                        <p>Primary-backup architectures, failover mechanisms, and geographic diversity</p>
+                    </div>
+                    <div class="must-know-item">
+                        <strong>Reliable Storage Systems</strong>
+                        <p>N-plexed storage, checksums, decay models, and consistency protocols</p>
+                    </div>
+                    <div class="must-know-item">
+                        <strong>Message Systems & Sessions</strong>
+                        <p>Exactly-once delivery, acknowledgments, sequence numbers, and flow control</p>
+                    </div>
+                    <div class="must-know-item">
+                        <strong>Recovery Mechanisms</strong>
+                        <p>Checkpoint-restart, takeover procedures, and state synchronization</p>
+                    </div>
+                    <div class="must-know-item">
+                        <strong>Design Principles</strong>
+                        <p>KISS principle, Murphy's Law, independent failure modes, and ACID properties</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-concepts">
+                <div class="concept">
+                    <h3>Why Fault Tolerance Matters</h3>
+                    <ul>
+                        <li><strong>High Availability:</strong> Systems must continue operating despite component failures</li>
+                        <li><strong>Data Integrity:</strong> Preventing corruption and ensuring consistency across distributed storage</li>
+                        <li><strong>Graceful Degradation:</strong> Maintaining service with reduced functionality rather than complete failure</li>
+                        <li><strong>End-to-End Reliability:</strong> Ensuring reliability across all system components and interfaces</li>
+                        <li><strong>Cost-Effective Resilience:</strong> Using software techniques to mask hardware failures</li>
+                    </ul>
+                </div>
+                <div class="concept">
+                    <h3>Core Concepts You'll Master</h3>
+                    <ul>
+                        <li><strong>Failfast Mechanisms:</strong> Instant crash and restart for rapid recovery</li>
+                        <li><strong>Process Pair Architecture:</strong> Primary-backup with heartbeat monitoring</li>
+                        <li><strong>Storage Fault Tolerance:</strong> N-way replication with version control</li>
+                        <li><strong>Session Management:</strong> Reliable message delivery with exactly-once semantics</li>
+                        <li><strong>Checkpoint-Restart:</strong> State preservation and recovery strategies</li>
+                        <li><strong>Byzantine Fault Tolerance:</strong> Handling arbitrary and malicious failures</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quiz-controls">
+                <button id="start-quiz-button" class="btn">Start Fault Tolerance Quiz</button>
+            </div>
+        </div>
+        
+        <!-- Quiz Section (Hidden initially) -->
+        <div id="quiz-section" class="quiz-section" style="display: none;">
+            <div class="quiz-stats">
+                <div class="stat-card">
+                    <span id="score-display" class="stat-number">Score: 0/50</span>
+                    <span>Current Score</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">50</span>
+                    <span>Total Questions</span>
+                </div>
+                <div class="stat-card">
+                    <span id="topic-display" class="stat-number">-</span>
+                    <span>Current Topic</span>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div id="progress-bar" class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            
+            <!-- Quiz Container -->
+            <div id="quiz-container">
+                <div id="question-container" class="quiz-question">
+                    <!-- Question will be inserted here by JavaScript -->
+                </div>
+                
+                <div id="options-container" class="quiz-options">
+                    <!-- Options will be inserted here by JavaScript -->
+                </div>
+                
+                <div id="explanation-container" class="explanation" style="display: none;">
+                    <!-- Explanation will be inserted here after answering -->
+                </div>
+                
+                <div class="quiz-controls">
+                    <button id="next-button" class="btn" disabled>Next Question</button>
+                    <button id="show-explanation" class="btn secondary" style="display: none;">Show Detailed Explanation</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final Score (Hidden initially) -->
+        <div id="final-score" class="final-score" style="display: none;">
+            <h2>🎉 Quiz Complete!</h2>
+            <div class="score-summary">
+                <div class="final-score-display">
+                    <span id="final-score-number">0</span>
+                    <span>/50</span>
+                </div>
+                <div class="score-percentage">
+                    <span id="score-percentage">0%</span>
+                </div>
+            </div>
+            
+            <div class="performance-breakdown">
+                <h3>Performance by Topic</h3>
+                <div id="topic-breakdown">
+                    <!-- Topic-wise performance will be inserted here -->
+                </div>
+            </div>
+            
+            <div class="recommendations">
+                <h3>Study Recommendations</h3>
+                <div id="study-recommendations">
+                    <!-- Personalized study recommendations based on performance -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Restart Button (Hidden initially) -->
+        <div class="quiz-controls">
+            <button id="restart-button" class="btn" style="display: none;">Retake Quiz</button>
+            <button id="review-answers" class="btn secondary" style="display: none;">Review Answers</button>
+        </div>
+    </div>
+    
+    <!-- Link to the quiz JavaScript file -->
+    <script src="quiz.js"></script>
+</body>
+</html>

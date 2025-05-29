@@ -14,35 +14,95 @@
         </div>
 
         <div class="topics-grid">
-            <a href="code-quality/" class="topic-card">
+            <a href="code-quality/" class="topic-card" data-topic="code-quality">
                 <h2>📋 Code Quality</h2>
                 <p class="topic-description">Test your understanding of code quality principles, cohesion, coupling, and software design fundamentals.</p>
                 <div class="topic-stats">
-                    <span class="stat">50 Questions</span>
-                    <span class="stat">Comprehensive</span>
+                    <span class="question-count">Loading...</span>
                 </div>
                 <div class="topic-footer">Start Quiz →</div>
             </a>
 
-            <!-- Template for future topics -->
-            <div class="topic-card coming-soon">
-                <h2>🔄 Design Patterns</h2>
-                <p class="topic-description">Coming soon: Master common design patterns, their applications, and implementation details.</p>
+            <a href="reliability-fault-tolerance/" class="topic-card" data-topic="reliability-fault-tolerance">
+                <h2>🛡️ Reliability & Fault Tolerance</h2>
+                <p class="topic-description">Explore concepts of system reliability, fault handling, and building resilient software systems.</p>
                 <div class="topic-stats">
-                    <span class="stat">Coming Soon</span>
+                    <span class="question-count">Loading...</span>
                 </div>
-                <div class="topic-footer">In Development</div>
-            </div>
+                <div class="topic-footer">Start Quiz →</div>
+            </a>
 
-            <div class="topic-card coming-soon">
-                <h2>🏗️ System Design</h2>
-                <p class="topic-description">Coming soon: Learn about scalable architectures, distributed systems, and system design principles.</p>
+            <a href="transactions-fundamentals/" class="topic-card" data-topic="transactions-fundamentals">
+                <h2>🔄 Transactions Fundamentals</h2>
+                <p class="topic-description">Learn about transaction properties, ACID principles, and ensuring data consistency in systems.</p>
                 <div class="topic-stats">
-                    <span class="stat">Coming Soon</span>
+                    <span class="question-count">Loading...</span>
                 </div>
-                <div class="topic-footer">In Development</div>
-            </div>
+                <div class="topic-footer">Start Quiz →</div>
+            </a>
+
+            <a href="atomic-actions-concurrent/" class="topic-card" data-topic="atomic-actions-concurrent">
+                <h2>⚛️ Atomic Actions & Concurrency</h2>
+                <p class="topic-description">Master concepts of atomic operations, concurrent programming, and reliable multi-threaded systems.</p>
+                <div class="topic-stats">
+                    <span class="question-count">Loading...</span>
+                </div>
+                <div class="topic-footer">Start Quiz →</div>
+            </a>
+
+            <a href="fault-model-masking/" class="topic-card" data-topic="fault-model-masking">
+                <h2>🛠️ Fault Models & Masking</h2>
+                <p class="topic-description">Understand fault models, error propagation, masking techniques, and building robust systems.</p>
+                <div class="topic-stats">
+                    <span class="question-count">Loading...</span>
+                </div>
+                <div class="topic-footer">Start Quiz →</div>
+            </a>
         </div>
     </div>
+
+    <script>
+        // Function to fetch question count for each topic
+        async function updateQuestionCounts() {
+            const topicCards = document.querySelectorAll('.topic-card[data-topic]');
+            
+            for (const card of topicCards) {
+                const topic = card.getAttribute('data-topic');
+                const countElement = card.querySelector('.question-count');
+                
+                try {
+                    // Fetch the questions.json file for this topic
+                    const response = await fetch(`${topic}/questions.json`);
+                    
+                    if (response.ok) {
+                        const questions = await response.json();
+                        const count = questions.length;
+                        
+                        // Update the count display
+                        countElement.textContent = `${count} Question${count !== 1 ? 's' : ''}`;
+                        
+                        // Add a class based on question count
+                        if (count === 0) {
+                            countElement.classList.add('empty');
+                        } else if (count < 5) {
+                            countElement.classList.add('few');
+                        } else if (count >= 20) {
+                            countElement.classList.add('many');
+                        }
+                    } else {
+                        countElement.textContent = 'No Questions';
+                        countElement.classList.add('error');
+                    }
+                } catch (error) {
+                    console.error(`Error fetching questions for ${topic}:`, error);
+                    countElement.textContent = 'Error';
+                    countElement.classList.add('error');
+                }
+            }
+        }
+
+        // Update counts when page loads
+        document.addEventListener('DOMContentLoaded', updateQuestionCounts);
+    </script>
 </body>
 </html>

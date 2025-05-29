@@ -1,0 +1,665 @@
+[
+  {
+    "question": "What is the primary purpose of a transaction in a database system?",
+    "options": [
+      "To ensure all operations complete successfully or none at all",
+      "To improve system performance",
+      "To reduce memory usage",
+      "To simplify application code"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A transaction ensures atomicity - either all operations succeed or all fail together.",
+    "detailedExplanation": "Transactions provide the fundamental guarantee that a series of operations will be treated as a single unit. If any operation within the transaction fails, all operations are rolled back to maintain data consistency. This is crucial for operations like transferring money between bank accounts where partial completion would leave the system in an inconsistent state.",
+    "topic": "transaction-fundamentals"
+  },
+  {
+    "question": "Which ACID property ensures that a transaction sees a consistent view of the database?",
+    "options": [
+      "Atomicity",
+      "Consistency",
+      "Isolation",
+      "Durability"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Isolation ensures that concurrent transactions don't interfere with each other.",
+    "detailedExplanation": "Isolation means that the execution of one transaction is isolated from other transactions. Each transaction should see the database as if it were the only transaction running. This prevents issues like dirty reads, phantom reads, and non-repeatable reads that can occur when transactions interfere with each other.",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "In the two-phase commit protocol, what happens during Phase 1?",
+    "options": [
+      "All participants commit their changes",
+      "The coordinator asks all participants if they can commit",
+      "All participants rollback their changes",
+      "The coordinator decides to abort the transaction"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Phase 1 is the 'prepare' phase where the coordinator asks all participants if they're ready to commit.",
+    "detailedExplanation": "During Phase 1 (prepare phase), the transaction coordinator sends a prepare message to all participants. Each participant then prepares to commit by writing all changes to stable storage and responds with either 'yes' (ready to commit) or 'no' (cannot commit). Only if all participants respond 'yes' does the protocol proceed to Phase 2.",
+    "topic": "two-phase-commit"
+  },
+  {
+    "question": "What does the 'A' in ACID properties stand for?",
+    "options": [
+      "Availability",
+      "Atomicity",
+      "Accessibility",
+      "Accuracy"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Atomicity means the transaction is treated as a single, indivisible unit.",
+    "detailedExplanation": "Atomicity ensures that a transaction is treated as a single unit of work. Either all operations in the transaction are completed successfully, or none of them are. There's no middle ground where some operations succeed and others fail - it's all or nothing. This prevents the database from being left in a partially updated state.",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "What is a key disadvantage of pessimistic concurrency control?",
+    "options": [
+      "It allows dirty reads",
+      "It can lead to deadlocks",
+      "It doesn't prevent lost updates",
+      "It requires too much memory"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Pessimistic locking can create deadlock situations when transactions wait for each other's locks.",
+    "detailedExplanation": "Pessimistic concurrency control uses locks to prevent conflicts before they occur. However, this can lead to deadlock situations where two or more transactions are waiting for locks held by each other, creating a circular dependency. For example, Transaction A holds a lock on resource X and waits for resource Y, while Transaction B holds a lock on resource Y and waits for resource X.",
+    "topic": "concurrency-control"
+  },
+  {
+    "question": "In optimistic concurrency control, when are conflicts detected?",
+    "options": [
+      "At the beginning of the transaction",
+      "During the transaction execution",
+      "At commit time",
+      "After the transaction commits"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Optimistic concurrency control checks for conflicts only when the transaction tries to commit.",
+    "detailedExplanation": "Optimistic concurrency control assumes that conflicts are rare and allows transactions to proceed without locking resources. Conflict detection happens only at commit time by checking if any resources the transaction read or wrote have been modified by other transactions since the transaction started. If conflicts are detected, the transaction must be rolled back and restarted.",
+    "topic": "concurrency-control"
+  },
+  {
+    "question": "What does the two-phase locking protocol require?",
+    "options": [
+      "All locks must be acquired before any are released",
+      "Locks can be acquired and released at any time",
+      "Only read locks are used",
+      "Locks are held for exactly two phases"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Two-phase locking has a growing phase (acquire locks) and shrinking phase (release locks).",
+    "detailedExplanation": "The two-phase locking protocol ensures serializability by dividing each transaction into two phases: a growing phase where locks can be acquired but not released, and a shrinking phase where locks can be released but not acquired. Once a transaction releases any lock, it cannot acquire new locks. This prevents certain types of conflicts that could lead to non-serializable schedules.",
+    "topic": "two-phase-locking"
+  },
+  {
+    "question": "What is a heuristic decision in transaction processing?",
+    "options": [
+      "A decision made by the coordinator",
+      "An autonomous decision made by a participant",
+      "A decision made by the database",
+      "A decision made by the application"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A heuristic decision is when a participant makes an autonomous choice to commit or rollback.",
+    "detailedExplanation": "A heuristic decision occurs when a participant in a distributed transaction makes an autonomous decision to commit or rollback without waiting for the coordinator's decision. This can happen due to timeouts or failures. While this can resolve deadlocks, it can also lead to inconsistency if the participant's decision differs from what the coordinator eventually decides.",
+    "topic": "heuristic-transactions"
+  },
+  {
+    "question": "What is the purpose of a transaction log?",
+    "options": [
+      "To improve query performance",
+      "To store user data",
+      "To record transaction operations for recovery",
+      "To manage user permissions"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The transaction log records all changes made by transactions to enable recovery after failures.",
+    "detailedExplanation": "The transaction log is a sequential record of all changes made by transactions. It contains both the old and new values of modified data (before and after images). This information is crucial for recovery - if a system crashes, the log can be used to either undo incomplete transactions (rollback) or redo committed transactions that may not have been written to permanent storage.",
+    "topic": "transaction-log"
+  },
+  {
+    "question": "What is a nested transaction?",
+    "options": [
+      "A transaction that runs inside another transaction",
+      "A transaction that involves multiple databases",
+      "A transaction that takes a long time to complete",
+      "A transaction that is automatically retried"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A nested transaction is a subtransaction that runs within the scope of a parent transaction.",
+    "detailedExplanation": "Nested transactions allow for hierarchical transaction structures where a parent transaction can contain child transactions (subtransactions). Child transactions can commit or abort independently, but their effects only become permanent when the parent transaction commits. If the parent transaction aborts, all child transactions are also aborted, regardless of whether they had committed.",
+    "topic": "nested-transactions"
+  },
+  {
+    "question": "In the context of distributed transactions, what is interposition?",
+    "options": [
+      "Running multiple transactions simultaneously",
+      "Using a subordinate coordinator as a proxy",
+      "Splitting a transaction across multiple databases",
+      "Combining multiple small transactions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Interposition involves using subordinate coordinators to reduce overhead in distributed transactions.",
+    "detailedExplanation": "Interposition is a technique where subordinate coordinators act as proxies between the root coordinator and participants. This creates a tree-like structure that can reduce the communication overhead and improve performance in large distributed transactions. Each subordinate coordinator manages a subset of participants and participates in the two-phase commit protocol on behalf of its participants.",
+    "topic": "distributed-transactions"
+  },
+  {
+    "question": "What is a compensating transaction?",
+    "options": [
+      "A transaction that improves performance",
+      "A transaction that undoes the effects of another transaction",
+      "A transaction that runs in parallel",
+      "A transaction that backs up data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A compensating transaction logically undoes the effects of a previously committed transaction.",
+    "detailedExplanation": "Compensating transactions are used in long-running business processes where traditional ACID transactions are not practical. Instead of holding locks for extended periods, the system allows transactions to commit and later runs compensating transactions to undo their effects if needed. For example, if a flight booking needs to be cancelled, a compensating transaction would reverse the seat reservation and refund the payment.",
+    "topic": "compensating-transactions"
+  },
+  {
+    "question": "What is the main purpose of checkpointing in transaction processing?",
+    "options": [
+      "To improve transaction performance",
+      "To reduce recovery time after failures",
+      "To prevent deadlocks",
+      "To compress transaction data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Checkpointing reduces recovery time by creating consistent snapshots of the database state.",
+    "detailedExplanation": "Checkpointing involves periodically creating consistent snapshots of the database state and writing all modified data to permanent storage. During recovery, the system only needs to process log records since the last checkpoint, significantly reducing recovery time. Without checkpointing, recovery would need to process the entire transaction log from the beginning.",
+    "topic": "failure-recovery"
+  },
+  {
+    "question": "What happens in Phase 2 of the two-phase commit protocol if all participants voted 'yes' in Phase 1?",
+    "options": [
+      "The coordinator sends abort messages",
+      "The coordinator sends commit messages",
+      "The participants decide independently",
+      "The transaction is automatically rolled back"
+    ],
+    "correctAnswer": 1,
+    "explanation": "If all participants vote 'yes', the coordinator sends commit messages in Phase 2.",
+    "detailedExplanation": "When all participants respond positively to the prepare message in Phase 1, the coordinator makes the decision to commit the transaction. In Phase 2, it sends commit messages to all participants, who then make their changes permanent and send acknowledgments back to the coordinator. Only after receiving all acknowledgments is the transaction considered fully committed.",
+    "topic": "two-phase-commit"
+  },
+  {
+    "question": "What is a distributed transaction?",
+    "options": [
+      "A transaction that involves multiple databases or systems",
+      "A transaction that is split into smaller parts",
+      "A transaction that runs on multiple threads",
+      "A transaction that takes a long time to complete"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A distributed transaction spans multiple databases or systems and requires coordination.",
+    "detailedExplanation": "A distributed transaction is one that involves operations on multiple databases or systems that may be located on different machines or networks. These transactions require special coordination protocols like two-phase commit to ensure ACID properties across all participating systems. The complexity arises from the need to handle network failures, system crashes, and the coordination of commit/abort decisions across multiple autonomous systems.",
+    "topic": "distributed-transactions"
+  },
+  {
+    "question": "What is the isolation property concerned with?",
+    "options": [
+      "Ensuring transactions complete successfully",
+      "Preventing interference between concurrent transactions",
+      "Making sure changes are permanent",
+      "Maintaining data integrity rules"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Isolation prevents concurrent transactions from interfering with each other.",
+    "detailedExplanation": "The isolation property ensures that the execution of concurrent transactions does not interfere with each other. Each transaction should appear to execute in isolation, as if it were the only transaction running on the system. This prevents phenomena like dirty reads (reading uncommitted data), non-repeatable reads (getting different values when reading the same data twice), and phantom reads (seeing new rows appear between reads).",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "What is a read lock used for?",
+    "options": [
+      "To prevent other transactions from reading data",
+      "To prevent other transactions from writing data",
+      "To improve read performance",
+      "To compress data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A read lock allows multiple readers but prevents writers from modifying the data.",
+    "detailedExplanation": "A read lock (also called shared lock) allows multiple transactions to read the same data simultaneously, but prevents any transaction from modifying the data while the read lock is held. This ensures that readers get a consistent view of the data. Multiple read locks can be held on the same data item, but a write lock cannot be acquired until all read locks are released.",
+    "topic": "locking-mechanisms"
+  },
+  {
+    "question": "What is a write lock used for?",
+    "options": [
+      "To allow multiple writers",
+      "To prevent both readers and writers from accessing data",
+      "To improve write performance",
+      "To compress data before writing"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A write lock provides exclusive access, preventing both readers and writers.",
+    "detailedExplanation": "A write lock (also called exclusive lock) provides exclusive access to a data item. When a transaction holds a write lock on a data item, no other transaction can acquire either a read lock or write lock on that item. This ensures that the transaction can modify the data without interference from other transactions and that other transactions don't see partial or inconsistent updates.",
+    "topic": "locking-mechanisms"
+  },
+  {
+    "question": "What is the durability property in ACID?",
+    "options": [
+      "Transactions must complete quickly",
+      "Committed changes must survive system failures",
+      "Transactions must not conflict",
+      "Data must remain consistent"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Durability ensures that committed transaction effects survive system failures.",
+    "detailedExplanation": "The durability property guarantees that once a transaction is committed, its effects will persist even if the system crashes immediately afterward. This is typically achieved by writing transaction changes to stable storage (like disk) before the transaction is considered committed. The transaction log and write-ahead logging protocols are key mechanisms for ensuring durability.",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "What is deadlock in transaction processing?",
+    "options": [
+      "When a transaction takes too long to complete",
+      "When transactions wait for each other's locks in a cycle",
+      "When a transaction fails to commit",
+      "When the system runs out of memory"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Deadlock occurs when transactions wait for each other's locks, creating a circular dependency.",
+    "detailedExplanation": "Deadlock is a situation where two or more transactions are waiting for each other to release locks, creating a circular dependency that prevents any of them from proceeding. For example, Transaction A holds lock on resource X and waits for resource Y, while Transaction B holds lock on resource Y and waits for resource X. Deadlock detection and resolution mechanisms are needed to break such cycles.",
+    "topic": "deadlock-handling"
+  },
+  {
+    "question": "Which of the following is NOT one of the ACID properties?",
+    "options": [
+      "Atomicity",
+      "Consistency",
+      "Availability",
+      "Durability"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The ACID properties are Atomicity, Consistency, Isolation, and Durability. Availability is not one of them.",
+    "detailedExplanation": "The ACID properties are the four fundamental properties that guarantee reliable transaction processing: Atomicity (all-or-nothing), Consistency (maintains database integrity), Isolation (transactions don't interfere), and Durability (committed changes persist). Availability, while important in distributed systems, is not one of the ACID properties and is actually sometimes in tension with consistency (as described in the CAP theorem).",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "What is the purpose of the prepare phase in two-phase commit?",
+    "options": [
+      "To commit all changes immediately",
+      "To check if all participants can commit",
+      "To rollback failed transactions",
+      "To optimize transaction performance"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The prepare phase determines if all participants are ready to commit the transaction.",
+    "detailedExplanation": "The prepare phase is the first phase of the two-phase commit protocol where the coordinator asks all participants if they are prepared to commit the transaction. Each participant must ensure it can complete the transaction (all changes are written to stable storage) and respond with either 'yes' (prepared to commit) or 'no' (cannot commit). Only if all participants respond 'yes' can the transaction proceed to the commit phase.",
+    "topic": "two-phase-commit"
+  },
+  {
+    "question": "What is serializability in transaction processing?",
+    "options": [
+      "Executing transactions one at a time",
+      "Converting objects to byte streams",
+      "Ensuring concurrent execution is equivalent to serial execution",
+      "Storing transactions in sequence"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Serializability means concurrent transaction execution produces the same result as some serial execution.",
+    "detailedExplanation": "Serializability is the property that ensures the result of executing concurrent transactions is equivalent to executing them in some serial (one-after-another) order. This is the formal definition of transaction isolation. Even though transactions may run concurrently and interleave their operations, the final result should be the same as if they executed in some sequential order without any overlapping.",
+    "topic": "serializability"
+  },
+  {
+    "question": "What is a transaction coordinator?",
+    "options": [
+      "A database that stores transaction data",
+      "A component that manages distributed transaction execution",
+      "A tool for monitoring transaction performance",
+      "A backup system for failed transactions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A transaction coordinator manages the execution of distributed transactions across multiple participants.",
+    "detailedExplanation": "The transaction coordinator is a key component in distributed transaction processing that orchestrates the execution of transactions across multiple participants (databases, message queues, etc.). It implements protocols like two-phase commit, manages the transaction state, handles failure recovery, and ensures that all participants either commit or abort together to maintain consistency across the distributed system.",
+    "topic": "transaction-coordinator"
+  },
+  {
+    "question": "What is the consistency property in ACID concerned with?",
+    "options": [
+      "Ensuring transactions don't interfere with each other",
+      "Maintaining database integrity constraints",
+      "Making sure all operations complete or none do",
+      "Ensuring changes survive system failures"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Consistency ensures that transactions maintain database integrity constraints and business rules.",
+    "detailedExplanation": "The consistency property ensures that a transaction brings the database from one consistent state to another consistent state. This means that all database integrity constraints, business rules, and invariants must be satisfied before and after the transaction. For example, in a banking system, the total amount of money across all accounts should remain the same after a transfer transaction.",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "What is a phantom read?",
+    "options": [
+      "Reading data that was just deleted",
+      "Reading uncommitted data from another transaction",
+      "Seeing new rows appear between two reads of the same query",
+      "Reading the same data twice and getting different values"
+    ],
+    "correctAnswer": 2,
+    "explanation": "A phantom read occurs when new rows appear between two executions of the same query.",
+    "detailedExplanation": "A phantom read happens when a transaction executes the same query twice and sees different numbers of rows due to another transaction inserting or deleting rows that match the query's WHERE clause. For example, if Transaction A counts employees with salary > $50,000 and gets 10 rows, then Transaction B inserts a new employee with salary $60,000, and Transaction A repeats the count and gets 11 rows - this is a phantom read.",
+    "topic": "isolation-levels"
+  },
+  {
+    "question": "What is a dirty read?",
+    "options": [
+      "Reading data from a corrupted database",
+      "Reading uncommitted data from another transaction",
+      "Reading data that violates integrity constraints",
+      "Reading data from a transaction that was rolled back"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A dirty read occurs when a transaction reads uncommitted changes from another transaction.",
+    "detailedExplanation": "A dirty read happens when one transaction reads data that has been modified by another transaction but not yet committed. This is problematic because the modifying transaction might later rollback, meaning the read data was never actually valid. For example, if Transaction A updates a customer's balance to $1000 but hasn't committed, and Transaction B reads this balance and uses it for calculations, Transaction B is using potentially invalid data if Transaction A later rolls back.",
+    "topic": "isolation-levels"
+  },
+  {
+    "question": "What is the difference between optimistic and pessimistic concurrency control?",
+    "options": [
+      "Pessimistic assumes conflicts are rare, optimistic assumes they are common",
+      "Optimistic assumes conflicts are rare, pessimistic assumes they are common",
+      "They are the same thing with different names",
+      "Optimistic is faster, pessimistic is more reliable"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Optimistic control assumes conflicts are rare and checks at commit time; pessimistic assumes conflicts are likely and uses locks.",
+    "detailedExplanation": "Optimistic concurrency control assumes that conflicts between transactions are rare, so it allows transactions to proceed without locking and only checks for conflicts at commit time. If conflicts are detected, the transaction is rolled back. Pessimistic concurrency control assumes conflicts are likely, so it uses locks to prevent conflicts from occurring in the first place. Optimistic control has less overhead when conflicts are rare, while pessimistic control provides more predictable behavior.",
+    "topic": "concurrency-control"
+  },
+  {
+    "question": "What is a non-repeatable read?",
+    "options": [
+      "Reading the same data twice and getting different values",
+      "Reading data that cannot be read again",
+      "Reading uncommitted data",
+      "Reading data that violates constraints"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A non-repeatable read occurs when reading the same data twice within a transaction yields different values.",
+    "detailedExplanation": "A non-repeatable read happens when a transaction reads the same data item twice and gets different values because another transaction modified the data between the two reads. For example, Transaction A reads a customer's balance as $500, then Transaction B updates the balance to $600 and commits, then Transaction A reads the same balance again and sees $600. This inconsistency within Transaction A is a non-repeatable read.",
+    "topic": "isolation-levels"
+  },
+  {
+    "question": "What is the purpose of write-ahead logging (WAL)?",
+    "options": [
+      "To improve write performance",
+      "To ensure durability by logging changes before they are applied",
+      "To compress transaction data",
+      "To prevent deadlocks"
+    ],
+    "correctAnswer": 1,
+    "explanation": "WAL ensures durability by writing log records to stable storage before applying changes to the database.",
+    "detailedExplanation": "Write-ahead logging is a technique that ensures durability by requiring that all log records describing changes to a database page be written to stable storage before the page is written to the database. This guarantees that if a system crashes, the log contains all information needed to redo committed transactions and undo uncommitted transactions. The 'write-ahead' aspect means the log is written before the actual data changes.",
+    "topic": "logging-protocols"
+  },
+  {
+    "question": "What is a savepoint in transaction processing?",
+    "options": [
+      "A backup of the entire database",
+      "A point within a transaction to which you can rollback",
+      "A checkpoint for system recovery",
+      "A point where transactions are committed"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A savepoint allows partial rollback within a transaction to a specific point rather than aborting the entire transaction.",
+    "detailedExplanation": "Savepoints provide a mechanism for partial rollback within a transaction. Instead of rolling back the entire transaction when an error occurs, you can rollback to a specific savepoint and continue with the transaction. This is useful in complex transactions where you want to undo only part of the work. For example, in a complex order processing transaction, you might set a savepoint before attempting to charge a credit card, so if the charge fails, you can rollback just that part and try an alternative payment method.",
+    "topic": "transaction-control"
+  },
+  {
+    "question": "What is the primary challenge in distributed transaction processing?",
+    "options": [
+      "Network latency",
+      "Coordinating commit decisions across multiple independent systems",
+      "Data storage limitations",
+      "User interface complexity"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The main challenge is ensuring all participants in different systems make consistent commit/abort decisions.",
+    "detailedExplanation": "The primary challenge in distributed transactions is coordinating the commit or abort decision across multiple autonomous systems that may fail independently. Unlike local transactions where a single system can make atomic decisions, distributed transactions must ensure that either all participants commit or all abort, even in the presence of network failures, system crashes, and partial failures. This requires sophisticated protocols like two-phase commit and careful handling of various failure scenarios.",
+    "topic": "distributed-transactions"
+  },
+  {
+    "question": "What is transaction isolation level READ COMMITTED designed to prevent?",
+    "options": [
+      "Phantom reads",
+      "Non-repeatable reads",
+      "Dirty reads",
+      "Lost updates"
+    ],
+    "correctAnswer": 2,
+    "explanation": "READ COMMITTED isolation level prevents dirty reads by ensuring only committed data is read.",
+    "detailedExplanation": "The READ COMMITTED isolation level guarantees that a transaction will only read data that has been committed by other transactions. This prevents dirty reads where a transaction might read uncommitted changes that could later be rolled back. However, READ COMMITTED still allows non-repeatable reads and phantom reads because data can be modified and committed by other transactions between reads within the same transaction.",
+    "topic": "isolation-levels"
+  },
+  {
+    "question": "What is a compensating action in long-running transactions?",
+    "options": [
+      "An action that improves performance",
+      "An action that undoes the effects of a previous action",
+      "An action that runs in parallel",
+      "An action that validates data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Compensating actions are designed to semantically undo the effects of previously completed actions.",
+    "detailedExplanation": "In long-running transactions or business processes, traditional rollback mechanisms are often not practical because resources cannot be locked for extended periods. Compensating actions provide a way to semantically undo the effects of completed actions. For example, if a hotel reservation needs to be cancelled, the compensating action would be to cancel the reservation and process any applicable refunds, rather than trying to rollback a database transaction that may have committed hours or days ago.",
+    "topic": "long-running-transactions"
+  },
+  {
+    "question": "What is the main benefit of using nested transactions?",
+    "options": [
+      "Improved performance",
+      "Better error handling and modular recovery",
+      "Reduced memory usage",
+      "Simplified application code"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Nested transactions allow for more granular error handling and partial rollback within a larger transaction.",
+    "detailedExplanation": "Nested transactions provide better error handling by allowing parts of a larger transaction to fail and be rolled back without aborting the entire transaction. This enables more modular and fault-tolerant transaction design. For example, in an order processing transaction, individual order line items could be implemented as nested transactions - if processing one item fails, only that subtransaction is rolled back while the rest of the order can still be processed.",
+    "topic": "nested-transactions"
+  },
+  {
+    "question": "What is the role of a transaction manager?",
+    "options": [
+      "To store transaction data",
+      "To coordinate transaction execution and ensure ACID properties",
+      "To optimize database queries",
+      "To manage user authentication"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The transaction manager coordinates transaction execution and enforces ACID properties.",
+    "detailedExplanation": "The transaction manager is a key component of a transaction processing system responsible for coordinating the execution of transactions, managing the transaction log, enforcing ACID properties, handling concurrency control, and managing recovery after failures. It works with resource managers (like databases) to ensure that transactions are executed correctly and consistently across all involved resources.",
+    "topic": "transaction-management"
+  },
+  {
+    "question": "What is the difference between a local and distributed transaction?",
+    "options": [
+      "Local transactions are faster",
+      "Local transactions involve a single resource manager, distributed involve multiple",
+      "Distributed transactions are more secure",
+      "There is no difference"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Local transactions involve a single resource manager, while distributed transactions span multiple resource managers.",
+    "detailedExplanation": "A local transaction involves operations on a single resource manager (like a single database), making it simpler to coordinate and manage. A distributed transaction spans multiple resource managers (like multiple databases, message queues, or other transactional resources) and requires coordination protocols like two-phase commit to ensure consistency across all resources. Distributed transactions are more complex due to the need to handle network failures and coordinate decisions across autonomous systems.",
+    "topic": "transaction-types"
+  },
+  {
+    "question": "What is the purpose of timeout handling in distributed transactions?",
+    "options": [
+      "To improve performance",
+      "To prevent transactions from blocking indefinitely",
+      "To reduce network traffic",
+      "To compress transaction data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Timeouts prevent transactions from waiting indefinitely when participants fail or become unreachable.",
+    "detailedExplanation": "Timeout handling is crucial in distributed transactions because network failures or participant failures can cause transactions to wait indefinitely for responses. By setting appropriate timeouts, the system can detect failures and take corrective action, such as aborting the transaction or trying alternative approaches. Without timeouts, a single failed participant could cause the entire distributed transaction to hang indefinitely, blocking resources and preventing progress.",
+    "topic": "failure-handling"
+  },
+  {
+    "question": "What is transaction context propagation?",
+    "options": [
+      "Copying transaction data between systems",
+      "Passing transaction identity and properties across system boundaries",
+      "Replicating transactions for backup",
+      "Converting transactions between formats"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Transaction context propagation ensures that transaction identity and properties are maintained across distributed components.",
+    "detailedExplanation": "Transaction context propagation is the mechanism by which transaction identity, properties, and control information are passed between different components in a distributed system. When a transaction spans multiple services or systems, each component needs to know which transaction it's participating in and what the transaction properties are. This context is typically propagated through remote procedure calls, message headers, or other inter-process communication mechanisms.",
+    "topic": "distributed-transactions"
+  },
+  {
+    "question": "What is the main advantage of using optimistic concurrency control?",
+    "options": [
+      "It prevents all conflicts",
+      "It has lower overhead when conflicts are rare",
+      "It's easier to implement",
+      "It uses less memory"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Optimistic control has lower overhead when conflicts are rare since it doesn't use locks during execution.",
+    "detailedExplanation": "The main advantage of optimistic concurrency control is its lower overhead when conflicts between transactions are rare. Since it doesn't acquire locks during transaction execution, there's no lock management overhead, no risk of deadlocks, and transactions can proceed without blocking each other. The trade-off is that when conflicts do occur, transactions must be rolled back and restarted, which can be expensive. This makes optimistic control ideal for read-heavy workloads or systems where conflicts are infrequent.",
+    "topic": "concurrency-control"
+  },
+  {
+    "question": "What is a transactional queue?",
+    "options": [
+      "A queue that processes messages very quickly",
+      "A queue where message operations participate in transactions",
+      "A queue that stores only transaction data",
+      "A queue that automatically retries failed messages"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A transactional queue allows message operations to be part of larger transactions with ACID properties.",
+    "detailedExplanation": "A transactional queue is a message queue that supports transactional operations, meaning that sending or receiving messages can be part of a larger transaction. If the transaction commits, the message operations become permanent; if it rolls back, the message operations are undone. This is crucial for maintaining consistency between database updates and message operations. For example, when processing an order, you might update the database and send a notification message as part of the same transaction.",
+    "topic": "transactional-resources"
+  },
+  {
+    "question": "What is the purpose of resource managers in transaction processing?",
+    "options": [
+      "To manage user access to resources",
+      "To provide transactional access to specific types of resources",
+      "To optimize resource usage",
+      "To backup important resources"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Resource managers provide transactional interfaces to specific types of resources like databases or message queues.",
+    "detailedExplanation": "Resource managers are components that provide transactional access to specific types of resources such as databases, message queues, or file systems. They implement the resource-specific aspects of transaction processing, including locking, logging, and recovery for their particular resource type. Resource managers work with transaction managers to participate in distributed transactions and ensure ACID properties across different types of resources.",
+    "topic": "transaction-architecture"
+  },
+  {
+    "question": "What is transaction demarcation?",
+    "options": [
+      "The process of optimizing transactions",
+      "The process of defining transaction boundaries",
+      "The process of monitoring transactions",
+      "The process of backing up transactions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Transaction demarcation defines where transactions begin and end in application code.",
+    "detailedExplanation": "Transaction demarcation is the process of defining the boundaries of transactions in application code - specifying where transactions begin, commit, or rollback. This can be done programmatically through explicit begin/commit/rollback calls, or declaratively through annotations or configuration. Proper transaction demarcation is crucial for ensuring that the right set of operations are grouped together as atomic units and that resources are properly managed.",
+    "topic": "transaction-management"
+  },
+  {
+    "question": "What is the XA specification?",
+    "options": [
+      "A database query language",
+      "A standard interface for distributed transaction processing",
+      "A message queue protocol",
+      "A database replication standard"
+    ],
+    "correctAnswer": 1,
+    "explanation": "XA is a standard that defines interfaces between transaction managers and resource managers.",
+    "detailedExplanation": "The XA specification, developed by the Open Group, defines standard interfaces between transaction managers and resource managers in distributed transaction processing systems. It specifies how resource managers should participate in two-phase commit protocols and how they should interact with transaction managers. XA compliance allows different vendors' products to participate in the same distributed transactions, providing interoperability in heterogeneous environments.",
+    "topic": "xa-specification"
+  },
+  {
+    "question": "What is a presumed abort protocol?",
+    "options": [
+      "A protocol that always aborts transactions",
+      "An optimization of two-phase commit that assumes abort in case of uncertainty",
+      "A protocol for handling database corruption",
+      "A backup strategy for failed transactions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Presumed abort is an optimization where participants assume abort if they don't hear from the coordinator.",
+    "detailedExplanation": "Presumed abort is an optimization of the two-phase commit protocol that reduces the number of log writes and messages. In this protocol, if a participant doesn't receive the final decision from the coordinator (due to failures), it presumes the transaction was aborted and acts accordingly. This is safe because abort is always a valid decision, and it eliminates the need for the coordinator to log abort decisions or send abort messages, reducing overhead for transactions that abort.",
+    "topic": "commit-protocols"
+  },
+  {
+    "question": "What is the main purpose of transaction replication?",
+    "options": [
+      "To improve transaction performance",
+      "To provide fault tolerance and high availability",
+      "To reduce storage requirements",
+      "To simplify application development"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Transaction replication provides fault tolerance by maintaining copies of data across multiple systems.",
+    "detailedExplanation": "Transaction replication involves maintaining multiple copies of data across different systems to provide fault tolerance and high availability. When transactions modify data, the changes are replicated to multiple copies to ensure that if one system fails, the data remains available on other systems. This is essential for mission-critical applications that cannot tolerate data loss or extended downtime. Replication can be synchronous (all copies updated before commit) or asynchronous (copies updated after commit).",
+    "topic": "replication"
+  },
+  {
+    "question": "What is active replication?",
+    "options": [
+      "Replication that happens during active hours",
+      "All replicas process operations and stay synchronized",
+      "Only the primary replica processes operations",
+      "Replication that requires manual intervention"
+    ],
+    "correctAnswer": 1,
+    "explanation": "In active replication, all replicas process the same operations to stay synchronized.",
+    "detailedExplanation": "Active replication is a replication strategy where all replicas receive and process the same operations in the same order. This ensures that all replicas maintain identical state and can handle requests independently. Active replication provides high availability since any replica can serve requests, but it requires more resources since all replicas must perform the same work. It also requires careful coordination to ensure all replicas process operations in the same order.",
+    "topic": "replication"
+  },
+  {
+    "question": "What is passive replication?",
+    "options": [
+      "Replication that happens infrequently",
+      "Only the primary replica processes operations, then updates backups",
+      "All replicas process operations independently",
+      "Replication that doesn't require coordination"
+    ],
+    "correctAnswer": 1,
+    "explanation": "In passive replication, only the primary processes operations and then updates the backup replicas.",
+    "detailedExplanation": "Passive replication (also called primary-backup replication) is a strategy where only the primary replica processes client requests and operations. After processing, the primary sends the results or state changes to backup replicas to keep them synchronized. If the primary fails, one of the backups takes over as the new primary. This approach uses fewer resources than active replication since only one replica does the actual processing, but it may have slightly higher failover time.",
+    "topic": "replication"
+  },
+  {
+    "question": "What is the main challenge with synchronous replication?",
+    "options": [
+      "It uses too much storage",
+      "It increases transaction latency",
+      "It's difficult to implement",
+      "It reduces data consistency"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Synchronous replication increases latency because transactions must wait for all replicas to be updated.",
+    "detailedExplanation": "The main challenge with synchronous replication is increased transaction latency. Since the transaction cannot commit until all replicas have been successfully updated, network delays and processing time at multiple replicas add to the overall transaction response time. However, synchronous replication provides strong consistency guarantees - all replicas are guaranteed to have the same data at all times. The trade-off is between consistency (synchronous) and performance (asynchronous).",
+    "topic": "replication"
+  },
+  {
+    "question": "What is a Transaction Processing Monitor (TPM)?",
+    "options": [
+      "A tool for monitoring transaction performance",
+      "A system that provides infrastructure for transaction processing applications",
+      "A database specialized for transactions",
+      "A network protocol for transactions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A TPM provides the infrastructure and services needed to build and run transaction processing applications.",
+    "detailedExplanation": "A Transaction Processing Monitor (TPM) is middleware that provides the infrastructure for developing and executing transaction processing applications. It typically includes services like transaction management, connection pooling, load balancing, fault tolerance, and integration with various resource managers. TPMs allow developers to focus on business logic while the TPM handles the complexities of transaction coordination, resource management, and system reliability.",
+    "topic": "transaction-monitors"
+  },
+  {
+    "question": "What is the purpose of connection pooling in transaction processing?",
+    "options": [
+      "To encrypt database connections",
+      "To reuse database connections for better performance and resource management",
+      "To backup database connections",
+      "To monitor connection quality"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Connection pooling improves performance by reusing database connections rather than creating new ones for each transaction.",
+    "detailedExplanation": "Connection pooling is a technique that maintains a pool of reusable database connections to improve performance and resource utilization. Creating and destroying database connections is expensive, so by reusing connections from a pool, applications can significantly reduce overhead. The pool manages connection lifecycle, handles connection limits, and can provide features like connection validation and timeout handling. This is especially important in high-throughput transaction processing systems.",
+    "topic": "performance-optimization"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "question": "What is the primary purpose of failfast in fault-tolerant systems?",
+    "options": [
+      "To create instant crash and restart mechanisms",
+      "To prevent all system failures",
+      "To increase system performance",
+      "To reduce memory usage"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Failfast creates a need for instant crash and restart, allowing systems to recover quickly from failures.",
+    "detailedExplanation": "Failfast is a fault tolerance approach where systems are designed to fail quickly and restart immediately when problems are detected. This prevents cascading failures and allows for rapid recovery. The concept of process pairs mentioned in the document builds on this - if one process fails, the other can take over almost instantly (within a second).",
+    "topic": "failfast-mechanisms"
+  },
+  {
+    "question": "In the context of system pairs, what is the Olympian view?",
+    "options": [
+      "A view where both systems are identical and in the same location",
+      "A view where two identical systems are in different places with independent failure modes",
+      "A view focused on performance optimization",
+      "A view that prioritizes cost reduction"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Olympian view involves two identical systems in different places with largely independent failure modes.",
+    "detailedExplanation": "The document describes the Olympian view as having system pairs in two different locations where the second system has all the data of the first and receives updates. They have independent operations staff, different maintenance personnel, different hardware, different power grids, phone grids, and earthquake faults. This geographic and infrastructure diversity ensures that failures affecting one system are unlikely to affect the backup.",
+    "topic": "system-pairs"
+  },
+  {
+    "question": "What are the two main approaches to software fault tolerance mentioned in the document?",
+    "options": [
+      "Hardware redundancy and software optimization",
+      "N-version programming and transactions",
+      "Caching and load balancing",
+      "Encryption and authentication"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The document identifies N-version programming and transactions as the two main approaches to software fault tolerance.",
+    "detailedExplanation": "N-version programming involves creating several independent implementations of the same program and comparing their outputs to detect errors. Transactions provide atomicity and consistency guarantees, allowing systems to maintain consistent state even in the presence of failures. Both approaches can be combined to create more robust fault-tolerant systems.",
+    "topic": "software-fault-tolerance"
+  },
+  {
+    "question": "What does a storage module contain according to the fault model?",
+    "options": [
+      "Only data and addresses",
+      "An array of pages and a status flag",
+      "Just the page values",
+      "Only the page addresses"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A storage module contains an array of pages and a status flag indicating if the module status is FALSE or operational.",
+    "detailedExplanation": "In the storage fault model presented, each storage module has an array of pages indexed by page addresses, plus a status flag. If the module status is FALSE, then all operations on it return FALSE. Each page has either a value (if valid) or FALSE status (if invalid). This hierarchical structure allows for fine-grained fault detection and handling at both the module and page level.",
+    "topic": "storage-model"
+  },
+  {
+    "question": "What happens when a page is written in the storage model?",
+    "options": [
+      "Only the data is stored",
+      "The writer computes the page checksum and stores it",
+      "The page is immediately backed up",
+      "The system performs garbage collection"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When a page is written, the writer computes the page checksum and stores it in the page.",
+    "detailedExplanation": "The document describes that when a page is written, the writer computes a checksum for the page data and stores this checksum as part of the page. Later, when the page is read, the checksum is recomputed and compared to the stored checksum to detect any corruption that may have occurred. This provides a mechanism to detect storage faults and maintain data integrity.",
+    "topic": "storage-operations"
+  },
+  {
+    "question": "What is the purpose of storage decay in the fault model?",
+    "options": [
+      "To improve system performance",
+      "To model spontaneous page failures over time",
+      "To reduce storage costs",
+      "To compress old data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Storage decay models how pages may fail spontaneously over time due to various factors.",
+    "detailedExplanation": "The document explains that storage decay is modeled by a decay process for each store. Pages can fail due to incorrect addressing, wear-out, or spontaneous failures in the background. The model uses exponential distribution with parameters like MTSF (Mean Time To Store Failure) to simulate realistic failure patterns. This helps in designing systems that can handle gradual degradation of storage media over time.",
+    "topic": "storage-decay"
+  },
+  {
+    "question": "In N-plexed storage systems, what does 'reliable_write()' do?",
+    "options": [
+      "Writes to only the primary storage",
+      "Writes to all members of the n-plex group",
+      "Creates a backup copy",
+      "Compresses the data before writing"
+    ],
+    "correctAnswer": 1,
+    "explanation": "reliable_write() attempts to write to all members of the n-plex group.",
+    "detailedExplanation": "In the N-plexed storage approach described in the document, reliable_write() tries to write the same data to all n members of the storage group. Each reliable_read() then attempts to read all members of the group. The write operation returns success if it can write to at least one member, providing fault tolerance through redundancy. This approach allows the system to continue operating even if some storage devices in the group fail.",
+    "topic": "n-plexed-storage"
+  },
+  {
+    "question": "What is the main problem with optimistic reads in N-plexed storage?",
+    "options": [
+      "They are too slow",
+      "They may return stale data if recent writes failed",
+      "They use too much memory",
+      "They require special hardware"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Optimistic reads are dangerous because they may return stale data if recent writes to some replicas failed.",
+    "detailedExplanation": "The document warns that optimistic reading is dangerous because if one of the n store_write() operations fails within a reliable_storage_write() operation, some storage devices may have different page versions. An optimistic read might access the old version rather than the new version, leading to stale or inconsistent data. This is why the document recommends against optimistic reads in favor of more careful read strategies that verify data consistency across replicas.",
+    "topic": "optimistic-reads"
+  },
+  {
+    "question": "What are the three main entity types in the process fault model?",
+    "options": [
+      "Processes, messages, and storage",
+      "Hardware, software, and network",
+      "Primary, backup, and monitor",
+      "Read, write, and execute"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The process fault model involves three entity types: processes, messages, and storage.",
+    "detailedExplanation": "The document describes a comprehensive fault model that encompasses processes (which execute programs), messages (for inter-process communication), and storage (for persistent data). Each entity type has its own failure modes and fault tolerance mechanisms. This three-part model provides a complete framework for understanding and designing fault-tolerant distributed systems.",
+    "topic": "process-fault-model"
+  },
+  {
+    "question": "What characterizes 'expected faults' in the process model?",
+    "options": [
+      "Faults that are tolerated by the design",
+      "Faults that never occur",
+      "Faults that cause system shutdown",
+      "Faults that are easily fixed"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Expected faults are those that are tolerated by the system design and can be characterized as part of normal operation.",
+    "detailedExplanation": "The document distinguishes between expected and unexpected faults. Expected faults are those that the system is designed to handle gracefully - they are anticipated and the system has mechanisms to detect and recover from them. Unexpected faults are those that the system cannot handle and typically result in system failure or undefined behavior. Good fault tolerance design aims to convert as many unexpected faults into expected faults as possible.",
+    "topic": "expected-faults"
+  },
+  {
+    "question": "What is a key characteristic of Byzantine faults?",
+    "options": [
+      "They only affect storage systems",
+      "The system may not conform to its specification in arbitrary ways",
+      "They are always detectable",
+      "They only occur during system startup"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Byzantine faults are characterized by arbitrary behavior where the system may not conform to its specification in unpredictable ways.",
+    "detailedExplanation": "Byzantine faults represent the most general class of faults where a component may exhibit completely arbitrary behavior - it might send conflicting messages to different recipients, produce incorrect outputs, or behave maliciously. These faults are particularly challenging because they cannot be easily detected by simple mechanisms and require sophisticated protocols like Byzantine agreement algorithms to handle properly.",
+    "topic": "byzantine-faults"
+  },
+  {
+    "question": "What is the purpose of checkpoint-restart in fault tolerance?",
+    "options": [
+      "To improve system performance",
+      "To allow processes to restart from a saved state after failure",
+      "To reduce memory usage",
+      "To encrypt sensitive data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Checkpoint-restart allows processes to periodically save their state and restart from that saved state after a failure.",
+    "detailedExplanation": "The document describes checkpoint-restart as a fundamental technique for fault tolerance. Processes periodically save their complete state (checkpoint) to stable storage. When a failure occurs, the process can be restarted from the most recent checkpoint rather than from the beginning. This significantly reduces recovery time and provides a practical approach to handling process failures, especially for long-running computations.",
+    "topic": "checkpoint-restart"
+  },
+  {
+    "question": "In the process pair model, what happens when the primary process fails?",
+    "options": [
+      "The system shuts down immediately",
+      "The backup process takes over and becomes the new primary",
+      "All data is lost",
+      "The system restarts from scratch"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When the primary fails, the backup detects the failure and takes over, becoming the new primary.",
+    "detailedExplanation": "The document explains that in process pairs, the backup process continuously monitors the primary. When the primary fails, the backup detects this (often through missed heartbeat messages) and takes over as the new primary. A new backup process is then typically started. This provides very fast failover times - often measured in seconds - and maintains service availability even in the presence of individual process failures.",
+    "topic": "process-pairs"
+  },
+  {
+    "question": "What is the main advantage of process pairs over single processes with checkpoint-restart?",
+    "options": [
+      "Lower cost",
+      "Faster takeover times",
+      "Less complexity",
+      "Better performance"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Process pairs provide much faster takeover times compared to checkpoint-restart recovery.",
+    "detailedExplanation": "While checkpoint-restart requires reading the checkpoint from stable storage and rebuilding process state (which can take significant time), process pairs maintain a live backup that already has the current state. This allows takeover to happen in seconds rather than minutes or hours. The document notes that this improvement over the availability offered by checkpoint-restart can be quite significant for time-critical applications.",
+    "topic": "process-pair-advantages"
+  },
+  {
+    "question": "What does 'I'm Alive' messaging accomplish in process pairs?",
+    "options": [
+      "It improves system performance",
+      "It allows the backup to detect when the primary has failed",
+      "It reduces network traffic",
+      "It encrypts communications"
+    ],
+    "correctAnswer": 1,
+    "explanation": "'I'm Alive' messages are heartbeat signals that allow the backup to detect primary process failures.",
+    "detailedExplanation": "The document describes 'I'm Alive' messages as periodic heartbeat signals sent from the primary to the backup process. If the backup doesn't receive these messages for a certain period, it assumes the primary has failed and initiates takeover procedures. This mechanism provides a reliable way to detect failures in distributed systems where direct failure detection may not be possible.",
+    "topic": "heartbeat-messaging"
+  },
+  {
+    "question": "What is the key principle behind persistent processes?",
+    "options": [
+      "They run faster than normal processes",
+      "They maintain their state across system failures using stable storage",
+      "They use less memory",
+      "They don't need backup processes"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Persistent processes maintain their state in stable storage, allowing them to survive system failures.",
+    "detailedExplanation": "The document explains that persistent processes are designed to survive system crashes by storing their critical state in stable storage (like databases or transaction-protected files). When the system restarts after a failure, these processes can recover their state and continue operation. This is particularly important for processes that manage critical resources or maintain important system state that must survive across reboots.",
+    "topic": "persistent-processes"
+  },
+  {
+    "question": "What is a session in the context of reliable message delivery?",
+    "options": [
+      "A user login period",
+      "A bidirectional message pipe between two processes",
+      "A database connection",
+      "A network protocol"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A session is a bidirectional message pipe between two processes that provides reliable message delivery.",
+    "detailedExplanation": "The document defines sessions as abstractions that provide reliable message delivery between processes. They implement semantics where messages are delivered in order and exactly once, even in the presence of failures. Sessions handle message duplication, loss, and reordering that can occur in unreliable networks, providing a higher-level abstraction for inter-process communication.",
+    "topic": "sessions"
+  },
+  {
+    "question": "What does the acknowledgment mechanism in sessions prevent?",
+    "options": [
+      "Message encryption",
+      "Message duplication and loss",
+      "Network congestion",
+      "Memory leaks"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The acknowledgment mechanism prevents message duplication and loss by tracking which messages have been successfully delivered.",
+    "detailedExplanation": "Sessions use sequence numbers and acknowledgments to ensure reliable delivery. Each message gets a unique sequence number, and the receiver acknowledges receipt. If acknowledgments are not received within a timeout period, messages are retransmitted. The receiver can detect and discard duplicate messages using sequence numbers, ensuring exactly-once delivery semantics.",
+    "topic": "message-acknowledgment"
+  },
+  {
+    "question": "What is the primary benefit of combining sessions with process pairs?",
+    "options": [
+      "Reduced cost",
+      "Higher availability through both process fault tolerance and reliable messaging",
+      "Faster processing",
+      "Simpler programming model"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Combining sessions with process pairs provides comprehensive fault tolerance covering both process failures and message delivery failures.",
+    "detailedExplanation": "The document shows how sessions can be made highly available by implementing them using process pairs. This combination addresses two major sources of failures in distributed systems: process failures (handled by process pairs) and communication failures (handled by sessions). Together, they provide a robust foundation for building fault-tolerant distributed applications.",
+    "topic": "sessions-process-pairs"
+  },
+  {
+    "question": "What is the purpose of the listener process in the session model?",
+    "options": [
+      "To encrypt messages",
+      "To manage message acknowledgment and sequence numbers",
+      "To compress data",
+      "To route messages"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The listener process manages the session protocol including acknowledgments and sequence number tracking.",
+    "detailedExplanation": "The document describes the listener as a key component that handles the reliable messaging protocol. It manages sequence numbers for incoming and outgoing messages, tracks acknowledgments, handles retransmissions, and deals with duplicate detection. The listener provides a clean interface to application programs while hiding the complexity of reliable message delivery.",
+    "topic": "listener-process"
+  },
+  {
+    "question": "What does ACID stand for in the context of transactions?",
+    "options": [
+      "Atomicity, Consistency, Isolation, Durability",
+      "Availability, Correctness, Integrity, Dependability",
+      "Access, Control, Identity, Data",
+      "Algorithm, Computation, Input, Display"
+    ],
+    "correctAnswer": 0,
+    "explanation": "ACID represents the four key properties of transactions: Atomicity, Consistency, Isolation, and Durability.",
+    "detailedExplanation": "The document references ACID properties as fundamental to transaction processing. Atomicity ensures that transactions either complete fully or not at all. Consistency maintains database integrity constraints. Isolation prevents concurrent transactions from interfering with each other. Durability ensures that committed changes survive system failures. These properties are essential for reliable transaction processing in fault-tolerant systems.",
+    "topic": "acid-properties"
+  },
+  {
+    "question": "What is the main challenge with n-plexed storage systems?",
+    "options": [
+      "They are too expensive",
+      "Ensuring consistency across all replicas when failures occur",
+      "They use too much CPU",
+      "They are difficult to program"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The main challenge is maintaining consistency across replicas when some storage devices fail during operations.",
+    "detailedExplanation": "The document highlights that in n-plexed systems, partial failures during write operations can leave some replicas with old data and others with new data. This creates consistency challenges that must be carefully managed. The system needs protocols to detect and resolve these inconsistencies, often requiring careful ordering of operations and sophisticated recovery mechanisms.",
+    "topic": "n-plex-consistency"
+  },
+  {
+    "question": "What is meant by 'software fault masking' in the document title?",
+    "options": [
+      "Hiding software bugs from users",
+      "Using software techniques to tolerate hardware faults",
+      "Preventing software installation",
+      "Encrypting software code"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Software fault masking refers to using software techniques to mask or tolerate underlying hardware faults.",
+    "detailedExplanation": "The document explores how software can be designed to tolerate hardware failures through techniques like redundancy, replication, and error detection/correction. Instead of requiring perfectly reliable hardware, fault-tolerant software can mask hardware failures and continue operating correctly. This includes techniques like process pairs, n-plexed storage, and reliable messaging protocols.",
+    "topic": "fault-masking"
+  },
+  {
+    "question": "What is the relationship between MTBF and availability mentioned in the document?",
+    "options": [
+      "They are unrelated concepts",
+      "Higher MTBF leads to higher availability",
+      "MTBF measures cost, availability measures performance",
+      "They are the same thing"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Mean Time Between Failures (MTBF) directly affects system availability - higher MTBF means fewer failures and thus higher availability.",
+    "detailedExplanation": "The document discusses how availability is calculated from reliability metrics like MTBF (Mean Time Between Failures) and MTTR (Mean Time To Repair). The availability formula is typically MTBF/(MTBF + MTTR). Systems with longer MTBF and shorter MTTR achieve higher availability. Fault tolerance techniques aim to increase effective MTBF and reduce MTTR through faster recovery mechanisms.",
+    "topic": "availability-metrics"
+  },
+  {
+    "question": "What does the document mean by 'system delusion'?",
+    "options": [
+      "A psychological condition",
+      "When operators have unrealistic expectations about system reliability",
+      "A type of software bug",
+      "A network configuration error"
+    ],
+    "correctAnswer": 1,
+    "explanation": "System delusion refers to unrealistic expectations about system reliability, particularly ignoring common end-to-end problems.",
+    "detailedExplanation": "The document's cautionary tale section discusses how people often focus on system failures while ignoring more common end-to-end problems. For example, in an inventory system, the real issues might not be system crashes but rather unrecorded transactions, data entry errors, or process problems. True fault tolerance requires understanding and addressing the complete range of potential failures, not just the obvious technical ones.",
+    "topic": "system-delusion"
+  },
+  {
+    "question": "What is the significance of 'atomic broadcast' mentioned in the document?",
+    "options": [
+      "It's a type of radio transmission",
+      "It ensures all processes receive the same messages in the same order",
+      "It's a database optimization technique",
+      "It's a security protocol"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Atomic broadcast ensures that all participating processes receive the same set of messages in the same order.",
+    "detailedExplanation": "Atomic broadcast is a fundamental primitive for building fault-tolerant distributed systems. It guarantees that if a message is delivered to one correct process, it will be delivered to all correct processes, and all processes will receive messages in the same order. This property is essential for maintaining consistency in replicated systems and is used in implementing state machine replication and other fault tolerance techniques.",
+    "topic": "atomic-broadcast"
+  },
+  {
+    "question": "What does 'failfast plus transactions plus system pairs' achieve?",
+    "options": [
+      "Reduced system cost",
+      "A comprehensive approach to software fault tolerance",
+      "Faster processing speed",
+      "Simplified programming"
+    ],
+    "correctAnswer": 1,
+    "explanation": "This combination provides comprehensive software fault tolerance by addressing different types of failures through complementary techniques.",
+    "detailedExplanation": "The document suggests that combining failfast (quick failure detection and restart), transactions (atomicity and consistency), and system pairs (high availability through redundancy) creates a robust fault tolerance strategy. Each technique addresses different aspects of failure: failfast handles detection and isolation, transactions ensure consistency during failures, and system pairs provide continuity of service.",
+    "topic": "comprehensive-fault-tolerance"
+  },
+  {
+    "question": "What is the main purpose of sequence numbers in reliable messaging?",
+    "options": [
+      "To encrypt messages",
+      "To detect duplicate and out-of-order messages",
+      "To compress message data",
+      "To route messages efficiently"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Sequence numbers help detect and handle duplicate messages and messages that arrive out of order.",
+    "detailedExplanation": "In the reliable messaging protocol described, each message gets a unique sequence number. The receiver can use these numbers to detect when messages are duplicated (same sequence number) or arrive out of order (gaps in sequence numbers). This allows the system to discard duplicates and request retransmission of missing messages, ensuring exactly-once, in-order delivery.",
+    "topic": "sequence-numbers"
+  },
+  {
+    "question": "What is the primary goal of the storage model presented in the document?",
+    "options": [
+      "To maximize storage capacity",
+      "To provide a framework for building reliable storage despite hardware failures",
+      "To optimize read/write performance",
+      "To minimize storage costs"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The storage model aims to build reliable storage systems that can tolerate hardware failures through software techniques.",
+    "detailedExplanation": "The document presents a detailed storage model that abstracts the complexities of building fault-tolerant storage. It includes mechanisms for detecting corruption (checksums), handling device failures (n-plexing), and managing gradual degradation (decay processes). The goal is to provide reliable storage services even when the underlying hardware is unreliable.",
+    "topic": "storage-reliability"
+  },
+  {
+    "question": "What does 'geographic diversity' provide in fault-tolerant systems?",
+    "options": [
+      "Better network performance",
+      "Protection against localized disasters",
+      "Reduced operational costs",
+      "Easier system management"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Geographic diversity protects against localized disasters by placing system components in different physical locations.",
+    "detailedExplanation": "The document emphasizes the importance of geographic diversity in the Olympian view of system pairs. By placing redundant systems in different locations with different power grids, communication infrastructure, and environmental conditions, the system can survive localized disasters like earthquakes, floods, or power outages that might affect an entire geographic region.",
+    "topic": "geographic-diversity"
+  },
+  {
+    "question": "What is the key insight about repair times in highly available systems?",
+    "options": [
+      "Repair times don't matter for availability",
+      "Fast repair is critical for maintaining high availability",
+      "Slow repair is better for system stability",
+      "Repair times only affect cost, not availability"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Fast repair is essential for high availability because it minimizes the window of vulnerability when redundancy is reduced.",
+    "detailedExplanation": "The document emphasizes that in fault-tolerant systems with redundancy, quick repair is crucial. When one component of a redundant pair fails, the system continues operating but with reduced fault tolerance. The longer the repair takes, the longer the system remains vulnerable to a second failure that could cause total system failure. Therefore, minimizing Mean Time To Repair (MTTR) is as important as maximizing Mean Time Between Failures (MTBF).",
+    "topic": "repair-importance"
+  },
+  {
+    "question": "What does 'flow control' prevent in message systems?",
+    "options": [
+      "Message encryption",
+      "Fast senders from overwhelming slow receivers",
+      "Network routing errors",
+      "Message compression"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Flow control prevents fast message senders from overwhelming slower receivers by limiting the rate of message transmission.",
+    "detailedExplanation": "The document mentions flow control as an important aspect of reliable messaging systems. Without flow control, a fast sender could flood a slower receiver with messages, potentially causing buffer overflows and message loss. Flow control mechanisms ensure that senders adjust their transmission rate to match the receiver's processing capacity, maintaining system stability and preventing resource exhaustion.",
+    "topic": "flow-control"
+  },
+  {
+    "question": "What is the significance of 'exactly once' semantics in reliable messaging?",
+    "options": [
+      "Messages are delivered as fast as possible",
+      "Each message is delivered exactly one time, no more, no less",
+      "Messages are encrypted exactly once",
+      "Only one message can be sent at a time"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Exactly once semantics ensures that each message is delivered exactly one time, preventing both message loss and duplication.",
+    "detailedExplanation": "Exactly once delivery is a fundamental requirement for many distributed applications. Without it, message loss could cause operations to be skipped, while message duplication could cause operations to be performed multiple times. The document shows how sessions achieve this through acknowledgments, sequence numbers, and retransmission protocols, ensuring that each message has exactly the intended effect on the receiving system.",
+    "topic": "exactly-once-semantics"
+  },
+  {
+    "question": "What role does stable storage play in fault-tolerant systems?",
+    "options": [
+      "It provides faster access to data",
+      "It survives system crashes and power failures",
+      "It reduces storage costs",
+      "It simplifies programming"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Stable storage is designed to survive system crashes, power failures, and other catastrophic events.",
+    "detailedExplanation": "The document emphasizes stable storage as a foundation for many fault tolerance techniques. Unlike volatile memory that loses data during power failures, stable storage (typically implemented using techniques like battery-backed RAM or careful disk write protocols) ensures that critical data survives system crashes. This is essential for checkpointing, transaction logging, and maintaining persistent process state.",
+    "topic": "stable-storage"
+  },
+  {
+    "question": "What is the main advantage of the process pair approach over single-process checkpoint-restart?",
+    "options": [
+      "Lower memory usage",
+      "Continuous availability during failover",
+      "Simpler implementation",
+      "Better performance during normal operation"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Process pairs provide continuous availability because the backup can take over immediately when the primary fails.",
+    "detailedExplanation": "With checkpoint-restart, there's always a service interruption while the process restarts and recovers its state from the checkpoint. Process pairs eliminate this interruption because the backup process is already running and can take over immediately. This provides much better availability characteristics, especially for real-time or interactive applications where service interruptions are unacceptable.",
+    "topic": "continuous-availability"
+  },
+  {
+    "question": "What does 'design diversity' refer to in fault-tolerant systems?",
+    "options": [
+      "Using different user interface designs",
+      "Having multiple independent implementations of the same functionality",
+      "Supporting multiple operating systems",
+      "Using different database schemas"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Design diversity involves creating multiple independent implementations to avoid common design flaws.",
+    "detailedExplanation": "The document discusses design diversity as a way to protect against systematic faults that might affect all copies of the same software. By having independent teams create different implementations of the same specification, the resulting systems are less likely to share common bugs or design flaws. This is the principle behind N-version programming, where multiple versions vote on results to detect and mask software errors.",
+    "topic": "design-diversity"
+  },
+  {
+    "question": "What is the purpose of message timeouts in reliable communication?",
+    "options": [
+      "To improve message performance",
+      "To detect communication failures and trigger retransmission",
+      "To encrypt messages",
+      "To compress message data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Timeouts detect when messages or acknowledgments are lost and trigger retransmission mechanisms.",
+    "detailedExplanation": "In reliable messaging systems, timeouts are essential for detecting failures. When a sender doesn't receive an acknowledgment within the expected time, it assumes the message was lost and retransmits it. Similarly, receivers use timeouts to detect missing messages in a sequence. Without timeouts, the system couldn't distinguish between slow delivery and lost messages, making reliable delivery impossible.",
+    "topic": "message-timeouts"
+  },
+  {
+    "question": "What is the key challenge in implementing Byzantine fault tolerance?",
+    "options": [
+      "High memory requirements",
+      "Distinguishing correct behavior from arbitrary malicious behavior",
+      "Poor performance",
+      "Complex user interfaces"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Byzantine fault tolerance is challenging because faulty components can exhibit arbitrary behavior, making it difficult to distinguish correct from incorrect behavior.",
+    "detailedExplanation": "Byzantine faults are the most general and difficult class of faults because a Byzantine component can send different (and possibly contradictory) messages to different recipients, behave correctly sometimes and incorrectly other times, or even appear to cooperate while actually working against the system goals. Protocols must be designed to reach consensus despite such arbitrary behavior, typically requiring sophisticated voting mechanisms and multiple rounds of communication.",
+    "topic": "byzantine-challenges"
+  },
+  {
+    "question": "What does the document suggest about the relationship between simplicity and fault tolerance?",
+    "options": [
+      "Complex systems are always more fault-tolerant",
+      "Simple systems are easier to make fault-tolerant",
+      "Simplicity and fault tolerance are unrelated",
+      "Fault tolerance always requires complexity"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The document advocates for simplicity, suggesting that simpler systems are easier to understand, verify, and make fault-tolerant.",
+    "detailedExplanation": "The document includes general principles emphasizing 'Keep It Simple, Stupid!' (KISS) and Murphy's Law. Simple systems have fewer potential failure modes, are easier to reason about, and have fewer opportunities for bugs. While fault tolerance mechanisms themselves may add some complexity, the underlying system design should be as simple as possible to minimize the chances of faults and make the system easier to verify and maintain.",
+    "topic": "simplicity-principle"
+  },
+  {
+    "question": "What is the main benefit of using checksums in the storage model?",
+    "options": [
+      "Faster data access",
+      "Detection of data corruption",
+      "Data compression",
+      "Improved security"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Checksums detect data corruption by comparing stored and computed values when data is read.",
+    "detailedExplanation": "The document describes how checksums are computed when data is written and stored alongside the data. When the data is later read, the checksum is recomputed and compared with the stored checksum. If they don't match, it indicates that the data has been corrupted, allowing the system to detect storage faults and take appropriate recovery actions such as reading from an alternate replica.",
+    "topic": "checksum-detection"
+  },
+  {
+    "question": "What does 'takeover time' refer to in process pairs?",
+    "options": [
+      "The time to start a new process",
+      "The time for the backup to detect failure and assume primary role",
+      "The time to save a checkpoint",
+      "The time to restart the system"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Takeover time is how long it takes for the backup process to detect the primary's failure and take over its responsibilities.",
+    "detailedExplanation": "The document emphasizes that takeover times are critical for availability. In process pairs, this includes the time to detect the primary failure (through missed heartbeats), the time to initialize the backup as the new primary, and any time needed to establish new connections or notify clients. Minimizing takeover time is essential for high availability, with the document suggesting takeover times on the order of seconds rather than minutes.",
+    "topic": "takeover-time"
+  },
+  {
+    "question": "What is the purpose of the 'I'm Alive' message frequency in process pairs?",
+    "options": [
+      "To reduce network traffic",
+      "To balance quick failure detection with system overhead",
+      "To improve security",
+      "To synchronize clocks"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The frequency balances the need for quick failure detection against the overhead of frequent messaging.",
+    "detailedExplanation": "More frequent 'I'm Alive' messages allow faster failure detection but increase network and processing overhead. Less frequent messages reduce overhead but increase the time to detect failures. The document suggests that this tradeoff must be carefully tuned based on the application's availability requirements and the acceptable level of system overhead.",
+    "topic": "heartbeat-frequency"
+  },
+  {
+    "question": "What does 'Murphy's Law' imply for fault-tolerant system design?",
+    "options": [
+      "Systems will always work perfectly",
+      "Whatever can go wrong will go wrong at the worst possible time",
+      "Fault tolerance is unnecessary",
+      "Simple systems never fail"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Murphy's Law suggests that potential failures will occur, especially at inconvenient times, so systems must be designed accordingly.",
+    "detailedExplanation": "The document references Murphy's Law as a guiding principle for fault-tolerant design. It suggests that designers should assume that anything that can fail will fail, and probably at the most inconvenient moment. This philosophy drives the need for comprehensive fault tolerance mechanisms and careful consideration of all possible failure scenarios, rather than assuming that failures are rare or unlikely.",
+    "topic": "murphys-law"
+  },
+  {
+    "question": "What is the significance of 'independent failure modes' in redundant systems?",
+    "options": [
+      "They make systems more expensive",
+      "They ensure that a single cause doesn't affect all redundant components",
+      "They improve performance",
+      "They simplify maintenance"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Independent failure modes ensure that redundant components don't all fail from the same cause.",
+    "detailedExplanation": "The document emphasizes that true redundancy requires independent failure modes. If redundant components share common failure causes (same power supply, same software version, same environmental conditions), they might all fail simultaneously, defeating the purpose of redundancy. Geographic diversity, design diversity, and operational diversity all contribute to achieving independent failure modes.",
+    "topic": "independent-failures"
+  },
+  {
+    "question": "What role does 'state synchronization' play in process pairs?",
+    "options": [
+      "It improves performance",
+      "It keeps the backup process current with the primary's state",
+      "It reduces memory usage",
+      "It provides security"
+    ],
+    "correctAnswer": 1,
+    "explanation": "State synchronization ensures the backup maintains the same state as the primary, enabling seamless takeover.",
+    "detailedExplanation": "For process pairs to work effectively, the backup must maintain state that's sufficiently current with the primary to take over seamlessly. This requires mechanisms to synchronize state updates, which might include checkpointing messages, state transfer protocols, or real-time state replication. The document discusses various approaches to achieving this synchronization while balancing performance and consistency requirements.",
+    "topic": "state-synchronization"
+  },
+  {
+    "question": "What is the main challenge with implementing exactly-once message delivery?",
+    "options": [
+      "High bandwidth requirements",
+      "Handling duplicate detection while ensuring no messages are lost",
+      "Complex encryption",
+      "Database synchronization"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Exactly-once delivery requires preventing both message loss and duplication, which can be challenging in the presence of failures.",
+    "detailedExplanation": "The document shows that implementing exactly-once semantics requires careful handling of various failure scenarios. Messages might be lost, duplicated, or reordered during transmission. The system must use acknowledgments to detect loss, sequence numbers to detect duplicates, and timeouts to handle non-responses, all while ensuring that the recovery mechanisms themselves don't introduce additional duplicates or losses.",
+    "topic": "exactly-once-challenges"
+  },
+  {
+    "question": "What does 'end-to-end reliability' mean in the context of distributed systems?",
+    "options": [
+      "Only the network connections need to be reliable",
+      "Reliability must be ensured across all components from sender to receiver",
+      "Only the endpoints need to be reliable",
+      "Reliability is only needed at the application layer"
+    ],
+    "correctAnswer": 1,
+    "explanation": "End-to-end reliability requires ensuring reliability across all components in the complete communication path.",
+    "detailedExplanation": "The document emphasizes that true reliability requires an end-to-end approach. It's not sufficient to make individual components reliable if the interfaces between them can fail. For example, a message might be successfully delivered to a process but lost if the process crashes before processing it. End-to-end reliability requires mechanisms that ensure the complete operation succeeds, often requiring acknowledgments at the application level.",
+    "topic": "end-to-end-reliability"
+  },
+  {
+    "question": "What is the purpose of 'version numbers' in the n-plex storage system?",
+    "options": [
+      "To track software versions",
+      "To detect stale data and ensure consistency across replicas",
+      "To improve performance",
+      "To reduce storage space"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Version numbers help detect when some replicas have newer data than others, maintaining consistency.",
+    "detailedExplanation": "In the n-plex storage model described, version numbers are used to track the recency of data across multiple replicas. When a write operation fails on some replicas but succeeds on others, version numbers help identify which replicas have the most recent data. This is crucial for maintaining consistency and ensuring that reads return current data rather than stale information from failed writes.",
+    "topic": "version-numbers"
+  },
+  {
+    "question": "What does 'graceful degradation' mean in fault-tolerant systems?",
+    "options": [
+      "Systems shut down slowly",
+      "Systems continue operating with reduced functionality when components fail",
+      "Systems become less secure over time",
+      "Systems require more maintenance as they age"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Graceful degradation allows systems to continue operating with reduced capabilities rather than failing completely.",
+    "detailedExplanation": "The document implies that well-designed fault-tolerant systems should degrade gracefully when components fail. Rather than complete system failure, the system continues to provide service with reduced performance or functionality. For example, an n-plexed storage system might continue operating with fewer replicas, or a process pair might operate with reduced fault tolerance while a new backup is being established.",
+    "topic": "graceful-degradation"
+  },
+  {
+    "question": "What is the relationship between fault detection and fault tolerance?",
+    "options": [
+      "They are unrelated concepts",
+      "Fault detection is prerequisite for most fault tolerance mechanisms",
+      "Fault tolerance eliminates the need for fault detection",
+      "Fault detection is only needed for debugging"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Most fault tolerance mechanisms require first detecting that a fault has occurred before taking corrective action.",
+    "detailedExplanation": "The document shows that fault detection is fundamental to fault tolerance. Process pairs need to detect primary failures through heartbeat monitoring, storage systems need to detect corruption through checksums, and message systems need to detect lost messages through timeouts. Without reliable fault detection, fault tolerance mechanisms cannot respond appropriately to failures.",
+    "topic": "fault-detection"
+  }
+]

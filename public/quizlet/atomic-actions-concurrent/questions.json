@@ -1,0 +1,470 @@
+[
+    {
+        "question": "What is the primary purpose of atomic actions in concurrent programming?",
+        "options": [
+            "To increase system performance",
+            "To provide damage confinement and error recovery",
+            "To reduce memory usage",
+            "To simplify code structure"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Atomic actions are essential for damage confinement and assessment when errors occur in concurrent systems.",
+        "detailedExplanation": "Atomic actions serve as a fundamental mechanism for structuring concurrent programs to facilitate damage confinement and error recovery. When tasks interact and communicate, atomic actions constrain information flow to well-defined boundaries, making it possible to implement recovery procedures when faults occur. This is crucial in real-time embedded systems where reliability is paramount.",
+        "topic": "atomic-actions-fundamentals"
+    },
+    {
+        "question": "Which property best defines an atomic action?",
+        "options": [
+            "Tasks can communicate freely with external tasks",
+            "Tasks are aware of other active tasks outside the action",
+            "Tasks appear indivisible and instantaneous to external observers",
+            "Tasks must all start simultaneously"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Atomic actions appear indivisible and instantaneous to other tasks, with effects as if they were interleaved rather than concurrent.",
+        "detailedExplanation": "The key property of atomic actions is that they can be considered indivisible and instantaneous from the perspective of tasks outside the action. This means the effects on the system appear as if the tasks were executed sequentially (interleaved) rather than concurrently. This property ensures that external tasks cannot observe intermediate states or partial results from the atomic action.",
+        "topic": "atomic-actions-properties"
+    },
+    {
+        "question": "What are the three types of task interaction described in the document?",
+        "options": [
+            "Sequential, parallel, distributed",
+            "Independent, cooperation, competition",
+            "Synchronous, asynchronous, blocking",
+            "Local, remote, hybrid"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The three types of task behavior are independent, cooperation, and competition.",
+        "detailedExplanation": "Independent tasks do not communicate or synchronize with each other, allowing isolated error recovery. Cooperating tasks regularly communicate and synchronize to perform common operations, requiring coordinated error recovery. Competing tasks communicate to obtain resources but are essentially independent, though resource allocation errors can affect multiple tasks.",
+        "topic": "task-interaction-types"
+    },
+    {
+        "question": "What is a two-phase atomic action?",
+        "options": [
+            "An action with exactly two participating tasks",
+            "An action with growing and shrinking resource phases",
+            "An action that executes twice for reliability",
+            "An action with setup and cleanup phases"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Two-phase atomic actions have a growing phase (resources can only be requested) and a shrinking phase (resources can only be released).",
+        "detailedExplanation": "Two-phase atomic actions ensure integrity by having distinct phases: a 'growing' phase where resources can only be requested, followed by a 'shrinking' phase where resources can only be released (no new allocations). This structure prevents external state changes from being affected by released resources and then observed through new resource acquisitions, maintaining the atomic property.",
+        "topic": "two-phase-actions"
+    },
+    {
+        "question": "What is the main difference between atomic actions and atomic transactions?",
+        "options": [
+            "Atomic transactions can only involve one task",
+            "Atomic transactions have failure atomicity and can be rolled back",
+            "Atomic actions are faster than atomic transactions",
+            "There is no difference between them"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Atomic transactions add failure atomicity, meaning they either complete successfully or have no effect if they fail.",
+        "detailedExplanation": "While atomic actions provide synchronization atomicity (indivisibility), atomic transactions add failure atomicity. This means transactions must either complete successfully or, in case of failure, return components to their original state before the transaction began. Atomic transactions are useful for database applications but are not suitable for programming fault-tolerant systems where programmers need control over recovery mechanisms.",
+        "topic": "atomic-transactions"
+    },
+    {
+        "question": "What is a conversation in the context of atomic actions?",
+        "options": [
+            "A communication protocol between tasks",
+            "An atomic action with backward error recovery facilities",
+            "A debugging mechanism for concurrent programs",
+            "A synchronization primitive"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Conversations are atomic actions that include backward error recovery using recovery blocks.",
+        "detailedExplanation": "Conversations combine atomic actions with backward error recovery mechanisms. Each task in a conversation executes within a recovery block structure, with primary modules, alternative modules, and acceptance tests. If any task fails its acceptance test, all tasks are rolled back to the start of the conversation and execute their alternative modules, providing a recovery line that prevents the domino effect.",
+        "topic": "conversations"
+    },
+    {
+        "question": "What is the domino effect in concurrent error recovery?",
+        "options": [
+            "Errors spreading from one task to all others",
+            "Tasks being rolled back to the start of execution due to cascading recovery",
+            "System performance degrading progressively",
+            "Memory corruption spreading through the system"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The domino effect occurs when backward error recovery causes all tasks to be rolled back to the start of their execution.",
+        "detailedExplanation": "The domino effect happens when communicating tasks attempt backward error recovery without a consistent recovery line. As each task tries to recover to a previous state, it may invalidate the states of other tasks that have communicated with it, forcing them to also roll back. This can cascade until all tasks are rolled back to their initial states. Atomic actions provide a recovery line that prevents this effect.",
+        "topic": "domino-effect"
+    },
+    {
+        "question": "Which of the following is NOT a requirement for atomic actions in real-time programming languages?",
+        "options": [
+            "Well-defined boundaries",
+            "Indivisibility (isolation)",
+            "Automatic garbage collection",
+            "Support for nesting"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Automatic garbage collection is not a requirement for atomic actions; the requirements are boundaries, isolation, nesting, concurrency, and recovery support.",
+        "detailedExplanation": "The requirements for atomic actions include: well-defined boundaries (start, end, and side boundaries), indivisibility/isolation (no information exchange with external tasks except resource managers), support for nesting (strict nesting only), concurrency (different atomic actions can execute concurrently), and recovery procedure support. Garbage collection is a memory management feature unrelated to atomic action requirements.",
+        "topic": "atomic-action-requirements"
+    },
+    {
+        "question": "What does 'strict nesting' mean for atomic actions?",
+        "options": [
+            "Actions must be executed in a specific order",
+            "One action must be completely contained within another",
+            "Actions cannot share any resources",
+            "Actions must have the same number of tasks"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Strict nesting means one atomic action is completely contained within another, with no overlapping.",
+        "detailedExplanation": "Strict nesting requires that nested atomic actions be completely contained within their parent actions, with no overlapping boundaries. The tasks involved in a nested action must be a subset of those in the outer action. This prevents nested actions from smuggling information about the outer action to external tasks, which would compromise the indivisibility of the outer action.",
+        "topic": "nested-actions"
+    },
+    {
+        "question": "In C/Real-Time POSIX, what is the primary mechanism for asynchronous notification?",
+        "options": [
+            "Shared memory",
+            "Message queues",
+            "Signals",
+            "Semaphores"
+        ],
+        "correctAnswer": 2,
+        "explanation": "C/Real-Time POSIX uses signals as the primary mechanism for asynchronous notification.",
+        "detailedExplanation": "C/Real-Time POSIX provides asynchronous notification through a signal-based system that supports the resumption model. Signals can be real-time (queued with extra information) or non-real-time. The system includes predefined signals and implementation-defined signals for application use. Signals can be blocked, handled, or ignored, and the system provides functions for signal manipulation and waiting.",
+        "topic": "posix-signals"
+    },
+    {
+        "question": "What is the difference between real-time and non-real-time signals in POSIX?",
+        "options": [
+            "Real-time signals are faster",
+            "Real-time signals can carry extra information and are queued",
+            "Non-real-time signals are more reliable",
+            "Real-time signals use less memory"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Real-time signals (SIGRTMIN to SIGRTMAX) can carry extra information and are queued, unlike regular signals.",
+        "detailedExplanation": "Real-time signals in POSIX have unique properties: they can carry additional application-defined data to the handler through the siginfo_t structure, they are queued (multiple instances can be pending), and they are delivered in priority order (lowest signal number first). Regular signals cannot carry extra data and are not queued - multiple instances of the same signal are coalesced into one.",
+        "topic": "realtime-signals"
+    },
+    {
+        "question": "What is Ada's mechanism for asynchronous transfer of control?",
+        "options": [
+            "Exception propagation",
+            "Task abortion",
+            "Asynchronous select statement",
+            "Protected objects"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Ada uses the asynchronous select statement for structured asynchronous transfer of control.",
+        "detailedExplanation": "Ada's asynchronous select statement provides structured ATC with termination semantics. It consists of a triggering statement (entry call or delay) and an abortable part. If the triggering statement completes first, the abortable part is aborted. If the abortable part completes first, an attempt is made to cancel the triggering statement. This mechanism is built on top of Ada's select statement and inter-task communication facilities.",
+        "topic": "ada-atc"
+    },
+    {
+        "question": "What happens when an Ada task is aborted?",
+        "options": [
+            "It immediately stops executing",
+            "It becomes abnormal and is prevented from interacting with other tasks",
+            "It raises an exception",
+            "It restarts from the beginning"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Aborted Ada tasks become abnormal and are prevented from interacting with other tasks until they terminate.",
+        "detailedExplanation": "When an Ada task is aborted, it becomes abnormal and is prevented from interacting with other tasks. The task should stop executing immediately, though some implementations may not facilitate immediate shutdown. The task must terminate before its next interaction with other tasks. Execution of abort-deferred operations (like protected actions) is allowed to complete before the task is fully aborted.",
+        "topic": "ada-task-abortion"
+    },
+    {
+        "question": "What are abort-deferred operations in Ada?",
+        "options": [
+            "Operations that prevent task abortion",
+            "Operations that are allowed to complete before a task is aborted",
+            "Operations that cause task abortion",
+            "Operations that handle abortion exceptions"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Abort-deferred operations are allowed to complete before a task is aborted to ensure system consistency.",
+        "detailedExplanation": "Abort-deferred operations in Ada include protected actions, waiting for entry calls to complete, waiting for dependent task termination, and finalization procedures. These operations are allowed to complete even when a task is being aborted because aborting them could leave the system in an inconsistent state. For example, aborting a protected action could leave shared data in an inconsistent state.",
+        "topic": "abort-deferred-operations"
+    },
+    {
+        "question": "In Real-Time Java, what is an AsynchronouslyInterruptedException?",
+        "options": [
+            "A standard Java exception",
+            "A checked exception used for asynchronous transfer of control",
+            "An unchecked runtime exception",
+            "A deprecated exception type"
+        ],
+        "correctAnswer": 1,
+        "explanation": "AsynchronouslyInterruptedException is a checked exception used for ATC in Real-Time Java.",
+        "detailedExplanation": "AsynchronouslyInterruptedException is a checked exception that extends InterruptedException in Real-Time Java. It's used to implement asynchronous transfer of control where, instead of polling for interruptions, an asynchronous exception is delivered to real-time threads. This provides a more structured approach to ATC compared to standard Java's thread interruption mechanism.",
+        "topic": "rtj-aie"
+    },
+    {
+        "question": "What are AI-methods in Real-Time Java?",
+        "options": [
+            "Artificial intelligence methods",
+            "Asynchronously Interruptible methods that can receive ATC",
+            "Automatic implementation methods",
+            "Abstract interface methods"
+        ],
+        "correctAnswer": 1,
+        "explanation": "AI-methods are Asynchronously Interruptible methods that declare AsynchronouslyInterruptedException in their throws clause.",
+        "detailedExplanation": "AI-methods (Asynchronously Interruptible methods) in Real-Time Java are methods that include AsynchronouslyInterruptedException in their throws clause, indicating they are prepared to handle asynchronous transfer of control. Methods without this declaration are ATC-deferred, meaning ATC requests are held pending until the thread enters an AI-method. This design allows code written without ATC concerns to execute safely.",
+        "topic": "ai-methods"
+    },
+    {
+        "question": "What is an asynchronous event in Real-Time Java?",
+        "options": [
+            "An event that occurs without synchronization",
+            "An event similar to POSIX signals with associated handlers",
+            "An event that causes thread termination",
+            "An event that bypasses the scheduler"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Asynchronous events in Real-Time Java are similar to POSIX signals and can have one or more associated handlers.",
+        "detailedExplanation": "Real-Time Java's asynchronous events are similar to C/Real-Time POSIX signals. Each AsyncEvent can have multiple AsyncEventHandlers associated with it. When an event is fired, all associated handlers are scheduled for execution according to their scheduling parameters. The handlers are schedulable entities that respond to asynchronous events from the environment or other parts of the program.",
+        "topic": "rtj-async-events"
+    },
+    {
+        "question": "What is the main challenge with asynchronous exceptions in programming languages?",
+        "options": [
+            "They are too slow",
+            "They make it difficult to write safe code due to unpredictable delivery",
+            "They consume too much memory",
+            "They are not supported by most languages"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Asynchronous exceptions make it difficult to write safe code because they can be delivered at unpredictable times.",
+        "detailedExplanation": "The main challenge with asynchronous exceptions is that they can be delivered at any time during program execution, making it extremely difficult to write code that can safely handle them. Every method would potentially need handlers for asynchronous exceptions, and the unpredictable timing makes it hard to ensure data consistency and proper resource cleanup. Real-Time Java addresses this by requiring methods to explicitly declare their willingness to handle asynchronous exceptions.",
+        "topic": "async-exception-challenges"
+    },
+    {
+        "question": "What is the purpose of the Interruptible interface in Real-Time Java?",
+        "options": [
+            "To define methods that can be interrupted by the scheduler",
+            "To provide a structured way to handle interruptible operations with cleanup",
+            "To mark classes as thread-safe",
+            "To implement timeout mechanisms"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The Interruptible interface provides a structured approach to implementing interruptible operations with associated cleanup actions.",
+        "detailedExplanation": "The Interruptible interface in Real-Time Java defines two methods: run() for the interruptible operation and interruptAction() for cleanup when interrupted. This interface is used with the doInterruptible() method to provide structured ATC handling. When an AsynchronouslyInterruptedException is fired, the interruptAction() method is called to perform necessary cleanup before the interruption takes effect.",
+        "topic": "interruptible-interface"
+    },
+    {
+        "question": "Which of the following best describes forward error recovery?",
+        "options": [
+            "Rolling back to a previous safe state",
+            "Continuing execution after handling an error without rolling back",
+            "Preventing errors from occurring",
+            "Logging errors for later analysis"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Forward error recovery continues execution after handling an error, without rolling back to previous states.",
+        "detailedExplanation": "Forward error recovery handles errors by continuing program execution after taking corrective action, rather than rolling back to a previous state. This approach is often necessary when backward recovery is impossible (e.g., after interacting with the physical environment) or when the cost of rollback is too high. Forward recovery typically involves exception handling mechanisms and may include compensating actions to correct the effects of errors.",
+        "topic": "forward-error-recovery"
+    },
+    {
+        "question": "What is the key difference between resumption and termination models of exception handling?",
+        "options": [
+            "Resumption is faster than termination",
+            "Resumption continues from the point of error, termination transfers control elsewhere",
+            "Termination handles more types of errors",
+            "Resumption is only used in real-time systems"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Resumption continues execution from the point where the exception occurred, while termination transfers control to a handler elsewhere.",
+        "detailedExplanation": "In the resumption model, after an exception is handled, execution continues from the point where the exception was raised. In the termination model, the exception handler is executed, but control does not return to the point of exception - instead, execution continues from the handler's location. Most modern languages use the termination model because it's easier to reason about program flow and maintain consistency.",
+        "topic": "exception-models"
+    },
+    {
+        "question": "What is the main user need that justifies asynchronous notification mechanisms?",
+        "options": [
+            "Improving system performance",
+            "Enabling quick response to conditions detected by other tasks",
+            "Reducing memory usage",
+            "Simplifying code structure"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The fundamental need is to enable quick response to conditions detected by other tasks when polling is inadequate.",
+        "detailedExplanation": "Asynchronous notification is justified when tasks need to respond quickly to conditions detected by other tasks, and polling or waiting is inadequate. This includes error recovery (when hardware faults or timing faults occur), mode changes (emergency situations requiring immediate response), and scheduling with imprecise computations (where tasks need to be interrupted when allocated time expires).",
+        "topic": "async-notification-needs"
+    },
+    {
+        "question": "What is a resource server in the context of atomic actions?",
+        "options": [
+            "A task that performs operations on resources",
+            "A custodian of non-sharable system utilities that protects against inappropriate access",
+            "A network server that provides resources",
+            "A database that stores resource information"
+        ],
+        "correctAnswer": 1,
+        "explanation": "A resource server is defined as a custodian of non-sharable system utilities that protects against inappropriate access but doesn't perform actions on them.",
+        "detailedExplanation": "In the context of atomic actions, a resource server is specifically defined as a custodian of non-sharable system utilities. It protects these utilities against inappropriate access but does not itself perform any actions upon them. This distinction is important because atomic actions are allowed to communicate externally with resource servers without violating the isolation property, as the servers are passive protectors rather than active participants.",
+        "topic": "resource-servers"
+    },
+    {
+        "question": "What happens when multiple AsynchronouslyInterruptedExceptions are deferred in Real-Time Java?",
+        "options": [
+            "They are all delivered simultaneously",
+            "Only the first one is preserved",
+            "The one at the highest nesting level takes precedence",
+            "They are queued in order of arrival"
+        ],
+        "correctAnswer": 2,
+        "explanation": "When multiple AIEs are deferred, the one at the highest nesting level discards those at lower levels.",
+        "detailedExplanation": "In Real-Time Java, when multiple AsynchronouslyInterruptedExceptions are deferred in nested doInterruptible calls, the system maintains only the one at the highest nesting level. If a new AIE comes in at a higher level, it discards any AIE at lower levels. If a new AIE comes in at a lower level, it is discarded because the higher-level AIE takes precedence. This prevents confusion about which exception should be handled when the ATC-deferred region is exited.",
+        "topic": "multiple-aies"
+    },
+    {
+        "question": "What is the purpose of the clear() method in AsynchronouslyInterruptedException?",
+        "options": [
+            "To remove all pending exceptions",
+            "To reset the pending state if the AIE is current and return true",
+            "To clear the exception message",
+            "To deallocate exception resources"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The clear() method resets the pending state if the AIE is current and returns true, indicating successful handling.",
+        "detailedExplanation": "The clear() method in AsynchronouslyInterruptedException serves to reset the pending state of the exception if it is the current one being handled. It returns true if the exception was successfully cleared, indicating that this specific AIE instance was the one that caused the interruption. If clear() returns false, it means a different AIE is current, and the handler should perform cleanup but leave the current AIE pending for proper handling.",
+        "topic": "aie-clear-method"
+    },
+    {
+        "question": "In Ada's asynchronous select, what happens if the triggering event occurs before the abortable part starts?",
+        "options": [
+            "The program raises an exception",
+            "The abortable part is not executed and not aborted",
+            "The system waits for the abortable part to start",
+            "The triggering event is ignored"
+        ],
+        "correctAnswer": 1,
+        "explanation": "If the triggering event occurs before the abortable part starts, the abortable part is not executed and therefore not aborted.",
+        "detailedExplanation": "In Ada's asynchronous select statement, it's possible for the triggering event to occur even before the abortable part begins execution. In this case, the abortable part is never started and therefore is not aborted. The system simply executes the optional sequence of statements following the triggering statement, if any, and then continues with the rest of the program.",
+        "topic": "ada-async-select-timing"
+    },
+    {
+        "question": "What is the difference between blocking and ignoring a signal in POSIX?",
+        "options": [
+            "Blocked signals are lost, ignored signals are queued",
+            "Blocked signals are held pending, ignored signals are discarded",
+            "There is no difference",
+            "Blocked signals cause errors, ignored signals don't"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Blocked signals are held pending for later delivery, while ignored signals are simply discarded.",
+        "detailedExplanation": "In POSIX signal handling, blocking a signal means it is held pending until it is unblocked, at which point it will be delivered. The signal remains queued and will eventually be processed. Ignoring a signal means it is completely discarded when it arrives - the signal has no effect and is lost. This distinction is important for different signal handling strategies in applications.",
+        "topic": "signal-blocking-vs-ignoring"
+    },
+    {
+        "question": "What is the deserter problem in atomic actions?",
+        "options": [
+            "Tasks abandoning their responsibilities",
+            "Tasks being held in an action because one task hasn't arrived",
+            "Tasks leaving the action prematurely",
+            "Tasks corrupting shared data"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The deserter problem occurs when all tasks are held in an action because one expected task hasn't arrived.",
+        "detailedExplanation": "The deserter problem arises in atomic actions when all participating tasks are blocked waiting for a task that never arrives. In traditional atomic action models, all expected tasks must participate before any can complete. However, in real-time systems where deadlines are important, this can be problematic. The solution is to allow a subset of named tasks to enter and leave the action without waiting for missing tasks, provided they don't need to interact with the absent tasks.",
+        "topic": "deserter-problem"
+    },
+    {
+        "question": "Which languages directly support atomic actions according to the document?",
+        "options": [
+            "C/Real-Time POSIX, Ada, and Real-Time Java",
+            "None of the major languages provide direct support",
+            "Only Ada provides direct support",
+            "All modern programming languages"
+        ],
+        "correctAnswer": 1,
+        "explanation": "None of the major real-time languages (C/Real-Time POSIX, Ada, Real-Time Java) directly support atomic actions.",
+        "detailedExplanation": "The document explicitly states that atomic actions are not directly provided by any of the major real-time languages including C/Real-Time POSIX, Ada, and Real-Time Java. Instead, these languages provide lower-level mechanisms (like synchronization primitives and asynchronous notification) that can be used to implement atomic actions, but programmers must build the atomic action abstraction themselves using these primitives.",
+        "topic": "atomic-action-language-support"
+    },
+    {
+        "question": "What is the relationship between atomic actions and damage confinement?",
+        "options": [
+            "They are unrelated concepts",
+            "Atomic actions provide the basis for damage confinement by constraining information flow",
+            "Damage confinement prevents atomic actions from working",
+            "Atomic actions eliminate the need for damage confinement"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Atomic actions provide the basis for damage confinement by constraining the flow of information to well-defined boundaries.",
+        "detailedExplanation": "Atomic actions are fundamental to damage confinement because they constrain the flow of information around the system to well-defined boundaries. When an error occurs within an atomic action, its effects are contained within the action boundaries and cannot propagate to external tasks. This containment makes it possible to assess the damage scope and implement appropriate recovery procedures without affecting the entire system.",
+        "topic": "damage-confinement"
+    },
+    {
+        "question": "What is the primary difference between C/Real-Time POSIX and Ada approaches to implementing atomic actions?",
+        "options": [
+            "POSIX uses processes, Ada uses tasks",
+            "POSIX uses mutexes and condition variables, Ada uses protected objects",
+            "Ada is faster than POSIX",
+            "POSIX supports more participants than Ada"
+        ],
+        "correctAnswer": 1,
+        "explanation": "C/Real-Time POSIX uses mutexes and condition variables for synchronization, while Ada uses protected objects with guards.",
+        "detailedExplanation": "The document shows that C/Real-Time POSIX implementations of atomic actions rely on mutexes and condition variables for entry/exit protocols and synchronization. Ada implementations use protected objects with entry guards and barrier conditions. Ada's approach is generally more structured and less error-prone due to the built-in guard mechanisms, while POSIX requires more explicit synchronization management.",
+        "topic": "posix-vs-ada-implementation"
+    },
+    {
+        "question": "What is the significance of the 'Count attribute in Ada protected entries?",
+        "options": [
+            "It counts the number of exceptions raised",
+            "It returns the number of tasks waiting on the entry",
+            "It measures execution time",
+            "It tracks memory usage"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The 'Count attribute returns the number of tasks currently waiting on a protected entry.",
+        "detailedExplanation": "Ada's 'Count attribute is used with protected entries to determine how many tasks are currently queued waiting for that entry. This is particularly useful in atomic action implementations for synchronization logic, such as determining when all expected tasks have arrived at a barrier. The document shows its use in the Finished entry to coordinate the release of all waiting tasks.",
+        "topic": "ada-count-attribute"
+    },
+    {
+        "question": "What is meant by 'synchronization atomicity' in atomic transactions?",
+        "options": [
+            "All synchronization operations complete instantly",
+            "The transaction is indivisible and its partial execution cannot be observed",
+            "Synchronization primitives are atomic",
+            "Multiple transactions synchronize automatically"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Synchronization atomicity means the transaction is indivisible and its partial execution cannot be observed by concurrent transactions.",
+        "detailedExplanation": "Synchronization atomicity (also called isolation) is one of the two key properties of atomic transactions. It ensures that a transaction appears indivisible to other concurrent transactions - they cannot observe the transaction's partial execution states. This is similar to the basic atomicity property of atomic actions, but specifically applies to the database/transaction context where multiple transactions may be executing concurrently.",
+        "topic": "synchronization-atomicity"
+    },
+    {
+        "question": "Why are atomic transactions not suitable for programming fault-tolerant systems per se?",
+        "options": [
+            "They are too slow",
+            "They imply a fixed recovery mechanism with no programmer control",
+            "They don't support multiple tasks",
+            "They consume too much memory"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Atomic transactions imply a fixed system-supplied recovery mechanism, giving programmers no control over the recovery process.",
+        "detailedExplanation": "The document explains that atomic transactions are not suitable for programming fault-tolerant systems because they imply that some form of recovery mechanism will be supplied by the system, and this mechanism would be fixed with the programmer having no control over its operation. While atomic transactions provide backward error recovery, they don't allow custom recovery procedures to be programmed, which is essential for fault-tolerant system design.",
+        "topic": "atomic-transactions-limitations"
+    },
+    {
+        "question": "What is the purpose of the BoundAsyncEventHandler in Real-Time Java?",
+        "options": [
+            "To handle only bound events",
+            "To provide a dedicated thread for event handling when needed",
+            "To bind events to specific memory areas",
+            "To limit the number of event handlers"
+        ],
+        "correctAnswer": 1,
+        "explanation": "BoundAsyncEventHandler provides a dedicated implementation thread when needed, unlike regular handlers that may share threads.",
+        "detailedExplanation": "While regular AsyncEventHandlers are schedulable entities that may share implementation threads for efficiency, BoundAsyncEventHandler ensures that a dedicated thread is associated with the handler. This is useful when the handler needs the full context and resources of a separate thread, or when the handler's execution must be completely isolated from other handlers.",
+        "topic": "bound-async-event-handler"
+    },
+    {
+        "question": "What is the main advantage of using exception trees for resolving concurrent exceptions?",
+        "options": [
+            "They improve performance",
+            "They provide a systematic way to resolve multiple concurrent exceptions",
+            "They reduce memory usage",
+            "They simplify error messages"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Exception trees provide a systematic approach to determine which handler to use when multiple exceptions are raised concurrently.",
+        "detailedExplanation": "Exception trees, as proposed by Campbell and Randell, provide a systematic way to resolve the problem of concurrent exception raising in atomic actions. When multiple exceptions occur simultaneously, the exception tree determines that the handler for the exception at the root of the smallest subtree containing all raised exceptions should be used. This approach provides a deterministic way to handle the complex situation of multiple concurrent faults.",
+        "topic": "exception-trees"
+    }
+]
