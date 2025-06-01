@@ -1,375 +1,219 @@
 [
   {
-    "question": "What is the most important consideration when naming a variable?",
+    "question": "What is the primary technical imperative in software development according to Code Complete?",
     "options": [
-      "Keep it short to save typing time",
-      "Use common abbreviations like 'x' and 'temp'",
-      "The name should fully and accurately describe what the variable represents",
-      "Follow the company's naming convention exactly"
+      "Maximizing performance and minimizing memory usage",
+      "Managing complexity and maintaining intellectual control",
+      "Following established coding standards and conventions",
+      "Implementing the most advanced algorithms available"
     ],
-    "correctAnswer": 2,
-    "explanation": "The most important consideration is that the name fully and accurately describes the entity the variable represents.",
-    "detailedExplanation": "According to Code Complete, an effective technique for coming up with a good name is to state in words what the variable represents. That statement itself is often the best variable name. It's readable, unambiguous, and won't be confused with something else. For example, 'numberOfPeopleOnTheUsOlympicTeam' clearly describes what it represents.",
+    "correctAnswer": 1,
+    "explanation": "Managing complexity is the single most important technical goal in software development.",
+    "detailedExplanation": "Code Complete emphasizes that complexity management is software's primary technical imperative. When projects fail, it's often because their complexity exceeded the team's capacity to manage it. All other practices like good naming, proper routines, and clear classes serve this fundamental goal of keeping programs intellectually manageable.",
+    "topic": "software-complexity"
+  },
+  {
+    "question": "According to research cited in Code Complete, what is the optimal length for variable names in terms of debugging effort?",
+    "options": [
+      "Variables averaging 5-8 characters were easiest to debug",
+      "Variables averaging 10-16 characters minimized debugging effort",
+      "Variables averaging 20-25 characters showed best results",
+      "Variables averaging 3-5 characters required least maintenance"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Research found debugging effort was minimized with names averaging 10-16 characters.",
+    "detailedExplanation": "Gorla, Benander, and Benander found that debugging effort was minimized when variables had names averaging 10-16 characters. Programs with names averaging 8-20 characters were almost as easy to debug. This suggests many variable names are too short and don't convey enough meaning to aid in debugging.",
     "topic": "variable-naming"
   },
   {
-    "question": "What is the primary reason to create a routine?",
+    "question": "What percentage of highly cohesive routines were found to be fault-free compared to low-cohesion routines?",
     "options": [
-      "To save space and avoid duplicate code",
-      "To reduce a program's complexity",
-      "To improve performance",
-      "To follow coding standards"
+      "35% of high-cohesion vs 15% of low-cohesion routines were fault-free",
+      "50% of high-cohesion vs 18% of low-cohesion routines were fault-free",
+      "65% of high-cohesion vs 25% of low-cohesion routines were fault-free",
+      "40% of high-cohesion vs 20% of low-cohesion routines were fault-free"
     ],
     "correctAnswer": 1,
-    "explanation": "The single most important reason to create a routine is to reduce a program's complexity.",
-    "detailedExplanation": "While avoiding duplicate code and improving performance are valid reasons, the primary purpose is intellectual manageability. Create a routine to hide information so you won't need to think about it. After it's written, you should be able to forget the details and use the routine without knowledge of its internal workings.",
-    "topic": "routines"
-  },
-  {
-    "question": "What is the optimal length for variable names according to research?",
-    "options": [
-      "3-5 characters",
-      "6-8 characters", 
-      "9-15 characters",
-      "16-20 characters"
-    ],
-    "correctAnswer": 2,
-    "explanation": "Research found that debugging effort was minimized when variables had names averaging 10-16 characters, with 8-20 characters being almost as easy.",
-    "detailedExplanation": "Gorla, Benander, and Benander found that the effort required to debug a program was minimized when variables had names that averaged 10 to 16 characters. Programs with names averaging 8 to 20 characters were almost as easy to debug. This doesn't mean all names should be this length, but it suggests many names are too short.",
-    "topic": "variable-naming"
-  },
-  {
-    "question": "What does functional cohesion mean in routine design?",
-    "options": [
-      "The routine uses functional programming concepts",
-      "The routine performs one and only one operation",
-      "The routine calls other functions frequently",
-      "The routine has a mathematical function-like interface"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Functional cohesion occurs when a routine performs one and only one operation.",
-    "detailedExplanation": "Functional cohesion is the strongest and best kind of cohesion. Examples include sin(), GetCustomerName(), EraseFile(), CalculateLoanPayment(), and AgeFromBirthdate(). The goal is to have each routine do one thing well and not do anything else. Studies show 50% of highly cohesive routines were fault-free, while only 18% of low-cohesion routines were fault-free.",
+    "explanation": "Studies showed 50% of highly cohesive routines were fault-free versus only 18% of low-cohesion routines.",
+    "detailedExplanation": "Research demonstrated the dramatic impact of cohesion on code quality. When routines have functional cohesion (doing one thing well), they are nearly three times more likely to be fault-free compared to routines with poor cohesion that try to do multiple unrelated things.",
     "topic": "routine-design"
   },
   {
-    "question": "What is an Abstract Data Type (ADT)?",
+    "question": "Which principle states that subclasses must be usable through the base class interface without the user knowing the difference?",
     "options": [
-      "A data type that doesn't exist in memory",
-      "A collection of data and operations that work on that data",
-      "A theoretical concept with no practical application",
-      "A data type used only in academic settings"
+      "The Open/Closed Principle for inheritance hierarchies",
+      "The Liskov Substitution Principle for polymorphic behavior",
+      "The Interface Segregation Principle for class design",
+      "The Dependency Inversion Principle for abstraction layers"
     ],
     "correctAnswer": 1,
-    "explanation": "An ADT is a collection of data and operations that work on that data, describing the data to the rest of the program.",
-    "detailedExplanation": "Understanding ADTs is essential to object-oriented programming. An ADT might be a graphics window with all operations that affect it, a file and file operations, or an insurance-rates table and operations on it. ADTs allow you to work with real-world entities rather than low-level implementation entities, like adding a cell to a spreadsheet instead of inserting a node into a linked list.",
-    "topic": "abstract-data-types"
-  },
-  {
-    "question": "Which principle should guide class interface design?",
-    "options": [
-      "Expose as much functionality as possible",
-      "Present a consistent level of abstraction",
-      "Make all methods public for flexibility",
-      "Include implementation details for transparency"
-    ],
-    "correctAnswer": 1,
-    "explanation": "A class interface should present a consistent level of abstraction where all routines work toward a consistent end.",
-    "detailedExplanation": "Each class should implement one and only one ADT. If you find a class implementing more than one ADT, or can't determine what ADT the class implements, it's time to reorganize. Mixed abstractions commonly arise when using library classes without hiding implementation details. The interface should be abstract enough that you don't need to think about how services are implemented.",
-    "topic": "class-interfaces"
-  },
-  {
-    "question": "What is the 'magic number 7±2' principle in programming?",
-    "options": [
-      "The optimal number of lines in a function",
-      "The maximum number of parameters a routine should have",
-      "The ideal number of classes in a program",
-      "The recommended number of comments per function"
-    ],
-    "correctAnswer": 1,
-    "explanation": "The 7±2 principle suggests limiting routine parameters to about seven, as people generally cannot keep track of more than about seven chunks of information at once.",
-    "detailedExplanation": "Psychological research found that most people can't keep track of more than about seven routine parameters at once. If you consistently pass more than a few arguments, the coupling among routines is too tight. Consider grouping routines into a class and treating frequently used data as class data, or passing composite data types instead of individual fields.",
-    "topic": "routine-parameters"
-  },
-  {
-    "question": "What is the best approach when code is too complicated to understand easily?",
-    "options": [
-      "Add detailed comments explaining the complexity",
-      "Rewrite the code to be simpler",
-      "Document it thoroughly in external documentation",
-      "Leave it as-is if it works correctly"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Don't document bad code—rewrite it. Comments can't rescue difficult code.",
-    "detailedExplanation": "One study found that areas of source code with large numbers of comments also tended to have the most defects and consume the most development effort. When someone says 'This is really tricky code,' they're really saying 'This is really bad code.' If something seems tricky, it will be incomprehensible to someone else. You can always find a rewrite that's not tricky.",
-    "topic": "code-documentation"
-  },
-  {
-    "question": "What does the Liskov Substitution Principle (LSP) state?",
-    "options": [
-      "Subclasses should have more methods than their parent classes",
-      "Subclasses must be usable through the base class interface without the user knowing the difference",
-      "All classes should inherit from a common base class",
-      "Inheritance should be avoided in favor of composition"
-    ],
-    "correctAnswer": 1,
-    "explanation": "LSP states that subclasses must be usable through the base class interface without the user needing to know the difference.",
-    "detailedExplanation": "Barbara Liskov argued that you shouldn't inherit from a base class unless the derived class truly 'is a' more specific version of the base class. All routines defined in the base class should mean the same thing when used in derived classes. If a programmer must constantly think about semantic differences in subclass implementations, inheritance is increasing complexity rather than reducing it.",
+    "explanation": "The Liskov Substitution Principle ensures true 'is a' relationships in inheritance.",
+    "detailedExplanation": "Barbara Liskov's principle states that derived classes must be completely substitutable for their base classes. All routines defined in the base class should mean the same thing when used in derived classes. If programmers must think about semantic differences in subclass implementations, inheritance is increasing complexity rather than reducing it.",
     "topic": "inheritance"
   },
   {
-    "question": "What is the recommended maximum depth for inheritance trees?",
+    "question": "What is the recommended maximum depth for inheritance trees according to Code Complete?",
     "options": [
-      "3 levels",
-      "6 levels", 
-      "10 levels",
-      "No limit if well-designed"
+      "No more than 4 levels to maintain comprehensibility",
+      "Maximum of 6 levels with preference for fewer",
+      "Up to 8 levels if properly documented throughout",
+      "No specific limit if abstraction is maintained consistently"
     ],
     "correctAnswer": 1,
-    "explanation": "Arthur Riel suggests limiting inheritance hierarchies to a maximum of six levels, though even fewer levels are often more manageable.",
-    "detailedExplanation": "Deep inheritance trees have been found to be significantly associated with increased fault rates. Most people have trouble juggling more than two or three levels of inheritance mentally at once. Deep inheritance trees increase complexity, which is exactly the opposite of what inheritance should accomplish. The primary goal should be to minimize complexity.",
+    "explanation": "Arthur Riel suggests limiting inheritance hierarchies to a maximum of 6 levels.",
+    "detailedExplanation": "While Riel suggests 6 levels maximum, Code Complete notes that most people have trouble juggling more than 2-3 levels mentally. Deep inheritance trees are associated with increased fault rates and complexity, which contradicts inheritance's purpose of reducing complexity. The focus should be on managing complexity effectively.",
     "topic": "inheritance"
   },
   {
-    "question": "What should you do if a routine has more than about seven data members?",
+    "question": "According to the '7±2' principle, what should you consider when a class has more than about seven data members?",
     "options": [
-      "Add comments to explain each member",
-      "Consider decomposing it into multiple smaller classes",
-      "Use better naming conventions",
-      "Group related members with underscores"
+      "Add more documentation to explain the relationships between members",
+      "Consider decomposing the class into multiple smaller classes",
+      "Reorganize the members into logical groups with clear naming",
+      "Implement additional getter and setter methods for encapsulation"
     ],
     "correctAnswer": 1,
-    "explanation": "Classes with more than about seven data members should be considered for decomposition into smaller classes.",
-    "detailedExplanation": "The number '7±2' represents discrete items a person can remember while performing other tasks. If a class contains more than about seven data members, consider whether it should be decomposed. You might err toward the high end if members are primitive types, toward the lower end if they're complex objects.",
+    "explanation": "Classes with more than 7 data members should be considered for decomposition.",
+    "detailedExplanation": "The number '7±2' represents discrete items a person can remember while performing other tasks. If a class contains more than about seven data members, consider whether it should be decomposed into multiple smaller classes. You might err toward the high end if members are primitive types, toward the lower end if they're complex objects.",
     "topic": "class-design"
   },
   {
-    "question": "What is the difference between 'problem orientation' and 'solution orientation' in naming?",
+    "question": "What does the Law of Demeter primarily restrict in object-oriented programming?",
     "options": [
-      "Problem orientation uses longer names",
-      "Problem orientation refers to 'what' rather than 'how'",
-      "Solution orientation is always better",
-      "There is no practical difference"
+      "The number of methods that can be called on any single object",
+      "How objects should interact to minimize indirect routine calls",
+      "The maximum inheritance depth allowed in class hierarchies",
+      "The types of data that can be passed between object methods"
     ],
     "correctAnswer": 1,
-    "explanation": "Problem orientation focuses on 'what' (the problem domain) rather than 'how' (the computing solution).",
-    "detailedExplanation": "A good mnemonic name generally speaks to the problem rather than the solution. Names that refer to computing aspects represent 'how' rather than 'what.' For example, 'employeeData' refers to the problem domain while 'inputRec' refers to computing concepts. 'printerReady' is better than 'bitFlag' because it describes what the bit represents rather than how it's implemented.",
-    "topic": "variable-naming"
-  },
-  {
-    "question": "What is the most effective way to comment code?",
-    "options": [
-      "Comment every line to explain what it does",
-      "Focus comments on why rather than how",
-      "Use as many comments as possible",
-      "Only comment complex algorithms"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Effective comments focus on why something is done rather than how it's done.",
-    "detailedExplanation": "Comments that explain how something is done usually operate at the programming-language level rather than the problem level. Comments should operate at the level of intent, explaining the purpose rather than repeating the code. For example, '// find the command-word terminator ($)' is better than '// check each character until $ is found' because it explains the intent.",
-    "topic": "commenting"
-  },
-  {
-    "question": "What does 'encapsulation' mean in object-oriented programming?",
-    "options": [
-      "Wrapping data and methods together",
-      "Preventing access to implementation details even if you want to see them",
-      "Creating inheritance hierarchies",
-      "Using polymorphism effectively"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Encapsulation is the enforcer that prevents you from looking at details even if you want to.",
-    "detailedExplanation": "Encapsulation is stronger than abstraction. While abstraction helps manage complexity by providing models that ignore implementation details, encapsulation prevents you from seeing the details even if you want to. Either you have both abstraction and encapsulation or you have neither - there's no middle ground. The single most important factor distinguishing well-designed modules is the degree to which they hide internal details.",
-    "topic": "encapsulation"
-  },
-  {
-    "question": "When should you use inheritance versus composition?",
-    "options": [
-      "Always use inheritance for code reuse",
-      "Use inheritance for 'is a' relationships, composition for 'has a' relationships",
-      "Inheritance is always better than composition",
-      "Use composition only when inheritance is impossible"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Use inheritance for 'is a' relationships and composition for 'has a' relationships.",
-    "detailedExplanation": "If multiple classes share common data but not behavior, create a common object that those classes can contain. If they share common behavior but not data, derive from a common base class. If they share both, inherit from a common base class that defines common data and routines. Inheritance should only be used when the derived class truly 'is a' more specific version of the base class.",
-    "topic": "inheritance-vs-composition"
-  },
-  {
-    "question": "What is the recommended approach for handling boolean variables?",
-    "options": [
-      "Use single letters like 'b' for brevity",
-      "Always prefix with 'is' or 'has'",
-      "Give them names that imply true or false",
-      "Use numbers instead of booleans"
-    ],
-    "correctAnswer": 2,
-    "explanation": "Boolean variables should have names that clearly imply true or false states.",
-    "detailedExplanation": "Names like 'done' and 'success' are good because something is either done or not, successful or not. Names like 'status' are poor because it's unclear what true means - does it mean status exists? Status is OK? Use positive names rather than negative ones like 'notFound' because negations are harder to read, especially when negated: 'if not notFound' is confusing.",
-    "topic": "boolean-naming"
-  },
-  {
-    "question": "What is the purpose of the 'const' keyword in routine parameters?",
-    "options": [
-      "To make the routine run faster",
-      "To indicate the parameter won't be modified by the routine",
-      "To enable compiler optimizations",
-      "To make the parameter global"
-    ],
-    "correctAnswer": 1,
-    "explanation": "The const keyword indicates that the parameter is input-only and won't be modified by the routine.",
-    "detailedExplanation": "Using const helps prevent accidental modification of input parameters and makes the interface clearer. It's part of good defensive programming practice. The convention this book uses is to put input-only parameters first, input-and-output parameters second, and output-only parameters third, with const helping to enforce this distinction.",
-    "topic": "routine-parameters"
-  },
-  {
-    "question": "What is the main problem with 'magic numbers' in code?",
-    "options": [
-      "They take up too much memory",
-      "They make code harder to understand and maintain",
-      "They cause performance issues",
-      "They are not supported by all compilers"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Magic numbers make code harder to understand and maintain because their meaning isn't obvious.",
-    "detailedExplanation": "Magic numbers like 100, 4.0, 12, 2, and 3 in the low-quality routine example provide no context for their purpose. They should be replaced with named constants that explain their meaning, like MAXIMUM_ELEMENTS or POINTS_PER_INCH. This makes the code self-documenting and easier to modify if the values need to change.",
-    "topic": "magic-numbers"
-  },
-  {
-    "question": "What is the pseudocode programming process?",
-    "options": [
-      "Writing comments in a foreign language",
-      "Creating fake code that doesn't compile",
-      "Writing high-level design in comments before coding",
-      "Using only mathematical notation"
-    ],
-    "correctAnswer": 2,
-    "explanation": "The pseudocode programming process involves writing high-level design in comments first, then filling in the actual code.",
-    "detailedExplanation": "This process helps reduce commenting time because when you finish the code, the comments are already done. You gain design benefits by writing high-level pseudocode before low-level programming language code. It also helps ensure your code is well-structured and your comments explain the intent rather than just repeating the code.",
-    "topic": "pseudocode-process"
-  },
-  {
-    "question": "What should you avoid when creating abbreviations for variable names?",
-    "options": [
-      "Using vowels",
-      "Removing only one character from words",
-      "Using standard dictionary abbreviations",
-      "Making them pronounceable"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Don't abbreviate by removing just one character - it saves little effort but hurts readability significantly.",
-    "detailedExplanation": "Typing one character is little extra work, and one-character savings hardly justifies the loss in readability. It's like calendars that have 'Jun' and 'Jul' - you have to be in a big hurry to spell June as 'Jun.' With most one-letter deletions, it's hard to remember whether you removed the character. Either remove more than one character or spell out the word.",
-    "topic": "abbreviations"
-  },
-  {
-    "question": "What is the difference between deep and shallow copying?",
-    "options": [
-      "Deep copies are faster than shallow copies",
-      "Deep copies create member-wise copies; shallow copies typically use references",
-      "Shallow copies are always preferable",
-      "There is no practical difference"
-    ],
-    "correctAnswer": 1,
-    "explanation": "Deep copies create member-wise copies of object data; shallow copies typically point to or refer to a single reference copy.",
-    "detailedExplanation": "The motivation for shallow copies is typically performance improvement, but this rarely causes measurable impact. Deep copies are simpler to code and maintain. Shallow copies add complexity with reference counting, safe object copies, comparisons, and deletes. Prefer deep copies until proven otherwise - it's a poor tradeoff to add complexity for dubious performance gains.",
-    "topic": "object-copying"
-  },
-  {
-    "question": "What is the Law of Demeter?",
-    "options": [
-      "A rule about inheritance depth",
-      "A principle limiting how objects interact with other objects",
-      "A guideline for naming variables",
-      "A standard for documentation"
-    ],
-    "correctAnswer": 1,
-    "explanation": "The Law of Demeter limits how objects should interact - Object A can call its own routines and routines of objects it creates, but should avoid calling routines on objects provided by other objects.",
-    "detailedExplanation": "For example, account.ContactPerson() is OK, but account.ContactPerson().DaytimeContactInfo().PhoneNumber() violates the principle because it creates indirect connections that are hazardous. The law helps minimize the extent to which a class collaborates with other classes, reducing coupling and complexity.",
+    "explanation": "The Law of Demeter limits how objects interact to reduce coupling.",
+    "detailedExplanation": "The Law of Demeter states that Object A can call its own routines and routines of objects it creates, but should avoid calling routines on objects provided by other objects. For example, account.ContactPerson() is OK, but account.ContactPerson().DaytimeContactInfo().PhoneNumber() violates the principle because it creates hazardous indirect connections.",
     "topic": "object-interaction"
   },
   {
-    "question": "What is the recommended maximum number of routines per class?",
+    "question": "What is the fundamental difference between abstraction and encapsulation according to Code Complete?",
     "options": [
-      "Exactly 7 routines",
-      "Keep the number as small as possible while maintaining good design",
-      "At least 20 routines for usefulness",
-      "No limit if well-organized"
+      "Abstraction hides complexity while encapsulation manages inheritance relationships",
+      "Abstraction provides models while encapsulation prevents access to details",
+      "Abstraction handles data organization while encapsulation manages method visibility",
+      "Abstraction focuses on interfaces while encapsulation handles implementation details"
     ],
     "correctAnswer": 1,
-    "explanation": "Keep the number of routines in a class as small as possible while maintaining good design principles.",
-    "detailedExplanation": "Studies found that higher numbers of routines per class were associated with higher fault rates. However, other factors like deep inheritance trees, large numbers of routine calls within a class, and strong coupling were more significant. Evaluate the tradeoff between minimizing routines and these other factors - the goal is managing complexity effectively.",
-    "topic": "class-design"
+    "explanation": "Encapsulation is the enforcer that prevents access to details even if you want to see them.",
+    "detailedExplanation": "Abstraction helps manage complexity by providing models that allow you to ignore implementation details. Encapsulation is stronger - it's the enforcer that prevents you from looking at details even if you want to. Either you have both abstraction and encapsulation or you have neither; there's no middle ground.",
+    "topic": "encapsulation"
   },
   {
-    "question": "When should you create a new class?",
+    "question": "When should you prefer inheritance over composition in object-oriented design?",
     "options": [
-      "Only when modeling real-world objects",
-      "To reduce complexity and isolate related functionality",
-      "Never - use only built-in types",
-      "Only when required by the programming language"
+      "When you need to share common implementation code between classes",
+      "When classes share common behavior but not data structures",
+      "When you want to model true 'is a' relationships between entities",
+      "When you need to reduce coupling between different system components"
     ],
-    "correctAnswer": 1,
-    "explanation": "The single most important reason to create a class is to reduce program complexity by grouping related functionality.",
-    "detailedExplanation": "While modeling real-world objects is one reason, classes serve many purposes: reducing complexity, isolating complexity, hiding implementation details, limiting effects of changes, hiding global data, centralizing control, facilitating reuse, and planning for program families. Create a class to hide information so you won't need to think about it.",
-    "topic": "class-creation"
+    "correctAnswer": 2,
+    "explanation": "Use inheritance for 'is a' relationships, composition for 'has a' relationships.",
+    "detailedExplanation": "Inheritance should only be used when the derived class truly 'is a' more specific version of the base class. If multiple classes share common data but not behavior, create a common object that those classes can contain. If they share common behavior but not data, derive from a common base class. Inheritance should control your interface; composition lets you control your interface.",
+    "topic": "inheritance-vs-composition"
   },
   {
-    "question": "What is the recommended length for routines?",
+    "question": "What approach should you take when code is too complicated to understand easily?",
     "options": [
-      "Exactly 50 lines",
-      "100-200 lines maximum, determined by function and logic",
-      "One screen (about 25 lines)",
-      "No more than 10 lines"
+      "Add comprehensive comments explaining each complex section thoroughly",
+      "Rewrite the code to be simpler rather than documenting complexity",
+      "Create detailed external documentation with flowcharts and diagrams",
+      "Break the code into smaller functions while maintaining the logic"
     ],
     "correctAnswer": 1,
-    "explanation": "Routines should be 100-200 lines maximum, with length determined naturally by function and logic rather than artificial standards.",
-    "detailedExplanation": "Decades of research shows routines of this length are no more error-prone than shorter ones. Let cohesion, nesting depth, number of variables, decision points, and complexity considerations dictate length rather than imposing arbitrary restrictions. Object-oriented programs will have many short accessor routines, but complex algorithms may naturally require longer routines.",
+    "explanation": "Don't document bad code—rewrite it to be clearer.",
+    "detailedExplanation": "Code Complete emphasizes that comments can't rescue difficult code. One study found that areas with large numbers of comments also had the most defects and consumed the most development effort. When code seems tricky, it's really bad code. You can always find a rewrite that's not tricky.",
+    "topic": "code-documentation"
+  },
+  {
+    "question": "What is the recommended maximum number of parameters for a routine to maintain understandability?",
+    "options": [
+      "No more than 5 parameters to ensure clarity and maintainability",
+      "About 7 parameters based on human comprehension research",
+      "Up to 10 parameters if they are well-documented and organized",
+      "No specific limit as long as the interface abstraction is clear"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Seven is the magic number for human comprehension of discrete information chunks.",
+    "detailedExplanation": "Psychological research found that people generally cannot keep track of more than about seven chunks of information at once. If you consistently pass more than a few arguments, the coupling among routines is too tight. Consider grouping routines into a class or passing composite data types instead of individual fields.",
+    "topic": "routine-parameters"
+  },
+  {
+    "question": "What is the optimal length for routines according to research cited in Code Complete?",
+    "options": [
+      "Routines should be exactly 50 lines with no exceptions allowed",
+      "100-200 lines maximum, determined by function and logic naturally",
+      "One screen length approximately 25-30 lines for easy viewing",
+      "No more than 75 lines to maintain readability and testability"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Routines should be 100-200 lines maximum, with length determined naturally by function.",
+    "detailedExplanation": "Decades of research show routines of this length are no more error-prone than shorter ones. Let cohesion, nesting depth, number of variables, decision points, and complexity considerations dictate length rather than imposing arbitrary restrictions. Object-oriented programs will have many short accessor routines, but complex algorithms may naturally require longer routines.",
     "topic": "routine-length"
   },
   {
-    "question": "What is the best way to handle routine parameters?",
+    "question": "Which type of comment is considered most valuable for maintenance programmers?",
     "options": [
-      "Always pass individual values",
-      "Always pass entire objects",
-      "Pass whatever maintains the routine's interface abstraction",
-      "Use global variables instead of parameters"
-    ],
-    "correctAnswer": 2,
-    "explanation": "Pass variables or objects that the routine needs to maintain its interface abstraction.",
-    "detailedExplanation": "If the abstraction is that the routine expects three specific data elements, pass them individually. If the abstraction is that you'll always have a particular object and the routine does something with that object, pass the whole object. The key consideration is what abstraction is presented by the routine's interface, not a simplistic rule about individual elements versus objects.",
-    "topic": "parameter-passing"
-  },
-  {
-    "question": "What is the main benefit of using enumerated types?",
-    "options": [
-      "They improve performance",
-      "They make code more readable and maintainable than magic numbers",
-      "They use less memory",
-      "They are required by most compilers"
+      "Comments that repeat the code in more readable language",
+      "Comments that explain the intent and purpose of code sections",
+      "Comments that provide detailed algorithmic step-by-step explanations",
+      "Comments that document the original author and modification history"
     ],
     "correctAnswer": 1,
-    "explanation": "Enumerated types make code more readable and maintainable by replacing magic numbers with meaningful names.",
+    "explanation": "Intent comments explain the purpose rather than repeating what the code does.",
+    "detailedExplanation": "IBM found that maintenance programmers most often said understanding the original programmer's intent was the most difficult problem. Intent comments operate at the level of the problem rather than the solution. For example, '// get current employee information' is an intent comment, while '// update employeeRecord object' is just a summary.",
+    "topic": "commenting"
+  },
+  {
+    "question": "What is the primary benefit of using enumerated types over magic numbers?",
+    "options": [
+      "Enumerated types provide better performance optimization during compilation",
+      "They make code more readable and maintainable than numeric constants",
+      "Enumerated types use less memory than integer constants",
+      "They enable better error checking and debugging capabilities"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Enumerated types make code more readable and maintainable by replacing magic numbers.",
     "detailedExplanation": "Instead of using values like 0, 1, 2 for different account types, enumerated types let you use AccountType.Checking, AccountType.Savings, AccountType.Investment. This makes the code self-documenting and easier to maintain. When using enumerated types, use a group prefix to clearly show that members belong to the same group.",
     "topic": "enumerated-types"
   },
   {
-    "question": "What should you do if you find yourself passing the same data to many different routines?",
+    "question": "According to Code Complete, what is the main purpose of assertions in code?",
     "options": [
-      "Make the data global",
-      "Group the routines into a class and treat the data as class data",
-      "Use longer parameter names",
-      "Create wrapper functions"
+      "To handle expected runtime errors and provide user feedback",
+      "To document and verify assumptions about program state during development",
+      "To improve performance by eliminating unnecessary condition checks",
+      "To replace traditional commenting with executable documentation statements"
     ],
     "correctAnswer": 1,
-    "explanation": "If you're consistently passing the same data to many routines, group those routines into a class and treat the data as class data.",
-    "detailedExplanation": "This indicates that the coupling among your routines is too tight. Grouping related routines into a class with shared data reduces the parameter-passing burden and creates better logical organization. This is one of the key benefits of object-oriented design - related data and operations are kept together.",
+    "explanation": "Assertions document and verify assumptions that should always be true if the program is correct.",
+    "detailedExplanation": "Assertions are used to document assumptions that should always be true if the program is working correctly. They help catch programming errors during development and serve as executable documentation. Unlike error handling (which deals with expected problems), assertions deal with conditions that should never occur if the program is correct.",
+    "topic": "assertions"
+  },
+  {
+    "question": "What should you do if you're consistently passing the same data to many different routines?",
+    "options": [
+      "Create global variables to eliminate the redundant parameter passing",
+      "Group the routines into a class and treat the data as class data",
+      "Use longer, more descriptive parameter names to clarify the relationships",
+      "Create wrapper functions that encapsulate the common parameter combinations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Group related routines into a class with shared data to reduce tight coupling.",
+    "detailedExplanation": "If you're consistently passing the same data to many routines, this indicates that the coupling among your routines is too tight. Grouping related routines into a class with shared data reduces the parameter-passing burden and creates better logical organization. This is one of the key benefits of object-oriented design.",
     "topic": "class-organization"
   },
   {
-    "question": "What is the difference between a function and a procedure?",
+    "question": "What is the key difference between a function and a procedure according to Code Complete?",
     "options": [
-      "Functions are faster than procedures",
-      "A function returns a value; a procedure does not",
-      "Procedures can have parameters; functions cannot",
-      "There is no difference"
+      "Functions execute faster than procedures due to compiler optimization",
+      "A function returns a value while a procedure does not return a value",
+      "Procedures can have parameters while functions cannot accept parameters",
+      "Functions can modify global state while procedures are purely local"
     ],
     "correctAnswer": 1,
     "explanation": "A function returns a value; a procedure does not return a value.",
@@ -377,120 +221,250 @@
     "topic": "functions-vs-procedures"
   },
   {
-    "question": "What is the best approach for naming loop variables?",
+    "question": "What is the most important consideration when naming a variable according to Code Complete?",
     "options": [
-      "Always use i, j, k for consistency",
-      "Use meaningful names that describe what you're indexing",
-      "Use single letters to save space",
-      "Use numbers like var1, var2"
+      "Keep the name short to reduce typing time and save space",
+      "The name should fully and accurately describe what the variable represents",
+      "Use common abbreviations that other programmers will easily recognize",
+      "Follow the company's established naming convention exactly without deviation"
     ],
     "correctAnswer": 1,
-    "explanation": "Use meaningful names that describe what you're indexing, especially for longer or nested loops.",
-    "detailedExplanation": "While i, j, k are acceptable for very short, simple loops, meaningful names like teamIndex and eventIndex are much clearer for nested loops or longer code blocks. This avoids index cross-talk (confusing i and j) and makes array accesses clearer: score[teamIndex][eventIndex] is more informative than score[i][j]. If you must use i, j, k, don't use them for anything other than simple loop indexes.",
-    "topic": "loop-variables"
+    "explanation": "The name should fully and accurately describe the entity the variable represents.",
+    "detailedExplanation": "An effective technique for coming up with a good name is to state in words what the variable represents. That statement itself is often the best variable name. It's readable, unambiguous, and won't be confused with something else. For example, 'numberOfPeopleOnTheUsOlympicTeam' clearly describes what it represents.",
+    "topic": "variable-naming"
   },
   {
-    "question": "What is the main purpose of assertions in code?",
+    "question": "When should you use multiple inheritance according to Code Complete?",
     "options": [
-      "To handle expected errors",
-      "To document and verify assumptions about program state",
-      "To improve performance",
-      "To replace comments"
+      "Always use it for maximum flexibility in object-oriented design",
+      "Primarily for defining mixins that add sets of properties to objects",
+      "Never use it because it creates too many complex maintenance problems",
+      "Only when single inheritance cannot adequately model the domain relationships"
     ],
     "correctAnswer": 1,
-    "explanation": "Assertions document and verify assumptions about program state, helping catch programming errors during development.",
-    "detailedExplanation": "Assertions are used to document assumptions that should always be true if the program is working correctly. They help catch programming errors during development and serve as executable documentation. Unlike error handling (which deals with expected problems), assertions deal with conditions that should never occur if the program is correct.",
-    "topic": "assertions"
+    "explanation": "Multiple inheritance is useful primarily for defining mixins - simple classes that add properties.",
+    "detailedExplanation": "Mixins are called mixins because they allow properties to be 'mixed in' to derived classes. Examples include Displayable, Persistent, Serializable, or Sortable. They're nearly always abstract and aren't meant to be instantiated independently. They make design more comprehensible by 'chunking' attributes together, but should be used carefully.",
+    "topic": "multiple-inheritance"
   },
   {
-    "question": "What is the recommended approach for commenting data declarations?",
+    "question": "What is the recommended approach for handling routine parameters that won't be modified?",
     "options": [
-      "Don't comment data - it's self-explanatory",
-      "Comment the units, range, and meaning of data",
-      "Only comment complex data structures",
-      "Use only endline comments for data"
+      "Pass them by reference to improve performance and reduce memory usage",
+      "Use const keyword to indicate input-only parameters in supported languages",
+      "Always pass primitive types by value and objects by reference",
+      "Create local copies within the routine to prevent accidental modification"
     ],
     "correctAnswer": 1,
-    "explanation": "Comment the units, allowable ranges, and coded meanings of data declarations.",
-    "detailedExplanation": "Document units (inches, meters, seconds), ranges (1-100, >= 2), and coded meanings (0=AC, 1=DC, 2=undefined). Some companies have concluded that annotations on data are even more important than annotations on processes. Don't assume units or ranges are obvious - they won't be to new programmers or after significant time has passed.",
-    "topic": "data-documentation"
+    "explanation": "The const keyword indicates that the parameter is input-only and won't be modified.",
+    "detailedExplanation": "Using const helps prevent accidental modification of input parameters and makes the interface clearer. It's part of good defensive programming practice. The convention is to put input-only parameters first, input-and-output parameters second, and output-only parameters third, with const helping to enforce this distinction.",
+    "topic": "routine-parameters"
   },
   {
-    "question": "What is the primary goal of software construction according to Code Complete?",
+    "question": "According to the book paradigm for documentation, how much improvement in comprehension can you expect?",
     "options": [
-      "Writing code as quickly as possible",
-      "Managing complexity",
-      "Following all coding standards",
-      "Using the latest technology"
+      "5-10 percent improvement over traditionally documented code",
+      "10-20 percent improvement by applying typographic principles",
+      "15-25 percent improvement with comprehensive documentation standards",
+      "20-30 percent improvement when using automated documentation tools"
     ],
     "correctAnswer": 1,
-    "explanation": "Managing complexity is software's primary technical imperative.",
-    "detailedExplanation": "Software's Primary Technical Imperative is managing complexity. When projects fail, it's often because their complexity exceeded their capacity to manage it. The goal is to minimize the amount of a program you have to think about at any one time. Techniques like good naming, good routines, and good classes all serve this fundamental goal of complexity management.",
-    "topic": "software-complexity"
+    "explanation": "Research found 10-20 percent improvement in comprehension using book paradigm principles.",
+    "detailedExplanation": "Oman and Cook found that by organizing code documentation like a book with preface, table of contents, sections, and cross-references, programmers achieved 10-20 percent improvement in comprehension. The average time to perform maintenance tasks was reduced to about three-quarters of traditional approaches, and maintenance scores averaged 20 percent higher.",
+    "topic": "documentation-organization"
   },
   {
-    "question": "What should you do with 'temporary' variables?",
+    "question": "What is the primary reason to create a routine according to Code Complete?",
     "options": [
-      "Use them liberally for intermediate calculations",
-      "Be suspicious of them and consider giving them meaningful names",
-      "Always prefix them with 'temp'",
-      "Avoid them completely"
+      "To save space and avoid duplicate code throughout the program",
+      "To reduce a program's complexity and improve intellectual manageability",
+      "To improve performance through optimized code reuse and caching",
+      "To follow established coding standards and organizational requirements"
     ],
     "correctAnswer": 1,
-    "explanation": "Be leery of 'temporary' variables - they often indicate you aren't sure of their real purpose.",
+    "explanation": "The single most important reason to create a routine is to reduce complexity.",
+    "detailedExplanation": "While avoiding duplicate code and improving performance are valid reasons, the primary purpose is intellectual manageability. Create a routine to hide information so you won't need to think about it. After it's written, you should be able to forget the details and use the routine without knowledge of its internal workings.",
+    "topic": "routines"
+  },
+  {
+    "question": "What should you do with 'temporary' variables according to Code Complete?",
+    "options": [
+      "Use them liberally for intermediate calculations to improve readability",
+      "Be suspicious of them and consider giving them meaningful names instead",
+      "Always prefix them with 'temp' to clearly indicate their temporary nature",
+      "Avoid them completely and perform all calculations in single expressions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Be leery of 'temporary' variables - they often indicate unclear purpose.",
     "detailedExplanation": "Most variables in your program are temporary in some way. Calling a few 'temporary' may indicate unclear purpose. Instead of 'temp = sqrt(b^2 - 4*a*c)', use 'discriminant = sqrt(b^2 - 4*a*c)' which describes what the variable actually represents. This makes the code more readable and the variable's purpose clear.",
     "topic": "temporary-variables"
   },
   {
-    "question": "What is the recommended way to organize routine parameters?",
+    "question": "What is functional cohesion in routine design?",
     "options": [
-      "Alphabetically",
-      "By data type",
-      "Input-modify-output order",
-      "Most important parameters first"
-    ],
-    "correctAnswer": 2,
-    "explanation": "Put parameters in input-modify-output order to reflect the sequence of operations within the routine.",
-    "detailedExplanation": "List input-only parameters first, input-and-output second, and output-only third. This ordering implies the sequence of operations: inputting data, changing it, and sending back a result. This convention makes parameter lists more predictable and easier to understand, though it conflicts with some C-library conventions.",
-    "topic": "parameter-organization"
-  },
-  {
-    "question": "What is the key principle behind good class interfaces?",
-    "options": [
-      "Expose all internal details for flexibility",
-      "Provide services that clearly belong together",
-      "Have as many methods as possible",
-      "Always use inheritance"
+      "When a routine uses functional programming concepts and pure functions",
+      "When a routine performs one and only one operation effectively",
+      "When a routine calls other functions frequently to accomplish its task",
+      "When a routine has a mathematical function-like input/output interface"
     ],
     "correctAnswer": 1,
-    "explanation": "A class interface should offer a group of routines that clearly belong together and present a consistent abstraction.",
-    "detailedExplanation": "The class's interface should provide an abstraction of the implementation hidden behind it. Every routine in the interface should work toward a consistent end. For example, an Employee class with routines like GetName(), GetAddress(), GetWorkPhone() presents a good abstraction, while a class mixing employee operations with report formatting operations presents a poor abstraction.",
-    "topic": "interface-design"
+    "explanation": "Functional cohesion occurs when a routine performs one and only one operation.",
+    "detailedExplanation": "Functional cohesion is the strongest and best kind of cohesion. Examples include sin(), GetCustomerName(), EraseFile(), CalculateLoanPayment(), and AgeFromBirthdate(). The goal is to have each routine do one thing well and not do anything else. Studies show 50% of highly cohesive routines were fault-free, while only 18% of low-cohesion routines were fault-free.",
+    "topic": "routine-design"
   },
   {
-    "question": "When should you use multiple inheritance?",
+    "question": "How should you handle boolean variables according to Code Complete naming guidelines?",
     "options": [
-      "Always, for maximum flexibility",
-      "Never, it's too dangerous",
-      "Primarily for mixins - simple classes that add properties",
-      "Only in academic settings"
-    ],
-    "correctAnswer": 2,
-    "explanation": "Multiple inheritance is useful primarily for defining mixins - simple classes used to add a set of properties to an object.",
-    "detailedExplanation": "Mixins are called mixins because they allow properties to be 'mixed in' to derived classes. Examples include Displayable, Persistent, Serializable, or Sortable. They're nearly always abstract and aren't meant to be instantiated independently. They make design more comprehensible by 'chunking' attributes together, but should be used carefully as multiple inheritance opens up complexities that don't exist with single inheritance.",
-    "topic": "multiple-inheritance"
-  },
-  {
-    "question": "What is the Book Paradigm for program documentation?",
-    "options": [
-      "Writing documentation in book format",
-      "Organizing code like a book with preface, table of contents, and sections",
-      "Using only written documentation",
-      "Avoiding all inline comments"
+      "Always prefix boolean variables with 'is' to form clear questions",
+      "Give them names that clearly imply true or false states",
+      "Use single letters like 'b' followed by descriptive text",
+      "Name them using numbers to distinguish different boolean purposes"
     ],
     "correctAnswer": 1,
-    "explanation": "The Book Paradigm organizes code documentation like a book with preface, table of contents, sections, and cross-references.",
-    "detailedExplanation": "Research by Oman and Cook found that organizing code documentation like a book improved comprehension by 10-20%. The 'preface' provides program overview, 'table of contents' shows top-level organization, 'sections' divide routines into logical parts, and 'cross-references' provide navigation. This approach supports both high-level understanding and detailed code reading.",
-    "topic": "documentation-organization"
+    "explanation": "Boolean variables should have names that clearly imply true or false states.",
+    "detailedExplanation": "Names like 'done' and 'success' are good because something is either done or not, successful or not. Names like 'status' are poor because it's unclear what true means. Use positive names rather than negative ones like 'notFound' because negations are harder to read, especially when negated: 'if not notFound' is confusing.",
+    "topic": "boolean-naming"
+  },
+  {
+    "question": "What should you document when working around an error in a library or language feature?",
+    "options": [
+      "Only document it if the error is likely to affect other team members",
+      "Document the workaround and explain why the special case is necessary",
+      "Create a separate bug report but avoid cluttering the code with comments",
+      "Document it only in external documentation to keep code clean"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Document workarounds to explain why special handling is needed.",
+    "detailedExplanation": "If you find a library routine has a defect that appears only under specific conditions, document why you're making a special case. This prevents well-intentioned programmers from changing the code to a 'better' style that might break your workaround. The explanation shows you knew what you were doing and weren't just being sloppy.",
+    "topic": "commenting"
+  },
+  {
+    "question": "What is the difference between deep and shallow copying in object design?",
+    "options": [
+      "Deep copies are faster while shallow copies use less memory",
+      "Deep copies create member-wise copies; shallow copies use references",
+      "Shallow copies are always preferable for performance optimization",
+      "Deep copies handle inheritance while shallow copies handle composition"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Deep copies create member-wise copies; shallow copies typically use references.",
+    "detailedExplanation": "The motivation for shallow copies is typically performance improvement, but this rarely causes measurable impact. Deep copies are simpler to code and maintain. Shallow copies add complexity with reference counting, safe object copies, comparisons, and deletes. Prefer deep copies until proven otherwise - it's a poor tradeoff to add complexity for dubious performance gains.",
+    "topic": "object-copying"
+  },
+  {
+    "question": "According to IBM's research on commenting density, what is the optimal number of comments?",
+    "options": [
+      "One comment for every 5 lines to ensure comprehensive documentation",
+      "Roughly one comment for every 10 statements for peak clarity",
+      "One comment for every 15 lines to avoid over-documentation",
+      "Comments should be added only when the code is inherently complex"
+    ],
+    "correctAnswer": 1,
+    "explanation": "IBM studies found that one comment per 10 statements optimized clarity.",
+    "detailedExplanation": "Studies at IBM found that a commenting density of one comment roughly every 10 statements was where clarity peaked. Fewer comments made code hard to understand, but more comments also reduced understandability. Rather than focusing on comment count, focus on whether each comment is efficient and describes why the code was written.",
+    "topic": "commenting"
+  },
+  {
+    "question": "What is the most effective way to comment code according to Code Complete?",
+    "options": [
+      "Comment every line to explain exactly what each statement does",
+      "Focus comments on why something is done rather than how it's done",
+      "Use as many comments as possible to ensure future maintainability",
+      "Only comment the most complex algorithms and leave simple code uncommented"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Effective comments focus on why rather than how something is done.",
+    "detailedExplanation": "Comments that explain how something is done usually operate at the programming-language level rather than the problem level. Comments should operate at the level of intent, explaining the purpose rather than repeating the code. For example, '// find the command-word terminator ($)' is better than '// check each character until $ is found' because it explains the intent.",
+    "topic": "commenting"
+  },
+  {
+    "question": "What characterizes problem-oriented variable naming?",
+    "options": [
+      "Names that describe the computational algorithms being implemented",
+      "Names that refer to 'what' rather than 'how' in the problem domain",
+      "Names that follow standard programming language conventions",
+      "Names that indicate the specific data types and memory structures used"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Problem orientation focuses on 'what' (the problem domain) rather than 'how' (the computing solution).",
+    "detailedExplanation": "A good mnemonic name generally speaks to the problem rather than the solution. Names that refer to computing aspects represent 'how' rather than 'what.' For example, 'employeeData' refers to the problem domain while 'inputRec' refers to computing concepts. 'printerReady' is better than 'bitFlag' because it describes what the bit represents rather than how it's implemented.",
+    "topic": "variable-naming"
+  },
+  {
+    "question": "According to Code Complete, when should you create a new class?",
+    "options": [
+      "Only when modeling real-world objects that have clear physical counterparts",
+      "To reduce complexity and isolate related functionality effectively",
+      "Never create custom classes when built-in types can suffice",
+      "Only when required by the programming language or framework"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The single most important reason to create a class is to reduce program complexity.",
+    "detailedExplanation": "While modeling real-world objects is one reason, classes serve many purposes: reducing complexity, isolating complexity, hiding implementation details, limiting effects of changes, hiding global data, centralizing control, facilitating reuse, and planning for program families. Create a class to hide information so you won't need to think about it.",
+    "topic": "class-creation"
+  },
+  {
+    "question": "What should you do when choosing between using a whole object or specific elements as routine parameters?",
+    "options": [
+      "Always pass individual elements to minimize coupling between routines",
+      "Pass whatever maintains the routine's interface abstraction effectively",
+      "Always pass the whole object to maintain encapsulation principles",
+      "Use whichever approach requires fewer lines of code to implement"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Pass variables or objects that maintain the routine's interface abstraction.",
+    "detailedExplanation": "If the abstraction is that the routine expects three specific data elements, pass them individually. If the abstraction is that you'll always have that particular object and the routine does something with that object, pass the whole object. The key consideration is what abstraction is presented by the routine's interface, not a simplistic rule.",
+    "topic": "parameter-passing"
+  },
+  {
+    "question": "What is an Abstract Data Type (ADT) according to Code Complete?",
+    "options": [
+      "A theoretical concept with no practical programming applications",
+      "A collection of data and operations that work on that data",
+      "A data type that exists only in memory without persistent storage",
+      "A mathematical model used exclusively in academic computer science"
+    ],
+    "correctAnswer": 1,
+    "explanation": "An ADT is a collection of data and operations that work on that data.",
+    "detailedExplanation": "Understanding ADTs is essential to object-oriented programming. An ADT might be a graphics window with all operations that affect it, a file and file operations, or an insurance-rates table and operations on it. ADTs allow you to work with real-world entities rather than low-level implementation entities, like adding a cell to a spreadsheet instead of inserting a node into a linked list.",
+    "topic": "abstract-data-types"
+  },
+  {
+    "question": "Which principle should guide class interface design according to Code Complete?",
+    "options": [
+      "Expose as much functionality as possible for maximum flexibility",
+      "Present a consistent level of abstraction throughout the interface",
+      "Make all methods public to ensure ease of use and accessibility",
+      "Include implementation details for transparency and debugging purposes"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A class interface should present a consistent level of abstraction.",
+    "detailedExplanation": "Each class should implement one and only one ADT. If you find a class implementing more than one ADT, or can't determine what ADT the class implements, it's time to reorganize. The interface should be abstract enough that you don't need to think about how services are implemented while working toward a consistent end.",
+    "topic": "class-interfaces"
+  },
+  {
+    "question": "What does Code Complete recommend regarding magic numbers in code?",
+    "options": [
+      "Magic numbers are acceptable if they're well-documented with comments",
+      "Replace magic numbers with named constants that explain their meaning",
+      "Use magic numbers sparingly but consistently throughout the codebase",
+      "Magic numbers are fine for small values under 100 that are self-evident"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Magic numbers should be replaced with named constants that explain their meaning.",
+    "detailedExplanation": "Magic numbers like 100, 4.0, 12, 2, and 3 provide no context for their purpose. They should be replaced with named constants that explain their meaning, like MAXIMUM_ELEMENTS or POINTS_PER_INCH. This makes the code self-documenting and easier to modify if the values need to change.",
+    "topic": "magic-numbers"
+  },
+  {
+    "question": "What is the pseudocode programming process and how does it help with commenting?",
+    "options": [
+      "A method of writing code in multiple programming languages simultaneously",
+      "Writing high-level design in comments first, then filling in actual code",
+      "Using mathematical notation to express algorithms before implementation",
+      "Creating fake code that doesn't compile to test design concepts"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The pseudocode programming process involves writing high-level design in comments first.",
+    "detailedExplanation": "This process helps reduce commenting time because when you finish the code, the comments are already done. You gain design benefits by writing high-level pseudocode before low-level programming language code. It also helps ensure your code is well-structured and your comments explain the intent rather than just repeating the code.",
+    "topic": "pseudocode-process"
   }
 ]
