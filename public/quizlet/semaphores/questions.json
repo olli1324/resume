@@ -1,0 +1,652 @@
+[
+  {
+    "question": "What happens when a thread decrements a semaphore and the result is negative?",
+    "options": [
+      "The thread blocks itself and waits for another thread to increment the semaphore",
+      "The thread continues execution but with reduced priority in the scheduler",
+      "The thread raises an exception and terminates the entire program immediately",
+      "The thread automatically resets the semaphore value to zero and continues"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Condition variables allow threads to wait for arbitrary conditions while atomically releasing and reacquiring a mutex.",
+    "detailedExplanation": "Condition variables solve the problem of waiting for complex conditions while holding a mutex. With semaphores, a thread must release a mutex before waiting, creating a race condition where the condition might change before the wait begins. Condition variables atomically release the mutex and begin waiting, then reacquire the mutex when signaled. This enables safe implementation of patterns like 'wait until queue is not empty' or 'wait until specific thread count is reached'.",
+    "topic": "condition-variables"
+  },
+  {
+    "question": "In the barbershop problem, what happens when a customer arrives and all chairs are occupied?",
+    "options": [
+      "The customer waits in a standing area until a chair becomes available for sitting",
+      "The customer leaves the shop immediately without receiving a haircut (balks)",
+      "The customer joins a priority queue based on their arrival time at the shop",
+      "The customer receives immediate service from an additional emergency barber"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When the shop is at capacity, arriving customers must leave (balk) rather than wait.",
+    "detailedExplanation": "The barbershop problem models finite capacity constraints. When all n chairs (waiting room + barber chair) are occupied, additional customers cannot enter and must balk - they leave without service. This models real-world scenarios with space constraints. The solution uses a counter to track occupancy and checks capacity before allowing customers to enter. This balking behavior is different from blocking, where customers would wait indefinitely for space.",
+    "topic": "barbershop-problem"
+  },
+  {
+    "question": "What is the purpose of using local variables in multithreaded programs?",
+    "options": [
+      "Local variables provide better performance compared to shared variables in concurrent execution",
+      "Each thread gets its own copy of local variables, avoiding synchronization issues",
+      "Local variables are automatically protected by the runtime system against concurrent access",
+      "Local variables can be accessed from any thread, making them ideal for communication"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Local variables are thread-specific, eliminating the need for synchronization since there's no sharing.",
+    "detailedExplanation": "Local variables (typically allocated on each thread's stack) are private to each thread, so there's no sharing and no need for synchronization. This is in contrast to global variables or heap-allocated objects that are shared among threads. Using local variables when possible is a good strategy for avoiding synchronization complexity. However, threads often need to communicate and share data, so shared variables with proper synchronization are still necessary in most concurrent programs.",
+    "topic": "thread-local-variables"
+  },
+  {
+    "question": "What is the key challenge in the search-insert-delete problem?",
+    "options": [
+      "Implementing efficient search algorithms that work correctly with concurrent modifications",
+      "Allowing searchers with inserters, but requiring deleters to have exclusive access",
+      "Ensuring that all operations complete within bounded time limits regardless of contention",
+      "Maintaining sorted order of elements while allowing concurrent insertions and deletions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "It requires three-way categorical mutual exclusion: searchers can coexist with inserters, but deleters exclude all others.",
+    "detailedExplanation": "This problem extends the readers-writers pattern to three categories with different compatibility rules: (1) Searchers can run concurrently with each other and with inserters, (2) Inserters must exclude other inserters but can coexist with searchers, (3) Deleters must have exclusive access, excluding both searchers and inserters. This creates a more complex synchronization scenario requiring multiple lightswitch patterns and careful coordination between the different thread categories.",
+    "topic": "search-insert-delete"
+  },
+  {
+    "question": "Why is message passing sometimes preferred over shared memory for synchronization?",
+    "options": [
+      "Message passing provides significantly better performance than shared memory approaches",
+      "Message passing eliminates the possibility of race conditions and makes reasoning easier",
+      "Message passing automatically handles load balancing across multiple processor cores",
+      "Message passing requires less memory overhead than maintaining shared data structures"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Message passing avoids shared state, eliminating race conditions and making concurrent programs easier to reason about.",
+    "detailedExplanation": "Message passing synchronization avoids the complexities of shared memory by having threads communicate through explicit message sends and receives. Since there's no shared mutable state, there are no race conditions, no need for locks, and no possibility of deadlock from lock dependencies. Programs become more deterministic and easier to understand. However, message passing has its own trade-offs, including potential overhead from message copying and different types of blocking scenarios.",
+    "topic": "message-passing"
+  },
+  {
+    "question": "What does it mean for a semaphore to have 'structure semantics' versus 'object semantics'?",
+    "options": [
+      "Structure semantics support more complex data types while object semantics work only with integers",
+      "Structure semantics create copies when assigned, object semantics use references",
+      "Structure semantics are thread-safe by default while object semantics require explicit synchronization",
+      "Structure semantics provide better performance while object semantics offer more functionality"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Structure semantics means assignment creates a copy; object semantics means assignment creates another reference to the same object.",
+    "detailedExplanation": "This distinction is important for proper semaphore usage. With structure semantics (like in POSIX semaphores), assigning a semaphore to a variable creates a copy of the semaphore's internal state, which is almost always wrong since you end up with two independent semaphores. With object semantics (like in Java or Python), assignment creates another reference to the same underlying semaphore object. The book recommends always using pointers with structure-semantic semaphores to avoid accidental copying.",
+    "topic": "semaphore-implementation"
+  },
+  {
+    "question": "In the river crossing problem, what determines which combinations of hackers and serfs are safe?",
+    "options": [
+      "Equal numbers of hackers and serfs must be maintained at all times for safety",
+      "No more than one hacker or one serf can be alone with three of the opposite type",
+      "Hackers and serfs must alternate positions in the boat to prevent conflicts",
+      "The boat captain must be neutral (neither hacker nor serf) to maintain order"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Safety violations occur when one hacker is with three serfs, or one serf is with three hackers.",
+    "detailedExplanation": "The river crossing problem specifies that certain minority-majority combinations are unsafe: one hacker with three serfs, or one serf with three hackers. All other combinations of four people are safe: four hackers, four serfs, two of each type, etc. The solution must ensure that threads only board in safe combinations, using counters and queues to coordinate arrivals and departures while maintaining the safety constraints.",
+    "topic": "river-crossing"
+  },
+  {
+    "question": "What is the main synchronization challenge in the child care problem?",
+    "options": [
+      "Ensuring that children and adults alternate their entry into the child care facility",
+      "Maintaining the required adult-to-child supervision ratio at all times",
+      "Preventing more than the maximum number of people from entering simultaneously",
+      "Guaranteeing that adults spend equal amounts of time supervising different children"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The ratio constraint requires one adult for every three children always be maintained.",
+    "detailedExplanation": "The child care problem enforces a state regulation requiring a 1:3 adult-to-child ratio. This means adults create capacity for children (each adult allows 3 children), but adults cannot leave if it would violate the ratio. The synchronization challenge is ensuring this ratio is never violated while allowing maximum occupancy. Solutions typically use a semaphore to represent available 'child slots' that adults signal when entering and wait on when leaving.",
+    "topic": "child-care"
+  },
+  {
+    "question": "What makes the Senate bus problem different from a simple producer-consumer scenario?",
+    "options": [
+      "The bus has unlimited capacity while typical buffers have finite size constraints",
+      "All waiting riders must board before departure, and the bus leaves immediately if empty",
+      "Riders can choose which bus to board based on their destination preferences",
+      "Multiple buses operate simultaneously, requiring coordination between different routes"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The bus waits for all riders to board (up to capacity) before departing, or leaves immediately if no one is waiting.",
+    "detailedExplanation": "Unlike typical producer-consumer patterns where items are processed individually, the Senate bus problem requires batch processing: the bus must wait for all eligible riders (up to its capacity of 50) to board before departing. If no riders are waiting when the bus arrives, it departs immediately rather than waiting. This creates a synchronization challenge where the bus must know when all available riders have boarded, typically solved using counters and the 'pass the baton' pattern.",
+    "topic": "senate-bus"
+  },
+  {
+    "question": "Why is bounded waiting important in synchronization systems?",
+    "options": [
+      "It prevents threads from consuming excessive memory resources during synchronization operations",
+      "It ensures that waiting time for any thread is provably finite, preventing starvation",
+      "It provides better performance by limiting the number of context switches between threads",
+      "It guarantees that all threads complete their work within predetermined time limits"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Bounded waiting guarantees that no thread waits indefinitely, providing starvation-freedom.",
+    "detailedExplanation": "Bounded waiting is a fairness property that ensures any thread waiting for a resource will eventually get it within a finite, bounded amount of time. This prevents starvation scenarios where some threads wait indefinitely while others repeatedly access resources. Bounded waiting typically requires either fair scheduling algorithms or strong semaphores that maintain FIFO queues of waiting threads. It's essential for building systems where all threads are guaranteed to make progress.",
+    "topic": "bounded-waiting"
+  },
+  {
+    "question": "In the Faneuil Hall problem, what constraint governs when the judge can perform the confirmation ceremony?",
+    "options": [
+      "The judge must wait until at least half of the expected immigrants have checked in",
+      "All immigrants who have entered the building must also have checked in before confirmation",
+      "The judge can only perform confirmation during specific predetermined time windows",
+      "Confirmation requires exactly 50 immigrants to be present regardless of how many entered"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The judge cannot confirm until all immigrants who entered have also completed the check-in process.",
+    "detailedExplanation": "The Faneuil Hall problem requires that immigrants first enter, then check in, before the judge can perform confirmation. The synchronization constraint ensures that no immigrant who has entered is left out of the ceremony due to incomplete check-in. The solution tracks both entered and checked-in counts, and the judge waits if there's a discrepancy. This models real citizenship ceremonies where all attendees must complete registration before the official ceremony begins.",
+    "topic": "faneuil-hall"
+  },
+  {
+    "question": "What is the primary advantage of using wrapper functions around low-level synchronization primitives?",
+    "options": [
+      "Wrapper functions provide significantly better performance than direct primitive usage",
+      "They hide error checking code and provide more convenient, consistent interfaces",
+      "Wrapper functions automatically prevent common synchronization errors like deadlock",
+      "They enable synchronization primitives to work across different operating system platforms"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Wrappers encapsulate error handling and provide cleaner, more consistent APIs for synchronization operations.",
+    "detailedExplanation": "Low-level synchronization APIs often have awkward interfaces and require explicit error checking that clutters code and is easy to forget. Wrapper functions encapsulate this complexity, providing simpler interfaces and consistent error handling. For example, rather than manually checking pthread_mutex_lock return values everywhere, a wrapper can handle errors automatically. This makes code more readable and less error-prone while maintaining the same functionality.",
+    "topic": "synchronization-apis"
+  },
+  {
+    "question": "What is the key insight of the dining hall problem?",
+    "options": [
+      "Students must maintain a minimum group size to ensure social dining experience",
+      "No student should ever be left eating alone at a table due to social constraints",
+      "The dining hall must maintain equal numbers of students at each available table",
+      "Students must follow a specific seating protocol based on their arrival order"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The constraint prevents students from sitting alone, requiring coordination between arriving and departing students.",
+    "detailedExplanation": "The dining hall problem models a social constraint: no student should ever end up eating alone. This creates complex synchronization scenarios where students must coordinate: a student might not be able to leave if it would strand another student, and students might need to wait to ensure they won't be left alone. The solution tracks eating and ready-to-leave counts, using the 'I'll do it for you' pattern where students handle counter updates for others to avoid reacquiring locks.",
+    "topic": "dining-hall"
+  },
+  {
+    "question": "Why might spurious wakeups occur in condition variable implementations?",
+    "options": [
+      "Programming errors in application code that incorrectly signal condition variables",
+      "Hardware interrupts or system events can occasionally wake waiting threads",
+      "Memory corruption causes condition variables to lose their internal state information",
+      "Race conditions between multiple threads signaling the same condition variable simultaneously"
+    ],
+    "correctAnswer": 1,
+    "explanation": "System-level events like signals or hardware interrupts can wake threads even without explicit signaling.",
+    "detailedExplanation": "Spurious wakeups are a well-known phenomenon where threads waiting on condition variables wake up even though no thread explicitly signaled them. This can happen due to system signals, hardware interrupts, or implementation details of the threading library. It's why condition variable waits should always be in loops that recheck the actual condition - the standard pattern is 'while (!condition) wait()' rather than 'if (!condition) wait()'. This makes code robust against spurious wakeups.",
+    "topic": "spurious-wakeups"
+  },
+  {
+    "question": "What does 'categorical mutual exclusion' mean in synchronization?",
+    "options": [
+      "Only threads of the highest priority category are allowed to execute concurrently",
+      "Threads are divided into categories where some categories exclude others, but not within category",
+      "Each thread category has its own dedicated processor core for exclusive execution",
+      "Categories are processed in strict sequential order without any concurrent execution"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Different categories of threads have different exclusion rules - some exclude all others, some allow concurrency within their category.",
+    "detailedExplanation": "Categorical mutual exclusion is more nuanced than simple mutual exclusion. Instead of 'only one thread at a time', the rules depend on thread categories. For example, in readers-writers: readers exclude writers but not other readers, while writers exclude everyone. In search-insert-delete: searchers can coexist with inserters, inserters exclude other inserters, and deleters exclude everyone. This requires more sophisticated synchronization patterns than simple mutexes.",
+    "topic": "categorical-exclusion"
+  },
+  {
+    "question": "What is the main purpose of the 'preloaded turnstile' optimization?",
+    "options": [
+      "It reduces memory usage by sharing turnstile objects among multiple synchronization points",
+      "It reduces context switching by allowing multiple threads to pass through without blocking",
+      "It provides better error recovery when threads encounter exceptions at synchronization points",
+      "It enables automatic load balancing by distributing threads across multiple processor cores"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Preloading signals allows multiple threads to pass through quickly without individual signaling overhead.",
+    "detailedExplanation": "In the basic turnstile pattern, threads pass through one at a time, with each thread signaling the next. This can cause unnecessary context switching. The preloaded turnstile optimization has the controlling thread signal the semaphore multiple times (equal to the number of waiting threads), allowing all waiting threads to pass through quickly without individual signaling. This reduces the number of context switches and improves performance in barrier-like situations.",
+    "topic": "preloaded-turnstile"
+  },
+  {
+    "question": "Why is it generally unsafe to read the current value of a semaphore?",
+    "options": [
+      "Reading semaphore values requires special hardware instructions that are not universally available",
+      "The value can change between reading it and acting on it, leading to race conditions",
+      "Semaphore implementations store values in protected memory regions inaccessible to applications",
+      "Reading values interferes with the internal scheduling algorithms used by the semaphore"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The semaphore value can change immediately after reading, making any decisions based on the read value unreliable.",
+    "detailedExplanation": "Even if a semaphore provides a way to read its current value, this is generally unsafe in concurrent programs. By the time you read the value and make a decision based on it, other threads may have modified the semaphore, making your decision incorrect. For example, if you read that a semaphore has value 1 and decide it's safe to proceed, another thread might have decremented it to 0 before you act. The only safe operations are the atomic wait and signal operations that combine testing and modification.",
+    "topic": "semaphore-safety"
+  },
+  {
+    "question": "What is the significance of the rendezvous pattern in concurrent programming?",
+    "options": [
+      "It ensures that exactly two threads coordinate before either can proceed past a synchronization point",
+      "It provides a mechanism for broadcasting messages from one thread to multiple waiting threads",
+      "It implements a leader election algorithm to choose which thread coordinates a group operation",
+      "It enables automatic load balancing by pairing threads with complementary computational workloads"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Rendezvous creates a symmetric synchronization point where two threads must meet before either continues.",
+    "detailedExplanation": "The rendezvous pattern is fundamental for two-way synchronization where both threads have constraints on each other. Unlike one-way signaling where Thread A waits for Thread B to complete something, rendezvous ensures Thread A waits for Thread B AND Thread B waits for Thread A. Both must arrive at the synchronization point before either can proceed. This pattern is the building block for more complex synchronization scenarios and demonstrates the principle of symmetric coordination.",
+    "topic": "rendezvous-pattern"
+  },
+  {
+    "question": "In multi-car roller coaster problem, what additional constraint must be satisfied?",
+    "options": [
+      "All cars must maintain the same speed and follow identical routes around the track",
+      "Cars must unload in the same order they loaded, and only one car loads/unloads at a time",
+      "Each car must wait for the previous car to complete a full circuit before departing",
+      "The total number of passengers across all cars cannot exceed the track's maximum capacity"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Cars must unload in FIFO order and loading/unloading areas accommodate only one car at a time.",
+    "detailedExplanation": "The multi-car extension adds ordering constraints: since cars can't pass each other on the track, they must unload in the same order they loaded (FIFO). Additionally, the loading and unloading areas have space for only one car at a time. This requires coordination mechanisms to ensure cars access these areas in the correct order. The solution typically uses arrays of semaphores where each car waits for its turn and signals the next car when done.",
+    "topic": "multi-car-roller-coaster"
+  },
+  {
+    "question": "What makes the Modus Hall problem unique compared to other synchronization problems?",
+    "options": [
+      "It uses a voting system where threads must reach consensus before any can proceed",
+      "Control of the critical section is determined by majority rule between competing factions",
+      "It implements a time-sharing system where each faction gets fixed duration access periods",
+      "Priority is dynamically assigned based on how long each faction has been waiting"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The faction with more waiting threads gains control and can bar the other faction from entering.",
+    "detailedExplanation": "Modus Hall implements majority rule synchronization: when threads of two factions (Mods vs ResHall) meet, the faction with more threads forces the other to wait. This creates an interesting dynamic where a minority faction can accumulate numbers while waiting, eventually achieving majority and gaining control. The solution tracks counts of each faction and implements state transitions (neutral, faction A rules, faction B rules, transition to A, transition to B) to manage the majority-rule switching.",
+    "topic": "modus-hall"
+  },
+  {
+    "question": "Why is it important to avoid holding a mutex while waiting on a semaphore?",
+    "options": [
+      "This combination consumes excessive system resources and degrades overall performance",
+      "It can cause deadlock if other threads need the mutex to signal the semaphore",
+      "The operating system prohibits this pattern and will terminate threads that attempt it",
+      "Mutexes and semaphores use incompatible memory models that conflict when combined"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Deadlock can occur if other threads need to acquire the mutex to signal the semaphore you're waiting on.",
+    "detailedExplanation": "This is a classic deadlock pattern. If Thread A holds mutex M and waits on semaphore S, but Thread B needs mutex M to signal semaphore S, then Thread A will wait forever because Thread B can never acquire the mutex to do the signaling. This scenario appears in several problems in the book and is consistently identified as a source of deadlock. The solution is usually to release the mutex before waiting on the semaphore, though this can introduce other complexities.",
+    "topic": "deadlock-prevention"
+  },
+  {
+    "question": "In the context of semaphores, what does 'signal' and 'wait' represent?",
+    "options": [
+      "Signal decrements the semaphore value, wait increments the semaphore value",
+      "Signal increments the semaphore value, wait decrements the semaphore value", 
+      "Signal pauses execution temporarily, wait resumes execution from pause point",
+      "Signal broadcasts to all threads, wait listens for any broadcast messages"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Signal increments (increases by one) and wait decrements (decreases by one) the semaphore value.",
+    "detailedExplanation": "These are the two fundamental operations on semaphores. 'wait' decrements the semaphore value and may cause the thread to block if the result is negative. 'signal' increments the semaphore value and may unblock a waiting thread. The names can be confusing because they describe what the operations are often used for (signaling completion, waiting for resources) rather than what they actually do to the semaphore value.",
+    "topic": "semaphore-operations"
+  },
+  {
+    "question": "What is the primary purpose of mutual exclusion (mutex) in concurrent programming?",
+    "options": [
+      "To ensure multiple threads can access shared variables simultaneously for better performance",
+      "To guarantee that only one thread accesses a shared variable at a time",
+      "To automatically distribute workload evenly among all available processor cores",
+      "To prevent threads from terminating unexpectedly during critical operations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Mutex ensures exclusive access to shared resources, preventing race conditions.",
+    "detailedExplanation": "Mutual exclusion is crucial for preventing synchronization errors when multiple threads access shared variables. Without mutex, concurrent reads and writes can lead to inconsistent states, lost updates, or corrupted data. By ensuring only one thread can access the critical section at a time, mutex eliminates race conditions and maintains data integrity. This is typically implemented using a semaphore initialized to 1.",
+    "topic": "mutual-exclusion"
+  },
+  {
+    "question": "In the producer-consumer problem, what synchronization constraint must be enforced?",
+    "options": [
+      "Producers must always run before consumers to maintain proper data flow",
+      "Only one producer and one consumer can exist in the system simultaneously",
+      "Consumers cannot access the buffer when it's empty, and access must be exclusive",
+      "All producers must finish before any consumer can start processing items"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Consumers must wait when the buffer is empty, and buffer access needs to be exclusive.",
+    "detailedExplanation": "The producer-consumer problem has two main synchronization constraints: (1) Consumers cannot proceed when the buffer is empty - they must wait for producers to add items, and (2) Buffer access must be mutually exclusive since the buffer is in an inconsistent state during add/remove operations. Additionally, in finite buffer scenarios, producers must also wait when the buffer is full. These constraints are typically implemented using semaphores to track items and spaces, plus a mutex for exclusive access.",
+    "topic": "producer-consumer"
+  },
+  {
+    "question": "What is a deadlock in the context of concurrent programming?",
+    "options": [
+      "When threads execute slower than expected due to excessive context switching overhead",
+      "When a thread waits indefinitely while holding resources that other threads need",
+      "When the scheduler fails to allocate CPU time fairly among competing threads",
+      "When multiple threads finish execution simultaneously causing system resource conflicts"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Deadlock occurs when threads wait indefinitely in a circular dependency of resource requirements.",
+    "detailedExplanation": "Deadlock is a serious synchronization problem where two or more threads are blocked forever, each waiting for resources held by the others. This typically happens when threads acquire multiple resources in different orders, or when a thread waits on a semaphore while holding a mutex. For example, if Thread A holds Resource 1 and waits for Resource 2, while Thread B holds Resource 2 and waits for Resource 1, neither can proceed. Preventing deadlock requires careful design of resource acquisition patterns.",
+    "topic": "deadlock"
+  },
+  {
+    "question": "What does the 'turnstile' pattern accomplish in synchronization solutions?",
+    "options": [
+      "It automatically balances the computational load across multiple processor cores efficiently",
+      "It allows threads to pass through one at a time and can be locked to bar all threads",
+      "It ensures that thread execution order exactly matches the order of thread creation",
+      "It provides automatic error recovery when threads encounter unexpected runtime exceptions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A turnstile controls thread flow, allowing one-at-a-time passage and can be locked to block all threads.",
+    "detailedExplanation": "The turnstile pattern is a common synchronization idiom that uses a semaphore to control thread flow. In its open state, threads can pass through one at a time by waiting and immediately signaling the semaphore. When locked (semaphore value 0), all threads are blocked at the turnstile. This pattern is useful in barriers, preventing threads from proceeding until certain conditions are met, and in solutions where you need to stop the flow of threads temporarily.",
+    "topic": "synchronization-patterns"
+  },
+  {
+    "question": "In the readers-writers problem, what is the main synchronization challenge?",
+    "options": [
+      "Ensuring that readers process data in the exact order it was written by writers",
+      "Preventing writers from modifying data while readers are accessing it, but allowing concurrent reads",
+      "Guaranteeing that all reader threads complete before any writer thread can begin execution",
+      "Maintaining a fixed ratio between the number of active readers and writers"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Writers need exclusive access, but multiple readers can access data simultaneously safely.",
+    "detailedExplanation": "The readers-writers problem requires categorical mutual exclusion: writers must have exclusive access to prevent readers from seeing inconsistent data during modifications, but multiple readers can safely access the data concurrently since they don't modify it. The challenge is implementing this efficiently while avoiding starvation. Solutions typically use a lightswitch pattern where the first reader locks out writers and the last reader unlocks, allowing writer access.",
+    "topic": "readers-writers"
+  },
+  {
+    "question": "What is the 'lightswitch' pattern used for in synchronization?",
+    "options": [
+      "To automatically alternate execution between two different types of threads",
+      "To ensure the first thread in locks a semaphore and the last thread out unlocks it",
+      "To provide emergency termination capabilities when threads encounter critical errors",
+      "To monitor and log all semaphore operations for debugging and performance analysis"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Lightswitch manages group access where the first thread locks and the last thread unlocks a semaphore.",
+    "detailedExplanation": "The lightswitch pattern is named by analogy with room lighting - the first person in turns on the light, and the last person out turns it off. In synchronization, this means the first thread of a category (like readers) acquires a semaphore that excludes another category (like writers), and the last thread of that category releases the semaphore. This is implemented by maintaining a counter protected by a mutex, where threads check if they're the first (counter becomes 1) or last (counter becomes 0) in their group.",
+    "topic": "synchronization-patterns"
+  },
+  {
+    "question": "What problem does the 'scoreboard' pattern solve in concurrent programming?",
+    "options": [
+      "It provides real-time performance metrics for thread execution and resource utilization",
+      "It allows threads to check shared state variables and react accordingly when holding a mutex",
+      "It automatically distributes computational tasks among threads based on their processing capabilities",
+      "It maintains historical logs of all thread interactions for post-execution analysis"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Scoreboard lets threads examine and update shared state variables while protected by a mutex.",
+    "detailedExplanation": "The scoreboard pattern uses shared variables (like counters) protected by a mutex to maintain system state that threads can check and update. Threads acquire the mutex, examine the 'scoreboard' variables to understand the current situation, and then decide how to proceed based on what they find. This pattern is used in many complex synchronization problems where threads need to coordinate based on the current state of the system, such as in the cigarette smokers problem or dining philosophers.",
+    "topic": "synchronization-patterns"
+  },
+  {
+    "question": "In barrier synchronization, what happens when the nth thread arrives?",
+    "options": [
+      "Only the nth thread is allowed to proceed while others remain blocked indefinitely",
+      "The nth thread signals all waiting threads, allowing all n threads to proceed together",
+      "The nth thread becomes the leader and controls the execution order of other threads",
+      "The system resets and waits for n more threads to arrive before allowing any to proceed"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The nth thread triggers the barrier release, allowing all n threads to proceed past the synchronization point.",
+    "detailedExplanation": "A barrier ensures that no thread proceeds past a certain point until all n threads have reached that point. The first n-1 threads that arrive are blocked. When the nth (final) thread arrives, it signals the barrier which releases all the waiting threads. This creates a synchronization point where all threads rendezvous before continuing execution. Barriers are commonly used in parallel algorithms where threads must complete one phase before beginning the next.",
+    "topic": "barrier-synchronization"
+  },
+  {
+    "question": "What is starvation in the context of thread synchronization?",
+    "options": [
+      "When threads consume excessive CPU resources causing system performance degradation",
+      "When a thread waits indefinitely while other threads continue to make progress",
+      "When threads fail to release acquired resources after completing their critical sections",
+      "When the number of active threads exceeds the system's maximum threading capacity"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Starvation occurs when a thread is perpetually denied access to resources it needs.",
+    "detailedExplanation": "Starvation happens when a thread waits indefinitely for a resource or condition while other threads continue to proceed. Unlike deadlock where all involved threads are stuck, in starvation some threads make progress while others are consistently bypassed. This can occur in readers-writers scenarios where a continuous stream of readers prevents writers from ever accessing the shared resource, or in semaphore implementations without fairness guarantees where some threads might never be selected when the semaphore is signaled.",
+    "topic": "starvation"
+  },
+  {
+    "question": "What is the key difference between strong and weak semaphores?",
+    "options": [
+      "Strong semaphores support larger maximum values while weak semaphores are limited to small integers",
+      "Strong semaphores guarantee FIFO ordering of waiting threads, weak semaphores don't guarantee order",
+      "Strong semaphores can be shared across processes while weak semaphores are thread-local only",
+      "Strong semaphores provide atomic operations while weak semaphores may have race conditions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Strong semaphores guarantee bounded waiting time through FIFO queuing, weak semaphores only guarantee eventual progress.",
+    "detailedExplanation": "The distinction relates to fairness guarantees. Weak semaphores only guarantee that when a thread signals, some waiting thread will be awakened, but don't specify which one. This can lead to starvation where some threads wait indefinitely. Strong semaphores maintain a FIFO queue, ensuring that threads are awakened in the order they started waiting, providing bounded waiting time. Strong semaphores make it much easier to prove that solutions are starvation-free.",
+    "topic": "semaphore-properties"
+  },
+  {
+    "question": "In the dining philosophers problem, what causes the classic deadlock scenario?",
+    "options": [
+      "Philosophers pick up both forks simultaneously without checking availability first",
+      "All philosophers pick up their right fork at the same time, then wait for the left fork",
+      "The table has an insufficient number of forks relative to the number of philosophers",
+      "Philosophers hold forks indefinitely without ever putting them down to eat"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Circular wait occurs when all philosophers simultaneously hold one fork and wait for another.",
+    "detailedExplanation": "The classic deadlock in dining philosophers occurs when all five philosophers simultaneously pick up their right fork, then each tries to pick up their left fork. Since each philosopher's left fork is another philosopher's right fork, and all right forks are already taken, every philosopher waits indefinitely for a fork that will never become available. This creates a circular dependency where each philosopher is waiting for a resource held by the next philosopher in the circle.",
+    "topic": "dining-philosophers"
+  },
+  {
+    "question": "What synchronization constraint applies in the H2O (water molecule) problem?",
+    "options": [
+      "Hydrogen threads must always execute before oxygen threads to maintain proper chemical bonding",
+      "Threads must bond in complete molecules: two hydrogen and one oxygen before any can proceed",
+      "All oxygen threads must complete before any hydrogen threads can start their bonding process",
+      "Exactly three threads must be present in the system at any time during execution"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Threads must form complete H2O molecules (2 hydrogen + 1 oxygen) before proceeding past the barrier.",
+    "detailedExplanation": "The H2O problem requires that threads wait until they can form complete water molecules. Two hydrogen threads and one oxygen thread must arrive before any of them can proceed to bond. This creates groups of three threads that must synchronize together. The solution typically uses counters to track arriving threads and semaphores to queue threads until a complete molecule can be formed. Once bonded, all three threads proceed through a barrier before the next molecule can begin forming.",
+    "topic": "h2o-problem"
+  },
+  {
+    "question": "What is the 'Pass the baton' pattern in synchronization?",
+    "options": [
+      "A scheduling algorithm that rotates CPU time equally among all competing threads",
+      "A pattern where one thread acquires a mutex and a different thread releases it",
+      "A load balancing technique that distributes tasks across multiple processor cores",
+      "A debugging method that traces execution flow through multiple threaded functions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Pass the baton allows one thread to acquire a lock and another thread to release it.",
+    "detailedExplanation": "This pattern breaks the usual rule that the same thread must acquire and release a mutex. Instead, a mutex can be 'passed' from one thread to another, where the first thread acquires it and a different thread releases it. This is useful in complex synchronization scenarios like the sushi bar problem, where threads need to maintain exclusive access across multiple operations performed by different threads. It requires careful programming to ensure the transfer is understood and documented.",
+    "topic": "synchronization-patterns"
+  },
+  {
+    "question": "What does it mean for operations to be atomic in concurrent programming?",
+    "options": [
+      "Operations are executed using the smallest possible memory allocation units",
+      "Operations cannot be interrupted and appear to execute as a single, indivisible step",
+      "Operations are automatically distributed across multiple CPU cores for parallel execution",
+      "Operations are guaranteed to complete within a specific time limit regardless of system load"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Atomic operations execute completely without interruption, appearing indivisible to other threads.",
+    "detailedExplanation": "Atomicity means an operation either completes entirely or doesn't happen at all - there's no visible intermediate state. In concurrent programming, this is crucial because non-atomic operations like incrementing a variable (read-modify-write) can be interrupted between steps, leading to race conditions. For example, if two threads increment a counter simultaneously, without atomicity they might both read the same value, increment it, and write back the same result, effectively losing one increment. Hardware often provides atomic instructions, or we use synchronization primitives to make sequences of operations appear atomic.",
+    "topic": "atomicity"
+  },
+  {
+    "question": "What is the main challenge in the Santa Claus problem?",
+    "options": [
+      "Ensuring that reindeer always have priority over elves when both are waiting for Santa",
+      "Santa must be awakened by either all 9 reindeer OR exactly 3 elves, with reindeer taking priority",
+      "Maintaining a fixed schedule where Santa alternates between helping elves and preparing sleighs",
+      "Preventing deadlock when both reindeer and elves arrive at Santa's workshop simultaneously"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Santa responds to two different conditions: all 9 reindeer returning OR 3 elves needing help, with reindeer prioritized.",
+    "detailedExplanation": "The Santa Claus problem involves multiple triggering conditions and priority handling. Santa sleeps until awakened by either: (1) all 9 reindeer returning from vacation, or (2) exactly 3 elves having problems. If both conditions occur simultaneously, reindeer take priority and elves must wait. The solution requires careful coordination to ensure Santa responds to the right condition, handles groups of the correct size, and maintains priority rules while avoiding starvation of either group.",
+    "topic": "santa-claus-problem"
+  },
+  {
+    "question": "In the cigarette smokers problem, why is the naive solution problematic?",
+    "options": [
+      "The agent doesn't produce ingredients fast enough to keep all smokers supplied continuously",
+      "Multiple smokers might wake up for the same ingredients, leading to deadlock",
+      "The problem specification doesn't clearly define the required synchronization constraints",
+      "Smokers consume ingredients faster than the agent can produce them causing starvation"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Multiple smokers can be awakened by the same signal, causing them to compete for ingredients and potentially deadlock.",
+    "detailedExplanation": "The naive approach where each smoker waits directly on ingredient semaphores fails because when the agent signals two ingredients, multiple smokers might wake up. For example, if tobacco and paper are signaled, both the smoker-with-matches and smoker-with-tobacco might wake up and try to take the same ingredients. This can lead to deadlock when they each take one ingredient and wait for the other. The solution requires pusher threads that act as intermediaries, ensuring only the correct smoker is awakened for each ingredient combination.",
+    "topic": "cigarette-smokers"
+  },
+  {
+    "question": "What does a reusable barrier accomplish that a simple barrier cannot?",
+    "options": [
+      "It supports a variable number of threads, while simple barriers require a fixed count",
+      "It allows the same barrier to be used multiple times in a loop without becoming permanently open",
+      "It provides better performance by reducing the overhead of barrier synchronization operations",
+      "It prevents starvation by ensuring fair ordering of threads at the barrier synchronization point"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Reusable barriers can be used repeatedly in loops, resetting themselves after all threads pass through.",
+    "detailedExplanation": "A simple barrier opens when all threads arrive and stays open. This works for one-time synchronization but fails in loops where threads need to synchronize repeatedly. A reusable barrier automatically resets itself after all threads have passed through, becoming ready for the next round of synchronization. This typically requires a two-phase approach: first ensuring all threads have passed through, then resetting the barrier state before any thread can loop back and encounter it again.",
+    "topic": "reusable-barriers"
+  },
+  {
+    "question": "What is the purpose of the multiplex pattern in synchronization?",
+    "options": [
+      "To automatically distribute incoming requests across multiple identical worker threads",
+      "To allow a limited number of threads to access a resource concurrently",
+      "To ensure that threads execute in a specific predetermined order without deviation",
+      "To provide fault tolerance by maintaining backup copies of critical shared data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Multiplex controls the number of threads that can access a resource simultaneously.",
+    "detailedExplanation": "The multiplex pattern generalizes mutual exclusion by allowing up to n threads (instead of just 1) to access a resource concurrently. It's implemented using a semaphore initialized to n, where each thread must acquire the semaphore before entering and release it when leaving. This is useful for resources that can handle limited concurrency, like a dining hall with 50 seats or a parking lot with 100 spaces. The semaphore value represents available capacity.",
+    "topic": "multiplex-pattern"
+  },
+  {
+    "question": "What makes the unisex bathroom problem different from simple mutual exclusion?",
+    "options": [
+      "It requires tracking the exact identity of each thread currently using the bathroom facility",
+      "It allows multiple threads of the same type while excluding threads of different types",
+      "It implements a time-based access control system with fixed duration limits",
+      "It provides priority access to certain threads based on their arrival order"
+    ],
+    "correctAnswer": 1,
+    "explanation": "It's categorical mutual exclusion: multiple men OR multiple women, but not both simultaneously.",
+    "detailedExplanation": "The unisex bathroom problem is an example of categorical mutual exclusion, which is more complex than simple mutual exclusion. Instead of allowing only one thread at a time, it allows multiple threads of the same category (men or women) while completely excluding the other category. This requires tracking not just whether the resource is in use, but which category is currently using it. Solutions typically use lightswitch patterns to let the first thread of a category exclude the other category.",
+    "topic": "categorical-exclusion"
+  },
+  {
+    "question": "In the context of semaphores, what does non-determinism mean?",
+    "options": [
+      "The semaphore implementation contains bugs that cause unpredictable behavior patterns",
+      "It's impossible to predict the execution order of concurrent threads by examining the program",
+      "Semaphore operations sometimes fail randomly due to underlying hardware limitations",
+      "The programmer must manually specify the exact scheduling order for all thread operations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Non-determinism means the execution order of concurrent threads cannot be predicted from the program code.",
+    "detailedExplanation": "Non-determinism is a fundamental characteristic of concurrent programs. Even with identical input and code, different runs can produce different thread interleavings and potentially different outputs. This happens because thread scheduling depends on many factors outside the program's control: other processes, interrupts, cache states, etc. While synchronization primitives like semaphores ensure correctness properties (like mutual exclusion), they don't eliminate non-determinism - multiple correct execution orders usually exist.",
+    "topic": "non-determinism"
+  },
+  {
+    "question": "What is the key insight behind the 'I'll do it for you' pattern?",
+    "options": [
+      "One thread delegates its entire workload to another thread for better performance",
+      "A thread that already holds a mutex performs work on behalf of waiting threads",
+      "Threads automatically redistribute tasks based on their current processing capabilities",
+      "The operating system kernel handles thread synchronization without programmer intervention"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A thread holding the mutex does work for other threads, avoiding the need for them to reacquire the mutex.",
+    "detailedExplanation": "This pattern optimizes scenarios where threads would otherwise need to give up a mutex, wait, then reacquire it to do work. Instead, the thread that already holds the mutex does the work on behalf of waiting threads before releasing the mutex. This is seen in problems like the sushi bar, where a departing customer updates counters for arriving customers rather than making them acquire the mutex themselves. This reduces lock contention and can improve performance.",
+    "topic": "synchronization-patterns"
+  },
+  {
+    "question": "What is the primary difference between serialization and mutual exclusion?",
+    "options": [
+      "Serialization converts data structures to portable formats, mutual exclusion prevents concurrent access",
+      "Serialization ensures Event A happens before Event B, mutual exclusion prevents simultaneous access",
+      "Serialization is used for network communication, mutual exclusion is for local thread coordination",
+      "Serialization handles multiple events, mutual exclusion only works with exactly two threads"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Serialization enforces ordering (A before B), while mutual exclusion prevents simultaneous access.",
+    "detailedExplanation": "These are two fundamental synchronization patterns with different goals. Serialization ensures that one event happens before another - for example, ensuring that data is written before it's read. Mutual exclusion ensures that events don't happen simultaneously - for example, preventing two threads from modifying the same variable at the same time. Serialization uses semaphores initialized to 0 (signaling pattern), while mutual exclusion uses semaphores initialized to 1 (locking pattern).",
+    "topic": "synchronization-concepts"
+  },
+  {
+    "question": "Why might a thread starve in the readers-writers problem?",
+    "options": [
+      "Writers take too long to complete their operations, blocking readers indefinitely",
+      "A continuous stream of readers can prevent writers from ever accessing the shared resource",
+      "The shared resource becomes corrupted, making it impossible for any thread to proceed",
+      "Too many threads are created, exhausting system resources and causing failures"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Continuous reader arrivals can perpetually delay writer access since readers don't exclude each other.",
+    "detailedExplanation": "In the basic readers-writers solution, as long as there's at least one reader in the critical section, new readers can enter immediately while writers must wait. If readers arrive frequently enough that there's always at least one reader present, writers will never get access to the shared resource. This is a form of starvation where readers collectively (though unintentionally) prevent writers from proceeding. Solutions involve adding mechanisms to give writers priority or ensure fair access.",
+    "topic": "readers-writers-starvation"
+  },
+  {
+    "question": "What is a rendezvous in synchronization terms?",
+    "options": [
+      "A meeting point where exactly two threads wait for each other before either can proceed",
+      "A broadcast mechanism where one thread signals multiple waiting threads simultaneously",
+      "A priority queue system that orders thread execution based on their importance levels",
+      "A load balancing algorithm that distributes work evenly among available threads"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A rendezvous is a synchronization point where two threads must both arrive before either can proceed.",
+    "detailedExplanation": "Rendezvous is a symmetric synchronization pattern where two threads must meet at a specific point before either can continue. Neither thread can proceed past the rendezvous point until both have arrived. This is implemented using two semaphores, where each thread signals one semaphore (indicating its arrival) and waits on the other semaphore (waiting for the other thread). This ensures mutual dependency: Thread A waits for Thread B, and Thread B waits for Thread A.",
+    "topic": "rendezvous"
+  },
+  {
+    "question": "In the roller coaster problem, what constraint must be satisfied before the car can depart?",
+    "options": [
+      "All passengers must have valid tickets and safety equipment before boarding begins",
+      "The car must be completely full with exactly C passengers before it can leave the station",
+      "At least half the maximum capacity must be filled to make the ride economically viable",
+      "The previous car must return and unload all passengers before the next car can depart"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The car can only depart when it has reached its full capacity of C passengers.",
+    "detailedExplanation": "The roller coaster problem models a scenario where the car cannot operate unless it's completely full. This creates a synchronization point where C passengers must board before the car can depart. The solution coordinates between passenger threads (who want to board) and the car thread (which waits for a full load). Passengers cannot board until the car invokes 'load', and the car cannot depart until exactly C passengers have boarded and signaled completion.",
+    "topic": "roller-coaster"
+  },
+  {
+    "question": "What is the fundamental problem with concurrent updates to shared variables?",
+    "options": [
+      "Updates consume too much memory bandwidth, degrading overall system performance significantly",
+      "Read-modify-write operations can be interleaved, causing lost updates and inconsistent state",
+      "Shared variables cannot be accessed from multiple threads due to memory protection mechanisms",
+      "The compiler optimizations interfere with the intended execution order of update operations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Non-atomic read-modify-write sequences can be interrupted, leading to race conditions and lost updates.",
+    "detailedExplanation": "Concurrent updates are problematic because operations like incrementing a variable actually involve multiple steps: read the current value, calculate the new value, and write it back. If two threads perform these steps concurrently, their operations can interleave - both might read the same initial value, increment it, and write back the same result, effectively losing one of the updates. This race condition is why synchronization mechanisms like mutexes are necessary to make update sequences atomic.",
+    "topic": "concurrent-updates"
+  },
+  {
+    "question": "What does the term 'critical section' refer to in concurrent programming?",
+    "options": [
+      "Code sections that handle critical system errors and provide emergency recovery procedures",
+      "The most performance-sensitive parts of code that require careful optimization for speed",
+      "Code that accesses shared resources and must be executed with mutual exclusion",
+      "Program sections that contain the core business logic and primary application functionality"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Critical sections contain code that accesses shared resources and requires exclusive access.",
+    "detailedExplanation": "A critical section is any code segment that accesses shared resources (variables, files, devices, etc.) that could be corrupted by concurrent access. These sections must be protected by synchronization mechanisms like mutexes to ensure only one thread executes them at a time. The name emphasizes that it's critical to prevent concurrent access to maintain correctness. Identifying and properly protecting critical sections is fundamental to writing correct concurrent programs.",
+    "topic": "critical-section"
+  },
+  {
+    "question": "Why is the two-phase barrier solution necessary for reusable barriers?",
+    "options": [
+      "It provides better error handling and recovery capabilities when threads encounter exceptions",
+      "It prevents fast threads from racing ahead and entering the next barrier iteration prematurely",
+      "It improves performance by allowing parallel execution during both barrier phases",
+      "It ensures that thread priorities are properly maintained throughout the barrier synchronization"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Two phases prevent threads from racing around the loop and entering the barrier again before it's properly reset.",
+    "detailedExplanation": "In a reusable barrier used in loops, there's a race condition risk: after all threads pass the barrier, fast threads might loop back and enter the barrier again before it's reset, potentially getting a lap ahead of slower threads. The two-phase approach solves this by using two turnstiles. When all threads reach the first turnstile, it closes the second turnstile (preventing anyone from looping back) and opens the first. When all threads pass the second turnstile, it closes the first (resetting for next iteration) and opens the second.",
+    "topic": "reusable-barriers"
+  }
+]

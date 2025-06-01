@@ -1,0 +1,639 @@
+[
+  {
+    "question": "What are the two main features that a scheduling scheme provides for real-time systems?",
+    "options": [
+      "An algorithm for ordering system resources and a means of predicting worst-case behavior",
+      "Priority assignment and deadline management for all tasks in the system",
+      "Context switching optimization and memory management for concurrent processes",
+      "Resource allocation strategies and inter-task communication protocols"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A scheduling scheme provides resource ordering and worst-case behavior prediction.",
+    "detailedExplanation": "According to the document, scheduling schemes have two key features: (1) An algorithm for ordering the use of system resources (particularly CPUs), and (2) A means of predicting the worst-case behavior of the system when the scheduling algorithm is applied. These predictions can then confirm that temporal requirements are satisfied.",
+    "topic": "scheduling-fundamentals"
+  },
+  {
+    "question": "In a cyclic executive approach, what is the relationship between minor cycles and the major cycle?",
+    "options": [
+      "Minor cycles are independent execution units that run parallel to major cycles",
+      "The major cycle consists of a number of minor cycles, each of fixed duration",
+      "Major cycles contain variable-length minor cycles that adapt to task requirements",
+      "Minor cycles are backup procedures that execute when major cycles fail"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The major cycle is composed of multiple minor cycles with fixed durations.",
+    "detailedExplanation": "In the cyclic executive approach, the complete table of procedure calls is known as the major cycle, which typically consists of a number of minor cycles each of fixed duration. For example, four minor cycles of 25 ms duration would make up a 100 ms major cycle, with a clock interrupt every 25 ms enabling the scheduler to loop through the four minor cycles.",
+    "topic": "cyclic-executive"
+  },
+  {
+    "question": "What is a major limitation of the cyclic executive approach regarding task periods?",
+    "options": [
+      "All task periods must be prime numbers to avoid scheduling conflicts",
+      "Task periods must be exponentially increasing to maintain system stability",
+      "All task periods must be a multiple of the minor cycle time",
+      "Task periods must be identical across all tasks in the system"
+    ],
+    "correctAnswer": 2,
+    "explanation": "All task periods must be multiples of the minor cycle time in cyclic executives.",
+    "detailedExplanation": "This represents one of the major drawbacks of the cyclic executive approach. The requirement that all task periods must be a multiple of the minor cycle time severely restricts the flexibility of the system and makes it difficult to accommodate tasks with arbitrary timing requirements.",
+    "topic": "cyclic-executive-limitations"
+  },
+  {
+    "question": "In Fixed-Priority Scheduling (FPS), what determines the priority assignment in rate monotonic scheduling?",
+    "options": [
+      "The computational complexity and resource requirements of each task",
+      "The importance of the task to the overall system functionality",
+      "The period of the task - shorter periods get higher priorities",
+      "The deadline requirements relative to the system's critical path"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Rate monotonic assigns higher priorities to tasks with shorter periods.",
+    "detailedExplanation": "Rate monotonic priority assignment is optimal for FPS with the simple task model. Each task is assigned a unique priority based on its period: the shorter the period, the higher the priority. For two tasks i and j, if Ti < Tj then Pi > Pj. This assignment is optimal in the sense that if any task set can be scheduled using preemptive priority-based scheduling with a fixed-priority assignment scheme, then it can also be scheduled with rate monotonic assignment.",
+    "topic": "fixed-priority-scheduling"
+  },
+  {
+    "question": "What is the Liu and Layland utilization bound for N tasks in FPS scheduling?",
+    "options": [
+      "U ≤ N(2^(1/N) - 1), approaching 69.3% for large N",
+      "U ≤ N(1 - 2^(-1/N)), approaching 63.2% for large N",
+      "U ≤ N(√2 - 1), approaching 41.4% for large N",
+      "U ≤ N(1/2^N), approaching 50% for large N"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The Liu and Layland bound is N(2^(1/N) - 1), asymptotically approaching 69.3%.",
+    "detailedExplanation": "Liu and Layland (1973) showed that for FPS with rate monotonic priority ordering, if the utilization condition U ≤ N(2^(1/N) - 1) is satisfied, then all N tasks will meet their deadlines. For large N, this bound asymptotically approaches 69.3%. This means any task set with combined utilization less than 69.3% will always be schedulable by preemptive priority-based scheduling with rate monotonic priorities.",
+    "topic": "utilization-based-tests"
+  },
+  {
+    "question": "In Response Time Analysis (RTA), what does the interference term represent?",
+    "options": [
+      "The total execution time of all lower-priority tasks in the system",
+      "The time spent executing higher-priority tasks when a task is runnable",
+      "The overhead associated with context switching between different tasks",
+      "The blocking time caused by shared resource access conflicts"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Interference is the time spent executing higher-priority tasks while a lower-priority task is runnable.",
+    "detailedExplanation": "In RTA, interference (I) represents the maximum time spent executing higher-priority tasks when a lower-priority task is runnable. For a task i, the worst-case response time is Ri = Ci + Ii, where Ci is the task's own computation time and Ii is the interference from all higher-priority tasks. This interference occurs when higher-priority tasks are released during the execution window of the lower-priority task.",
+    "topic": "response-time-analysis"
+  },
+  {
+    "question": "What is the formula for calculating the number of releases of a higher-priority task j within the response time window of task i?",
+    "options": [
+      "⌊Ri / Tj⌋ + 1",
+      "⌈Ri / Tj⌉",
+      "Ri × Tj",
+      "⌊Tj / Ri⌋"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The ceiling function ⌈Ri / Tj⌉ gives the number of releases of task j.",
+    "detailedExplanation": "The ceiling function ⌈Ri / Tj⌉ calculates the number of times higher-priority task j will be released during the response time window [0, Ri) of task i. The ceiling function gives the smallest integer greater than the fractional number, so if Ri = 15 and Tj = 6, there are ⌈15/6⌉ = 3 releases of task j (at times 0, 6, and 12). Each release imposes an interference of Cj.",
+    "topic": "response-time-calculations"
+  },
+  {
+    "question": "What distinguishes sporadic tasks from periodic tasks in real-time scheduling?",
+    "options": [
+      "Sporadic tasks have variable execution times while periodic tasks have fixed execution times",
+      "Sporadic tasks are triggered by external events while periodic tasks run continuously",
+      "Sporadic tasks have a minimum inter-arrival time while periodic tasks have exact periods",
+      "Sporadic tasks have higher priority levels compared to periodic tasks in the system"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Sporadic tasks have minimum inter-arrival times rather than exact periods.",
+    "detailedExplanation": "The key difference is that sporadic tasks are characterized by a minimum inter-arrival interval T, meaning they are guaranteed not to arrive more than once in any T time interval. They may arrive much less frequently, but the scheduling analysis ensures the maximum rate can be sustained. Periodic tasks, in contrast, arrive at exact intervals of T time units.",
+    "topic": "sporadic-tasks"
+  },
+  {
+    "question": "What is priority inversion in real-time systems?",
+    "options": [
+      "When a higher-priority task temporarily reduces its priority to avoid resource conflicts",
+      "When a high-priority task is blocked by a lower-priority task holding a shared resource",
+      "When the system scheduler reverses priority assignments to balance system load",
+      "When multiple tasks of the same priority compete for the same system resources"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Priority inversion occurs when high-priority tasks are blocked by lower-priority tasks.",
+    "detailedExplanation": "Priority inversion happens when a high-priority task must wait for a lower-priority task to complete some required computation, typically because the lower-priority task holds a lock on a shared resource that the high-priority task needs. This undermines the priority model and can lead to severe timing problems, as demonstrated by the Mars Pathfinder mission where priority inversion caused system resets.",
+    "topic": "priority-inversion"
+  },
+  {
+    "question": "How does priority inheritance solve the priority inversion problem?",
+    "options": [
+      "By permanently raising the priority of all tasks that access shared resources",
+      "By temporarily giving the blocking task the priority of the highest blocked task",
+      "By preventing lower-priority tasks from accessing shared resources entirely",
+      "By creating separate resource pools for different priority levels"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Priority inheritance temporarily elevates the blocking task's priority to match the blocked task.",
+    "detailedExplanation": "With priority inheritance, if task p is suspended waiting for task q to complete some computation, then task q's priority becomes equal to task p's priority (if it was lower). The priority of a task becomes the maximum of its own default priority and the priorities of all tasks currently dependent upon it. This ensures that the blocking task can complete quickly and release the resource.",
+    "topic": "priority-inheritance"
+  },
+  {
+    "question": "What is the main advantage of the Immediate Ceiling Priority Protocol (ICPP) over basic priority inheritance?",
+    "options": [
+      "ICPP requires less memory overhead for tracking priority relationships",
+      "ICPP prevents deadlocks while basic priority inheritance cannot",
+      "ICPP raises task priority immediately upon resource lock, preventing blocking during execution",
+      "ICPP supports nested resource locking while basic inheritance does not"
+    ],
+    "correctAnswer": 2,
+    "explanation": "ICPP raises priority immediately when locking resources, preventing mid-execution blocking.",
+    "detailedExplanation": "ICPP raises a task's priority to the resource ceiling value as soon as it locks the resource, rather than only when it's actually blocking a higher-priority task. This means a task will only suffer blocking at the very beginning of its execution. Once the task starts executing, all resources it needs must be free, ensuring no further blocking occurs during execution.",
+    "topic": "ceiling-protocols"
+  },
+  {
+    "question": "For tasks with deadlines less than periods (D < T), which priority assignment is optimal?",
+    "options": [
+      "Rate Monotonic Priority Ordering (RMPO)",
+      "Earliest Deadline First (EDF) scheduling",
+      "Deadline Monotonic Priority Ordering (DMPO)",
+      "Value-Based Scheduling (VBS) approach"
+    ],
+    "correctAnswer": 2,
+    "explanation": "DMPO is optimal when deadlines are less than periods.",
+    "detailedExplanation": "When D < T, Deadline Monotonic Priority Ordering (DMPO) is optimal. In DMPO, the fixed priority of a task is inversely proportional to its relative deadline: if Di < Dj then Pi > Pj. This is a generalization of rate monotonic scheduling. The optimality proof follows the same pattern as for rate monotonic, showing that any schedulable task set under some priority scheme is also schedulable under DMPO.",
+    "topic": "deadline-monotonic"
+  },
+  {
+    "question": "What is the key characteristic that distinguishes EDF scheduling from fixed-priority scheduling?",
+    "options": [
+      "EDF uses static priorities assigned before runtime while FPS uses dynamic priorities",
+      "EDF schedules based on absolute deadlines computed at runtime while FPS uses static priorities",
+      "EDF requires all tasks to have identical periods while FPS allows variable periods",
+      "EDF optimizes for throughput while FPS optimizes for response time"
+    ],
+    "correctAnswer": 1,
+    "explanation": "EDF uses dynamic scheduling based on absolute deadlines computed at runtime.",
+    "detailedExplanation": "EDF (Earliest Deadline First) scheduling executes tasks in order of their absolute deadlines - the task with the shortest (nearest) deadline runs first. While it's usual to know relative deadlines of each task (e.g., 25 ms after release), the absolute deadlines are computed at runtime, making EDF a dynamic scheduling scheme. This contrasts with FPS where priorities are assigned pre-runtime and remain static.",
+    "topic": "edf-scheduling"
+  },
+  {
+    "question": "What is the utilization bound for EDF scheduling with the simple task model (D = T)?",
+    "options": [
+      "69.3% for large numbers of tasks",
+      "82.8% for two tasks, decreasing with more tasks",
+      "100% - any task set with utilization ≤ 1 is schedulable",
+      "50% regardless of the number of tasks"
+    ],
+    "correctAnswer": 2,
+    "explanation": "EDF can schedule any task set with total utilization ≤ 100%.",
+    "detailedExplanation": "For the simple task model with D = T, EDF has a utilization bound of 100%. The schedulability test is simply Σ(Ci/Ti) ≤ 1. This is much simpler and less restrictive than the corresponding FPS test. As long as the total utilization of the task set is less than the total capacity of the processor, all deadlines will be met under EDF scheduling.",
+    "topic": "edf-utilization"
+  },
+  {
+    "question": "What is Processor Demand Criteria (PDC) used for in EDF analysis?",
+    "options": [
+      "To calculate the exact response time for each individual task",
+      "To determine the optimal priority assignment for fixed-priority systems",
+      "To check schedulability by analyzing processor load at deadline points",
+      "To optimize context switching overhead in dynamic scheduling systems"
+    ],
+    "correctAnswer": 2,
+    "explanation": "PDC analyzes processor load at deadline points to verify schedulability.",
+    "detailedExplanation": "PDC (Processor Demand Criteria) checks schedulability by calculating the load h(t) at any time t - the amount of work that must be completed before t (all jobs with absolute deadlines before or at t). The requirement for schedulability is that h(t) ≤ t for all t > 0. PDC only needs to check values of t corresponding to task deadlines, with an upper bound L limiting the interval that must be checked.",
+    "topic": "processor-demand-criteria"
+  },
+  {
+    "question": "What improvement does QPA (Quick Processor-demand Analysis) provide over standard PDC?",
+    "options": [
+      "QPA provides exact response times while PDC only gives schedulability results",
+      "QPA significantly reduces the number of time points that need to be tested",
+      "QPA works with arbitrary deadlines while PDC requires D ≤ T",
+      "QPA handles multiprocessor systems while PDC is limited to single processors"
+    ],
+    "correctAnswer": 1,
+    "explanation": "QPA dramatically reduces the number of deadline points that need checking.",
+    "detailedExplanation": "QPA exploits the property that rather than checking every deadline from 0 to L, it can start at L and move backwards, checking only a necessary subset of deadlines. If h(L) = s and s ≤ L, then h(t) < t for all t in the range s < t < L, so there's no need to check deadlines in that interval. QPA typically requires only about 1% of the effort of standard PDC.",
+    "topic": "qpa-analysis"
+  },
+  {
+    "question": "What is release jitter in real-time task scheduling?",
+    "options": [
+      "The variation in task execution times due to different input data sets",
+      "The maximum variation in a task's actual release time from its ideal release time",
+      "The delay introduced by context switching between different task priorities",
+      "The uncertainty in deadline requirements for sporadic task arrivals"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Release jitter is the variation between actual and ideal task release times.",
+    "detailedExplanation": "Release jitter (J) represents the maximum variation in a task's release time. For example, if a sporadic task s is released by a periodic task l on another processor, the two executions of the sporadic task may not be separated by exactly T, but by T - Rl in the worst case, where Rl is the response time of the releasing task. This jitter must be incorporated into schedulability analysis using modified equations.",
+    "topic": "release-jitter"
+  },
+  {
+    "question": "In the context of multiprocessor scheduling, what is the difference between global and partitioned placement?",
+    "options": [
+      "Global uses identical processors while partitioned uses heterogeneous processors",
+      "Global allocates tasks dynamically at runtime while partitioned uses pre-runtime allocation",
+      "Global optimizes for throughput while partitioned optimizes for individual response times",
+      "Global requires shared memory while partitioned works with distributed memory systems"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Global placement allocates tasks dynamically while partitioned uses pre-runtime allocation.",
+    "detailedExplanation": "In partitioned placement, tasks are allocated to specific processors before runtime (pre-runtime allocation), and each processor is then analyzed separately using single-processor techniques. In global placement, tasks are allocated dynamically as they become runnable, and tasks may even migrate between processors during execution. Global schemes offer more flexibility but are more complex to analyze.",
+    "topic": "multiprocessor-placement"
+  },
+  {
+    "question": "What is the utilization bound for partitioned FPS with first-fit placement on M processors?",
+    "options": [
+      "M × (2^(1/N) - 1) where N is the number of tasks",
+      "M × (√2 - 1) ≈ 0.41M",
+      "M × 0.693 for large numbers of tasks",
+      "M (100% utilization across all processors)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The bound is M(√2 - 1), approximately 41% per processor.",
+    "detailedExplanation": "For fixed-priority scheduling with partitioned placement using a first-fit strategy (decreasing task utilization), the sufficient schedulability test is U ≤ M(√2 - 1). This gives approximately 41.4% utilization per processor, which is quite pessimistic but represents a worst-case guarantee for this particular allocation strategy.",
+    "topic": "multiprocessor-utilization"
+  },
+  {
+    "question": "What is worst-case execution time (WCET) and why is it critical for real-time scheduling?",
+    "options": [
+      "The average execution time multiplied by a safety factor for conservative scheduling",
+      "The maximum time any task invocation could require, essential for schedulability analysis",
+      "The execution time under maximum system load with all tasks running simultaneously",
+      "The time required when a task experiences the worst possible input data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "WCET is the maximum possible execution time for any task invocation.",
+    "detailedExplanation": "WCET is the maximum time that any invocation/release of a task could require. It's critical because all scheduling analysis (FPS, EDF, etc.) assumes knowledge of these worst-case values. WCET can be obtained by measurement (difficult to ensure true worst-case is observed) or analysis (requires detailed processor models including caches, pipelines, branch prediction, etc.).",
+    "topic": "wcet-analysis"
+  },
+  {
+    "question": "What is the main challenge in WCET analysis for modern processors?",
+    "options": [
+      "The complexity of modeling multicores, caches, pipelines, and branch predictors",
+      "The difficulty in obtaining accurate timing information from processor manufacturers",
+      "The variability in operating system overhead across different task scheduling scenarios",
+      "The unpredictability of memory access patterns in complex real-time applications"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Modern processor features like caches and pipelines make WCET analysis very complex.",
+    "detailedExplanation": "Modern processors use multicores, on-chip caches, pipelines, branch predictors, and out-of-order execution to reduce average execution time, but their impact on worst-case behavior is hard to predict. Ignoring these features gives very pessimistic estimates, but including them requires detailed modeling. One approach assumes non-preemptive execution to benefit from caching, then calculates preemption penalties later.",
+    "topic": "wcet-challenges"
+  },
+  {
+    "question": "What is the pfair algorithm in multiprocessor scheduling?",
+    "options": [
+      "A partitioned scheduling algorithm that assigns tasks to processors based on priority",
+      "A global scheduling algorithm that can schedule any periodic system with utilization ≤ M",
+      "A hybrid algorithm that combines fixed-priority and EDF scheduling approaches",
+      "A resource allocation algorithm that prevents priority inversion in shared memory systems"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Pfair is a global algorithm that can schedule any system with utilization ≤ M on M processors.",
+    "detailedExplanation": "Pfair is a global scheduling algorithm that can schedule any periodic task system with total utilization ≤ M on M identical processors. However, schedules generated by pfair tend to have a large number of preemptions, and tasks frequently migrate between processors, making it less practical despite its theoretical optimality.",
+    "topic": "pfair-scheduling"
+  },
+  {
+    "question": "In power-aware scheduling, what is the relationship between processor speed and power consumption?",
+    "options": [
+      "Power consumption increases linearly with processor speed",
+      "Power consumption increases exponentially with processor speed",
+      "Halving processor speed may quadruple battery life due to non-linear power savings",
+      "Power consumption is independent of processor speed in modern systems"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Power savings are non-linear - halving speed can quadruple battery life.",
+    "detailedExplanation": "In power-aware systems, the relationship between processor speed and power consumption is non-linear. When voltage to the processor is reduced to make it run slower, the power savings are significant. Halving the speed of a processor may quadruple its battery life, making variable-speed processing very attractive for battery-based embedded systems.",
+    "topic": "power-aware-scheduling"
+  },
+  {
+    "question": "What are the two stages of power-aware scheduling analysis?",
+    "options": [
+      "Determine minimum speed for schedulability, then optimize for maximum battery life",
+      "Check schedulability at maximum speed, then find maximum slowdown factor while remaining schedulable",
+      "Calculate power consumption for all tasks, then minimize total energy usage",
+      "Assign priorities based on power requirements, then schedule using energy-aware algorithms"
+    ],
+    "correctAnswer": 1,
+    "explanation": "First verify schedulability at max speed, then find maximum allowable slowdown.",
+    "detailedExplanation": "Power-aware scheduling has two stages: (1) With the processor running at maximum speed, check if the system is schedulable using standard tests, and (2) If schedulable, determine the maximum factor k by which all execution times can be increased (equivalent to slowing the processor by factor k) while the system remains schedulable. The value k is found through branch-and-bound search.",
+    "topic": "power-aware-analysis"
+  },
+  {
+    "question": "What is the critical instant in real-time scheduling analysis?",
+    "options": [
+      "The moment when the system experiences its highest processor utilization",
+      "The point in time when all tasks are released simultaneously",
+      "The deadline of the highest-priority task in the system",
+      "The time when the longest-period task completes its first execution"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A critical instant occurs when all tasks are released simultaneously.",
+    "detailedExplanation": "A critical instant is a point in time when all tasks are released together. This represents the maximum load on the processor and is used in schedulability analysis because it represents the worst-case scenario. For fixed-priority scheduling, if all tasks meet their deadlines when released at a critical instant, they will meet deadlines under any other release pattern.",
+    "topic": "critical-instant"
+  },
+  {
+    "question": "What is cooperative scheduling (deferred preemption) and what advantage does it offer?",
+    "options": [
+      "Tasks voluntarily yield the processor at specific points, reducing blocking times",
+      "Multiple tasks share processor time equally through round-robin scheduling",
+      "Higher-priority tasks cooperate with lower-priority tasks to share resources",
+      "The scheduler cooperates with the operating system to minimize context switch overhead"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Tasks yield at specific points, which can reduce worst-case blocking times.",
+    "detailedExplanation": "In cooperative scheduling (deferred preemption), application code is split into non-preemptive blocks bounded by some maximum blocking time BMAX. At the end of each block, tasks offer to 'de-schedule' - if a higher-priority task is runnable, a context switch occurs; otherwise, execution continues. This can improve schedulability because no interference can occur during the final execution block of any task.",
+    "topic": "cooperative-scheduling"
+  },
+  {
+    "question": "How does fault tolerance affect real-time scheduling analysis?",
+    "options": [
+      "It requires duplicate processors to handle hardware failures",
+      "It adds extra computation time for error recovery that must be included in analysis",
+      "It changes task priorities to favor more critical system components",
+      "It requires real-time systems to use only majority voting algorithms"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Fault tolerance adds computation time for recovery that must be included in scheduling analysis.",
+    "detailedExplanation": "Fault tolerance through forward or backward error recovery adds extra computation time (Cf) for exception handlers or recovery blocks. The response time equation becomes Ri = Bi + Ci + max(Ck^f) + interference terms, where the fault model defines the maximum number of faults to tolerate. For example, to handle F faults, the equation includes F × max(Ck^f) additional computation time.",
+    "topic": "fault-tolerant-scheduling"
+  },
+  {
+    "question": "What is an execution-time server in real-time systems?",
+    "options": [
+      "A hardware component that accelerates task execution times",
+      "A virtual resource that guarantees and limits processor time allocation to tasks",
+      "A software module that predicts worst-case execution times for tasks",
+      "A scheduling algorithm that optimizes execution order for minimum response time"
+    ],
+    "correctAnswer": 1,
+    "explanation": "An execution-time server provides guaranteed and limited processor time allocation.",
+    "detailedExplanation": "An execution-time server provides a virtual resource layer between applications and processors. It both guarantees a certain level of service and ensures no more resource is allocated than specified in the 'service contract.' For example, one application might receive 4 ms every 10 ms, another 6 ms. These levels are guaranteed and policed - applications get their allocation but cannot exceed it even if they have runnable high-priority tasks.",
+    "topic": "execution-time-servers"
+  },
+  {
+    "question": "What distinguishes the Sporadic Server from the Deferrable Server?",
+    "options": [
+      "Sporadic Server replenishes capacity periodically while Deferrable Server replenishes on demand",
+      "Sporadic Server replenishes capacity T time units after use while Deferrable Server replenishes periodically",
+      "Sporadic Server handles periodic tasks while Deferrable Server handles aperiodic tasks",
+      "Sporadic Server uses priority inheritance while Deferrable Server uses priority ceiling protocols"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Sporadic Server replenishes capacity T time units after consumption, unlike periodic replenishment.",
+    "detailedExplanation": "The Sporadic Server differs in its replenishment policy. When a client arrives at time t and uses c capacity, the server replenishes this c capacity at time t + Ts (the server's replenishment period). The Deferrable Server, in contrast, replenishes periodically regardless of when capacity was actually consumed. This allows the Sporadic Server to provide higher capacity than DS but with increased implementation overhead.",
+    "topic": "server-types"
+  },
+  {
+    "question": "What is the Stack Resource Policy (SRP) and how does it relate to EDF scheduling?",
+    "options": [
+      "SRP is a memory management technique for EDF systems with shared resources",
+      "SRP is a resource sharing protocol for EDF that works similarly to immediate ceiling priority protocol",
+      "SRP is a priority assignment algorithm specifically designed for EDF scheduling",
+      "SRP is a deadlock detection mechanism used in dynamic scheduling systems"
+    ],
+    "correctAnswer": 1,
+    "explanation": "SRP is a resource sharing protocol for EDF similar to immediate ceiling priority protocol.",
+    "detailedExplanation": "The Stack Resource Policy (SRP) is the best scheme for EDF with shared resources. It works similarly to ICPP for FPS. Each task has a preemption level based on relative deadlines, and resources have ceiling values. A task can only preempt if its absolute deadline is shorter AND its preemption level is higher than the highest ceiling of currently locked resources. This prevents deadlocks and bounds blocking.",
+    "topic": "srp-edf"
+  },
+  {
+    "question": "What is the main challenge in online scheduling for dynamic real-time systems?",
+    "options": [
+      "Determining optimal priority assignments for unknown task sets",
+      "Managing overload situations when arrival patterns and computation times are unknown",
+      "Coordinating communication between distributed processors in real-time",
+      "Maintaining synchronization between periodic and aperiodic task streams"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The main challenge is managing overload when task characteristics are unknown a priori.",
+    "detailedExplanation": "In dynamic soft real-time applications, arrival patterns and computation times are not known in advance, making complete offline analysis impossible. The main objective of online scheduling is to manage overload that occurs due to system dynamics. This typically involves admissions control (limiting tasks allowed to compete for processors) combined with EDF dispatching for admitted tasks.",
+    "topic": "online-scheduling"
+  },
+  {
+    "question": "What are the three types of task values in value-based scheduling?",
+    "options": [
+      "High, medium, and low priority classifications",
+      "Static, dynamic, and adaptive value assignments",
+      "Periodic, sporadic, and aperiodic task categories",
+      "Critical, important, and optional task designations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Task values can be static, dynamic, or adaptive in value-based scheduling.",
+    "detailedExplanation": "Task values are classified as: (1) Static - the task always has the same value whenever released, (2) Dynamic - the task's value can only be computed at release time based on environmental factors or system state, and (3) Adaptive - the value changes during task execution based on dynamic system conditions. These values help determine which tasks to admit when the system becomes overloaded.",
+    "topic": "value-based-scheduling"
+  },
+  {
+    "question": "What is Audsley's algorithm used for in real-time scheduling?",
+    "options": [
+      "Calculating exact response times for complex task dependencies",
+      "Assigning optimal priorities when deadlines are arbitrary (not equal to periods)",
+      "Determining minimum processor speed for power-aware scheduling",
+      "Analyzing schedulability of tasks with release jitter and blocking"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Audsley's algorithm assigns optimal priorities for arbitrary deadline systems.",
+    "detailedExplanation": "Audsley's algorithm determines optimal priority assignment when deadlines are arbitrary (D ≠ T). It works by iteratively assigning the lowest priority: if any task is schedulable at the lowest priority level, it can be assigned there. The algorithm successively fills priority levels from lowest to highest. If no feasible task is found for a level, the task set is unschedulable.",
+    "topic": "priority-assignment"
+  },
+  {
+    "question": "What happens when there are insufficient priority levels for all tasks in a system?",
+    "options": [
+      "The system automatically creates additional priority levels as needed",
+      "Tasks must share priority levels, requiring modified schedulability analysis",
+      "Lower-priority tasks are automatically converted to background tasks",
+      "The scheduling algorithm switches from fixed-priority to earliest deadline first"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When insufficient priority levels exist, tasks must share priorities with modified analysis.",
+    "detailedExplanation": "When there are insufficient priority levels, multiple tasks must share the same priority. The schedulability analysis is modified so that the interference calculation includes higher-or-equal-priority tasks rather than just higher-priority tasks. The equation becomes Ri = Ci + Σ(⌈Ri/Tj⌉ × Cj) where the summation is over all tasks with priority ≥ Pi.",
+    "topic": "insufficient-priorities"
+  },
+  {
+    "question": "What is the difference between sufficient and necessary schedulability tests?",
+    "options": [
+      "Sufficient tests guarantee schedulability if passed; necessary tests guarantee unschedulability if failed",
+      "Sufficient tests work for simple systems; necessary tests work for complex systems",
+      "Sufficient tests are faster to compute; necessary tests are more accurate",
+      "Sufficient tests use utilization bounds; necessary tests use response time analysis"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Sufficient tests guarantee schedulability if passed; necessary tests guarantee unschedulability if failed.",
+    "detailedExplanation": "A schedulability test is sufficient if a positive outcome guarantees that all deadlines are always met. A test is necessary if failure of the test will indeed lead to a deadline miss. A sufficient and necessary test is exact and optimal. Most practical tests are sufficient but not necessary (pessimistic), meaning some systems that fail the test might actually be schedulable.",
+    "topic": "schedulability-test-types"
+  },
+  {
+    "question": "In the context of system overheads, what does context switch time modeling account for?",
+    "options": [
+      "Only the time to save and restore processor registers between tasks",
+      "The complete time from task preemption through resumption of the new task",
+      "The delay in interrupt processing and task queue management",
+      "All of the above components that contribute to scheduling overhead"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Context switch modeling must account for all overhead components in task switching.",
+    "detailedExplanation": "Complete context switch modeling includes: (1) the initial context switch to the task (CS1), (2) the task's own execution time, (3) the context switch away from the task (CS2), plus potentially clock handler overhead, queue manipulation costs, and interrupt processing delays. The response time equation becomes Ri = CS1 + Ci + Bi + Σ(⌈Ri/Tj⌉ × (CS1 + CS2 + Cj)).",
+    "topic": "context-switch-overhead"
+  },
+  {
+    "question": "How does the clock handler's execution time vary in real-time systems?",
+    "options": [
+      "It remains constant regardless of the number of tasks in the system",
+      "It varies based on how many periodic tasks need to be moved from delay to ready queue",
+      "It depends only on the clock interrupt frequency and processor speed",
+      "It increases linearly with the total number of tasks regardless of their states"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Clock handler time varies with the number of tasks moved from delay to ready queue.",
+    "detailedExplanation": "Clock handler execution time varies significantly based on system state. When no tasks are on the delay queue, handling is minimal (e.g., 16 μs). When tasks are queued but none need release, it's slightly higher (e.g., 24 μs). But when tasks must be moved from delay to ready queue, time increases substantially (e.g., 88 μs for one task, 1048 μs for twenty-five tasks). This creates variable high-priority interference.",
+    "topic": "clock-handler-overhead"
+  },
+  {
+    "question": "What is the key difference between Time Division Multiple Access (TDMA) and Control Area Network (CAN) for multiprocessor communication?",
+    "options": [
+      "TDMA uses wireless communication while CAN uses wired connections",
+      "TDMA allocates fixed time slots to processors while CAN uses priority-based message arbitration",
+      "TDMA supports dynamic task allocation while CAN requires static allocation",
+      "TDMA is suitable for hard real-time while CAN is only for soft real-time"
+    ],
+    "correctAnswer": 1,
+    "explanation": "TDMA uses fixed time slots; CAN uses priority-based arbitration for messages.",
+    "detailedExplanation": "TDMA (Time Division Multiple Access) allocates fixed time slots within a specified cycle to each processor - no two processors compete for message transmission simultaneously. CAN (Control Area Network) gives each message a fixed priority and supports priority-based arbitration when multiple processors want to transmit. CAN can be analyzed using standard RTA with non-preemptive sections since messages cannot be preempted once transmission starts.",
+    "topic": "multiprocessor-communication"
+  },
+  {
+    "question": "What is the main challenge in implementing mutual exclusion on multiprocessor shared-memory systems?",
+    "options": [
+      "Cache coherency protocols interfere with real-time scheduling guarantees",
+      "Priority inheritance protocols don't work when tasks run on different processors",
+      "Shared memory access creates unpredictable delays in worst-case execution time",
+      "Global locks require complex distributed consensus algorithms"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Priority inheritance fails when higher/lower priority tasks run on different processors.",
+    "detailedExplanation": "Priority inheritance and ceiling protocols depend on a higher-priority task preventing lower-priority tasks from executing. This doesn't work when the lower-priority task is on another processor. Multiprocessor mutual exclusion typically requires globally contended locks with busy-waiting (spinning) when locks are not granted. Tasks usually cannot be preempted while holding global locks to avoid delaying other processors.",
+    "topic": "multiprocessor-mutual-exclusion"
+  },
+  {
+    "question": "What are lock-free algorithms and why are they attractive for multiprocessor real-time systems?",
+    "options": [
+      "Algorithms that use hardware-level atomic operations instead of software locks",
+      "Algorithms that use multiple copies of shared objects to avoid lock contention",
+      "Algorithms that prevent deadlock by ordering all lock acquisitions consistently",
+      "Algorithms that use timeout mechanisms to automatically release stuck locks"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Lock-free algorithms use multiple object copies to avoid lock contention entirely.",
+    "detailedExplanation": "Lock-free algorithms maintain multiple copies of shared objects to avoid the need for locks entirely. For example, for an object read by many tasks but updated by one: while the update occurs, all reads use an old copy; once the update finishes, a single flag makes the new copy available for future reads. If timing constraints allow concurrent reads and writes, it must be acceptable for reads to get the old value.",
+    "topic": "lock-free-algorithms"
+  },
+  {
+    "question": "In bandwidth-preserving servers, what are the two main objectives?",
+    "options": [
+      "Minimize context switching overhead and maximize processor utilization",
+      "Make CPU available immediately to aperiodic tasks and retain capacity when no tasks are present",
+      "Balance workload across multiple processors and handle task migration efficiently",
+      "Provide guaranteed response times and prevent priority inversion"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Bandwidth-preserving servers aim for immediate availability and capacity retention.",
+    "detailedExplanation": "All bandwidth-preserving servers (DS, SS, and others) attempt to: (1) make CPU resources available immediately to aperiodic tasks if there is capacity, and (2) retain the capacity for as long as possible if there are currently no aperiodic tasks by allowing hard tasks to execute instead. This maximizes responsiveness for aperiodic work while protecting hard real-time guarantees.",
+    "topic": "bandwidth-preserving-servers"
+  },
+  {
+    "question": "What is dual-priority scheduling and how does it benefit aperiodic tasks?",
+    "options": [
+      "Each task has two priority levels for different phases of execution",
+      "Tasks start at low priority and are promoted to high priority near their deadlines",
+      "Aperiodic tasks run at medium priority while hard tasks migrate between low and high bands",
+      "The system alternates between two different priority assignment schemes"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Hard tasks start low and promote to high; aperiodic tasks run in the middle band.",
+    "detailedExplanation": "Dual-priority scheduling divides priorities into three bands: high, medium, and low. Aperiodic tasks run in the medium band. Hard tasks start in the low band when released but are promoted to the high band at time D - R to meet deadlines. Initially they yield to aperiodic work, but later get precedence. In the high band, priorities follow deadline monotonic ordering, with promotion occurring at D - R.",
+    "topic": "dual-priority-scheduling"
+  },
+  {
+    "question": "What is the sustainability property in real-time scheduling?",
+    "options": [
+      "A system remains schedulable when environmental conditions improve",
+      "The scheduling algorithm maintains performance over long time periods",
+      "Task deadlines can be sustained even under varying processor loads",
+      "The system can sustain operation despite occasional deadline misses"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Sustainability means schedulability is maintained when conditions improve.",
+    "detailedExplanation": "A scheduling test is sustainable if it correctly predicts that a schedulable system remains schedulable when operational parameters 'improve' - for example, if tasks have their periods or deadlines increased, resource requirements reduced, or the application moves to a faster processor. Some multiprocessor scheduling policies are not sustainable (e.g., adding processors can make a system unschedulable).",
+    "topic": "sustainability"
+  },
+  {
+    "question": "What is the bin packing analogy for cyclic executive construction?",
+    "options": [
+      "Tasks are items that must be packed into processor time bins without overflow",
+      "Minor cycles are bins and task execution segments are items to be packed",
+      "Processors are bins and tasks are items that must be distributed evenly",
+      "Time slots are bins and task priorities are items that determine packing order"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Minor cycles are bins; task execution segments are items that must fit without overflow.",
+    "detailedExplanation": "Constructing a cyclic executive is analogous to the bin packing problem. Minor cycles act as bins with fixed capacity (time duration), and task execution segments are items of varying sizes that must be packed so no bin overflows. The bin packing problem is NP-hard, making cyclic executive construction computationally infeasible for large systems (e.g., 40 minor cycles with 400 entries), requiring heuristic sub-optimal approaches.",
+    "topic": "cyclic-executive-complexity"
+  },
+  {
+    "question": "Why might EDF perform poorly during transient overloads compared to FPS?",
+    "options": [
+      "EDF has higher computational overhead for priority calculations",
+      "EDF can experience cascading deadline misses while FPS fails predictably",
+      "EDF requires more memory for maintaining dynamic priority queues",
+      "EDF cannot handle sporadic tasks effectively during overload conditions"
+    ],
+    "correctAnswer": 1,
+    "explanation": "EDF can have cascading deadline misses while FPS fails predictably at lower priorities.",
+    "detailedExplanation": "During transient overloads, EDF can experience a domino effect where each task misses its deadline but uses sufficient resources to cause the next task to also miss its deadline. FPS behavior is more predictable - lower-priority tasks miss deadlines first. This makes FPS preferable for situations where controlled degradation during overload is important, even though EDF is optimal under normal conditions.",
+    "topic": "edf-overload-behavior"
+  },
+  {
+    "question": "What is the fpEDF scheduling algorithm for multiprocessor systems?",
+    "options": [
+      "A fixed-priority algorithm that uses EDF for tie-breaking between equal priorities",
+      "A variant of EDF that assigns highest fixed priority to high-utilization tasks (>50%)",
+      "A hybrid algorithm that uses FPS on some processors and EDF on others",
+      "An EDF variant that incorporates fixed processor assignment for each task"
+    ],
+    "correctAnswer": 1,
+    "explanation": "fpEDF gives highest fixed priority to tasks with utilization > 50%, others use EDF.",
+    "detailedExplanation": "fpEDF (fixed-priority EDF) is a global multiprocessor scheduling algorithm that: (1) assigns greatest fixed priority to tasks with utilization > 1/2 (if any such tasks exist), and (2) schedules remaining tasks according to EDF. This hybrid approach has better schedulability bounds than pure global EDF for some task sets, with utilization bounds of U ≤ (M+1)/2.",
+    "topic": "fpedf-multiprocessor"
+  },
+  {
+    "question": "What is the major cycle in cyclic executive scheduling?",
+    "options": [
+      "The longest period among all tasks in the system",
+      "The complete table of procedure calls that repeats to schedule all tasks",
+      "The time required for the highest-priority task to complete one execution",
+      "The least common multiple of all task periods in the system"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The major cycle is the complete repeating table of procedure calls for all tasks.",
+    "detailedExplanation": "In cyclic executive scheduling, the major cycle is the complete table of procedure calls that, when repeatedly executed, causes all tasks to run at their correct rates. It typically consists of multiple minor cycles of fixed duration. The major cycle length is usually the least common multiple of all task periods, ensuring that after one major cycle, all tasks will have executed the correct number of times.",
+    "topic": "major-cycle-definition"
+  },
+  {
+    "question": "What is the mathematical relationship used in PDC to determine schedulability?",
+    "options": [
+      "∀t > 0: h(t) ≤ t (processor demand never exceeds available time)",
+      "∑(Ci/Ti) ≤ 1 (total utilization cannot exceed processor capacity)",
+      "Ri ≤ Di for all tasks i (response times must meet deadlines)",
+      "∀i: Pi ≥ Pj if Di ≤ Dj (priority inversely proportional to deadline)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "PDC requires that processor demand h(t) never exceeds available time t.",
+    "detailedExplanation": "In Processor Demand Criteria (PDC), schedulability requires that ∀t > 0: h(t) ≤ t, where h(t) is the processor demand (total work that must be completed by time t). This means the cumulative workload with deadlines at or before any time t cannot exceed the available processor time up to t. This condition must hold for all positive time values.",
+    "topic": "pdc-schedulability-condition"
+  },
+  {
+    "question": "How does task independence affect critical instant analysis?",
+    "options": [
+      "Independent tasks cannot share a critical instant due to lack of synchronization",
+      "Task independence allows assuming all tasks can be released simultaneously",
+      "Independent tasks require separate critical instant analysis for each task",
+      "Task independence eliminates the need for critical instant analysis entirely"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Task independence allows the assumption that all tasks can be released simultaneously.",
+    "detailedExplanation": "Task independence is crucial for critical instant analysis. Because independent tasks have no dependencies or shared resources, it's valid to assume that all tasks can be released at the same time (t=0). This simultaneous release represents the critical instant - the worst-case scenario for interference. If all tasks meet deadlines at the critical instant, they will meet deadlines under any other release pattern.",
+    "topic": "task-independence-critical-instant"
+  }
+]

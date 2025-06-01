@@ -1,0 +1,639 @@
+[
+  {
+    "question": "What is the primary difficulty that arises when multiple tasks update a shared variable X with the assignment X := X + 1?",
+    "options": [
+      "The operation requires excessive memory allocation during execution",
+      "The assignment is not executed as an indivisible atomic operation",
+      "The variable X cannot be accessed by multiple tasks simultaneously",
+      "The operation causes automatic deadlock between competing tasks"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The assignment X := X + 1 is implemented as three separate instructions: load, increment, and store, which can be interleaved by multiple tasks.",
+    "detailedExplanation": "On most hardware, X := X + 1 is implemented as: (1) load X into register, (2) increment register, (3) store back to X. Since these three operations are not indivisible, two tasks could both load the same value, increment it, and store the same result, effectively losing one increment.",
+    "topic": "mutual-exclusion"
+  },
+  {
+    "question": "In the context of concurrent programming, what is a critical section?",
+    "options": [
+      "A sequence of statements that must appear to be executed indivisibly",
+      "A section of code that handles critical system errors and exceptions",
+      "A memory region that stores the most important program variables",
+      "A debugging section used to identify performance bottlenecks in code"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A critical section is a sequence of statements that must appear to be executed atomically without interference from other tasks.",
+    "detailedExplanation": "Critical sections contain code that accesses shared resources. The synchronization required to protect a critical section is known as mutual exclusion. If multiple tasks execute their critical sections simultaneously, data corruption or inconsistent states may occur.",
+    "topic": "critical-sections"
+  },
+  {
+    "question": "What is the main disadvantage of busy waiting synchronization approaches?",
+    "options": [
+      "They provide insufficient protection against race conditions in code",
+      "They require complex hardware support that is not widely available",
+      "They involve tasks using processing cycles while unable to perform useful work",
+      "They cannot be implemented on modern multiprocessor computer systems"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Busy waiting wastes CPU cycles as tasks continuously check conditions while unable to proceed with useful work.",
+    "detailedExplanation": "In busy waiting (also called spinning), tasks repeatedly check a condition in a loop. Even on multiprocessor systems, this can cause excessive memory bus or network traffic. The spinning tasks consume CPU resources without making progress toward solving the actual problem.",
+    "topic": "busy-waiting"
+  },
+  {
+    "question": "What is livelock in concurrent programming?",
+    "options": [
+      "A condition where tasks get stuck in busy-wait loops and cannot make progress",
+      "A synchronization primitive that prevents tasks from accessing shared resources",
+      "A scheduling algorithm that gives priority to long-running computational tasks",
+      "A memory management technique that prevents garbage collection during execution"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Livelock occurs when tasks are stuck in their busy-wait loops and unable to make progress, even though they're still executing.",
+    "detailedExplanation": "Unlike deadlock where tasks are suspended, in livelock tasks are active but unable to make meaningful progress. They're typically stuck in busy-wait loops, continuously checking conditions that never become true due to the interactions with other similarly stuck tasks.",
+    "topic": "synchronization-errors"
+  },
+  {
+    "question": "In Peterson's algorithm for mutual exclusion, what is the purpose of the 'turn' variable?",
+    "options": [
+      "To count the total number of tasks waiting for critical section access",
+      "To give priority to the other task when both tasks want access simultaneously",
+      "To track which task most recently exited its critical section successfully",
+      "To measure the execution time spent by each task in critical sections"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The 'turn' variable is used to break ties when both tasks announce their intent to enter, giving priority to the other task.",
+    "detailedExplanation": "In Peterson's algorithm, each task sets its flag to announce intent, then sets turn to give priority to the other task. If both flags are up, the turn variable determines which task must wait. This ensures mutual exclusion while preventing deadlock.",
+    "topic": "peterson-algorithm"
+  },
+  {
+    "question": "What is a data race condition in concurrent programming?",
+    "options": [
+      "A performance optimization where multiple tasks compete for faster execution",
+      "A fault where results depend critically on the timing of accesses to shared data",
+      "A scheduling policy that prioritizes tasks based on their data access patterns",
+      "A memory allocation strategy that prevents fragmentation during concurrent execution"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A data race condition occurs when the program's result becomes unpredictable due to the timing of concurrent accesses to shared data.",
+    "detailedExplanation": "Data race conditions arise when two or more tasks access shared data concurrently, and at least one access is a write, without proper synchronization. The final result depends on the unpredictable timing of thread scheduling, making the program's behavior non-deterministic.",
+    "topic": "race-conditions"
+  },
+  {
+    "question": "What is the key semantic difference between a semaphore and a condition variable?",
+    "options": [
+      "Semaphores support multiple operations while condition variables support only two",
+      "A wait on a condition variable always blocks, while wait on a semaphore may not",
+      "Condition variables provide better performance on multiprocessor systems than semaphores",
+      "Semaphores are implemented in hardware while condition variables require software support"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A wait on a condition variable always blocks the calling task, while a wait on a semaphore only blocks if the semaphore value is zero.",
+    "detailedExplanation": "Condition variables are designed for pure synchronization - wait always suspends the caller until another task signals. Semaphores maintain a count, so wait only blocks when the count is zero. If no task is waiting on a condition variable, signal has no effect, unlike semaphores which increment their count.",
+    "topic": "synchronization-primitives"
+  },
+  {
+    "question": "In a producer-consumer system with a bounded buffer, how many condition synchronizations are typically required?",
+    "options": [
+      "One synchronization to coordinate producer and consumer access patterns",
+      "Two synchronizations: buffer not full and buffer not empty conditions",
+      "Three synchronizations: producer ready, consumer ready, and buffer available",
+      "Four synchronizations: for each combination of producer and consumer states"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Two condition synchronizations are needed: preventing producers from adding to a full buffer and preventing consumers from removing from an empty buffer.",
+    "detailedExplanation": "The producer must not attempt to deposit data when the buffer is full (needs 'buffer not full' condition), and the consumer cannot extract data when the buffer is empty (needs 'buffer not empty' condition). Additionally, if simultaneous operations are possible, mutual exclusion is needed for the buffer pointers.",
+    "topic": "producer-consumer"
+  },
+  {
+    "question": "What happens when a task executes a wait operation on a zero-valued semaphore?",
+    "options": [
+      "The task continues execution and the semaphore value becomes negative",
+      "The task is delayed until another task performs a signal operation",
+      "The semaphore automatically resets to its initial positive value",
+      "An exception is thrown indicating an invalid synchronization state"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When a task waits on a zero semaphore, it becomes blocked/suspended until another task signals that semaphore.",
+    "detailedExplanation": "The wait operation checks if the semaphore value is greater than zero. If so, it decrements the value and continues. If the value is zero, the task is placed in a suspended state and queued until another task performs a signal operation, which will make one waiting task executable again.",
+    "topic": "semaphores"
+  },
+  {
+    "question": "What is deadlock in concurrent programming?",
+    "options": [
+      "A condition where tasks are suspended and cannot proceed indefinitely",
+      "A performance optimization that prevents unnecessary context switching between tasks",
+      "A synchronization technique that ensures mutual exclusion in critical sections",
+      "A scheduling algorithm that balances load across multiple processor cores"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Deadlock occurs when a set of tasks are permanently blocked, with each task waiting for resources held by other tasks in the set.",
+    "detailedExplanation": "Deadlock involves a circular dependency where each task in a group is waiting for a resource held by another task in the same group. Unlike livelock, the tasks are suspended rather than actively consuming CPU cycles. This can happen when tasks acquire resources in different orders.",
+    "topic": "deadlock"
+  },
+  {
+    "question": "What is indefinite postponement (starvation) in concurrent systems?",
+    "options": [
+      "A scheduling policy that delays all tasks until system resources become available",
+      "A condition where a task is never allowed access because others always gain access first",
+      "A memory management technique that postpones garbage collection during peak usage",
+      "A synchronization method that indefinitely extends critical section execution time"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Indefinite postponement occurs when a task is continuously prevented from accessing a resource because other tasks keep getting priority.",
+    "detailedExplanation": "Also called starvation, this happens when a task wanting to access a resource via a critical section is never allowed to do so because there are always other tasks gaining access before it. Even if the delay isn't truly infinite, this indeterminate delay can cause errors in real-time systems.",
+    "topic": "starvation"
+  },
+  {
+    "question": "What distinguishes a binary semaphore from a general (counting) semaphore?",
+    "options": [
+      "Binary semaphores can only take values 0 and 1, while general semaphores can be any non-negative integer",
+      "Binary semaphores work only on single-processor systems, while general semaphores support multiprocessors",
+      "Binary semaphores provide faster performance but less functionality than general semaphores",
+      "Binary semaphores are implemented in hardware while general semaphores require software implementation"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Binary semaphores are restricted to values 0 and 1, while general semaphores can have any non-negative integer value.",
+    "detailedExplanation": "A binary semaphore can only be 0 or 1 - signaling a semaphore with value 1 has no effect (it remains 1). General semaphores can rise to any positive value. Binary semaphores are sufficient for simple mutual exclusion, while counting semaphores can control access to multiple identical resources.",
+    "topic": "semaphore-types"
+  },
+  {
+    "question": "In monitor-based synchronization, what happens when a task executes a signal operation?",
+    "options": [
+      "The signaling task immediately exits the monitor and transfers control to a waiting task",
+      "All tasks waiting on condition variables are awakened and compete for monitor access",
+      "The signal operation releases one blocked task, but the signaling task continues execution",
+      "The monitor is reset to its initial state and all waiting tasks are notified"
+    ],
+    "correctAnswer": 2,
+    "explanation": "In most monitor implementations, signal releases one waiting task, but the signaling task continues execution within the monitor.",
+    "detailedExplanation": "The semantics of signal vary between monitor implementations. In Hoare's original proposal, the signaling task blocks itself. In other implementations, the signaling task continues and the awakened task must compete for monitor access. This creates a potential issue where both tasks could be active in the monitor.",
+    "topic": "monitors"
+  },
+  {
+    "question": "What is the main advantage of conditional critical regions (CCRs) over basic semaphores?",
+    "options": [
+      "CCRs provide better performance on multiprocessor systems than semaphore implementations",
+      "CCRs guarantee mutual exclusion directly without requiring explicit programming protocols",
+      "CCRs use less memory and have lower overhead than semaphore-based synchronization",
+      "CCRs can handle more complex synchronization patterns than binary or counting semaphores"
+    ],
+    "correctAnswer": 1,
+    "explanation": "CCRs automatically provide mutual exclusion for critical regions, unlike semaphores which require explicit entry and exit protocols.",
+    "detailedExplanation": "In CCRs, variables are grouped into named regions and tagged as resources. The system automatically ensures mutual exclusion when accessing these regions. With semaphores, programmers must explicitly implement entry and exit protocols, which is error-prone and can lead to forgot waits or signals.",
+    "topic": "conditional-critical-regions"
+  },
+  {
+    "question": "What is the primary criticism of using condition variables in monitors?",
+    "options": [
+      "Condition variables create too much overhead and reduce system performance significantly",
+      "They provide too low-level and unstructured synchronization that mixes abstraction levels",
+      "Condition variables cannot be implemented efficiently on modern multiprocessor architectures",
+      "They require extensive hardware support that is not available on embedded systems"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Condition variables are criticized as being too low-level, creating an unfortunate mix of high-level monitors with low-level synchronization primitives.",
+    "detailedExplanation": "While monitors provide high-level structure for mutual exclusion, condition variables within monitors still require low-level programming similar to semaphores. This gives an unfortunate mix of abstraction levels in the language design, making the programming model less clean and consistent.",
+    "topic": "monitor-criticism"
+  },
+  {
+    "question": "In Ada's protected objects, what determines when a protected entry becomes 'open'?",
+    "options": [
+      "When the protected object has no other tasks currently executing within it",
+      "When the boolean barrier expression associated with the entry evaluates to True",
+      "When a specific signal operation is performed by a task inside the protected object",
+      "When the protected object's internal state variables reach their initial values"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A protected entry is open when its associated boolean barrier expression evaluates to True.",
+    "detailedExplanation": "Protected entries have guards (called barriers in Ada) that are boolean expressions. The entry is open when this expression evaluates to True, allowing waiting tasks to proceed. The barriers are evaluated when tasks call entries or when tasks leave protected procedures/entries that might have changed relevant variables.",
+    "topic": "ada-protected-objects"
+  },
+  {
+    "question": "What is the key difference between protected functions and protected procedures in Ada?",
+    "options": [
+      "Functions can modify protected data while procedures provide read-only access",
+      "Functions provide concurrent read-only access while procedures have exclusive read/write access",
+      "Functions are executed with higher priority than procedures in the scheduling system",
+      "Functions can call other protected operations while procedures cannot make nested calls"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Protected functions allow concurrent read-only access, while protected procedures require exclusive access for read/write operations.",
+    "detailedExplanation": "Multiple tasks can execute protected functions simultaneously since they only read data. Protected procedures get exclusive access since they can modify data. Functions execute mutually exclusively with procedures - a function can't run if a procedure is active, and procedures can't run if functions are active.",
+    "topic": "ada-protected-objects"
+  },
+  {
+    "question": "In Java's synchronized methods, what happens when a thread calls wait()?",
+    "options": [
+      "The thread continues execution but other threads cannot enter synchronized methods",
+      "The thread is blocked and releases the object lock, allowing other threads to enter",
+      "The thread suspends briefly but retains the lock to prevent interference from other threads",
+      "The method throws an exception because wait() cannot be called from synchronized contexts"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When a thread calls wait(), it blocks and releases the object lock, allowing other threads to enter synchronized methods.",
+    "detailedExplanation": "The wait() method always blocks the calling thread and releases the lock associated with the object. If called from nested monitors, only the lock associated with the wait() is released. This allows other threads to enter the synchronized method and potentially call notify() to wake up the waiting thread.",
+    "topic": "java-synchronization"
+  },
+  {
+    "question": "Why is it essential for threads to re-evaluate their conditions after being awakened from wait() in Java?",
+    "options": [
+      "Java's memory model requires condition checks to ensure proper visibility across threads",
+      "Other threads might change the condition between awakening and lock acquisition",
+      "The wait() method automatically modifies shared variables that need to be verified",
+      "Re-evaluation is required by the Java specification to prevent compiler optimizations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Between being awakened and regaining the lock, other threads might have changed the condition that the waiting thread was depending on.",
+    "detailedExplanation": "Java makes no guarantee that an awakened thread will immediately gain access to the lock. Other threads might execute and change the condition before the awakened thread runs. Additionally, Java implementations can generate spurious wake-ups, so threads must always recheck their waiting conditions in a while loop.",
+    "topic": "java-wait-notify"
+  },
+  {
+    "question": "What is the inheritance anomaly in object-oriented concurrent programming?",
+    "options": [
+      "A problem where derived classes cannot access synchronized methods from their parent classes",
+      "A situation where synchronization constraints are not local and may depend on all class operations",
+      "An issue where multiple inheritance causes deadlocks in concurrent object access patterns",
+      "A compiler error that occurs when inheriting from classes with different synchronization models"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The inheritance anomaly occurs when synchronization between operations depends on the complete set of operations, making inheritance difficult.",
+    "detailedExplanation": "When a subclass adds new operations, it may become necessary to change the synchronization defined in the parent class to account for these new operations. This happens because synchronization constraints are embedded in methods and may reference the entire set of possible operations rather than being truly local to individual methods.",
+    "topic": "inheritance-anomaly"
+  },
+  {
+    "question": "In C/Real-Time POSIX, what is the difference between pthread_cond_signal() and pthread_cond_broadcast()?",
+    "options": [
+      "Signal wakes up all waiting threads while broadcast wakes up only one thread",
+      "Signal wakes up one waiting thread while broadcast wakes up all waiting threads",
+      "Signal is used for error conditions while broadcast is used for normal synchronization",
+      "Signal works within processes while broadcast works between different processes"
+    ],
+    "correctAnswer": 1,
+    "explanation": "pthread_cond_signal() wakes up one waiting thread, while pthread_cond_broadcast() wakes up all waiting threads.",
+    "detailedExplanation": "pthread_cond_signal() unblocks at least one thread waiting on the condition variable (the specific thread is unspecified). pthread_cond_broadcast() unblocks all threads currently waiting on the condition variable. In both cases, the awakened threads must still contend for the associated mutex before they can continue execution.",
+    "topic": "posix-condition-variables"
+  },
+  {
+    "question": "What is sequential consistency in multiprocessor memory models?",
+    "options": [
+      "A guarantee that all processor instructions are executed in the exact order written in source code",
+      "A model where execution results match some sequential ordering while preserving program order within threads",
+      "A requirement that only one processor can access memory at any given time",
+      "A synchronization protocol that prevents race conditions in shared memory systems"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Sequential consistency means execution results match some sequential order of all operations, while maintaining each thread's program order.",
+    "detailedExplanation": "A multiprocessor system is sequentially consistent if any execution produces the same result as if all processor instructions were executed in some sequential order, and the instructions of each individual thread appear in the sequence in the same order as specified by the thread's program logic.",
+    "topic": "memory-models"
+  },
+  {
+    "question": "In Java's memory model, what establishes a happens-before relationship?",
+    "options": [
+      "Only explicit synchronization using synchronized blocks and volatile variables",
+      "Program order within threads, synchronization actions, and thread start/join operations",
+      "Memory barriers inserted automatically by the compiler during code optimization",
+      "Hardware cache coherency protocols that ensure consistent memory views across cores"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Happens-before relationships are established by program order, monitor locks/unlocks, volatile variables, and thread lifecycle operations.",
+    "detailedExplanation": "Java's happens-before includes: program order within a thread, monitor unlock happens-before subsequent locks on the same monitor, volatile write happens-before subsequent reads, thread start happens-before first action in started thread, and thread termination happens-before detecting termination in other threads.",
+    "topic": "java-memory-model"
+  },
+  {
+    "question": "What is the purpose of volatile variables in Java and Ada?",
+    "options": [
+      "To prevent compiler optimizations that might reorder memory accesses around the variable",
+      "To ensure that all reads and writes go directly to memory bypassing caches",
+      "To provide atomic operations on variables shared between multiple threads",
+      "To automatically synchronize access to variables without requiring explicit locks"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Volatile variables ensure that all reads and writes go directly to memory, bypassing local registers and caches.",
+    "detailedExplanation": "Volatile variables cannot be held in local registers or caches. All operations must go directly to main memory. This ensures that writes are immediately visible to other threads and that reads always get the most current value. However, volatile doesn't provide atomicity for compound operations like increment.",
+    "topic": "volatile-variables"
+  },
+  {
+    "question": "What problem does Peterson's algorithm solve, and for how many tasks?",
+    "options": [
+      "It provides deadlock-free resource allocation for any number of competing tasks",
+      "It solves the dining philosophers problem for exactly five philosopher tasks",
+      "It provides mutual exclusion with absence of livelock for exactly two tasks",
+      "It implements a fair scheduling algorithm for an arbitrary number of concurrent tasks"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Peterson's algorithm provides mutual exclusion and prevents livelock specifically for two tasks.",
+    "detailedExplanation": "Peterson's algorithm is a software-only solution for mutual exclusion between exactly two tasks. It uses two flags (one per task) and a turn variable. The algorithm guarantees mutual exclusion, absence of livelock, and fairness. Generalizing Peterson's algorithm to n tasks is significantly more complex.",
+    "topic": "peterson-algorithm"
+  },
+  {
+    "question": "In semaphore implementation, why might interrupts need to be disabled during wait and signal operations?",
+    "options": [
+      "To prevent other tasks from reading the semaphore value during updates",
+      "To ensure atomicity when external events could disturb the operation sequence",
+      "To maintain priority ordering of tasks waiting on the semaphore queue",
+      "To prevent memory corruption when multiple tasks access shared semaphore data"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Interrupts are disabled to ensure atomicity of semaphore operations when external asynchronous events could interfere.",
+    "detailedExplanation": "While the RTSS (run-time support system) can control internal scheduling to make semaphore operations non-preemptible, external events happen asynchronously and could disturb the atomicity. Disabling interrupts prevents external events from interfering during the critical sequence of statements in wait and signal operations.",
+    "topic": "semaphore-implementation"
+  },
+  {
+    "question": "What is the main difference between Hoare's monitors and Mesa-style monitors regarding signal semantics?",
+    "options": [
+      "Hoare monitors use signal and wait, while Mesa monitors use notify and wait",
+      "In Hoare monitors the signaling task blocks itself, while in Mesa monitors it continues",
+      "Hoare monitors support multiple condition variables, while Mesa monitors support only one",
+      "Hoare monitors guarantee immediate scheduling of awakened tasks, Mesa monitors do not"
+    ],
+    "correctAnswer": 1,
+    "explanation": "In Hoare's original design, the signaling task blocks itself and the awakened task runs immediately. In Mesa-style monitors, the signaling task continues.",
+    "detailedExplanation": "Hoare's monitors have the property that when a task signals, it immediately blocks and the awakened task gets immediate access to the monitor. Mesa-style monitors (used by Java) allow the signaling task to continue, and the awakened task must compete for access when the signaling task exits. This is why Mesa-style monitors require while loops around wait conditions.",
+    "topic": "monitor-semantics"
+  },
+  {
+    "question": "What is a quantity semaphore and how does it differ from a standard semaphore?",
+    "options": [
+      "Quantity semaphores can have negative values while standard semaphores cannot",
+      "The amount decremented by wait and incremented by signal is parameterizable, not fixed at 1",
+      "Quantity semaphores track the number of waiting tasks, while standard semaphores do not",
+      "Quantity semaphores automatically prevent deadlock while standard semaphores require careful programming"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Quantity semaphores allow the wait and signal operations to specify the amount to decrement/increment as a parameter.",
+    "detailedExplanation": "In a quantity semaphore, wait(S, i) decrements the semaphore by i (blocking if S < i), and signal(S, i) increments by i. This is useful for resource allocation where different requests need different amounts of a resource, rather than the fixed amount of 1 in standard semaphores.",
+    "topic": "semaphore-types"
+  },
+  {
+    "question": "In the bounded buffer problem, what could go wrong if mutual exclusion is not properly implemented for the buffer pointers?",
+    "options": [
+      "The buffer capacity would automatically reduce causing permanent deadlock",
+      "Two producers could corrupt the 'next free slot' pointer simultaneously",
+      "The consumer tasks would be unable to detect when new data becomes available",
+      "The buffer would automatically expand beyond its intended size limits"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Without proper mutual exclusion, multiple producers could simultaneously update and corrupt the buffer's pointer management.",
+    "detailedExplanation": "If two producers execute simultaneously, they might both read the same 'next free slot' pointer value, both place their data at the same location (overwriting one item), and both increment the pointer. This corrupts the buffer's internal structure and can lead to data loss or inconsistent state.",
+    "topic": "producer-consumer"
+  },
+  {
+    "question": "What is the key advantage of Ada's protected objects over traditional monitors?",
+    "options": [
+      "Protected objects provide better performance with lower overhead than monitor implementations",
+      "They combine monitor structure with high-level guards instead of low-level condition variables",
+      "Protected objects can be used across different address spaces unlike traditional monitors",
+      "They automatically prevent all forms of deadlock without requiring careful design"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Protected objects provide the structure of monitors while using high-level boolean guards instead of low-level condition variables.",
+    "detailedExplanation": "Ada's protected objects offer the mutual exclusion structuring of monitors but replace low-level condition variables with high-level boolean expressions (barriers). This provides a cleaner programming model that combines the benefits of monitors with the expressiveness of conditional critical regions, avoiding the mix of abstraction levels that characterizes traditional monitors.",
+    "topic": "ada-protected-objects"
+  },
+  {
+    "question": "Why are read/write locks useful in concurrent programming?",
+    "options": [
+      "They automatically prevent deadlock by enforcing a specific lock acquisition order",
+      "They allow multiple concurrent readers while ensuring exclusive access for writers",
+      "They provide better performance than regular mutexes on single-processor systems",
+      "They eliminate the need for condition variables in most synchronization scenarios"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Read/write locks allow multiple threads to read data simultaneously while giving writers exclusive access.",
+    "detailedExplanation": "Read/write locks recognize that multiple readers can safely access data concurrently since they don't modify it, while writers need exclusive access. This improves concurrency compared to regular mutexes which would serialize all access, even when multiple readers could safely operate simultaneously.",
+    "topic": "read-write-locks"
+  },
+  {
+    "question": "What is the primary purpose of barriers in concurrent programming?",
+    "options": [
+      "To prevent race conditions by ensuring atomic access to shared variables",
+      "To block threads until a specified number of them have reached the barrier point",
+      "To provide mutual exclusion for critical sections in multithreaded applications",
+      "To automatically distribute work evenly across available processor cores"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Barriers synchronize multiple threads by blocking them until a predetermined number have reached the barrier.",
+    "detailedExplanation": "A barrier is initialized with a count of how many threads are expected. When threads call the barrier wait function, they block until exactly that many threads have arrived at the barrier. Then all threads are released simultaneously. This is useful for synchronizing parallel algorithms at specific points.",
+    "topic": "barriers"
+  },
+  {
+    "question": "In nested monitor calls, what problem can arise with condition variable operations?",
+    "options": [
+      "The nested call automatically creates additional condition variables causing memory leaks",
+      "Mutual exclusion is relinquished in the innermost monitor but not in outer monitors",
+      "The condition variables become invalid and cannot be used for synchronization",
+      "Deadlock is guaranteed to occur when the nested call attempts to return"
+    ],
+    "correctAnswer": 1,
+    "explanation": "When a nested monitor procedure waits on a condition variable, it releases the innermost monitor's lock but retains locks from outer monitor calls.",
+    "detailedExplanation": "If monitor A calls a procedure in monitor B, and that procedure waits on a condition variable, the wait releases monitor B's lock but not monitor A's lock. This can block other tasks that need to access monitor A, reducing concurrency and potentially causing performance issues or deadlock.",
+    "topic": "nested-monitors"
+  },
+  {
+    "question": "What is the difference between signal and broadcast operations on condition variables?",
+    "options": [
+      "Signal works with counting semaphores while broadcast works with binary semaphores",
+      "Signal awakens one waiting thread while broadcast awakens all waiting threads",
+      "Signal is used for error conditions while broadcast is used for normal synchronization",
+      "Signal provides guaranteed ordering while broadcast provides no ordering guarantees"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Signal awakens exactly one waiting thread, while broadcast awakens all threads waiting on the condition variable.",
+    "detailedExplanation": "When multiple threads are waiting on a condition variable, signal (or notify in Java) wakes up one thread (usually FIFO but not guaranteed), while broadcast (or notifyAll in Java) wakes up all waiting threads. All awakened threads must still compete for the associated lock before they can continue execution.",
+    "topic": "condition-variables"
+  },
+  {
+    "question": "What challenge does the readers-writers problem address in concurrent programming?",
+    "options": [
+      "How to efficiently schedule tasks between multiple processors in a shared memory system",
+      "How to allow multiple readers or a single writer, but not both, to access shared data",
+      "How to prevent deadlock when multiple threads compete for the same set of resources",
+      "How to implement atomic operations on shared variables without hardware support"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The readers-writers problem concerns allowing concurrent readers OR exclusive writers, but preventing readers and writers from accessing data simultaneously.",
+    "detailedExplanation": "In the readers-writers problem, multiple readers can safely access data concurrently since they don't modify it. However, writers need exclusive access to prevent data corruption. The challenge is coordinating these different access patterns while maintaining good performance and avoiding starvation of either readers or writers.",
+    "topic": "readers-writers"
+  },
+  {
+    "question": "Why do Java's wait() and notify() methods require the calling thread to hold the object's monitor lock?",
+    "options": [
+      "To prevent the methods from being called accidentally by unauthorized threads",
+      "To ensure atomic testing of conditions and waiting without race conditions",
+      "To provide better performance by avoiding unnecessary context switches between threads",
+      "To maintain compatibility with older versions of Java that required explicit locking"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Holding the monitor lock ensures that condition testing and waiting happen atomically, preventing race conditions.",
+    "detailedExplanation": "If a thread could call wait() without holding the lock, there would be a race condition between testing the condition and waiting. Another thread could change the condition and call notify() in between, causing the notification to be lost. Requiring the lock ensures atomic condition-testing-and-waiting.",
+    "topic": "java-monitor-lock"
+  },
+  {
+    "question": "What is the main limitation of the suspend/resume approach to thread synchronization?",
+    "options": [
+      "Suspend and resume operations cannot be implemented efficiently on multiprocessor systems",
+      "The approach suffers from race conditions between condition testing and thread suspension",
+      "Suspended threads consume too much memory and can cause system resource exhaustion",
+      "Resume operations have no effect unless the target thread is currently in suspended state"
+    ],
+    "correctAnswer": 1,
+    "explanation": "There's a race condition between testing a condition and suspending - another thread might change the condition and call resume between these operations.",
+    "detailedExplanation": "A thread might test a flag, find it false, then be preempted before suspending. Another thread could set the flag and call resume while the first thread isn't yet suspended, causing the resume to have no effect. When the first thread finally suspends, it may wait indefinitely even though the condition is now true.",
+    "topic": "suspend-resume"
+  },
+  {
+    "question": "In Ada's protected objects, when are entry barriers evaluated?",
+    "options": [
+      "Continuously in the background by a dedicated system thread until they become true",
+      "When a task calls the entry and when tasks leave protected procedures or entries",
+      "Only when explicitly requested by calling a special barrier evaluation procedure",
+      "At regular time intervals determined by the Ada runtime system configuration"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Barriers are evaluated when tasks call entries and when tasks exit protected operations that might have changed relevant variables.",
+    "detailedExplanation": "Protected entry barriers are evaluated: (1) when a task calls the entry and the barrier references variables that might have changed since last evaluation, and (2) when a task leaves a protected procedure or entry and there are queued tasks whose barriers reference variables that might have been modified. Barriers are not evaluated on function calls.",
+    "topic": "ada-barriers"
+  },
+  {
+    "question": "What is the fundamental difference between message passing and shared variable communication?",
+    "options": [
+      "Message passing is faster on multiprocessor systems while shared variables are faster on single processors",
+      "Message passing involves explicit data exchange while shared variables use implicit shared memory access",
+      "Message passing requires hardware support while shared variables can be implemented purely in software",
+      "Message passing prevents deadlock automatically while shared variables require careful deadlock prevention"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Message passing involves explicit data exchange between tasks, while shared variables use implicit communication through shared memory.",
+    "detailedExplanation": "In message passing, tasks explicitly send and receive data through message primitives - communication is visible in the code. With shared variables, tasks communicate implicitly by reading and writing to memory locations accessible by multiple tasks. The choice is often influenced by the underlying hardware architecture (shared memory vs. distributed systems).",
+    "topic": "communication-models"
+  },
+  {
+    "question": "What property must semaphore operations (wait and signal) possess to work correctly?",
+    "options": [
+      "They must execute with the highest possible priority to minimize synchronization delays",
+      "They must be atomic (indivisible) to prevent interference between concurrent operations",
+      "They must be implemented using hardware instructions rather than software algorithms",
+      "They must complete within a bounded time limit to ensure real-time system responsiveness"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Semaphore operations must be atomic to prevent interference when multiple tasks operate on the same semaphore simultaneously.",
+    "detailedExplanation": "If wait and signal were not atomic, two tasks executing wait operations on the same semaphore could interfere with each other, potentially both decrementing the semaphore value when only one should succeed. Atomicity ensures that the test-and-decrement (or increment) operations appear as a single indivisible action.",
+    "topic": "semaphore-atomicity"
+  },
+  {
+    "question": "In the context of multiprocessor systems, what is a memory fence or barrier instruction?",
+    "options": [
+      "A hardware instruction that prevents cache coherency protocols from operating normally",
+      "A synchronization primitive that ensures memory operations complete in a specific order",
+      "A software technique for allocating memory regions that are shared between processors",
+      "A debugging tool used to detect race conditions in multithreaded applications"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Memory fences ensure that memory operations complete in a specific order, preventing harmful reorderings by processors or compilers.",
+    "detailedExplanation": "Modern processors and compilers can reorder memory operations for performance. Memory fences (barriers) are instructions that prevent certain reorderings, ensuring that operations before the fence complete before operations after the fence. This is crucial for implementing synchronization primitives correctly on relaxed memory models.",
+    "topic": "memory-barriers"
+  },
+  {
+    "question": "What is the 'lost wake-up' problem in concurrent programming?",
+    "options": [
+      "A performance issue where threads wake up too frequently, wasting CPU resources",
+      "A situation where a notification is sent before any thread is waiting, causing it to be lost",
+      "A deadlock condition that occurs when threads wait for notifications that never arrive",
+      "A memory leak that happens when threads are awakened but fail to clean up resources"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Lost wake-up occurs when a notification/signal is sent before any thread is waiting, causing the notification to be lost.",
+    "detailedExplanation": "If a thread signals a condition variable or semaphore before any other thread is waiting on it, the signal may be lost. Later, when a thread does wait, it may block indefinitely because the notification already occurred. This is why some synchronization primitives maintain state (like semaphores) while others don't (like condition variables).",
+    "topic": "lost-wakeup"
+  },
+  {
+    "question": "What is the purpose of the 'Count attribute in Ada protected entries?",
+    "options": [
+      "To measure the total execution time spent by tasks within the protected entry",
+      "To indicate how many tasks are currently queued waiting on that specific entry",
+      "To count the total number of times the entry has been called since system startup",
+      "To track the maximum number of tasks that can simultaneously access the entry"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The 'Count attribute returns the number of tasks currently queued and waiting on that specific protected entry.",
+    "detailedExplanation": "Entry_Name'Count gives the current number of tasks queued on that entry. This is useful for implementing complex synchronization patterns, such as broadcast operations where you need to know how many tasks are waiting before deciding whether to open the barrier or for priority-based scheduling decisions.",
+    "topic": "ada-entry-attributes"
+  },
+  {
+    "question": "In Java, why is it recommended to use notifyAll() instead of notify() in most cases?",
+    "options": [
+      "notifyAll() provides better performance by waking threads more efficiently than notify()",
+      "notify() may wake the wrong thread when multiple threads wait for different conditions",
+      "notifyAll() automatically prevents deadlock while notify() can cause deadlock situations",
+      "notify() is deprecated in recent Java versions and may be removed in future releases"
+    ],
+    "correctAnswer": 1,
+    "explanation": "notify() may wake a thread waiting for a different condition than the one that just became true, potentially causing that thread to go back to waiting.",
+    "detailedExplanation": "Since Java doesn't have explicit condition variables, multiple threads may wait on the same object for different logical conditions. notify() wakes an arbitrary thread, which might be waiting for a condition that hasn't become true. notifyAll() wakes all threads, letting each check if its specific condition is now satisfied.",
+    "topic": "java-notify-vs-notifyall"
+  },
+  {
+    "question": "What is a spurious wake-up in concurrent programming?",
+    "options": [
+      "A wake-up that occurs due to a programming error where notify is called incorrectly",
+      "A wake-up generated by the system that is not related to application-level notifications",
+      "A wake-up that happens when a thread is interrupted by an external signal",
+      "A wake-up caused by hardware failures or transient system errors"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Spurious wake-ups are generated by the underlying system implementation, not by explicit application calls to notify/signal.",
+    "detailedExplanation": "Some implementations of condition variables may occasionally wake up waiting threads even when no explicit signal was sent. This can happen due to implementation details, system optimizations, or low-level scheduling decisions. This is why waiting threads should always recheck their conditions in a loop rather than assuming the condition is true after waking up.",
+    "topic": "spurious-wakeups"
+  },
+  {
+    "question": "What is the primary advantage of using synchronized interfaces in Ada 2005?",
+    "options": [
+      "They provide better performance than traditional protected objects in most scenarios",
+      "They allow deferring the choice between task-based and protected object implementations",
+      "They automatically generate optimized code for multiprocessor systems",
+      "They eliminate the need for explicit synchronization in concurrent programs"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Synchronized interfaces allow programming against an abstraction without committing to a specific synchronization implementation (tasks vs. protected objects).",
+    "detailedExplanation": "A synchronized interface specifies operations that require some form of synchronization but doesn't specify whether it should be implemented using protected objects (shared variable approach) or tasks (message-passing approach). This allows the programmer to defer the implementation choice and potentially change it later without affecting client code.",
+    "topic": "ada-synchronized-interfaces"
+  },
+  {
+    "question": "In C/Real-Time POSIX, what is the difference between pthread_mutex_lock() and pthread_mutex_trylock()?",
+    "options": [
+      "lock() works with any mutex type while trylock() only works with recursive mutexes",
+      "lock() blocks if the mutex is unavailable while trylock() returns immediately with an error",
+      "lock() provides priority inheritance while trylock() uses simple priority-based scheduling",
+      "lock() is guaranteed to be atomic while trylock() may not be atomic on all systems"
+    ],
+    "correctAnswer": 1,
+    "explanation": "pthread_mutex_lock() blocks the calling thread if the mutex is unavailable, while pthread_mutex_trylock() returns immediately with an error code.",
+    "detailedExplanation": "pthread_mutex_lock() will suspend the calling thread until the mutex becomes available. pthread_mutex_trylock() attempts to lock the mutex but returns immediately if it's already locked, returning an error code instead of blocking. This allows non-blocking attempts to acquire locks.",
+    "topic": "posix-mutex-variants"
+  },
+  {
+    "question": "What is the main challenge in implementing atomic operations on multiprocessor systems?",
+    "options": [
+      "Ensuring that cache coherency protocols don't interfere with the atomic operation timing",
+      "Coordinating between multiple processors so that memory accesses appear indivisible",
+      "Preventing compiler optimizations that might reorder instructions within atomic blocks",
+      "Managing the increased power consumption caused by synchronizing multiple processor cores"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The challenge is ensuring that memory operations appear atomic (indivisible) even when multiple processors might access the same memory location simultaneously.",
+    "detailedExplanation": "On single processors, disabling interrupts can make operations atomic. On multiprocessors, other processors can still access memory simultaneously. Hardware support like 'test-and-set' or 'compare-and-swap' instructions, or software protocols using memory barriers, are needed to ensure atomicity across multiple processors.",
+    "topic": "multiprocessor-atomicity"
+  },
+  {
+    "question": "What is the concept of 'liveness' in concurrent programming?",
+    "options": [
+      "A property ensuring that tasks remain responsive and don't become permanently blocked",
+      "A performance metric measuring how actively tasks utilize available CPU resources",
+      "A debugging technique for detecting when tasks are stuck in infinite loops",
+      "A scheduling algorithm that prioritizes tasks based on their remaining execution time"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Liveness ensures that if a task wants to perform an action, it will eventually be allowed to do so, avoiding permanent blocking.",
+    "detailedExplanation": "A task possesses liveness if it's free from livelocks, deadlocks, and indefinite postponements. The liveness property informally means that if a task wishes to perform some action (like entering a critical section), it will eventually be allowed to do so within finite time. This is crucial for system progress and responsiveness.",
+    "topic": "liveness-property"
+  }
+]

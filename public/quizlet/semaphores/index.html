@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaphores & Synchronization Quiz</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHBTV86VV1"></script>
+    <script src="../analytics.js"></script>
+</head>
+<body>
+   <div class="container">
+       <!-- Navigation back to topics -->
+       <a href="../" class="nav-back">← Back to Topics</a>
+       
+       <div class="header">
+           <h1>🔄 Semaphores & Synchronization Quiz</h1>
+           <p>Master the fundamentals of concurrent programming, thread synchronization, and classical synchronization problems</p>
+       </div>
+       
+       <!-- Introduction Section -->
+       <div id="intro-container" class="summary-section">
+           <h2>About This Quiz</h2>
+           <p>This comprehensive quiz covers essential concepts in concurrent programming and thread synchronization based on "The Little Book of Semaphores" by Allen B. Downey, including:</p>
+           
+           <div class="must-know">
+               <h3>Key Topics Covered</h3>
+               <div class="must-know-grid">
+                   <div class="must-know-item">
+                       <strong>Semaphore Fundamentals</strong>
+                       <p>Operations (wait/signal), blocking behavior, and semaphore properties</p>
+                   </div>
+                   <div class="must-know-item">
+                       <strong>Synchronization Patterns</strong>
+                       <p>Signaling, rendezvous, barriers, lightswitch, and turnstile patterns</p>
+                   </div>
+                   <div class="must-know-item">
+                       <strong>Classical Problems</strong>
+                       <p>Producer-consumer, readers-writers, dining philosophers, and cigarette smokers</p>
+                   </div>
+                   <div class="must-know-item">
+                       <strong>Advanced Concepts</strong>
+                       <p>Deadlock prevention, starvation, categorical exclusion, and reusable barriers</p>
+                   </div>
+               </div>
+           </div>
+           
+           <div class="key-concepts">
+               <div class="concept">
+                   <h3>Critical Synchronization Concepts</h3>
+                   <ul>
+                       <li>Mutual exclusion and critical sections in concurrent programs</li>
+                       <li>Race conditions, atomicity, and the importance of synchronization</li>
+                       <li>Deadlock detection and prevention strategies</li>
+                       <li>Starvation vs deadlock and fairness in resource allocation</li>
+                   </ul>
+               </div>
+               <div class="concept">
+                   <h3>Real-World Applications</h3>
+                   <ul>
+                       <li>Thread-safe data structures and concurrent algorithms</li>
+                       <li>Producer-consumer patterns in event-driven systems</li>
+                       <li>Resource management in operating systems and databases</li>
+                       <li>Synchronization in distributed and parallel computing systems</li>
+                   </ul>
+               </div>
+           </div>
+           
+           <div class="quiz-controls">
+               <button id="start-quiz-button" class="btn">Start Quiz</button>
+           </div>
+       </div>
+       
+       <!-- Quiz Section (Hidden initially) -->
+       <div id="quiz-section" class="quiz-section" style="display: none;">
+           <div class="quiz-stats">
+               <div class="stat-card">
+                   <span id="score-display" class="stat-number">Score: 0/0</span>
+                   <span>Current Score</span>
+               </div>
+               <div class="stat-card">
+                   <span class="stat-number">50 Questions</span>
+                   <span>Total Questions</span>
+               </div>
+           </div>
+           
+           <!-- Progress Bar -->
+           <div id="progress-bar" class="progress-bar">
+               <div id="progress-fill" class="progress-fill"></div>
+           </div>
+           
+           <!-- Quiz Container -->
+           <div id="quiz-container">
+               <div id="question-container" class="quiz-question">
+                   <!-- Question will be inserted here by JavaScript -->
+               </div>
+               
+               <div id="options-container" class="quiz-options">
+                   <!-- Options will be inserted here by JavaScript -->
+               </div>
+               
+               <div class="quiz-controls">
+                   <button id="next-button" class="btn" disabled>Next Question</button>
+               </div>
+           </div>
+       </div>
+       
+       <!-- Final Score (Hidden initially) -->
+       <div id="final-score" class="final-score" style="display: none;">
+           <!-- Final score will be inserted here by JavaScript -->
+       </div>
+       
+       <!-- Restart Button (Hidden initially) -->
+       <div class="quiz-controls">
+           <button id="restart-button" class="btn" style="display: none;">Take Quiz Again</button>
+       </div>
+   </div>
+   
+   <!-- Link to the quiz JavaScript file -->
+   <script src="quiz.js"></script>
+</body>
+</html>

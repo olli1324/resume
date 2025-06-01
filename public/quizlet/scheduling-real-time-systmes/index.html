@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Systems Scheduling Quiz</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHBTV86VV1"></script>
+    <script src="../analytics.js"></script>
+</head>
+<body>
+   <div class="container">
+       <!-- Navigation back to topics -->
+       <a href="../" class="nav-back">← Back to Topics</a>
+       
+       <div class="header">
+           <h1>⏰ Real-Time Systems Scheduling Quiz</h1>
+           <p>Master the fundamentals of real-time scheduling algorithms, analysis techniques, and implementation strategies</p>
+       </div>
+       
+       <!-- Introduction Section -->
+       <div id="intro-container" class="summary-section">
+           <h2>About This Quiz</h2>
+           <p>This comprehensive quiz covers essential concepts in real-time systems scheduling theory and practice, including:</p>
+           
+           <div class="must-know">
+               <h3>Key Topics Covered</h3>
+               <div class="must-know-grid">
+                   <div class="must-know-item">
+                       <strong>Scheduling Fundamentals</strong>
+                       <p>Cyclic executives, task-based scheduling, and scheduling scheme characteristics</p>
+                   </div>
+                   <div class="must-know-item">
+                       <strong>Fixed-Priority Scheduling</strong>
+                       <p>Rate monotonic, deadline monotonic, and response time analysis (RTA)</p>
+                   </div>
+                   <div class="must-know-item">
+                       <strong>Dynamic Scheduling</strong>
+                       <p>Earliest Deadline First (EDF), processor demand criteria, and QPA analysis</p>
+                   </div>
+                   <div class="must-know-item">
+                       <strong>Advanced Topics</strong>
+                       <p>Multiprocessor scheduling, priority inheritance, and power-aware systems</p>
+                   </div>
+               </div>
+           </div>
+           
+           <div class="key-concepts">
+               <div class="concept">
+                   <h3>Core Scheduling Concepts</h3>
+                   <ul>
+                       <li>Utilization-based vs response time schedulability tests</li>
+                       <li>Priority inversion problems and ceiling protocols</li>
+                       <li>Sporadic task handling and release jitter effects</li>
+                       <li>System overheads and context switching modeling</li>
+                   </ul>
+               </div>
+               <div class="concept">
+                   <h3>Real-World Applications</h3>
+                   <ul>
+                       <li>Mars Pathfinder priority inversion incident</li>
+                       <li>Control Area Network (CAN) message scheduling</li>
+                       <li>Execution-time servers for aperiodic tasks</li>
+                       <li>WCET analysis for modern processor architectures</li>
+                   </ul>
+               </div>
+           </div>
+           
+           <div class="quiz-controls">
+               <button id="start-quiz-button" class="btn">Start Quiz</button>
+           </div>
+       </div>
+       
+       <!-- Quiz Section (Hidden initially) -->
+       <div id="quiz-section" class="quiz-section" style="display: none;">
+           <div class="quiz-stats">
+               <div class="stat-card">
+                   <span id="score-display" class="stat-number">Score: 0/0</span>
+                   <span>Current Score</span>
+               </div>
+               <div class="stat-card">
+                   <span class="stat-number">50 Questions</span>
+                   <span>Total Questions</span>
+               </div>
+           </div>
+           
+           <!-- Progress Bar -->
+           <div id="progress-bar" class="progress-bar">
+               <div id="progress-fill" class="progress-fill"></div>
+           </div>
+           
+           <!-- Quiz Container -->
+           <div id="quiz-container">
+               <div id="question-container" class="quiz-question">
+                   <!-- Question will be inserted here by JavaScript -->
+               </div>
+               
+               <div id="options-container" class="quiz-options">
+                   <!-- Options will be inserted here by JavaScript -->
+               </div>
+               
+               <div class="quiz-controls">
+                   <button id="next-button" class="btn" disabled>Next Question</button>
+               </div>
+           </div>
+       </div>
+       
+       <!-- Final Score (Hidden initially) -->
+       <div id="final-score" class="final-score" style="display: none;">
+           <!-- Final score will be inserted here by JavaScript -->
+       </div>
+       
+       <!-- Restart Button (Hidden initially) -->
+       <div class="quiz-controls">
+           <button id="restart-button" class="btn" style="display: none;">Take Quiz Again</button>
+       </div>
+   </div>
+   
+   <!-- Link to the quiz JavaScript file -->
+   <script src="quiz.js"></script>
+</body>
+</html>

@@ -3,9 +3,9 @@
     "question": "What is the primary purpose of a transaction in a database system?",
     "options": [
       "To ensure all operations complete successfully or none at all",
-      "To improve system performance",
-      "To reduce memory usage",
-      "To simplify application code"
+      "To improve system performance and reduce overall latency",
+      "To reduce memory usage during complex operations",
+      "To simplify application code structure and maintenance"
     ],
     "correctAnswer": 0,
     "explanation": "A transaction ensures atomicity - either all operations succeed or all fail together.",
@@ -15,10 +15,10 @@
   {
     "question": "Which ACID property ensures that a transaction sees a consistent view of the database?",
     "options": [
-      "Atomicity",
-      "Consistency",
-      "Isolation",
-      "Durability"
+      "Atomicity prevents partial transaction execution",
+      "Consistency maintains database integrity constraints",
+      "Isolation prevents interference between concurrent transactions",
+      "Durability ensures changes survive system failures"
     ],
     "correctAnswer": 2,
     "explanation": "Isolation ensures that concurrent transactions don't interfere with each other.",
@@ -28,9 +28,9 @@
   {
     "question": "In the two-phase commit protocol, what happens during Phase 1?",
     "options": [
-      "All participants commit their changes",
+      "All participants commit their changes permanently",
       "The coordinator asks all participants if they can commit",
-      "All participants rollback their changes",
+      "All participants rollback their changes immediately",
       "The coordinator decides to abort the transaction"
     ],
     "correctAnswer": 1,
@@ -41,10 +41,10 @@
   {
     "question": "What does the 'A' in ACID properties stand for?",
     "options": [
-      "Availability",
-      "Atomicity",
-      "Accessibility",
-      "Accuracy"
+      "Availability for concurrent access",
+      "Atomicity for transaction integrity",
+      "Accessibility for user operations",
+      "Accuracy for data validation"
     ],
     "correctAnswer": 1,
     "explanation": "Atomicity means the transaction is treated as a single, indivisible unit.",
@@ -54,10 +54,10 @@
   {
     "question": "What is a key disadvantage of pessimistic concurrency control?",
     "options": [
-      "It allows dirty reads",
-      "It can lead to deadlocks",
-      "It doesn't prevent lost updates",
-      "It requires too much memory"
+      "It allows dirty reads to occur frequently",
+      "It can lead to deadlock situations",
+      "It doesn't prevent lost updates effectively",
+      "It requires excessive memory usage"
     ],
     "correctAnswer": 1,
     "explanation": "Pessimistic locking can create deadlock situations when transactions wait for each other's locks.",
@@ -67,10 +67,10 @@
   {
     "question": "In optimistic concurrency control, when are conflicts detected?",
     "options": [
-      "At the beginning of the transaction",
-      "During the transaction execution",
-      "At commit time",
-      "After the transaction commits"
+      "At the beginning of transaction execution",
+      "During transaction execution continuously",
+      "At commit time when transaction completes",
+      "After transaction commits to the database"
     ],
     "correctAnswer": 2,
     "explanation": "Optimistic concurrency control checks for conflicts only when the transaction tries to commit.",
@@ -82,8 +82,8 @@
     "options": [
       "All locks must be acquired before any are released",
       "Locks can be acquired and released at any time",
-      "Only read locks are used",
-      "Locks are held for exactly two phases"
+      "Only read locks are used throughout execution",
+      "Locks are held for exactly two distinct phases"
     ],
     "correctAnswer": 0,
     "explanation": "Two-phase locking has a growing phase (acquire locks) and shrinking phase (release locks).",
@@ -93,10 +93,10 @@
   {
     "question": "What is a heuristic decision in transaction processing?",
     "options": [
-      "A decision made by the coordinator",
+      "A decision made by the transaction coordinator",
       "An autonomous decision made by a participant",
-      "A decision made by the database",
-      "A decision made by the application"
+      "A decision made by the database system",
+      "A decision made by the application layer"
     ],
     "correctAnswer": 1,
     "explanation": "A heuristic decision is when a participant makes an autonomous choice to commit or rollback.",
@@ -106,10 +106,10 @@
   {
     "question": "What is the purpose of a transaction log?",
     "options": [
-      "To improve query performance",
-      "To store user data",
+      "To improve query performance significantly",
+      "To store user data permanently",
       "To record transaction operations for recovery",
-      "To manage user permissions"
+      "To manage user access permissions"
     ],
     "correctAnswer": 2,
     "explanation": "The transaction log records all changes made by transactions to enable recovery after failures.",
@@ -120,9 +120,9 @@
     "question": "What is a nested transaction?",
     "options": [
       "A transaction that runs inside another transaction",
-      "A transaction that involves multiple databases",
-      "A transaction that takes a long time to complete",
-      "A transaction that is automatically retried"
+      "A transaction that involves multiple database systems",
+      "A transaction that takes extended time to complete",
+      "A transaction that is automatically retried on failure"
     ],
     "correctAnswer": 0,
     "explanation": "A nested transaction is a subtransaction that runs within the scope of a parent transaction.",
@@ -132,10 +132,10 @@
   {
     "question": "In the context of distributed transactions, what is interposition?",
     "options": [
-      "Running multiple transactions simultaneously",
+      "Running multiple transactions in parallel across systems",
       "Using a subordinate coordinator as a proxy",
       "Splitting a transaction across multiple databases",
-      "Combining multiple small transactions"
+      "Combining multiple small transactions together efficiently"
     ],
     "correctAnswer": 1,
     "explanation": "Interposition involves using subordinate coordinators to reduce overhead in distributed transactions.",
@@ -145,10 +145,10 @@
   {
     "question": "What is a compensating transaction?",
     "options": [
-      "A transaction that improves performance",
+      "A transaction that improves system performance",
       "A transaction that undoes the effects of another transaction",
-      "A transaction that runs in parallel",
-      "A transaction that backs up data"
+      "A transaction that runs in parallel with others",
+      "A transaction that backs up critical data"
     ],
     "correctAnswer": 1,
     "explanation": "A compensating transaction logically undoes the effects of a previously committed transaction.",
@@ -158,10 +158,10 @@
   {
     "question": "What is the main purpose of checkpointing in transaction processing?",
     "options": [
-      "To improve transaction performance",
-      "To reduce recovery time after failures",
-      "To prevent deadlocks",
-      "To compress transaction data"
+      "To improve transaction execution performance",
+      "To reduce recovery time after system failures",
+      "To prevent deadlock situations from occurring",
+      "To compress transaction data efficiently"
     ],
     "correctAnswer": 1,
     "explanation": "Checkpointing reduces recovery time by creating consistent snapshots of the database state.",
@@ -171,10 +171,10 @@
   {
     "question": "What happens in Phase 2 of the two-phase commit protocol if all participants voted 'yes' in Phase 1?",
     "options": [
-      "The coordinator sends abort messages",
-      "The coordinator sends commit messages",
-      "The participants decide independently",
-      "The transaction is automatically rolled back"
+      "The coordinator sends abort messages to all participants",
+      "The coordinator sends commit messages to all participants",
+      "The participants decide their actions independently",
+      "The transaction is automatically rolled back completely"
     ],
     "correctAnswer": 1,
     "explanation": "If all participants vote 'yes', the coordinator sends commit messages in Phase 2.",
@@ -187,7 +187,7 @@
       "A transaction that involves multiple databases or systems",
       "A transaction that is split into smaller parts",
       "A transaction that runs on multiple threads",
-      "A transaction that takes a long time to complete"
+      "A transaction that takes extended time to complete"
     ],
     "correctAnswer": 0,
     "explanation": "A distributed transaction spans multiple databases or systems and requires coordination.",
@@ -212,8 +212,8 @@
     "options": [
       "To prevent other transactions from reading data",
       "To prevent other transactions from writing data",
-      "To improve read performance",
-      "To compress data"
+      "To improve read performance significantly",
+      "To compress data during read operations"
     ],
     "correctAnswer": 1,
     "explanation": "A read lock allows multiple readers but prevents writers from modifying the data.",
@@ -223,10 +223,10 @@
   {
     "question": "What is a write lock used for?",
     "options": [
-      "To allow multiple writers",
+      "To allow multiple writers simultaneously",
       "To prevent both readers and writers from accessing data",
-      "To improve write performance",
-      "To compress data before writing"
+      "To improve write performance significantly",
+      "To compress data before write operations"
     ],
     "correctAnswer": 1,
     "explanation": "A write lock provides exclusive access, preventing both readers and writers.",
@@ -238,8 +238,8 @@
     "options": [
       "Transactions must complete quickly",
       "Committed changes must survive system failures",
-      "Transactions must not conflict",
-      "Data must remain consistent"
+      "Transactions must not conflict with others",
+      "Data must remain consistent always"
     ],
     "correctAnswer": 1,
     "explanation": "Durability ensures that committed transaction effects survive system failures.",
@@ -251,7 +251,7 @@
     "options": [
       "When a transaction takes too long to complete",
       "When transactions wait for each other's locks in a cycle",
-      "When a transaction fails to commit",
+      "When a transaction fails to commit properly",
       "When the system runs out of memory"
     ],
     "correctAnswer": 1,
@@ -262,10 +262,10 @@
   {
     "question": "Which of the following is NOT one of the ACID properties?",
     "options": [
-      "Atomicity",
-      "Consistency",
-      "Availability",
-      "Durability"
+      "Atomicity for transaction integrity",
+      "Consistency for data validation",
+      "Availability for system uptime",
+      "Durability for persistence"
     ],
     "correctAnswer": 2,
     "explanation": "The ACID properties are Atomicity, Consistency, Isolation, and Durability. Availability is not one of them.",
@@ -291,7 +291,7 @@
       "Executing transactions one at a time",
       "Converting objects to byte streams",
       "Ensuring concurrent execution is equivalent to serial execution",
-      "Storing transactions in sequence"
+      "Storing transactions in sequential order"
     ],
     "correctAnswer": 2,
     "explanation": "Serializability means concurrent transaction execution produces the same result as some serial execution.",
@@ -315,9 +315,9 @@
     "question": "What is the consistency property in ACID concerned with?",
     "options": [
       "Ensuring transactions don't interfere with each other",
-      "Maintaining database integrity constraints",
+      "Maintaining database integrity constraints and business rules",
       "Making sure all operations complete or none do",
-      "Ensuring changes survive system failures"
+      "Ensuring changes survive system failures permanently"
     ],
     "correctAnswer": 1,
     "explanation": "Consistency ensures that transactions maintain database integrity constraints and business rules.",
@@ -343,7 +343,7 @@
       "Reading data from a corrupted database",
       "Reading uncommitted data from another transaction",
       "Reading data that violates integrity constraints",
-      "Reading data from a transaction that was rolled back"
+      "Reading data from a rolled back transaction"
     ],
     "correctAnswer": 1,
     "explanation": "A dirty read occurs when a transaction reads uncommitted changes from another transaction.",
@@ -355,7 +355,7 @@
     "options": [
       "Pessimistic assumes conflicts are rare, optimistic assumes they are common",
       "Optimistic assumes conflicts are rare, pessimistic assumes they are common",
-      "They are the same thing with different names",
+      "They are the same thing with different naming conventions",
       "Optimistic is faster, pessimistic is more reliable"
     ],
     "correctAnswer": 1,
@@ -368,8 +368,8 @@
     "options": [
       "Reading the same data twice and getting different values",
       "Reading data that cannot be read again",
-      "Reading uncommitted data",
-      "Reading data that violates constraints"
+      "Reading uncommitted data from transactions",
+      "Reading data that violates integrity constraints"
     ],
     "correctAnswer": 0,
     "explanation": "A non-repeatable read occurs when reading the same data twice within a transaction yields different values.",
@@ -379,10 +379,10 @@
   {
     "question": "What is the purpose of write-ahead logging (WAL)?",
     "options": [
-      "To improve write performance",
+      "To improve write performance significantly",
       "To ensure durability by logging changes before they are applied",
-      "To compress transaction data",
-      "To prevent deadlocks"
+      "To compress transaction data efficiently",
+      "To prevent deadlock situations"
     ],
     "correctAnswer": 1,
     "explanation": "WAL ensures durability by writing log records to stable storage before applying changes to the database.",
@@ -405,10 +405,10 @@
   {
     "question": "What is the primary challenge in distributed transaction processing?",
     "options": [
-      "Network latency",
+      "Network latency issues affecting performance",
       "Coordinating commit decisions across multiple independent systems",
-      "Data storage limitations",
-      "User interface complexity"
+      "Data storage limitations in memory",
+      "User interface complexity requirements"
     ],
     "correctAnswer": 1,
     "explanation": "The main challenge is ensuring all participants in different systems make consistent commit/abort decisions.",
@@ -418,10 +418,10 @@
   {
     "question": "What is transaction isolation level READ COMMITTED designed to prevent?",
     "options": [
-      "Phantom reads",
-      "Non-repeatable reads",
-      "Dirty reads",
-      "Lost updates"
+      "Phantom reads in complex queries",
+      "Non-repeatable reads within transactions",
+      "Dirty reads from uncommitted data",
+      "Lost updates between transactions"
     ],
     "correctAnswer": 2,
     "explanation": "READ COMMITTED isolation level prevents dirty reads by ensuring only committed data is read.",
@@ -444,10 +444,10 @@
   {
     "question": "What is the main benefit of using nested transactions?",
     "options": [
-      "Improved performance",
+      "Improved overall system performance",
       "Better error handling and modular recovery",
-      "Reduced memory usage",
-      "Simplified application code"
+      "Reduced memory usage requirements",
+      "Simplified application code structure"
     ],
     "correctAnswer": 1,
     "explanation": "Nested transactions allow for more granular error handling and partial rollback within a larger transaction.",
@@ -457,9 +457,9 @@
   {
     "question": "What is the role of a transaction manager?",
     "options": [
-      "To store transaction data",
+      "To store transaction data permanently",
       "To coordinate transaction execution and ensure ACID properties",
-      "To optimize database queries",
+      "To optimize database queries efficiently",
       "To manage user authentication"
     ],
     "correctAnswer": 1,
@@ -470,10 +470,10 @@
   {
     "question": "What is the difference between a local and distributed transaction?",
     "options": [
-      "Local transactions are faster",
+      "Local transactions are faster than distributed",
       "Local transactions involve a single resource manager, distributed involve multiple",
       "Distributed transactions are more secure",
-      "There is no difference"
+      "There is no difference between them"
     ],
     "correctAnswer": 1,
     "explanation": "Local transactions involve a single resource manager, while distributed transactions span multiple resource managers.",
@@ -483,9 +483,9 @@
   {
     "question": "What is the purpose of timeout handling in distributed transactions?",
     "options": [
-      "To improve performance",
+      "To improve performance significantly",
       "To prevent transactions from blocking indefinitely",
-      "To reduce network traffic",
+      "To reduce network traffic overhead",
       "To compress transaction data"
     ],
     "correctAnswer": 1,
@@ -498,8 +498,8 @@
     "options": [
       "Copying transaction data between systems",
       "Passing transaction identity and properties across system boundaries",
-      "Replicating transactions for backup",
-      "Converting transactions between formats"
+      "Replicating transactions for backup purposes",
+      "Converting transactions between different formats"
     ],
     "correctAnswer": 1,
     "explanation": "Transaction context propagation ensures that transaction identity and properties are maintained across distributed components.",
@@ -509,10 +509,10 @@
   {
     "question": "What is the main advantage of using optimistic concurrency control?",
     "options": [
-      "It prevents all conflicts",
+      "It prevents all conflicts completely",
       "It has lower overhead when conflicts are rare",
-      "It's easier to implement",
-      "It uses less memory"
+      "It's easier to implement than alternatives",
+      "It uses less memory than other methods"
     ],
     "correctAnswer": 1,
     "explanation": "Optimistic control has lower overhead when conflicts are rare since it doesn't use locks during execution.",
@@ -522,10 +522,10 @@
   {
     "question": "What is a transactional queue?",
     "options": [
-      "A queue that processes messages very quickly",
-      "A queue where message operations participate in transactions",
-      "A queue that stores only transaction data",
-      "A queue that automatically retries failed messages"
+      "A queue that processes messages very quickly for high-throughput applications",
+      "A queue where message operations participate in transactions with ACID properties",
+      "A queue that stores only transaction data for recovery purposes",
+      "A queue that automatically retries failed messages until they succeed"
     ],
     "correctAnswer": 1,
     "explanation": "A transactional queue allows message operations to be part of larger transactions with ACID properties.",
@@ -535,10 +535,10 @@
   {
     "question": "What is the purpose of resource managers in transaction processing?",
     "options": [
-      "To manage user access to resources",
-      "To provide transactional access to specific types of resources",
-      "To optimize resource usage",
-      "To backup important resources"
+      "To manage user access to resources and enforce security policies",
+      "To provide transactional access to specific types of resources like databases",
+      "To optimize resource usage patterns and improve system performance",
+      "To backup important system resources and maintain data availability"
     ],
     "correctAnswer": 1,
     "explanation": "Resource managers provide transactional interfaces to specific types of resources like databases or message queues.",
@@ -548,10 +548,10 @@
   {
     "question": "What is transaction demarcation?",
     "options": [
-      "The process of optimizing transactions",
-      "The process of defining transaction boundaries",
-      "The process of monitoring transactions",
-      "The process of backing up transactions"
+      "The process of optimizing transactions for better performance and efficiency",
+      "The process of defining transaction boundaries where they begin and end",
+      "The process of monitoring transactions for performance and error analysis",
+      "The process of backing up transactions to ensure data safety"
     ],
     "correctAnswer": 1,
     "explanation": "Transaction demarcation defines where transactions begin and end in application code.",
@@ -561,10 +561,10 @@
   {
     "question": "What is the XA specification?",
     "options": [
-      "A database query language",
-      "A standard interface for distributed transaction processing",
-      "A message queue protocol",
-      "A database replication standard"
+      "A database query language designed for complex transaction operations",
+      "A standard interface for distributed transaction processing between components",
+      "A message queue protocol for reliable communication between systems",
+      "A database replication standard for maintaining consistency across nodes"
     ],
     "correctAnswer": 1,
     "explanation": "XA is a standard that defines interfaces between transaction managers and resource managers.",
@@ -574,10 +574,10 @@
   {
     "question": "What is a presumed abort protocol?",
     "options": [
-      "A protocol that always aborts transactions",
+      "A protocol that always aborts transactions regardless of their status",
       "An optimization of two-phase commit that assumes abort in case of uncertainty",
-      "A protocol for handling database corruption",
-      "A backup strategy for failed transactions"
+      "A protocol for handling database corruption and data integrity issues",
+      "A backup strategy for failed transactions that need to be recovered"
     ],
     "correctAnswer": 1,
     "explanation": "Presumed abort is an optimization where participants assume abort if they don't hear from the coordinator.",
@@ -587,10 +587,10 @@
   {
     "question": "What is the main purpose of transaction replication?",
     "options": [
-      "To improve transaction performance",
-      "To provide fault tolerance and high availability",
-      "To reduce storage requirements",
-      "To simplify application development"
+      "To improve transaction performance by distributing load across multiple systems",
+      "To provide fault tolerance and high availability by maintaining multiple copies",
+      "To reduce storage requirements by compressing data across distributed nodes",
+      "To simplify application development by abstracting complex distributed operations"
     ],
     "correctAnswer": 1,
     "explanation": "Transaction replication provides fault tolerance by maintaining copies of data across multiple systems.",
@@ -600,10 +600,10 @@
   {
     "question": "What is active replication?",
     "options": [
-      "Replication that happens during active hours",
-      "All replicas process operations and stay synchronized",
-      "Only the primary replica processes operations",
-      "Replication that requires manual intervention"
+      "Replication that happens during active business hours for optimal performance",
+      "All replicas process operations and stay synchronized in real-time",
+      "Only the primary replica processes operations while others remain idle",
+      "Replication that requires manual intervention and administrative oversight"
     ],
     "correctAnswer": 1,
     "explanation": "In active replication, all replicas process the same operations to stay synchronized.",
@@ -613,10 +613,10 @@
   {
     "question": "What is passive replication?",
     "options": [
-      "Replication that happens infrequently",
-      "Only the primary replica processes operations, then updates backups",
-      "All replicas process operations independently",
-      "Replication that doesn't require coordination"
+      "Replication that happens infrequently during low-usage periods",
+      "Only the primary replica processes operations, then updates backup replicas",
+      "All replicas process operations independently without coordination mechanisms",
+      "Replication that doesn't require coordination or consistency guarantees"
     ],
     "correctAnswer": 1,
     "explanation": "In passive replication, only the primary processes operations and then updates the backup replicas.",
@@ -626,10 +626,10 @@
   {
     "question": "What is the main challenge with synchronous replication?",
     "options": [
-      "It uses too much storage",
-      "It increases transaction latency",
-      "It's difficult to implement",
-      "It reduces data consistency"
+      "It uses too much storage space across all replicated nodes",
+      "It increases transaction latency because all replicas must be updated",
+      "It's difficult to implement correctly in complex distributed systems",
+      "It reduces data consistency guarantees compared to asynchronous approaches"
     ],
     "correctAnswer": 1,
     "explanation": "Synchronous replication increases latency because transactions must wait for all replicas to be updated.",
@@ -639,10 +639,10 @@
   {
     "question": "What is a Transaction Processing Monitor (TPM)?",
     "options": [
-      "A tool for monitoring transaction performance",
+      "A tool for monitoring transaction performance and identifying bottlenecks",
       "A system that provides infrastructure for transaction processing applications",
-      "A database specialized for transactions",
-      "A network protocol for transactions"
+      "A database specialized for high-volume transaction processing workloads",
+      "A network protocol for secure transaction communication between systems"
     ],
     "correctAnswer": 1,
     "explanation": "A TPM provides the infrastructure and services needed to build and run transaction processing applications.",
@@ -652,10 +652,10 @@
   {
     "question": "What is the purpose of connection pooling in transaction processing?",
     "options": [
-      "To encrypt database connections",
+      "To encrypt database connections for enhanced security and data protection",
       "To reuse database connections for better performance and resource management",
-      "To backup database connections",
-      "To monitor connection quality"
+      "To backup database connections in case of network failures",
+      "To monitor connection quality and detect performance degradation issues"
     ],
     "correctAnswer": 1,
     "explanation": "Connection pooling improves performance by reusing database connections rather than creating new ones for each transaction.",

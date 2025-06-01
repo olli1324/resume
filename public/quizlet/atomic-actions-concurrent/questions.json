@@ -8,9 +8,139 @@
             "To simplify code structure"
         ],
         "correctAnswer": 1,
-        "explanation": "Atomic actions are essential for damage confinement and assessment when errors occur in concurrent systems.",
-        "detailedExplanation": "Atomic actions serve as a fundamental mechanism for structuring concurrent programs to facilitate damage confinement and error recovery. When tasks interact and communicate, atomic actions constrain information flow to well-defined boundaries, making it possible to implement recovery procedures when faults occur. This is crucial in real-time embedded systems where reliability is paramount.",
-        "topic": "atomic-actions-fundamentals"
+        "explanation": "The abortion exception is a predefined exception raised to indicate that an internal action should abort because surrounding conditions are invalid.",
+        "detailedExplanation": "In nested atomic actions, when an exception is raised in an outer action while inner actions are executing, the abortion exception is raised to the inner action to indicate that the preconditions under which it was invoked are no longer valid. This allows the inner action to abort itself gracefully rather than being forcibly terminated, which could compromise its indivisibility property.",
+        "topic": "abortion-exception"
+    },
+    {
+        "question": "What is the key challenge in implementing atomic actions in mainstream programming languages?",
+        "options": [
+            "Lack of sufficient processing power",
+            "Absence of direct language support requiring use of lower-level primitives",
+            "Incompatibility with object-oriented programming",
+            "Excessive memory requirements"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The main challenge is that mainstream languages don't directly support atomic actions, requiring implementation using lower-level synchronization primitives.",
+        "detailedExplanation": "Since mainstream real-time programming languages don't provide direct support for atomic actions, developers must implement them using lower-level primitives like mutexes, condition variables, protected objects, and asynchronous notification mechanisms. This requires careful design to ensure all atomic action properties (indivisibility, well-defined boundaries, nesting support) are maintained while avoiding common pitfalls like deadlocks and race conditions.",
+        "topic": "implementation-challenges"
+    },
+    {
+        "question": "In the context of imprecise computations, why is asynchronous notification needed?",
+        "options": [
+            "To improve accuracy of results",
+            "To interrupt tasks when their allocated time expires",
+            "To coordinate multiple processors",
+            "To handle memory allocation"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Asynchronous notification is needed to interrupt tasks working on imprecise computations when their allocated time has been consumed.",
+        "detailedExplanation": "In imprecise computation algorithms, tasks start with an initial estimation and iteratively refine results to greater accuracy. At runtime, a scheduler allocates specific time budgets to these tasks. When the allocated time expires, the task must be interrupted to stop further refinement and return the current result. This requires asynchronous notification because the task cannot predict when it will be interrupted.",
+        "topic": "imprecise-computations"
+    },
+    {
+        "question": "What is the main difference between sigsuspend and sigwaitinfo in POSIX?",
+        "options": [
+            "sigsuspend is faster than sigwaitinfo",
+            "sigsuspend executes the handler, sigwaitinfo returns signal information without executing handlers",
+            "sigwaitinfo is deprecated",
+            "They are identical functions"
+        ],
+        "correctAnswer": 1,
+        "explanation": "sigsuspend executes the associated signal handler, while sigwaitinfo returns signal information without executing handlers.",
+        "detailedExplanation": "sigsuspend replaces the signal mask and suspends until a non-blocked signal is delivered and its handler executed. sigwaitinfo suspends until a signal arrives, but the signal must be blocked and the handler is not called - instead, the function returns the signal number and stores information about the signal. This allows synchronous handling of asynchronous signals.",
+        "topic": "posix-signal-waiting"
+    },
+    {
+        "question": "What is the purpose of the sigev_notify field in the sigevent structure?",
+        "options": [
+            "To specify the signal number",
+            "To indicate how the program should be notified when the signal is generated",
+            "To set the signal priority",
+            "To define the signal handler"
+        ],
+        "correctAnswer": 1,
+        "explanation": "sigev_notify specifies the notification method: no notification, signal queuing, or thread creation.",
+        "detailedExplanation": "The sigev_notify field in the sigevent structure determines how the application is notified when an event occurs. Options include SIGEV_NONE (no notification), SIGEV_SIGNAL (queue a signal with application-defined data), and SIGEV_THREAD (create a new pthread with a specified start routine). This flexibility allows applications to choose the most appropriate notification mechanism for their needs.",
+        "topic": "sigevent-structure"
+    },
+    {
+        "question": "Why is thread cancellation preferred over process termination for implementing ATC in POSIX?",
+        "options": [
+            "Threads are faster than processes",
+            "Thread cancellation is less expensive and provides better control",
+            "Processes cannot be cancelled",
+            "Thread cancellation is more portable"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Thread cancellation is less expensive than process termination and provides better control over the cancellation process.",
+        "detailedExplanation": "The document notes that aborting a process can be expensive and is often an extreme response, while aborting a thread is less expensive but still potentially dangerous as it can leave resources in an undefined state. Thread cancellation in POSIX provides mechanisms like cancellation points, cleanup handlers, and cancellation state control that allow for safer asynchronous termination compared to process-level termination.",
+        "topic": "thread-vs-process-cancellation"
+    },
+    {
+        "question": "What is the significance of cancellation points in POSIX thread cancellation?",
+        "options": [
+            "They mark points where threads are created",
+            "They define specific locations where cancellation requests are acted upon",
+            "They indicate performance bottlenecks",
+            "They mark synchronization points"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Cancellation points are specific locations in the code where deferred cancellation requests are acted upon.",
+        "detailedExplanation": "In POSIX thread cancellation, when the cancellation type is set to deferred (the default), cancellation only occurs at specific cancellation points rather than immediately. These points are typically blocking system calls or explicit calls to pthread_testcancel(). This mechanism allows threads to reach safe states before being cancelled, ensuring proper cleanup and resource management.",
+        "topic": "cancellation-points"
+    },
+    {
+        "question": "What is the role of cleanup handlers in POSIX thread cancellation?",
+        "options": [
+            "To prevent thread cancellation",
+            "To execute cleanup code when a thread is cancelled",
+            "To log cancellation events",
+            "To restart cancelled threads"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Cleanup handlers are routines that execute when a thread is cancelled to perform necessary cleanup operations.",
+        "detailedExplanation": "POSIX cleanup handlers are functions that are automatically executed when a thread is cancelled or when pthread_exit is called. They are stored on a stack (LIFO order) and are used to release resources, unlock mutexes, and perform other cleanup operations that ensure the system remains in a consistent state after thread termination. This mechanism is crucial for safe asynchronous thread termination.",
+        "topic": "cleanup-handlers"
+    },
+    {
+        "question": "What is the fundamental difference between Ada's and Real-Time Java's ATC models?",
+        "options": [
+            "Ada is faster than Real-Time Java",
+            "Ada integrates with select statements, Real-Time Java integrates with exception handling",
+            "Real-Time Java supports more concurrent tasks",
+            "Ada only supports synchronous operations"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Ada's ATC is integrated with select statements and entry handling, while Real-Time Java's ATC is integrated with exception handling and thread interruption.",
+        "detailedExplanation": "The document highlights two key differences: Ada's ATC model is built on top of the select statement and inter-task communication facilities, while Real-Time Java's model is integrated with the Java exception-handling facility and thread interruption mechanisms. Additionally, Ada's default allows ATC unless explicitly deferred, while Real-Time Java requires methods to explicitly declare their willingness to handle ATC by including AsynchronouslyInterruptedException in their throws clause.",
+        "topic": "ada-vs-rtj-atc"
+    },
+    {
+        "question": "What is the primary reason for using protected objects in Ada's atomic action implementation?",
+        "options": [
+            "They provide better performance",
+            "They ensure mutual exclusion and provide guard-based synchronization",
+            "They use less memory",
+            "They are easier to debug"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Protected objects provide mutual exclusion and guard-based synchronization that's essential for coordinating atomic action participants.",
+        "detailedExplanation": "Ada's protected objects are ideal for implementing atomic action controllers because they provide automatic mutual exclusion (only one task can execute a protected operation at a time) and guard-based synchronization (entries can have Boolean conditions that control when tasks are allowed to proceed). This combination makes it easier to implement the complex synchronization patterns needed for atomic action entry, exit, and coordination protocols.",
+        "topic": "ada-protected-objects"
+    },
+    {
+        "question": "What does it mean for a Real-Time Java method to be in an 'ATC-deferred section'?",
+        "options": [
+            "The method executes at lower priority",
+            "Asynchronous transfer of control is not delivered but held pending",
+            "The method cannot be interrupted by the scheduler",
+            "The method runs in a separate memory space"
+        ],
+        "correctAnswer": 1,
+        "explanation": "ATC-deferred sections are where asynchronous exceptions are not delivered but held pending until the thread enters an AI-method.",
+        "detailedExplanation": "In Real-Time Java, ATC-deferred sections include synchronized methods/statements, static initializers, and methods that don't declare AsynchronouslyInterruptedException in their throws clause. When a thread is executing in these sections, any ATC requests are held pending rather than being delivered immediately. This ensures that critical sections and methods not designed to handle ATC can execute safely without interruption.",
+        "topic": "atc-deferred-sections"
     },
     {
         "question": "Which property best defines an atomic action?",
