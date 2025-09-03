@@ -31,6 +31,13 @@ const Experience = () => {
         skills={["CRM/CMS Development", "Business Strategy", "Technical Consulting", "Digital Marketing"]}
       />
       <ExperienceItem
+        title="Full Stack Developer Intern"
+        company="FINN.no"
+        date="Jun. 2025 – Aug. 2025"
+        description="Worked in a group of 8 students on a project for FINNs department Torget, where we were six developers and two designers. Our final product was a page for users to preview statistics about their engagement with FINN as a customer to motivate being better users. The department gave us idea streaks, and then it was up to us to construct a product around that in a manner suited for FINN. In this process we were several days out on the street talking to customers, testing our consepts and designs with them, efficiently getting feedback on our thoughts and ideas."
+        skills={["Kotlin", "React", "PostgreSQL", "Gerillera Testing", "Kafka", "Ktor"]}
+      />
+      <ExperienceItem
         title="Automation Engineer Intern"
         company="Ulmatec Handling Systems"
         date="Jun. 2024 – Jul. 2024"

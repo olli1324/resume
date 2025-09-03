@@ -26,14 +26,14 @@ const Activities = () => {
       <ActivityItem
         title="Leader"
         organization="Ascend NTNU"
-        date="Apr. 2024 – Present"
+        date="Apr. 2024 – Sep. 2025"
         description="Leading one of NTNU’s technical organizations specializing in developing autonomous drones for international competitions. Managing a team of 46 students across six groups, working closely with the board to strategically guide Ascend NTNU."
         skills={["Leadership", "Project Management", "Drone Technology", "Team Coordination", "Strategic Planning", "Recruitment"]}
       />
       <ActivityItem
         title="Head of IT"
         organization="Nettverksdagene NTNU"
-        date="Jan. 2024 – Present"
+        date="Jan. 2024 – Mar. 2025"
         description="Board member and leader of the IT group for Nettverksdagene, a yearly career fair. Responsible for the development and maintenance of nettverksdagene.no."
         skills={["Web Development", "IT Management", "Vue", "JavaScript", "Docker", "Git", "GitHub", "Event Planning"]}
       />
@@ -47,7 +47,7 @@ const Activities = () => {
       <ActivityItem
         title="Election- and Control Committee Member"
         organization="NTNUI Triathlon"
-        date="Feb. 2024 – Present"
+        date="Feb. 2024 – Feb. 2025"
         description="Propose the next board at the annual meeting and participate in awarding prizes to outstanding student athletes."
         skills={["Student Athlete Support"]}
       />
