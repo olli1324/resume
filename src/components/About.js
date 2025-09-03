@@ -7,7 +7,7 @@ const About = () => {
       <p className="text-gray-700">
         <ul>
           <li>4th-year MSc student in Cybernetics and Robotics at NTNU.</li>
-          <li>Intern experience as a full stack developer and mentor in the Schibsted Connect program.</li>
+          <li>Intern experience as a full stack developer, automation engineer and mentor in the Schibsted Connect program.</li>
           <li>Experience managing Ascend NTNU, one of NTNU’s leading technical organizations, overseeing a team of 46 students at the forefront of autonomous drone technology.</li>
           <li>Active in extracurriculars, being class representative for the Cybernetics Robotics Class of 2022, and previously the Head of IT at Nettverksdagene.</li>
           <li>Feedback from superiors and fellow students is that I am a sociable, dedicated, and hard-working individual, always seeking to improve my professional skills and innovative problem-solving abilities.</li>
