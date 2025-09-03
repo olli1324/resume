@@ -41,7 +41,7 @@ const Experience = () => {
         title="Automation Engineer Intern"
         company="Ulmatec Handling Systems"
         date="Jun. 2024 – Jul. 2024"
-        description="I worked several projects across different areas of the company. The main project involved a distance measuring system using LiDAR technology.  I applied various methods to pre-process, segment, and extract data from the LiDAR sensors. As part of this project, I also explored methods to align and fuse point cloud data with an RGB camera feed from a different coordinate system. In another project, I helped improve an A-frame winch's control system by developing a prototype for an anti-collision system. Separately, I conducted a feasibility study to assess the potential implementation of an in-house chatbot for the service department, aiming to improve internal communication and efficiency."
+        description="I worked at several projects across different areas of the company. The main project involved a distance measuring system using LiDAR technology. I tested and applied various methods to pre-process, segment, and extract data from the LiDAR sensors. As part of this project, I also explored methods to align and fuse point cloud data with an RGB camera feed from a different coordinate system. In another project, I helped improve an A-frame winch's control system by developing a prototype for an anti-collision system. Separately, I conducted a feasibility study to assess the potential implementation of an in-house chatbot for the service department, aiming to improve internal communication and efficiency."
         skills={["LiDAR Technology", "Control Systems", "PLS", "Python", "Git"]}
       />
 
