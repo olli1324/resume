@@ -27,15 +27,15 @@ const Experience = () => {
         title="Consultant"
         company="Wideangle"
         date="Oct. 2024 – Present"
-        description="Currently focused on web development, working on implementing custom CRM, CMS and customer pipeline solutions for internal use to improve workflow efficiency. My role also includes consulting services for our clients. "
-        skills={["CRM/CMS Development", "Business Strategy", "Technical Consulting", "Digital Marketing"]}
+        description="Currently working for our customer Sirken, a second-hand store for B2B and B2C in the construction business. Here I am developing a new database system for their whole operation, a partner page as well as a new digital store. Previously backend work for Drifti, web development for Didit and Nidaros Bilvask. Also worked with digital marketing for several of our customers."
+        skills={["Web Development", "Business Strategy", "MySQL", "React", "Vite", "", "Technical Consulting", "Digital Marketing"]}
       />
       <ExperienceItem
         title="Full Stack Developer Intern"
         company="FINN.no"
         date="Jun. 2025 – Aug. 2025"
-        description="Worked in a group of 8 students on a project for FINNs department Torget, where we were six developers and two designers. Our final product was a page for users to preview statistics about their engagement with FINN as a customer to motivate being better users. The department gave us idea streaks, and then it was up to us to construct a product around that in a manner suited for FINN. In this process we were several days out on the street talking to customers, testing our consepts and designs with them, efficiently getting feedback on our thoughts and ideas."
-        skills={["Kotlin", "React", "PostgreSQL", "Gerillera Testing", "Kafka", "Ktor"]}
+        description="Worked in a group of 8 students on a project for FINNs department Torget, where we were six developers and two designers. Our final product was a page for users to preview statistics about their engagement with FINN as a customer to motivate being better users. The department gave us idea streaks, and then it was up to us to construct a product around that in a manner suited for FINN. In this process we were several days out on the street talking to customers, testing our consepts and designs with them, efficiently getting feedback on our thoughts and ideas. At FINN we developed the front-end in an island arcitecture, fetched and parsed all data from Kafka using JSON Serialization, developed database models in PostgreSQL, built back-end functionality in Kotlin and Typescript, and built API-endpoints "
+        skills={["Kotlin", "React", "Typescript", "PostgreSQL", "Gerillera Testing", "Kafka", "JSON Serialization", "Ktor"]}
       />
       <ExperienceItem
         title="Automation Engineer Intern"
