@@ -34,8 +34,8 @@ const Experience = () => {
         title="Full Stack Developer Intern"
         company="FINN.no"
         date="Jun. 2025 – Aug. 2025"
-        description="Worked in a group of 8 students, six developers and two designers, on a summer project for one of FINNs departments, Torget. The department handed us the idea streaks, and then it was up to us to construct a product around that in a manner suited for FINN. In this process we had many workshops, several days out on the street talking to customers and testing our concepts and designs with them, effectively getting feedback on our thoughts and ideas. Our final product was a page for users to preview statistics about their engagement with FINN as a customer to motivate being better users. We developed the front-end in an island architecture in React with TypeScript and Vite, fetched and parsed all data from Kafka using JSON Serialization, developed database models in PostgreSQL, built back-end functionality in Kotlin with Ktor, and built API endpoints for communication between the front-end and back-end. In the end of the summer we presented the product for the employees in FINN getting valuable feedback for future development."
-        skills={["Kotlin", "React", "TypeScript", "PostgreSQL", "Gerillera Testing", "Kafka", "JSON Serialization", "Ktor"]}
+        description="Currently working for our customer Sirken, a second-hand store for B2B and B2C in the construction business. Working on a project developing a partner page, a new digital webstore, and a new database system for their backend operations. Previously done backend work for Drifti, web development for Didit and Nidaros Bilvask. Also worked with digital marketing for several of our customers."
+        skills={["Kotlin", "React", "TypeScript", "PostgreSQL", "Kafka", "JSON Serialization", "Ktor", "Gerillera Testing"]}
       />
       <ExperienceItem
         title="Automation Engineer Intern"
