@@ -27,14 +27,14 @@ const Activities = () => {
         title="Leader"
         organization="Ascend NTNU"
         date="Apr. 2024 – Sep. 2025"
-        description="Leading one of NTNU’s technical organizations specializing in developing autonomous drones for international competitions. Managing a team of 46 students across six groups, working closely with the board to strategically guide Ascend NTNU."
+        description="Led Ascend NTNU, a student organization at NTNU developing autonomous drones for international competitions. Coordinated 46 students across six interdisciplinary groups, balancing technical planning with project execution, and worked with the board to provide strategic direction."
         skills={["Leadership", "Project Management", "Drone Technology", "Team Coordination", "Strategic Planning", "Recruitment"]}
       />
       <ActivityItem
         title="Head of IT"
         organization="Nettverksdagene NTNU"
         date="Jan. 2024 – Mar. 2025"
-        description="Board member and leader of the IT group for Nettverksdagene, a yearly career fair. Responsible for the development and maintenance of nettverksdagene.no."
+        description="Served as a board member and leader of the IT group for Nettverksdagene, an annual career fair for engineering students. Led development and maintenance of nettverksdagene.no, implementing new features for students, companies, and members, including a digital student + company matchmaker in JavaScript, a dynamic stand map in Vue.js, and a more reliable email system."
         skills={["Web Development", "IT Management", "Vue", "JavaScript", "Docker", "Git", "GitHub", "Event Planning"]}
       />
       <ActivityItem

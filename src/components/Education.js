@@ -31,7 +31,7 @@ const Education = () => {
         5-year Engineering Master's program.
 
         Combining mathematics, control systems, natural sciences, and computer technology to analyze dynamic systems. Specializing in machine learning, computer vision and autonomous systems.
-        Experience from comprehensive labs with everything from developing distributed systems of three synced elevators, to regulating a helicopters flight dynamic."
+        Experience from comprehensive labs with everything from developing distributed systems of three synced elevators, to regulating a helicopter's flight dynamics."
         skills={["Control Systems", "Machine Learning", "Mathematics", "Computer Science", "Robotics", "PID"]}
       />
       <EducationItem
