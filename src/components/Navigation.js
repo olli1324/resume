@@ -45,6 +45,7 @@ const Navigation = () => {
           
           {/* Download button - right aligned */}
           <div className="hidden md:block">
+            {/* Download button temporarily commented out
             <button
               onClick={handleDownload}
               className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors"
@@ -52,6 +53,7 @@ const Navigation = () => {
             >
               <ArrowDownToLine className="w-5 h-5 text-gray-700" />
             </button>
+            */}
           </div>
         </div>
       </div>
