@@ -15,7 +15,7 @@ const Hero = () => (
           />
         </div>
         <h1 className="mt-4 text-3xl sm:text-5xl font-bold text-gray-900">Oliver H. Ekelund</h1>
-        <p className="mt-2 text-xl sm:text-2xl text-gray-600">Leader at Ascend NTNU | M. Sc. Cybernetics and Robotics student at NTNU</p>
+        <p className="mt-2 text-xl sm:text-2xl text-gray-600">Consultant @ Wideangle | Cybernetics and Robotics student on exchange in Italy</p>
         <div className="mt-6 flex justify-center space-x-4">
           <a href="tel:+4746788648" className="text-gray-600 hover:text-gray-900 transition-all duration-200 ease-in-out transform hover:scale-110" aria-label="Phone">
             <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -27,14 +27,14 @@ const Experience = () => {
         title="Consultant"
         company="Wideangle"
         date="Oct. 2024 – Present"
-        description="Currently working for our customer Sirken, a second-hand store for B2B and B2C in the construction business. Here I am developing a new database system for their backend operations, a partner page and a new digital webstore. Previously backend work for Drifti, web development for Didit and Nidaros Bilvask. Also worked with digital marketing for several of our customers."
+        description="Currently working for our customer Sirken, a second-hand store for B2B and B2C in the construction business. Here I am developing a new database system for their backend operations, a partner page and a new digital webstore. Previously done backend work for Drifti, as well as web development for Didit and Nidaros Bilvask. Also worked with digital marketing for several of our customers."
         skills={["Web Development", "Business Strategy", "MySQL", "React", "Vite", "TypeScript", "Google/Meta Ad Tracking", "Technical Consulting", "Digital Marketing"]}
       />
       <ExperienceItem
         title="Full Stack Developer Intern"
         company="FINN.no"
         date="Jun. 2025 – Aug. 2025"
-        description="I worked in a cross-functional summer team of eight students (six developers and two designers) in FINN’s Torget department. Starting from the initial idea Streaks, we designed, tested, and launched FINN Flyt, a product that reached over five million users. The process included workshops and guerrilla testing on the street, giving us direct feedback from customers throughout the design and development phases. My work spanned the full-stack: building the front-end in React with TypeScript and Vite using island architecture, designing and implementing APIs and database models in PostgreSQL, handling data streams from Kafka with JSON serialization, and developing back-end functionality in Kotlin with Ktor. The internship gave me hands-on experience with user-centered product development, modern technologies, and delivering a real product from concept to production."
+        description="I worked in a cross-functional summer team of eight students (six developers and two designers) in FINN’s Torget department. Starting from the initial idea Streaks, we designed, tested, and launched FINN Flyt, a product that reached over five million users. The process included workshops and guerrilla testing on the street, giving us direct feedback from customers throughout the design and development phases. Through the summer I got experience from a variety of technologies: building the frontend in React with TypeScript and Vite using island architecture, designing and implementing REST APIs and database models in PostgreSQL, handling data streams from Kafka with JSON serialization, and developing backend functionality in Kotlin with Ktor. The internship gave me hands-on experience with user-centered product development, modern tech stacks, and how to efficiently develop an MVP out of an idea, and eventually take it to production."
         skills={["Kotlin", "React", "TypeScript", "PostgreSQL", "Kafka", "JSON Serialization", "REST API", "Ktor", "Guerrilla Testing"]}
       />
       <ExperienceItem
