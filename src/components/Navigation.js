@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowDownToLine } from 'lucide-react';
+// import { ArrowDownToLine } from 'lucide-react';
+
 
 const Navigation = () => {
   const navItems = ['about', 'experience', 'education', 'activities', 'references'];
@@ -11,15 +12,15 @@ const Navigation = () => {
     }
   };
 
-  const handleDownload = () => {
-    const pdfUrl = '/Oliver-Ekelund_CV.pdf';
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.setAttribute('download', 'Oliver-Ekelund_CV.pdf');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  // const handleDownload = () => {
+  //   const pdfUrl = '/Oliver-Ekelund_CV.pdf';
+  //   const link = document.createElement('a');
+  //   link.href = pdfUrl;
+  //   link.setAttribute('download', 'Oliver-Ekelund_CV.pdf');
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // };
 
   return (
     <nav className="sticky top-0 bg-gray-100 z-10">
@@ -27,7 +28,6 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Mobile menu */}
           <div className="w-10 h-10" />
-          
           {/* Desktop menu */}
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
@@ -42,7 +42,6 @@ const Navigation = () => {
               ))}
             </div>
           </div>
-          
           {/* download button */}
           <div className="hidden md:block">
             {/*
