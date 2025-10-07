@@ -28,7 +28,7 @@ const Experience = () => {
         company="Wideangle"
         date="Oct. 2024 – Present"
         description="Currently working for our customer Sirken, a second-hand store for B2B and B2C in the construction business. Here I am developing a new database system for their backend operations, a partner page and a new digital webstore. Previously done backend work for Drifti, as well as web development for Didit and Nidaros Bilvask. Also worked with digital marketing for several of our customers."
-        skills={["Web Development", "Business Strategy", "MySQL", "React", "Vite", "TypeScript", "Google/Meta Ad Tracking", "Technical Consulting", "Digital Marketing"]}
+        skills={["Web Development", "Business Strategy", "PostgreSQL", "Next.js", "TypeScript", "Google/Meta Ad Tracking", "Technical Consulting", "Digital Marketing"]}
       />
       <ExperienceItem
         title="Full Stack Developer Intern"
