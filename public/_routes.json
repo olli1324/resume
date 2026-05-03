@@ -8,6 +8,14 @@
       "dest": "/quizlet/$1"
     },
     {
+      "src": "/statistics/*",
+      "dest": "/statistics/$1"
+    },
+    {
+      "src": "/statistics",
+      "dest": "/statistics/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }
