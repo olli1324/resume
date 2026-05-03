@@ -47,7 +47,6 @@
     font-weight: 500;
   }
   nav a:hover { background: #eef3f8; }
-
   section {
     background: #fff;
     border: 1px solid #e0e0d8;
@@ -70,7 +69,40 @@
   #multi h2 { border-color: #b8860b; color: #7a5b08; }
   #py h2    { border-color: #1a7a8c; color: #0e525e; }
   #testobs h2 { border-color: #5a3a8c; color: #3d2660; }
+  #pensum h2 { border-color: #d4a83d; color: #8a6d1c; }
+  table.priority {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  table.priority th, table.priority td {
+    border: 1px solid #c8c4b0;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.priority th {
+    background: #fef9ed;
+    font-weight: 600;
+    color: #8a6d1c;
+  }
+  table.priority tr.tier1 td { background: #fdf0ed; }
+  table.priority tr.tier2 td { background: #fef5d8; }
+  table.priority tr.tier3 td { background: #fef9ed; }
+  table.priority tr.tier4 td { background: #ecf6f1; }
+  table.priority tr.tier5 td { background: #f5f3ec; }
 
+  table.priority td.freq {
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+  }
+  table.priority td.examples {
+    font-size: 12.5px;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    color: #555;
+  }
   table.obs {
     width: 100%;
     border-collapse: collapse;
@@ -108,7 +140,6 @@
     font-size: 12.5px;
     padding: 10px 10px !important;
   }
-
   pre.code {
     background: #1e2229;
     color: #e3e6ea;
@@ -124,7 +155,6 @@
   pre.code .num { color: #f78c6c; }
   pre.code .str { color: #c3e88d; }
   pre.code .cm { color: #6b7889; font-style: italic; }
-
   code {
     background: #f0ede0;
     border: 1px solid #d8d4c0;
@@ -135,7 +165,6 @@
     color: #4a3a1a;
   }
   table.cmp code { font-size: 12.5px; }
-
   .lead {
     background: #fef9ed;
     border-left: 4px solid #d4a83d;
@@ -144,7 +173,6 @@
     border-radius: 0 6px 6px 0;
     font-size: 14.5px;
   }
-
   .node {
     background: #f5f3ec;
     border: 1.5px solid #d4d0c0;
@@ -190,7 +218,6 @@
     padding-left: 18px;
     border-left: 2px dashed #c0bca8;
   }
-
   .trigger {
     display: inline-block;
     background: #fff5d8;
@@ -211,7 +238,6 @@
     font-size: 14px;
   }
   .keyword-box strong { color: #6b5719; }
-
   table.cmp {
     width: 100%;
     border-collapse: collapse;
@@ -226,7 +252,6 @@
   }
   table.cmp th { background: #f5f3ec; font-weight: 600; }
   table.cmp tr:nth-child(even) td { background: #fafaf7; }
-
   .pill {
     display: inline-block;
     padding: 2px 9px;
@@ -240,14 +265,12 @@
   .pill.chi { background: #ecf6f1; color: #1f6354; }
   .pill.f { background: #fdf0ed; color: #8a4516; }
   .pill.bin { background: #fff3d6; color: #6b5719; }
-
   .note {
     font-size: 13.5px;
     color: #555;
     font-style: italic;
     margin-top: 6px;
   }
-
   @media print {
     body { background: white; padding: 0; }
     section { break-inside: avoid; page-break-inside: avoid; border: 1px solid #ccc; }
@@ -256,10 +279,8 @@
 </style>
 </head>
 <body>
-
 <h1>Metodevelger – TMA4245 Statistikk</h1>
 <div class="subtitle">Fra oppgavetekst til riktig metode. Lett etter <span class="trigger">nøkkelord</span> i oppgaven for å plassere den.</div>
-
 <nav>
   <strong>Innhold</strong>
   <a href="#start">0. Start her</a>
@@ -271,17 +292,15 @@
   <a href="#multi">6. Simultan & kjikvadrat</a>
   <a href="#py">7. Python & simulering</a>
   <a href="#testobs">📋 Testobservator-oversikt</a>
+  <a href="#pensum">📊 Prioritert pensumliste</a>
 </nav>
-
 <!-- ==================== START ==================== -->
 <section id="start">
   <h2>0. Start her: Hva ber oppgaven om?</h2>
   <div class="lead">
     Les oppgaven én gang og spør deg selv: <em>hvilken av disse seks tingene blir jeg bedt om?</em> Når du har plassert oppgaven i riktig "skuff", går du til den seksjonen.
   </div>
-
   <div class="node q">Hva spør oppgaven om?</div>
-
   <div class="branch">
     <div class="node">
       <strong>1. Regne ut en sannsynlighet</strong><br>
@@ -291,7 +310,6 @@
       <span class="trigger">"hvis vi vet at"</span>
       <div class="note">→ Seksjon 1 (Sannsynlighet)</div>
     </div>
-
     <div class="node">
       <strong>2. Finne forventning, varians eller fordeling</strong><br>
       <span class="trigger">"finn E(X)"</span>
@@ -301,7 +319,6 @@
       <span class="trigger">"finn tettheten"</span>
       <div class="note">→ Seksjon 2 (Fordelinger)</div>
     </div>
-
     <div class="node">
       <strong>3. Estimere en ukjent parameter</strong><br>
       <span class="trigger">"finn estimator for θ"</span>
@@ -311,7 +328,6 @@
       <span class="trigger">"hvilken estimator er best"</span>
       <div class="note">→ Seksjon 3 (Estimering)</div>
     </div>
-
     <div class="node">
       <strong>4. Konfidensintervall eller hypotesetest</strong><br>
       <span class="trigger">"X % konfidensintervall"</span>
@@ -321,7 +337,6 @@
       <span class="trigger">"p-verdi"</span>
       <div class="note">→ Seksjon 4 (KI & hypotesetest)</div>
     </div>
-
     <div class="node">
       <strong>5. Sammenheng mellom to variable</strong><br>
       <span class="trigger">"lineær regresjon"</span>
@@ -331,21 +346,17 @@
       <div class="note">→ Seksjon 5 (Regresjon)</div>
     </div>
   </div>
-
   <div class="keyword-box">
     <strong>Tips:</strong> Mange eksamensoppgaver kombinerer flere skuffer. Eksempel: "Finn SME-en for θ, og bruk den til å lage et 95 % konfidensintervall." Da gjør du seksjon 3 først, så seksjon 4.
   </div>
 </section>
-
 <!-- ==================== SANNSYNLIGHET ==================== -->
 <section id="sann">
   <h2>1. Sannsynlighet</h2>
   <div class="lead">
     Når oppgaven sier "regn ut $P(\ldots)$" må du vite hvilken regneregel som passer. Det vanligste er <em>betinget sannsynlighet</em>, <em>totalsannsynlighet</em> og <em>Bayes</em>. Tegn Venn-diagram hvis du står fast.
   </div>
-
   <div class="node q">Inneholder oppgaven ordet "gitt at" eller "betinget"?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Ja → Betinget sannsynlighet</div>
@@ -353,9 +364,7 @@
       <div class="note">Hvis du har P(B|A) men trenger P(A|B): bruk Bayes: $P(A|B) = \dfrac{P(B|A)P(A)}{P(B)}$</div>
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Står flere "scenarier" eller "kategorier" som dekker hele utfallsrommet?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Ja → Total sannsynlighet</div>
@@ -365,27 +374,21 @@
       <div class="note">Eksempel (covid-test): 5 % har sykdommen, 80 % positive blant syke, 1 % positive blant friske. P(positiv) = 0.8·0.05 + 0.01·0.95.</div>
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Står ordet "uavhengige"?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Ja → Multiplikasjon</div>
       $P(A \cap B) = P(A) \cdot P(B)$. Også: $P(A|B) = P(A)$ når uavhengige.
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Spør om "minst én", "ingen", "alle"?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">→ Komplement-trikset</div>
       $P(\text{minst én}) = 1 - P(\text{ingen})$. Mye lettere enn å summere mange tilfeller.
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Trekker uten tilbakelegging fra et begrenset antall?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">→ Kombinatorikk / hypergeometrisk</div>
@@ -393,16 +396,13 @@
     </div>
   </div>
 </section>
-
 <!-- ==================== FORDELINGER ==================== -->
 <section id="ford">
   <h2>2. Fordelinger & transformasjoner</h2>
   <div class="lead">
     To deler her: <strong>(A)</strong> kjenne igjen <em>hvilken</em> fordeling situasjonen gir, og <strong>(B)</strong> håndtere transformasjoner og summer av variabler.
   </div>
-
   <h3>A. Hvilken fordeling beskriver situasjonen?</h3>
-
   <table class="cmp">
     <tr><th>Situasjon (nøkkelord)</th><th>Fordeling</th><th>Forventning / Varians</th></tr>
     <tr>
@@ -414,6 +414,16 @@
       <td>Antall <em>hendelser</em> i tidsintervall/areal med rate λ<br><span class="trigger">"i gjennomsnitt μ per time"</span> <span class="trigger">"sjeldne hendelser"</span></td>
       <td><span class="pill bin">Poisson(λ)</span></td>
       <td>E = λ, &nbsp; Var = λ</td>
+    </tr>
+    <tr>
+      <td>Antall forsøk til <em>første</em> suksess (Bernoulli med p)<br><span class="trigger">"hvor lenge til..."</span> <span class="trigger">"første gang"</span></td>
+      <td><span class="pill bin">Geometrisk(p)</span></td>
+      <td>E = 1/p, &nbsp; Var = (1-p)/p²</td>
+    </tr>
+    <tr>
+      <td>Antall forsøk til den <em>k-te</em> suksessen<br><span class="trigger">"hvor mange forsøk til 5 suksesser"</span></td>
+      <td><span class="pill bin">Negativ binomisk(k, p)</span></td>
+      <td>E = k/p, &nbsp; Var = k(1-p)/p²</td>
     </tr>
     <tr>
       <td>Tid mellom uavhengige hendelser (hukommelsesløs)<br><span class="trigger">"tid til neste"</span> <span class="trigger">"levetid"</span></td>
@@ -446,15 +456,135 @@
       <td>E = 0 (når v &gt; 1)</td>
     </tr>
   </table>
-
   <div class="keyword-box">
     <strong>Tilnærminger:</strong> Binomisk(n,p) ≈ Normal(np, np(1−p)) når n stor og p ikke for nær 0 eller 1. Binomisk ≈ Poisson(np) når n stor og p liten. Sentralgrenseteoremet: $\bar X$ av <em>hva som helst</em> ≈ Normal når n stor.
   </div>
-
+  <h3>A2. Gjenkjenne fordelingen ut fra formen til f(x)</h3>
+  <div class="lead" style="background:#fffbeb; border-left-color:#d4a83d;">
+    Når oppgaven gir deg en tetthet uten å si hvilken fordeling det er, prøv å matche formen mot tabellen under. <strong>Mønstergjenkjenning sparer mye tid</strong> – og hjelper deg unngå feil ved å vite hva forventning og varians er.
+  </div>
+  <h4>Diskrete fordelinger</h4>
+  <table class="cmp">
+    <tr><th>Form på f(x)</th><th>Fordeling</th><th>Nøkkel-trekk</th></tr>
+    <tr>
+      <td>$f(x) = \binom{n}{x} p^x (1-p)^{n-x}$<br>$x = 0, 1, \ldots, n$</td>
+      <td><span class="pill bin">Binomisk(n, p)</span></td>
+      <td>Binomial-koeffisient. Antall suksesser i n forsøk.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = (1-p)^{x-1} p$<br>$x = 1, 2, 3, \ldots$</td>
+      <td><span class="pill bin">Geometrisk(p)</span></td>
+      <td>Bare to faktorer: $(1-p)^{x-1}$ og $p$. Antall forsøk til første suksess.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \binom{x-1}{k-1} (1-p)^{x-k} p^k$<br>$x = k, k+1, \ldots$</td>
+      <td><span class="pill bin">Negativ binomisk(k, p)</span></td>
+      <td>Antall forsøk til k-te suksess.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{\lambda^x e^{-\lambda}}{x!}$<br>$x = 0, 1, 2, \ldots$</td>
+      <td><span class="pill bin">Poisson(λ)</span></td>
+      <td>Faktoren $1/x!$. Antall hendelser per tidsenhet.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$</td>
+      <td><span class="pill bin">Hypergeometrisk</span></td>
+      <td>Tre binomial-koeffisienter. Trekke uten tilbakelegging.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = 1/k$<br>x på k mulige verdier</td>
+      <td><span class="pill bin">Diskret uniform</span></td>
+      <td>Konstant punktsannsynlighet.</td>
+    </tr>
+  </table>
+  <h4>Kontinuerlige fordelinger</h4>
+  <table class="cmp">
+    <tr><th>Form på f(x)</th><th>Fordeling</th><th>Nøkkel-trekk</th></tr>
+    <tr>
+      <td>$f(x) = \dfrac{1}{\sqrt{2\pi}\sigma} \exp\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right)$</td>
+      <td><span class="pill bin">Normal(μ, σ²)</span></td>
+      <td>Eksponent har $(x-\mu)^2/\sigma^2$. Klokkeformet, definert på hele $\mathbb{R}$.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{1}{\beta} e^{-x/\beta}$<br>$x \ge 0$</td>
+      <td><span class="pill bin">Eksponensiell(β)</span></td>
+      <td>Bare $x$ i eksponenten (ikke $x^2$ eller $\sqrt x$). Hukommelsesløs.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{1}{\beta^\alpha \Gamma(\alpha)} x^{\alpha-1} e^{-x/\beta}$<br>$x \ge 0$</td>
+      <td><span class="pill bin">Gamma(α, β)</span></td>
+      <td>Inneholder $\Gamma$-funksjonen og potens av $x$. Kan også skrives med rate $\lambda = 1/\beta$.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{1}{2^{\nu/2}\Gamma(\nu/2)} x^{\nu/2-1} e^{-x/2}$</td>
+      <td><span class="pill chi">χ²(ν)</span></td>
+      <td>Spesialtilfelle av Gamma med $\beta = 2$, $\alpha = \nu/2$. Eksponent har $-x/2$ (konstant 2).</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{1}{b-a}$<br>$a \le x \le b$</td>
+      <td><span class="pill bin">Uniform(a, b)</span></td>
+      <td>Konstant tetthet (ikke avhenger av x).</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{\lambda y_0^\lambda}{x^{\lambda+1}}$<br>$x \ge y_0$</td>
+      <td><span class="pill bin">Pareto(λ, y_0)</span></td>
+      <td>Potens av $x$ i nevner, definert fra $y_0$ og oppover. Tung høyrehale.</td>
+    </tr>
+    <tr>
+      <td>$f(x) = \dfrac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-1}(1-x)^{\beta-1}$<br>$0 \le x \le 1$</td>
+      <td><span class="pill bin">Beta(α, β)</span></td>
+      <td>Definert på [0,1]. Brukes for sannsynligheter eller andeler.</td>
+    </tr>
+  </table>
+  <h4>Mer eksotiske former — du må kjenne tetthet ved synet</h4>
+  <table class="cmp">
+    <tr><th>Form du ser</th><th>Sannsynlig fordeling</th></tr>
+    <tr>
+      <td>Inneholder $e^{-x^2/\text{noe}}$ eller $(x-\mu)^2$ i eksponent</td>
+      <td>Normal-aktig</td>
+    </tr>
+    <tr>
+      <td>Inneholder $e^{-x/\text{noe}}$ uten $x^2$</td>
+      <td>Eksponensial eller Gamma (sjekk om det er $x^{\alpha-1}$-faktor)</td>
+    </tr>
+    <tr>
+      <td>Inneholder $e^{-\sqrt{x}/\text{noe}}$</td>
+      <td>Eksotisk levetid (som des 2021 oppgave 4 — ingen standard navn)</td>
+    </tr>
+    <tr>
+      <td>Inneholder $1/x^k$ med $x \ge x_0$</td>
+      <td>Pareto</td>
+    </tr>
+    <tr>
+      <td>Inneholder $x^{\alpha-1}(1-x)^{\beta-1}$</td>
+      <td>Beta</td>
+    </tr>
+    <tr>
+      <td>Inneholder $(1-p)^{x}$ eller $p^x$ uten binomialkoeffisient</td>
+      <td>Geometrisk</td>
+    </tr>
+  </table>
+  <h4>Gjenkjenn fra oppgaveteksten</h4>
+  <table class="cmp">
+    <tr><th>Hint i oppgaveteksten</th><th>Sannsynlig fordeling</th></tr>
+    <tr><td><span class="trigger">"n forsøk, sannsynlighet p"</span></td><td>Binomisk</td></tr>
+    <tr><td><span class="trigger">"antall hendelser per tid/areal"</span></td><td>Poisson</td></tr>
+    <tr><td><span class="trigger">"hvor lang tid til neste"</span></td><td>Eksponensial</td></tr>
+    <tr><td><span class="trigger">"tid til k-te hendelse"</span></td><td>Gamma med α = k</td></tr>
+    <tr><td><span class="trigger">"levetid"</span> (ofte hukommelsesløs)</td><td>Eksponensial / Weibull / Gamma</td></tr>
+    <tr><td><span class="trigger">"hvor mange forsøk til første suksess"</span></td><td>Geometrisk</td></tr>
+    <tr><td><span class="trigger">"hvor mange forsøk til k-te suksess"</span></td><td>Negativ binomisk</td></tr>
+    <tr><td><span class="trigger">"trekke uten tilbakelegging"</span></td><td>Hypergeometrisk</td></tr>
+    <tr><td><span class="trigger">"like sannsynlig overalt på [a,b]"</span></td><td>Uniform</td></tr>
+    <tr><td><span class="trigger">"normalfordelt"</span> / <span class="trigger">"klokkekurve"</span></td><td>Normal</td></tr>
+    <tr><td><span class="trigger">"andel"</span> / <span class="trigger">"sannsynligheten p er ukjent"</span></td><td>Beta (om p)</td></tr>
+    <tr><td><span class="trigger">"kvalitet på komponenter"</span> + tung hale</td><td>Sjekk eksponent på $x$ i nevner — Pareto</td></tr>
+  </table>
+  <div class="keyword-box">
+    <strong>Praktisk eksamenstips:</strong> Hvis ingen kjent fordeling matcher, så sier oppgaven sannsynligvis "X har sannsynlighetstetthet $f(x) = \ldots$". Da trenger du ikke et navn — bruk bare den oppgitte formelen for forventning, varians, og likelihood. Det er sannsynligvis en kunstig fordeling.
+  </div>
   <h3>B. Transformasjoner og summer</h3>
-
   <div class="node q">Du har Y = g(X) og skal finne fordelingen til Y</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Standardmetoden: kumulativ → tetthet</div>
@@ -469,9 +599,7 @@
       Når g er strengt monoton: $f_Y(y) = f_X(x(y)) \cdot \left|\dfrac{dx}{dy}\right|$
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Du har $S = X_1 + X_2 + \cdots + X_n$ (sum / lineærkombinasjon)</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Forventning og varians (alltid)</div>
@@ -491,9 +619,7 @@
       Bruk sentralgrenseteoremet: $S \approx N(n\mu, n\sigma^2)$
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Maks eller min av uavhengige variabler?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Standardtriks med kumulativ</div>
@@ -501,17 +627,65 @@
       $P(\min &gt; y) = (1 - F(y))^n$
     </div>
   </div>
+  <h3>C. Momentgenererende funksjoner (MGF)</h3>
+  <div class="lead" style="background:#eaf3ed; border-left-color:#2d8f73;">
+    Når oppgaven sier "<strong>bruk regneregler for momentgenererende funksjoner</strong>", må du følge denne metoden – ikke andre metoder. MGF brukes spesielt til å (1) finne fordelingen til en sum av uavh. variabler, og (2) finne momenter (forventning, varians).
+  </div>
+  <div class="node method">
+    <div class="label">Definisjon</div>
+    $M_X(t) = E(e^{tX})$<br>
+    Diskret: $M_X(t) = \sum_x e^{tx} f(x)$<br>
+    Kontinuerlig: $M_X(t) = \int_{-\infty}^{\infty} e^{tx} f(x) \, dx$
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Tre regneregler du trenger</div>
+    <strong>Regel A — sum av uavhengige:</strong> $M_{X_1 + \cdots + X_n}(t) = M_{X_1}(t) \cdot M_{X_2}(t) \cdots M_{X_n}(t)$<br><br>
+    <strong>Regel B — entydighet:</strong> Hvis $M_X(t) = M_Y(t)$ for alle t, så har X og Y samme fordeling. (Brukes til å gjenkjenne fordelinger fra MGF-en.)<br><br>
+    <strong>Regel C — momenter:</strong> $E(X^r) = M_X^{(r)}(0)$, dvs. den r-te deriverte i 0.<br>
+    Spesielt: $E(X) = M'_X(0)$ og $\text{Var}(X) = M''_X(0) - (M'_X(0))^2$
+  </div>
+  <h3>Vanlige MGF-er du bør kjenne</h3>
+  <table class="cmp">
+    <tr><th>Fordeling</th><th>MGF</th></tr>
+    <tr><td>Bernoulli(p)</td><td>$(1-p) + pe^t$</td></tr>
+    <tr><td>Binomisk(n, p)</td><td>$\left((1-p) + pe^t\right)^n$</td></tr>
+    <tr><td>Poisson(λ)</td><td>$e^{\lambda(e^t - 1)}$</td></tr>
+    <tr><td>Geometrisk(p)</td><td>$\dfrac{pe^t}{1 - (1-p)e^t}$</td></tr>
+    <tr><td>Eksponential(β)</td><td>$\dfrac{1}{1 - \beta t}$, for $t &lt; 1/\beta$</td></tr>
+    <tr><td>Gamma(α, β)</td><td>$\dfrac{1}{(1-\beta t)^\alpha}$, for $t &lt; 1/\beta$</td></tr>
+    <tr><td>Normal(μ, σ²)</td><td>$e^{\mu t + \sigma^2 t^2 / 2}$</td></tr>
+    <tr><td>χ²(ν)</td><td>$(1 - 2t)^{-\nu/2}$, for $t &lt; 1/2$</td></tr>
+  </table>
+  <div class="keyword-box">
+    <strong>Standard-oppskriften for "vis at Y har fordeling F":</strong>
+    <ol style="margin: 6px 0 0 0; padding-left: 20px;">
+      <li>Skriv MGF-en til hver $X_i$ (slå opp i tabellen ovenfor eller beregn fra definisjonen)</li>
+      <li>Bruk Regel A (uavhengighet → produkt) for å finne $M_Y(t)$</li>
+      <li>Forenkle og sammenlign med kjent MGF</li>
+      <li>Bruk Regel B (entydighet) for å konkludere fordelingen</li>
+    </ol>
+  </div>
+  <div class="keyword-box">
+    <strong>Standard-oppskriften for "finn $E(Y)$ ved hjelp av MGF":</strong>
+    <ol style="margin: 6px 0 0 0; padding-left: 20px;">
+      <li>Finn $M_Y(t)$ (steg 1-2 over)</li>
+      <li>Deriver: $M'_Y(t)$. Bruk kjederegel hvis nødvendig.</li>
+      <li>Sett $t = 0$. Husk at $e^0 = 1$.</li>
+      <li>$E(Y) = M'_Y(0)$</li>
+    </ol>
+  </div>
+  <div class="node warn" style="margin-top:14px;">
+    <div class="label">⚠ Når kreves MGF-metoden?</div>
+    Bare når oppgaven <strong>eksplisitt</strong> ber om "bruk regneregler for momentgenererende funksjoner". Ellers kan du bruke enklere metoder. For å finne $E(Y)$ alene er lineæritet alltid raskere.
+  </div>
 </section>
-
 <!-- ==================== ESTIMERING ==================== -->
 <section id="estim">
   <h2>3. Estimering & SME</h2>
   <div class="lead">
     Det dukker opp på <strong>nesten hver eksamen</strong>. Mønsteret er nesten alltid det samme: skriv likelihood, ta logaritmen, deriver, sett lik 0, løs ut. Sjekk at det er maksimum (annenderivert &lt; 0).
   </div>
-
   <div class="node q">"Finn sannsynlighetsmaksimerings­estimatoren (SME) for θ"</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Oppskrift (følg slavisk)</div>
@@ -523,9 +697,7 @@
       <strong>6. Estimator</strong> (med store bokstaver): erstatt $x_i$ med $X_i$
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">"Vis at $\hat\theta$ er forventningsrett"</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">→ Regn ut $E(\hat\theta)$ og vis at det blir lik θ</div>
@@ -533,41 +705,79 @@
       Husk hvilken fordeling $X_i$ har, så du vet hva $E(X_i)$ er.
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">"Finn variansen til $\hat\theta$"</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">→ Bruk Var-regel for sum med uavhengige $X_i$</div>
       $\text{Var}\left(\sum a_i X_i\right) = \sum a_i^2 \text{Var}(X_i)$
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">"Hvilken av to estimatorer er best?"</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">→ Sammenlign varians (begge må være forventningsrette)</div>
       Den med <em>minst varians</em> vinner. Hvis bare én er forventningsrett, velg den.
     </div>
   </div>
-
   <div class="keyword-box">
     <strong>Triks:</strong> Hvis tettheten har en faktor som ikke avhenger av θ, faller den ut når du deriverer log-likelihood. Skriv den gjerne som "+ konst" så slipper du å dra den med.
   </div>
+  <h3>Tre nivåer av "vis at $\hat\theta$ er forventningsrett"</h3>
+  <div class="lead" style="background:#fffbeb; border-left-color:#d4a83d;">
+    Vanskelighetsgraden av forventningsrett-utregningen avhenger av <strong>formen til estimatoren</strong>. Plasser oppgaven på riktig nivå før du starter.
+  </div>
+  <div class="node method">
+    <div class="label">Nivå 1 (lett): $\hat\theta = \bar X$ og $E(X_i) = \theta$ er kjent</div>
+    <strong>Eksempler:</strong> Geometrisk fordeling der $\theta = 1/p$, eksponensial der $\theta = \beta$.<br>
+    <strong>Utregning (to linjer):</strong>
+    $$E(\hat\theta) = E(\bar X) = \frac{1}{n}\sum E(X_i) = \frac{1}{n} \cdot n\theta = \theta$$
+    <div class="note">Ferdig.</div>
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Nivå 2 (middels): $\hat\theta$ er lineærkombinasjon av $X_i$</div>
+    <strong>Eksempler:</strong> Regresjons-SME som $\hat\beta = \sum x_i Y_i / \sum x_i^2$ (mai 22).<br>
+    <strong>Utregning:</strong> Bruk lineæritet av forventning, sett inn $E(Y_i)$ fra modellen.
+    $$E(\hat\beta) = E\left(\frac{\sum x_i Y_i}{\sum x_i^2}\right) = \frac{\sum x_i E(Y_i)}{\sum x_i^2} = \frac{\sum x_i \cdot \beta x_i}{\sum x_i^2} = \beta$$
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Nivå 3 (hardt): $\hat\theta$ inneholder en transformasjon $g(X_i)$</div>
+    <strong>Eksempler:</strong> $\hat\theta = \frac{1}{n}\sum \sqrt{X_i}$ (des 21), $\hat\theta = \frac{1}{n}\sum X_i^2$, $\hat\theta = \frac{1}{n}\sum \ln X_i$.<br>
+    <strong>Du må regne ut $E(g(X_i))$ separat med integral:</strong>
+    $$E(g(X_i)) = \int g(x) \cdot f(x) \, dx$$
+    Først når du har vist at $E(g(X_i)) = \theta$, kan du konkludere med forventningsrett.<br>
+    <strong>Sjekk alltid om oppgaven gir hint-integral!</strong>
+  </div>
+  <div class="node warn" style="margin-top:10px;">
+    <div class="label">⚠ Vanlig fellegrop</div>
+    Mange tenker at $E(g(X)) = g(E(X))$. Det er <strong>generelt feil</strong> for ikke-lineære $g$.<br>
+    Eksempel: $E(X^2) \neq (E(X))^2$ — forskjellen er nettopp $\text{Var}(X)$.
+  </div>
+  <div class="node q" style="margin-top:14px;">Spør deg selv – hvilket nivå er oppgaven?</div>
+  <div class="branch">
+    <div class="node">
+      <strong>Er $\hat\theta = \bar X$?</strong><br>
+      Ja → Nivå 1<br>
+      Nei → neste spørsmål
+    </div>
+    <div class="node">
+      <strong>Er $\hat\theta$ en lineærkombinasjon av $X_i$ eller $Y_i$ (uten transformasjon)?</strong><br>
+      Ja → Nivå 2<br>
+      Nei → Nivå 3
+    </div>
+    <div class="node">
+      <strong>Inneholder estimatoren $\sqrt{X_i}$, $X_i^2$, $\ln X_i$, $1/X_i$ etc.?</strong><br>
+      Ja → Nivå 3 — du må regne $E(g(X_i))$ med integral
+    </div>
+  </div>
 </section>
-
 <!-- ==================== INFERENS ==================== -->
 <section id="inf">
   <h2>4. Konfidensintervall & hypotesetest</h2>
   <div class="lead">
     <strong>Dette er sannsynligvis der du har strøket før.</strong> Et KI og en (tosidig) hypotesetest bruker <em>samme</em> testobservator – KI er "lista over verdier som ikke ville blitt forkastet". Hvis du kan velge riktig testobservator, kan du gjøre begge deler.
   </div>
-
   <h3>Steg 1: Hva tester/estimerer du?</h3>
-
   <div class="node q">Hva er parameteren?</div>
-
   <div class="branch">
     <div class="node">
       <strong>Forventning μ</strong> (én eller to grupper) — gå til boks A
@@ -579,11 +789,8 @@
       <strong>Varians σ²</strong> (én eller to grupper) — gå til boks C
     </div>
   </div>
-
   <h3>Boks A: Forventning μ</h3>
-
   <div class="node q">Ett utvalg eller to?</div>
-
   <div class="branch">
     <div class="node q">ETT utvalg: er σ kjent?</div>
     <div class="branch">
@@ -600,7 +807,6 @@
         <div class="note">Forutsetter normalfordelte observasjoner (eller liten n + tilnærmet normal).</div>
       </div>
     </div>
-
     <div class="node q" style="margin-top:14px;">TO utvalg: parvis eller uavhengige?</div>
     <div class="branch">
       <div class="node warn">
@@ -608,14 +814,12 @@
         <strong>Parvis</strong> = samme enhet målt to ganger (før/etter, venstre/høyre fot, to instrumenter på samme prøve).<br>
         <strong>Uavhengige</strong> = to separate grupper (gutter vs. jenter, gruppe A vs. gruppe B).
       </div>
-
       <div class="node method">
         <div class="label"><span class="pill t">t</span> Parvis utvalg</div>
         Regn ut differansene $D_i = X_i - Y_i$.<br>
         Test $\bar D$ med ett-utvalgs t-test, fg = n − 1.<br>
         Testobservator: $T = \dfrac{\bar D - \delta_0}{S_D / \sqrt n}$
       </div>
-
       <div class="node q">Uavhengige – kjent varians?</div>
       <div class="branch">
         <div class="node method">
@@ -635,9 +839,7 @@
       </div>
     </div>
   </div>
-
   <h3>Boks B: Andel p</h3>
-
   <div class="node q">Hvor stor er n?</div>
   <div class="branch">
     <div class="node method">
@@ -651,7 +853,6 @@
       Bruk binomisk fordeling direkte: $P(X \ge k)$ eller $P(X \le k)$ under $H_0$ slått opp i tabell.
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">To andeler $p_1$ vs. $p_2$?</div>
   <div class="branch">
     <div class="node method">
@@ -660,9 +861,7 @@
       $Z = \dfrac{\hat p_1 - \hat p_2}{\sqrt{\hat p (1-\hat p)(1/n_1 + 1/n_2)}}$
     </div>
   </div>
-
   <h3>Boks C: Varians σ²</h3>
-
   <div class="node method">
     <div class="label"><span class="pill chi">χ²</span> Ett utvalg, test/KI for σ²</div>
     Testobservator: $\chi^2 = \dfrac{(n-1)S^2}{\sigma_0^2} \sim \chi^2_{n-1}$<br>
@@ -674,46 +873,82 @@
     Testobservator: $F = S_1^2 / S_2^2 \sim F_{n_1-1,\, n_2-1}$<br>
     Brukes ofte som "forhåndssjekk" før du velger pooled vs. Welch t-test.
   </div>
-
   <h3>Steg 2: Konkluder</h3>
-
   <table class="cmp">
     <tr><th>Type test (H₁)</th><th>Forkast H₀ hvis</th><th>p-verdi</th></tr>
     <tr><td>Ensidig: $H_1: \mu &gt; \mu_0$</td><td>$Z &gt; z_\alpha$ &nbsp;(eller $T &gt; t_{\alpha,n-1}$)</td><td>$P(Z &gt; \text{obs})$</td></tr>
     <tr><td>Ensidig: $H_1: \mu &lt; \mu_0$</td><td>$Z &lt; -z_\alpha$</td><td>$P(Z &lt; \text{obs})$</td></tr>
     <tr><td>Tosidig: $H_1: \mu \neq \mu_0$</td><td>$|Z| &gt; z_{\alpha/2}$</td><td>$2 \cdot P(Z &gt; |\text{obs}|)$</td></tr>
   </table>
-
   <div class="keyword-box">
     <strong>Sammenheng KI ↔ tosidig test:</strong> Et 100(1−α) % KI for μ inneholder $\mu_0$ ⟺ tosidig test på nivå α forkaster IKKE $H_0: \mu = \mu_0$. Brukes ofte som elegant snarvei på eksamen.
   </div>
+  <h3>Steg 3: Type I- og type II-feil + teststyrke</h3>
+  <table class="cmp">
+    <tr><th>Beslutning</th><th>$H_0$ er sann</th><th>$H_0$ er falsk</th></tr>
+    <tr><td>Forkast $H_0$</td><td><strong>Type I-feil</strong> (sannsynlighet $\alpha$)</td><td>Riktig (sannsynlighet $1-\beta$ = teststyrke)</td></tr>
+    <tr><td>Behold $H_0$</td><td>Riktig (sannsynlighet $1-\alpha$)</td><td><strong>Type II-feil</strong> (sannsynlighet $\beta$)</td></tr>
+  </table>
+  <div class="node method">
+    <div class="label">Definisjoner</div>
+    <strong>Signifikansnivå $\alpha$ = P(Type I-feil)</strong> = sannsynlighet for å forkaste $H_0$ når $H_0$ er sann. Du velger denne (typisk 0.05 eller 0.01).<br><br>
+    <strong>Type II-feil $\beta$ = P(behold $H_0 \mid H_0$ falsk)</strong> = sannsynlighet for å overse en sann effekt.<br><br>
+    <strong>Teststyrke = $1 - \beta$</strong> = sannsynlighet for å oppdage en sann effekt. Vi vil ha høy styrke (typisk &gt; 0.80).
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Regn ut teststyrke</div>
+    <strong>1.</strong> Sett opp testen og finn forkastningsområdet (under $H_0$).<br>
+    <strong>2.</strong> Anta en spesifikk verdi for parameteren under $H_1$ (oppgaven gir dette).<br>
+    <strong>3.</strong> Regn $P(\text{forkast } H_0 \mid \text{denne verdien})$ – det er styrken.<br>
+    Eksempel: For $H_1: \mu = \mu_1$ og test forkaster når $\bar X &gt; k$:<br>
+    $\text{styrke} = P(\bar X &gt; k \mid \mu = \mu_1) = 1 - \Phi\left(\dfrac{k - \mu_1}{\sigma/\sqrt n}\right)$
+  </div>
+  <h3>Steg 4: Antall observasjoner – hvor stor må n være?</h3>
+  <div class="node method">
+    <div class="label">For å nå ønsket bredde L på KI for μ</div>
+    Bredde på KI er $L = 2 z_{\alpha/2} \cdot \sigma/\sqrt n$. Løs for n:
+    $$n \ge \left(\frac{2 z_{\alpha/2} \sigma}{L}\right)^2$$
+    Rund alltid <strong>opp</strong> til nærmeste heltall.
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">For å nå ønsket teststyrke</div>
+    For ensidig test med ønsket styrke $1-\beta$ ved en spesifikk alternativverdi:
+    $$n \ge \left(\frac{(z_\alpha + z_\beta) \sigma}{\mu_1 - \mu_0}\right)^2$$
+    Igjen rund opp.
+  </div>
+  <h3>Steg 5: Ikke-parametrisk alternativ – fortegnstesten</h3>
+  <div class="lead" style="background:#fdf0ed; border-left-color:#a32d4f;">
+    Når du <strong>ikke vil anta normalfordeling</strong> (eller har skjeve data, små utvalg), er fortegnstesten et alternativ. Den tester median, ikke forventning. Pensum (WMMY 16.1).
+  </div>
+  <div class="node method">
+    <div class="label">Fortegnstest for én median $\tilde\mu$</div>
+    <strong>$H_0: \tilde\mu = \tilde\mu_0$</strong> mot tosidig/ensidig alternativ.<br>
+    <strong>Testobservator:</strong> $X$ = antall observasjoner som er <em>større</em> enn $\tilde\mu_0$.<br>
+    <strong>Under $H_0$:</strong> Hver observasjon er over medianen med sannsynlighet $1/2$, så $X \sim \text{Binom}(n, 1/2)$.<br>
+    <strong>Konkluder:</strong> Slå opp i binomisk-tabell eller bruk normaltilnærming for stor n.<br>
+    <div class="note">Observasjoner nøyaktig lik $\tilde\mu_0$ kastes ut (reduserer n).</div>
+  </div>
 </section>
-
 <!-- ==================== REGRESJON ==================== -->
 <section id="regr">
   <h2>5. Lineær regresjon</h2>
   <div class="lead">
     Modell: $Y_i = \alpha + \beta x_i + \varepsilon_i$, der $\varepsilon_i \sim N(0, \sigma^2)$ uavhengige. Tre parametre: α, β, σ².
   </div>
-
   <div class="node q">Hva spør oppgaven om?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label">Estimer α og β (minste kvadraters metode)</div>
       $\hat\beta = \dfrac{S_{xy}}{S_{xx}}$ &nbsp; der $S_{xy} = \sum (x_i - \bar x)(y_i - \bar y)$, &nbsp; $S_{xx} = \sum (x_i - \bar x)^2$<br>
       $\hat\alpha = \bar y - \hat\beta \bar x$
     </div>
-
     <div class="node method">
       <div class="label">KI eller test for β (er det lineær sammenheng?)</div>
       $T = \dfrac{\hat\beta - \beta_0}{S/\sqrt{S_{xx}}} \sim t_{n-2}$<br>
       KI: $\hat\beta \pm t_{\alpha/2,\, n-2} \cdot \dfrac{S}{\sqrt{S_{xx}}}$<br>
       <div class="note">Test β = 0: hvis forkastet → signifikant sammenheng.</div>
     </div>
-
     <div class="node q" style="margin-top:8px;">For en ny $x_0$: KI for forventet respons, eller prediksjonsintervall?</div>
-
     <div class="branch">
       <div class="node method">
         <div class="label">KI for $E(Y|x_0)$ — gjennomsnittsverdi</div>
@@ -725,29 +960,55 @@
         <div class="note">⚠ Forskjell: legg til <strong>1</strong> under rottegnet. Bredere fordi enkeltobs har ekstra usikkerhet fra ε.</div>
       </div>
     </div>
-
     <div class="node method" style="margin-top:8px;">
-      <div class="label">Modellkritikk (residualer)</div>
-      Residualer: $e_i = y_i - \hat y_i$.<br>
-      Plott mot $\hat y_i$ — skal se ut som tilfeldig støy uten mønster.<br>
-      Plott mot kvantiler — skal være tilnærmet rett linje (normalitet).
+      <div class="label">Modellkritikk (residualer og diagnoseplott)</div>
+      <strong>Residualer:</strong> $e_i = y_i - \hat y_i$.<br><br>
+      <strong>Residualer mot $\hat y_i$:</strong> skal se ut som tilfeldig støy uten mønster.<br>
+      &nbsp;&nbsp;• Trakt-form (varians vokser med x) → ikke konstant varians (heteroskedastisitet)<br>
+      &nbsp;&nbsp;• Krum form (U-form) → ikke-lineær sammenheng (kanskje trenger $x^2$-ledd)<br>
+      &nbsp;&nbsp;• Tilfeldig støy → modellen passer ✓<br><br>
+      <strong>Normalfordelingsplott (Q-Q plot):</strong> residualer mot teoretiske kvantiler.<br>
+      &nbsp;&nbsp;• Tilnærmet rett linje → normalitet OK ✓<br>
+      &nbsp;&nbsp;• Krummet i halene → tunge eller lette haler<br><br>
+      <strong>Forutsetningene som testes:</strong>
+      <ol style="margin: 4px 0 0 0; padding-left: 20px;">
+        <li>$E(\varepsilon_i) = 0$ — sjekk at residualene har snitt nær 0</li>
+        <li>Konstant varians — ingen trakt-form</li>
+        <li>Uavhengighet — ingen mønster mellom rekkefølge</li>
+        <li>Normalfordeling — Q-Q plot er rett</li>
+      </ol>
     </div>
   </div>
-
   <div class="keyword-box">
     <strong>Forskjell på KI for $E(Y|x_0)$ og prediksjonsintervall:</strong> KI handler om hvor <em>gjennomsnittet</em> ligger (linja). Prediksjonsintervallet handler om hvor en <em>ny enkeltobservasjon</em> ligger – den må også ta hensyn til feilleddet ε. Derfor +1 under rottegnet.
   </div>
+  <h3>Beskrivende statistikk – kjapt referanse</h3>
+  <div class="node method">
+    <div class="label">Statistikker som oppsummerer data</div>
+    <strong>Utvalgsgjennomsnitt:</strong> $\bar x = \dfrac{1}{n}\sum_{i=1}^n x_i$<br>
+    <strong>Utvalgsvarians:</strong> $s^2 = \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar x)^2$<br>
+    <strong>Utvalgs­standardavvik:</strong> $s = \sqrt{s^2}$<br>
+    <strong>Median:</strong> midtre verdi i sortert utvalg<br>
+    <strong>Kvantil (q-te):</strong> verdi som $q\cdot 100$ % av observasjonene er under
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Plottyper og hva de viser</div>
+    <strong>Histogram:</strong> fordelingsform — symmetrisk, skjev, multimodal?<br>
+    <strong>Boksplott:</strong> median, kvartiler, uteliggere — sammenlign grupper<br>
+    <strong>Spredningsplott:</strong> sammenheng mellom to variabler — lineær, krum, ingen?<br>
+    <strong>Normalfordelingsplott (Q-Q):</strong> sjekk om data er normalfordelt — rett linje?
+  </div>
+  <div class="keyword-box">
+    <strong>Tolking på eksamen:</strong> Hvis oppgaven viser et plott og spør om antagelsene er rimelige, se etter avvik fra det forventede mønsteret. Histogram skal være "klokkeformet" for normalantagelse. Q-Q plott skal være rett linje. Spredningsplott i regresjon skal vise lineær trend.
+  </div>
 </section>
-
 <!-- ==================== SIMULTAN & KJIKVADRAT ==================== -->
 <section id="multi">
   <h2>6. Simultanfordelinger, kovarians & kjikvadrat-test</h2>
   <div class="lead">
     Når oppgaven involverer <em>to variabler samtidig</em>, eller du skal teste om en fordeling/krysstabell stemmer. Her er metodene som bygger på Kap 5 og Kap 10.10.
   </div>
-
   <h3>A. Du har simultanfordeling f(x, y) – hva spør oppgaven om?</h3>
-
   <div class="node q">"Finn marginalfordelingen til X (eller Y)"</div>
   <div class="branch">
     <div class="node method">
@@ -757,7 +1018,6 @@
       <div class="note">Gjør det samme for $h(y)$, bare snu det.</div>
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">"Er X og Y uavhengige?"</div>
   <div class="branch">
     <div class="node method">
@@ -766,7 +1026,6 @@
       <div class="note">Praktisk triks: hvis du kan skrive $f(x,y) = (\text{noe med kun } x) \cdot (\text{noe med kun } y)$ → uavhengige. Hvis x og y er "låst sammen" i samme uttrykk (f.eks. $f(x,y) = c \cdot xy$ på et trekantet område) → avhengige.</div>
     </div>
   </div>
-
   <div class="node q" style="margin-top:14px;">"Finn betinget fordeling av Y gitt X = x"</div>
   <div class="branch">
     <div class="node method">
@@ -775,9 +1034,7 @@
       <div class="note">Betinget forventning: $E(Y | X = x) = \int y \cdot f(y|x) \, dy$</div>
     </div>
   </div>
-
   <h3>B. Kovarians og korrelasjon</h3>
-
   <div class="node q">"Finn Cov(X, Y) eller Corr(X, Y)"</div>
   <div class="branch">
     <div class="node method">
@@ -791,20 +1048,15 @@
       <strong>Uavhengig ⟹ Cov = 0.</strong> Men <strong>Cov = 0 ⟹ IKKE uavhengig</strong> generelt – bare for normalfordelte par. På eksamen kan oppgaven gi deg variabler med Cov = 0 som <em>ikke</em> er uavhengige.
     </div>
   </div>
-
   <h3>C. Varians av sum når X og Y er avhengige</h3>
-
   <div class="node method">
     <div class="label">→ Den fulle formelen</div>
     $\text{Var}(aX + bY) = a^2 \text{Var}(X) + b^2 \text{Var}(Y) + 2ab \cdot \text{Cov}(X, Y)$<br>
     $\text{Var}(aX - bY) = a^2 \text{Var}(X) + b^2 \text{Var}(Y) - 2ab \cdot \text{Cov}(X, Y)$<br>
     <div class="note">Når X og Y er uavhengige er Cov(X,Y) = 0 og du får tilbake den enkle formelen.</div>
   </div>
-
   <h3>D. Kjikvadrat-test (Kap 10.10)</h3>
-
   <div class="node q">Hva slags data har du?</div>
-
   <div class="branch">
     <div class="node method">
       <div class="label"><span class="pill chi">χ²</span> Tilpasningstest (goodness-of-fit)</div>
@@ -815,7 +1067,6 @@
       Testobservator: $\chi^2 = \displaystyle\sum_{i=1}^{k} \dfrac{(O_i - E_i)^2}{E_i} \sim \chi^2_{k-1-r}$<br>
       <div class="note">Frihetsgrader: k − 1 − r, der r er antall parametere som ble estimert fra data. Hvis ingen parametre ble estimert, er fg = k − 1.</div>
     </div>
-
     <div class="node method" style="margin-top:10px;">
       <div class="label"><span class="pill chi">χ²</span> Test for uavhengighet (krysstabell)</div>
       <span class="trigger">"er røyking og kjønn uavhengig"</span>
@@ -824,27 +1075,22 @@
       Forventet i celle (i, j): $E_{ij} = \dfrac{(\text{radsum})_i \cdot (\text{kolonnesum})_j}{n}$<br>
       Testobservator: $\chi^2 = \displaystyle\sum_{i,j} \dfrac{(O_{ij} - E_{ij})^2}{E_{ij}} \sim \chi^2_{(r-1)(k-1)}$
     </div>
-
     <div class="node warn" style="margin-top:10px;">
       <div class="label">⚠ Forkast retning</div>
       Kjikvadrat-test er <strong>alltid ensidig</strong>: forkast $H_0$ hvis $\chi^2 > \chi^2_{\alpha,\, \text{fg}}$. Stor verdi betyr stor forskjell mellom observert og forventet → dårlig tilpasning.
     </div>
   </div>
-
   <div class="keyword-box">
     <strong>Kontrollregel:</strong> Tilnærmingen er god når alle $E_i \ge 5$. Hvis noen kategorier har for få forventede observasjoner, slå dem sammen før du tester.
   </div>
 </section>
-
 <!-- ==================== PYTHON & SIMULERING ==================== -->
 <section id="py">
   <h2>7. Python & stokastisk simulering</h2>
   <div class="lead">
     <strong>15 % av nyere eksamener</strong> – og det følger nesten alltid samme fire mønstre. Hvis du kjenner mønstrene, kan du svare uten å være "god i Python". Du trenger ikke skrive feilfri kode – du må forstå hva koden <em>gjør</em>.
   </div>
-
   <h3>A. Numpy-funksjonene du må kjenne</h3>
-
   <table class="cmp">
     <tr><th>Funksjon</th><th>Hva den gjør</th><th>Eksempel</th></tr>
     <tr><td><code>np.random.uniform(a, b, n)</code></td><td>n trekninger fra Uniform(a, b)</td><td><code>u = np.random.uniform(0, 1, 1000)</code></td></tr>
@@ -859,35 +1105,28 @@
     <tr><td><code>np.max(x), np.min(x)</code></td><td>Største / minste verdi</td><td>$\max, \min$</td></tr>
     <tr><td><code>scipy.stats.gamma.rvs(...)</code></td><td>Trekninger fra spesifikke fordelinger</td><td>—</td></tr>
   </table>
-
   <h3>B. Mønster 1: Inverstransformasjon (det viktigste trikset)</h3>
-
   <div class="lead" style="background:#e3f4f8; border-left-color:#1a7a8c;">
     <strong>Hvordan generere X fra hvilken som helst kontinuerlig fordeling?</strong> Bruk at hvis $U \sim \text{Uniform}(0, 1)$, så er $X = F_X^{-1}(U)$ en realisasjon fra X. Dette er hjørnesteinen i halvparten av Python-oppgavene.
   </div>
-
   <div class="node method">
     <div class="label">Oppskrift (følg slavisk)</div>
     <strong>1. Finn $F_X(x)$</strong> ved å integrere tettheten $f_X$.<br>
     <strong>2. Sett</strong> $u = F_X(x)$ og <strong>løs ut x</strong> som funksjon av u.<br>
     <strong>3. Skriv kode</strong>: trekk u uniformt, sett inn formelen.<br>
   </div>
-
   <div class="node" style="margin-top:10px;">
     <strong>Eksempel</strong> (fra des 2023): $f_X(x) = \dfrac{2x}{\theta} e^{-x^2/\theta}$ for $x \ge 0$.<br><br>
     1. $F_X(x) = 1 - e^{-x^2/\theta}$<br>
     2. $u = 1 - e^{-x^2/\theta}$ → $x = \sqrt{-\theta \ln(1 - u)}$<br>
     3. Kode:
 <pre class="code"><span class="kw">import</span> numpy <span class="kw">as</span> np
-
 <span class="kw">def</span> <span class="fn">simX</span>(n, theta):
     u = np.random.uniform(size=n)
     x = np.sqrt(-theta * np.log(<span class="num">1</span> - u))
     <span class="kw">return</span> x</pre>
   </div>
-
   <h3>C. Mønster 2: Lese kode → finne fordelingen</h3>
-
   <div class="node method">
     <div class="label">→ Reverser inverstransformasjonen</div>
     Når oppgaven gir deg en funksjon og spør "hva er fordelingen til Y?":<br>
@@ -896,7 +1135,6 @@
     3. Skriv $u = g^{-1}(y)$ og bruk at $F_Y(y) = P(Y \le y) = P(g(U) \le y) = g^{-1}(y)$.<br>
     4. Deriver: $f_Y(y) = F'_Y(y)$.<br>
   </div>
-
   <div class="node">
     <strong>Eksempel</strong> (fra des 2023):
 <pre class="code"><span class="kw">def</span> <span class="fn">simY</span>(n, phi):
@@ -906,15 +1144,12 @@
     Her er $y = \varphi\sqrt{u}$, så $u = (y/\varphi)^2$. Da er $F_Y(y) = (y/\varphi)^2$ for $0 \le y \le \varphi$,<br>
     og $f_Y(y) = 2y/\varphi^2$ på samme intervall.
   </div>
-
   <h3>D. Mønster 3: Monte Carlo – estimer E(X), Var(X) eller P(hendelse)</h3>
-
   <div class="node method">
     <div class="label">→ Gjennomsnittstrikset</div>
     Loven om store tall: gjennomsnittet av mange simulerte verdier konvergerer mot forventningen.<br>
     $E(g(X)) \approx \dfrac{1}{n} \sum_{i=1}^n g(x_i)$ &nbsp; for store n.
   </div>
-
   <table class="cmp" style="margin-top:10px;">
     <tr><th>Skal estimere</th><th>Kode</th></tr>
     <tr>
@@ -938,13 +1173,10 @@
       <td>Simuler trippel, regn ut max, tell andel over 10</td>
     </tr>
   </table>
-
   <h3>E. Mønster 4: Estimere eksakt p-verdi via simulering</h3>
-
   <div class="lead" style="background:#e3f4f8; border-left-color:#1a7a8c;">
     Dette er det mest avanserte mønsteret, og det dukket opp i mai 2025 og des 2023. Når du har regnet ut en <em>tilnærmet</em> p-verdi (med f.eks. CLT) og oppgaven ber deg estimere den <em>eksakte</em> p-verdien.
   </div>
-
   <div class="node method">
     <div class="label">→ Oppskrift</div>
     1. Du har observert testobservator $T_{\text{obs}}$ fra reelle data.<br>
@@ -953,7 +1185,6 @@
     4. Tell hvor ofte den simulerte er minst like ekstrem som den observerte.<br>
     5. Andelen er ditt p-verdi-estimat.
   </div>
-
   <div class="node">
     <strong>Skjema:</strong>
 <pre class="code"><span class="kw">def</span> <span class="fn">estimerPverdi</span>(n, theta0, T_obs, m):
@@ -970,52 +1201,91 @@
     <span class="kw">return</span> pHat</pre>
     <div class="note">Tilpasses retningen i $H_1$: høyresidig (≥), venstresidig (≤), eller tosidig (|.| ≥).</div>
   </div>
-
   <h3>F. Vanlige feller</h3>
-
   <div class="node warn">
     <div class="label">⚠ Standardavvik vs. varians i np.random.normal</div>
     <code>np.random.normal(loc=μ, scale=σ, size=n)</code> tar <strong>standardavviket σ</strong>, ikke variansen $\sigma^2$. Hvis oppgaven gir deg variansen, må du ta kvadratrota før du sender det inn.
   </div>
-
   <div class="node warn" style="margin-top:8px;">
     <div class="label">⚠ Eksponensialfordeling: parameteren</div>
     <code>np.random.exponential(scale=β, size=n)</code> bruker β = forventning (samme som NTNU). Men hvis oppgaven bruker rate-parameteren λ (der $E(X) = 1/\lambda$), må du sende inn <code>scale=1/lambda</code>.
   </div>
-
   <div class="node warn" style="margin-top:8px;">
     <div class="label">⚠ Utvalgsvarians: dele på (n−1) eller n?</div>
     Dele på <strong>(n−1)</strong> for forventningsrett estimat av populasjonsvariansen.<br>
     Dele på <strong>n</strong> for enkel andre-moment estimat $E(X^2) - (E(X))^2$.
   </div>
-
   <div class="node warn" style="margin-top:8px;">
     <div class="label">⚠ Når koden teller hendelser</div>
     <code>np.sum(x &gt; 5)</code> teller antall <em>True</em>-verdier (Python tolker True som 1, False som 0). Del på n for å få sannsynligheten.
   </div>
-
   <div class="keyword-box">
     <strong>Praktisk eksamenstips:</strong> Hvis en oppgave gir deg en kodebit du ikke skjønner umiddelbart, gå linje for linje og skriv på siden hva hver linje gjør. Da blir det lettere å se hvilken fordeling som genereres.
   </div>
+  <h3>G. Feilforplantning (sjelden, men 10 poeng når den kommer)</h3>
+  <div class="lead" style="background:#e3f4f8; border-left-color:#1a7a8c;">
+    Når du har <strong>$X = g(V_1, V_2, \ldots, V_k)$</strong> der $V_i$-ene er stokastiske variabler med kjent forventning og varians, kan du tilnærme $\text{Var}(X)$ uten å regne ut hele integralet. Dukket opp i mai 2024 oppgave 4.
+  </div>
+  <div class="node method">
+    <div class="label">Feilforplantningsformelen (uavhengige variabler)</div>
+    Hvis $X = g(V_1, \ldots, V_k)$ og $V_i$ er uavhengige med kjente $\sigma_{V_i}^2$:
+    $$\text{Var}(X) \approx \sum_{i=1}^k \left(\frac{\partial g}{\partial V_i}\right)^2 \sigma_{V_i}^2$$
+    Alle partielle deriverte evalueres ved <strong>forventningsverdiene</strong> til $V_i$-ene.
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Forventningsverdien</div>
+    Tilnærmet: $E(X) \approx g(E(V_1), \ldots, E(V_k))$<br>
+    Sett bare inn forventningene direkte i funksjonen.
+  </div>
+  <div class="node">
+    <strong>Oppskrift (slavisk):</strong>
+    <ol style="margin: 4px 0 0 0; padding-left: 20px;">
+      <li>Skriv ut funksjonen $g$</li>
+      <li>Regn ut $\partial g / \partial V_i$ for hver variabel</li>
+      <li>Evaluer ved forventningsverdiene (sett inn $V_i = E(V_i)$)</li>
+      <li>Kvadrér hver partiell, multipliser med variansen, summer</li>
+    </ol>
+  </div>
+  <h3>H. Permutasjonstest (Ernst-artikkelen, kap 3-4)</h3>
+  <div class="lead" style="background:#fdf0ed; border-left-color:#a32d4f;">
+    En <strong>ikke-parametrisk</strong> hypotesetest som ikke krever antagelser om fordeling. Pensum (Ernst 2004 kap 3-4). Kan dukke opp som teori-spørsmål eller "diskuter"-oppgave.
+  </div>
+  <div class="node method">
+    <div class="label">Grunnideen</div>
+    Du har to grupper og vil teste om de har samme fordeling ($H_0$). Under $H_0$ er det <strong>tilfeldig</strong> hvilke observasjoner som havnet i hvilken gruppe – så du kan "bytte" om på dem og se hva testobservatoren ville blitt.
+  </div>
+  <div class="node method" style="margin-top:10px;">
+    <div class="label">Oppskrift</div>
+    <strong>1.</strong> Regn ut testobservator $T_{obs}$ fra de <strong>opprinnelige</strong> dataene<br>
+    <strong>2.</strong> Pool alle observasjoner sammen i én "pose"<br>
+    <strong>3.</strong> Tilfeldig fordel dem på nytt i grupper med samme størrelse som original (det er en <em>permutasjon</em>)<br>
+    <strong>4.</strong> Regn ut testobservator $T_{perm}$ for den permuterte fordelingen<br>
+    <strong>5.</strong> Gjenta steg 3-4 mange ganger (eller alle mulige permutasjoner hvis lite data)<br>
+    <strong>6.</strong> P-verdi = andel permutasjoner der $|T_{perm}| \ge |T_{obs}|$
+  </div>
+  <div class="node">
+    <strong>Når brukes det?</strong> Når du ikke vil anta normalfordeling, men har to grupper å sammenligne. Kan brukes for forskjell i forventning, median, eller hvilken som helst testobservator du kan regne ut.
+  </div>
+  <div class="node warn" style="margin-top:10px;">
+    <div class="label">⚠ Forskjell mellom permutasjonstest og bootstrap</div>
+    <strong>Permutasjonstest:</strong> trekker uten tilbakelegging fra det samlede datasettet (du blander gruppene).<br>
+    <strong>Bootstrap:</strong> trekker med tilbakelegging fra ett datasett.<br>
+    Begge er ikke-parametriske, men løser ulike problemer.
+  </div>
 </section>
-
 <!-- ==================== TESTOBSERVATOR-OVERSIKT ==================== -->
 <section id="testobs">
   <h2>📋 Testobservator-oversikt – kjapp slå-opp</h2>
   <div class="lead">
     Komplett oversikt over alle testobservatorer og KI-formler du trenger på TMA4245-eksamen. Strukturert etter <strong>hva du tester/estimerer</strong> og <strong>hvilke forutsetninger</strong> du har. Bruk denne sammen med tabellsamlingen.
   </div>
-
   <h3>Generelt prinsipp – hver testobservator har samme struktur</h3>
-
   <div class="node method">
     <div class="label">Mal for alle pivotale størrelser</div>
     $$\text{Pivot} = \frac{\text{estimat} - \text{parameter}}{\text{standardfeil til estimat}}$$
     <div class="note">Pivoten har en kjent fordeling (Z, t, χ², F) som ikke avhenger av den ukjente parameteren. Det er hele trikset.</div>
   </div>
-
   <h3>A. Tester og KI for én forventning μ</h3>
-
   <table class="obs">
     <tr><th>Situasjon</th><th>Testobservator</th><th class="dist">Fordeling</th><th>Konfidensintervall</th></tr>
     <tr class="group-header"><td colspan="4">Ett utvalg, normalfordelt eller stor n</td></tr>
@@ -1038,9 +1308,7 @@
       <td class="formula">$\bar x \pm z_{\alpha/2} \cdot \dfrac{s}{\sqrt n}$</td>
     </tr>
   </table>
-
   <h3>B. Tester og KI for to forventninger (μ₁ − μ₂)</h3>
-
   <table class="obs">
     <tr><th>Situasjon</th><th>Testobservator</th><th class="dist">Fordeling</th><th>Konfidensintervall</th></tr>
     <tr class="group-header"><td colspan="4">Parvise observasjoner (samme enhet, før/etter)</td></tr>
@@ -1070,9 +1338,7 @@
       <td class="formula">$(\bar x_1 - \bar x_2) \pm t_{\alpha/2,\, v} \sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2}}$</td>
     </tr>
   </table>
-
   <h3>C. Tester og KI for andel p</h3>
-
   <table class="obs">
     <tr><th>Situasjon</th><th>Testobservator</th><th class="dist">Fordeling</th><th>Konfidensintervall</th></tr>
     <tr>
@@ -1088,9 +1354,7 @@
       <td class="formula">$(\hat p_1 - \hat p_2) \pm z_{\alpha/2} \sqrt{\dfrac{\hat p_1(1-\hat p_1)}{n_1} + \dfrac{\hat p_2(1-\hat p_2)}{n_2}}$</td>
     </tr>
   </table>
-
   <h3>D. Tester og KI for varians σ²</h3>
-
   <table class="obs">
     <tr><th>Situasjon</th><th>Testobservator</th><th class="dist">Fordeling</th><th>Konfidensintervall</th></tr>
     <tr>
@@ -1106,9 +1370,7 @@
       <td class="formula">$\dfrac{s_1^2}{s_2^2} \cdot \dfrac{1}{f_{\alpha/2}} < \dfrac{\sigma_1^2}{\sigma_2^2} < \dfrac{s_1^2}{s_2^2} \cdot f_{\alpha/2}$</td>
     </tr>
   </table>
-
   <h3>E. Lineær regresjon (β og prediksjoner)</h3>
-
   <table class="obs">
     <tr><th>Spørsmål</th><th>Testobservator</th><th class="dist">Fordeling</th><th>Konfidensintervall</th></tr>
     <tr>
@@ -1130,9 +1392,7 @@
       <td class="formula">$\hat y_0 \pm t_{\alpha/2,\, n-2} \cdot s\sqrt{1 + \dfrac{1}{n} + \dfrac{(x_0-\bar x)^2}{S_{xx}}}$<br><span class="note">⚠ +1 under rota</span></td>
     </tr>
   </table>
-
   <h3>F. Kjikvadrat-tester (Kap 10.10)</h3>
-
   <table class="obs">
     <tr><th>Type test</th><th>Testobservator</th><th class="dist">Fordeling</th><th>Forkast</th></tr>
     <tr>
@@ -1148,9 +1408,7 @@
       <td class="formula">$\chi^2 > \chi^2_{\alpha,\, (r-1)(k-1)}$</td>
     </tr>
   </table>
-
   <h3>G. Prediksjonsintervall for fremtidig observasjon Y₀</h3>
-
   <table class="obs">
     <tr><th>Situasjon</th><th class="dist">Fordeling</th><th>Prediksjonsintervall</th></tr>
     <tr>
@@ -1164,9 +1422,7 @@
       <td class="formula">$\bar x \pm t_{\alpha/2,\, n-1} \cdot s\sqrt{1 + \dfrac{1}{n}}$</td>
     </tr>
   </table>
-
   <h3>H. Beslutningstre – velg riktig testobservator på 4 spørsmål</h3>
-
   <div class="node q">Spørsmål 1: Hvilken parameter?</div>
   <div class="branch">
     <div class="node">μ (forventning) → spørsmål 2</div>
@@ -1174,29 +1430,24 @@
     <div class="node">σ² (varians) → seksjon D ovenfor</div>
     <div class="node">β (regresjons-koeffisient) → seksjon E ovenfor</div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Spørsmål 2: Ett eller to utvalg?</div>
   <div class="branch">
     <div class="node">Ett → spørsmål 3</div>
     <div class="node">To, samme enhet (før/etter) → parvis t-test (seksjon B øverst)</div>
     <div class="node">To, separate grupper → spørsmål 4</div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Spørsmål 3: Er σ kjent?</div>
   <div class="branch">
     <div class="node"><span class="pill z">Z</span> Kjent eller stor n → Z-test</div>
     <div class="node"><span class="pill t">t</span> Ukjent og liten n → t-test, fg = n−1</div>
   </div>
-
   <div class="node q" style="margin-top:14px;">Spørsmål 4: To utvalg – kjente/lik/ulik varians?</div>
   <div class="branch">
     <div class="node"><span class="pill z">Z</span> Begge $\sigma$ kjent → Z-test</div>
     <div class="node"><span class="pill t">t</span> Ukjent men antatt lik → pooled t-test, fg = n₁+n₂−2</div>
     <div class="node"><span class="pill t">t</span> Ukjent og ulik → Welch, Satterthwaite-fg</div>
   </div>
-
   <h3>I. Konklusjonsregler (samme uansett testobservator)</h3>
-
   <table class="cmp">
     <tr><th>Type test ($H_1$)</th><th>Forkast $H_0$ hvis</th><th>p-verdi</th></tr>
     <tr><td>Høyresidig: $H_1$: parameter > verdi</td><td>obs > kritisk verdi (positiv hale)</td><td>P(stat ≥ obs)</td></tr>
@@ -1204,20 +1455,203 @@
     <tr><td>Tosidig: $H_1$: parameter ≠ verdi</td><td>|obs| > $z_{\alpha/2}$ eller $t_{\alpha/2}$</td><td>2 · P(stat ≥ |obs|)</td></tr>
     <tr><td>Kjikvadrat (alltid ensidig)</td><td>χ² > $\chi^2_{\alpha,\, fg}$</td><td>P(χ² ≥ obs)</td></tr>
   </table>
-
   <div class="keyword-box">
     <strong>Den ene huskeregelen:</strong> Hvis fordelingen er <strong>symmetrisk</strong> (Z, t) er forkastningsområdet i begge haler ved tosidig test. Hvis den er <strong>asymmetrisk</strong> (χ², F) må du være ekstra nøye med hvilken hale du slår opp i.
   </div>
-
   <div class="keyword-box">
-    <strong>Sanity check før du leverer:</strong> 
+    <strong>Sanity check før du leverer:</strong>
     Tegn alltid en skisse av fordelingen og marker hvor obs-verdien lander. Hvis obs-verdien er nær midten (rundt 0 for Z/t), bør du IKKE forkaste. Hvis obs er langt ute i halen, bør du forkaste. Få et magefølelse for resultatet før du regner p-verdi.
   </div>
 </section>
-
+<!-- ==================== PENSUMLISTE ==================== -->
+<section id="pensum">
+  <h2>📊 Prioritert pensumliste & oppgaveoversikt</h2>
+  <div class="lead">
+    Basert på analyse av <strong>23 eksamener fra 2018-2025</strong>. Hver tema er listet med frekvens og hvor du finner oppgaver å trene på. Trender de siste årene (2023-2025) er viktigere enn gjennomsnittet for hele perioden.
+  </div>
+  <h3>🔴 Absolutt må-kunne (på 80-100 % av eksamener)</h3>
+  <table class="priority">
+    <tr><th>Tema</th><th class="freq">Frekvens</th><th>Hvor finne oppgaver</th></tr>
+    <tr class="tier1">
+      <td><strong>Hypotesetest</strong> med p-verdi</td>
+      <td class="freq">91 % (21/23)<br>100 % siden 2023</td>
+      <td class="examples">Mai25 9a, mai24 oppg6, mai22 6c, mai21 7d, des24 oppg, aug25 oppg</td>
+    </tr>
+    <tr class="tier1">
+      <td><strong>Normalfordeling</strong> + standardisering</td>
+      <td class="freq">91 % (21/23)</td>
+      <td class="examples">Mai25 oppg1, mai24 oppg2, alle eksamener</td>
+    </tr>
+    <tr class="tier1">
+      <td><strong>SME</strong> (sannsynlighetsmaksimering)</td>
+      <td class="freq">83 % (19/23)<br>89 % siden 2023</td>
+      <td class="examples">Mai25 oppg8, mai24 5b, mai22 6a, mai21 7b, aug21 8B, des21E 4b, aug25 7a</td>
+    </tr>
+    <tr class="tier1">
+      <td><strong>Konfidensintervall</strong></td>
+      <td class="freq">83 % (19/23)<br>89 % siden 2023</td>
+      <td class="examples">Mai25 7c, aug22 6b, mai21 7c, des22, aug25</td>
+    </tr>
+  </table>
+  <h3>🟠 Svært vanlig (50-80 %)</h3>
+  <table class="priority">
+    <tr><th>Tema</th><th class="freq">Frekvens</th><th>Hvor finne oppgaver</th></tr>
+    <tr class="tier2">
+      <td><strong>Forventningsrett estimator + sammenlign varians</strong></td>
+      <td class="freq">70 % (16/23)</td>
+      <td class="examples">Mai25 4a/4e/7b, mai21 7b, aug22 oppg7, des21M</td>
+    </tr>
+    <tr class="tier2">
+      <td><strong>Lineær regresjon</strong> (KI for β, prediksjonsintervall)</td>
+      <td class="freq">65 % (15/23)<br>78 % siden 2023</td>
+      <td class="examples">Mai25 oppg7, mai22 oppg6, des24 regresjon, aug25 regresjon</td>
+    </tr>
+    <tr class="tier2">
+      <td><strong>Bayes / betinget sannsynlighet</strong></td>
+      <td class="freq">52 % (12/23)</td>
+      <td class="examples">Mai24 1b, mai25 oppg3, aug24, mai18, mai19</td>
+    </tr>
+  </table>
+  <h3>🟡 Vanlig (30-50 %)</h3>
+  <table class="priority">
+    <tr><th>Tema</th><th class="freq">Frekvens</th><th>Hvor finne oppgaver</th></tr>
+    <tr class="tier3">
+      <td><strong>Poisson + Poissonprosess</strong></td>
+      <td class="freq">39 % (9/23)</td>
+      <td class="examples">Mai24 oppg3, mai25 oppg9, mai18, mai20</td>
+    </tr>
+    <tr class="tier3">
+      <td><strong>Bernoulli/Binomisk</strong></td>
+      <td class="freq">39 % (9/23)</td>
+      <td class="examples">Mai24 5b, mai25 oppg5, des21M, aug22</td>
+    </tr>
+    <tr class="tier3">
+      <td><strong>Transformasjon av variabel</strong> ($Y = g(X)$)</td>
+      <td class="freq">35 % (8/23)</td>
+      <td class="examples">Mai21 7a, des22, aug22, mai18</td>
+    </tr>
+    <tr class="tier3">
+      <td><strong>Gamma-fordeling</strong></td>
+      <td class="freq">30 % (7/23)</td>
+      <td class="examples">Aug25 7a, mai25 oppg9, des21, aug20</td>
+    </tr>
+  </table>
+  <h3>🟢 Middels vanlig (15-30 %)</h3>
+  <table class="priority">
+    <tr><th>Tema</th><th class="freq">Frekvens</th><th>Hvor finne oppgaver</th></tr>
+    <tr class="tier4">
+      <td><strong>Python/Simulering</strong></td>
+      <td class="freq">26 % (6/23)<br><strong>67 % siden 2023</strong></td>
+      <td class="examples">Mai24 oppg4 (feilforplantning), mai25 oppg5, mai25 9b, des24, aug24, aug25</td>
+    </tr>
+    <tr class="tier4">
+      <td><strong>Kovarians/Korrelasjon</strong></td>
+      <td class="freq">26 % (6/23)</td>
+      <td class="examples">Mai20, aug19, aug24, mai21</td>
+    </tr>
+    <tr class="tier4">
+      <td><strong>Simultanfordeling</strong></td>
+      <td class="freq">17 % (4/23)</td>
+      <td class="examples">Mai24 oppg2, mai25 oppg3, aug20, des21M</td>
+    </tr>
+    <tr class="tier4">
+      <td><strong>Momentgenererende funksjoner</strong></td>
+      <td class="freq">17 % (4/23)</td>
+      <td class="examples">Mai24 5a, mai19, aug25 7c, des22</td>
+    </tr>
+    <tr class="tier4">
+      <td><strong>Sentralgrenseteoremet</strong></td>
+      <td class="freq">17 % (4/23)</td>
+      <td class="examples">Mai25 9a, mai19, des21E, aug22</td>
+    </tr>
+    <tr class="tier4">
+      <td><strong>Eksponentialfordeling</strong></td>
+      <td class="freq">17 % (4/23)</td>
+      <td class="examples">Aug20, des21M, aug24, des24</td>
+    </tr>
+  </table>
+  <h3>🔵 Sjelden (under 15 %)</h3>
+  <table class="priority">
+    <tr><th>Tema</th><th class="freq">Frekvens</th><th>Hvor finne oppgaver</th></tr>
+    <tr class="tier5">
+      <td>Kombinatorikk</td><td class="freq">13 % (3/23)</td>
+      <td class="examples">Mai25 oppg6, mai20, mai21</td>
+    </tr>
+    <tr class="tier5">
+      <td>Geometrisk fordeling</td><td class="freq">9 % (2/23)</td>
+      <td class="examples">Aug21 8B, des22</td>
+    </tr>
+    <tr class="tier5">
+      <td>Inverstransformasjon (i Python)</td><td class="freq">4 % (1/23)<br>nyere temaer</td>
+      <td class="examples">Des23, mai25 9b</td>
+    </tr>
+    <tr class="tier5">
+      <td>Feilforplantning</td><td class="freq">4 % (1/23)<br>nyt 2024</td>
+      <td class="examples">Mai24 oppg4</td>
+    </tr>
+    <tr class="tier5">
+      <td>Maks/min av uavhengige</td><td class="freq">4 % (1/23)</td>
+      <td class="examples">Mai21 7a, mai22</td>
+    </tr>
+  </table>
+  <h3>⚪ Pensum-temaer som dekker dypere (Ernst-artikkelen, kap 16)</h3>
+  <table class="priority">
+    <tr><th>Tema</th><th class="freq">Status</th><th>Hva det innebærer</th></tr>
+    <tr class="tier5">
+      <td>Permutasjonstest</td><td class="freq">Nyere (2023+)</td>
+      <td>Konseptuell forståelse — se metodevelger 7H</td>
+    </tr>
+    <tr class="tier5">
+      <td>Fortegnstest</td><td class="freq">Nyere (2023+)</td>
+      <td>Ikke-parametrisk alternativ — se metodevelger 4 (Steg 5)</td>
+    </tr>
+    <tr class="tier5">
+      <td>Type I/II-feil + teststyrke</td><td class="freq">På noen eksamener</td>
+      <td>Begrep + utregning — se metodevelger 4 (Steg 3)</td>
+    </tr>
+    <tr class="tier5">
+      <td>Antall observasjoner n</td><td class="freq">Sjelden</td>
+      <td>Formel for nødvendig n — se metodevelger 4 (Steg 4)</td>
+    </tr>
+    <tr class="tier5">
+      <td>Kjikvadrat-tilpasningstest</td><td class="freq">Sjelden</td>
+      <td>Goodness-of-fit — se metodevelger 6D</td>
+    </tr>
+    <tr class="tier5">
+      <td>F-test (sammenlign varianser)</td><td class="freq">Svært sjelden</td>
+      <td>Se testobservator-oversikten</td>
+    </tr>
+  </table>
+  <h3>Strategi for de siste dagene</h3>
+  <div class="keyword-box">
+    <strong>Hvis du har lite tid:</strong> Fokuser på de 4 røde temaene (hypotesetest, normalfordeling, SME, KI). De dekker 60-70 % av poengene og er garantert på eksamen. Bedre å mestre disse helt enn å spre seg tynt.
+  </div>
+  <div class="keyword-box">
+    <strong>Hvis du har god tid:</strong> Etter de røde, prioritér Python/simulering (sannsynlig garantert på din eksamen 11. mai 2026 basert på trender 2023-2025), deretter regresjon og forventningsrett-oppgaver.
+  </div>
+  <div class="keyword-box">
+    <strong>Karaktermål:</strong> 🔴 alle godt → bestått (D-C). 🔴+🟠+Python godt → B. Alle nivåer → A.
+  </div>
+  <h3>Kronologisk SME-progresjon (det vi har gjort sammen)</h3>
+  <table class="priority">
+    <tr><th>Eksamen</th><th>Fordeling</th><th>SME</th><th>Status</th></tr>
+    <tr><td>Mai 2024 5b</td><td>To binomiske med felles p</td><td>$\hat p = (y+m-w)/(n+m)$</td><td>✅ Mestret</td></tr>
+    <tr><td>Mai 2025 oppg 8</td><td>To binomiske, andre med p/2</td><td>$\hat p \approx 0.877$</td><td>✅ Mestret</td></tr>
+    <tr><td>Mai 2022 6a</td><td>Normal regresjon (uten konstant)</td><td>$\hat\beta = \sum x_i Y_i / \sum x_i^2$</td><td>✅ Mestret</td></tr>
+    <tr><td>Mai 2021 7b</td><td>Pareto</td><td>$\hat\lambda = n/\sum \ln(Y_i/y_0)$</td><td>✅ Mestret</td></tr>
+    <tr><td>Aug 2021 8B</td><td>Geometrisk</td><td>$\hat p = 1/\bar X$</td><td>✅ Mestret</td></tr>
+    <tr><td>Des 2021E 4b</td><td>Eksotisk levetid med $\sqrt x$</td><td>$\hat\theta = \frac{1}{n}\sum \sqrt{X_i}$</td><td>✅ Mestret</td></tr>
+    <tr><td>Des 2022</td><td>?</td><td>?</td><td>⬜ Neste</td></tr>
+    <tr><td>Jun 2023</td><td>?</td><td>?</td><td>⬜</td></tr>
+    <tr><td>Aug 2023</td><td>?</td><td>?</td><td>⬜</td></tr>
+    <tr><td>Des 2023</td><td>?</td><td>?</td><td>⬜</td></tr>
+    <tr><td>Aug 2024</td><td>?</td><td>?</td><td>⬜</td></tr>
+    <tr><td>Des 2024</td><td>?</td><td>?</td><td>⬜</td></tr>
+    <tr><td>Aug 2025 7a</td><td>Gamma</td><td>$\hat b = \frac{1}{5n}\sum X_i$</td><td>⬜ Neste</td></tr>
+  </table>
+</section>
 <div style="text-align:center; color:#888; font-size:13px; margin: 30px 0 10px;">
   Lykke til 11. mai 🎯
 </div>
-
 </body>
 </html>
