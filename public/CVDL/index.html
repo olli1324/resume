@@ -1268,6 +1268,42 @@ const CONTENT = {
           <li><a href="https://www.youtube.com/watch?v=bNb2fEVKeEo" target="_blank" rel="noopener">Stanford CS231n — Convolutional Networks</a></li>
         </ul>
       </div>
+
+      <div class="key-box">
+        <div class="label">Convolution Summary — cheat sheet</div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+          <div>
+            <p>Input: $C_{in} \\times H \\times W$</p>
+            <p style="margin-top:10px;">Hyperparametere:</p>
+            <ul>
+              <li>Kernel: $K_H \\times K_W$</li>
+              <li>Antall filtre: $C_{out}$</li>
+              <li>Padding: $P$</li>
+              <li>Stride: $S$</li>
+            </ul>
+            <p style="margin-top:10px;">Vektmatrise: $C_{out} \\times C_{in} \\times K_H \\times K_W$ — gir $C_{out}$ filtre av størrelse $C_{in} \\times K_H \\times K_W$.</p>
+            <p>Bias-vektor: $C_{out}$</p>
+            <p style="margin-top:10px;">Output: $C_{out} \\times H' \\times W'$ der:</p>
+            <ul>
+              <li>$H' = \\lfloor (H - K + 2P) / S \\rfloor + 1$</li>
+              <li>$W' = \\lfloor (W - K + 2P) / S \\rfloor + 1$</li>
+            </ul>
+          </div>
+          <div>
+            <p style="color: var(--accent); font-family: 'Fraunces', serif; font-style: italic;">Vanlige innstillinger</p>
+            <ul>
+              <li>$K_H = K_W$ — kvadratiske filtre</li>
+              <li>$P = (K-1)/2$ — "same" padding</li>
+              <li>$C_{in}, C_{out} \\in \\{32, 64, 128, 256\\}$ — potenser av 2</li>
+              <li>$K=3,\\ P=1,\\ S=1$ — 3×3 conv</li>
+              <li>$K=5,\\ P=2,\\ S=1$ — 5×5 conv</li>
+              <li>$K=1,\\ P=0,\\ S=1$ — 1×1 conv</li>
+              <li>$K=3,\\ P=1,\\ S=2$ — downsample ×2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <h3>Intuisjon: Hva gjør konvolusjon?</h3>
       <p>En konvolusjon er en <strong>glidende filter</strong. Vi tar en liten matrisefilter (f.eks. 3×3), plaserer den på øvre venstre hjørne av bildet, multipliserer element-for-element med bildet og summerer resultatet. Så glider vi filteret ett hakk til høyre (eller ned), og gjentar. Hvert hakk produserer ett tall i output-bildet.</p>
 
