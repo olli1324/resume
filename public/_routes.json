@@ -16,6 +16,14 @@
       "dest": "/statistics/index.html"
     },
     {
+      "src": "/CVDL/*",
+      "dest": "/CVDL/$1"
+    },
+    {
+      "src": "/CVDL",
+      "dest": "/CVDL/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }
