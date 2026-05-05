@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Activities from './components/Activities';
 import Projects from './components/Projects';
+import Competitions from './components/Competitions';
 import References from './components/References';
 import { useSections } from './hooks/useContent';
 
@@ -15,6 +16,7 @@ const sectionComponents = {
   education: Education,
   activities: Activities,
   projects: Projects,
+  competitions: Competitions,
   references: References,
 };
 

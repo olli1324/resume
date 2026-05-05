@@ -10,6 +10,7 @@ import ActivityForm from './forms/ActivityForm';
 import EducationForm from './forms/EducationForm';
 import ReferenceForm from './forms/ReferenceForm';
 import ProjectForm from './forms/ProjectForm';
+import CompetitionForm from './forms/CompetitionForm';
 
 const TABS = [
   { key: 'profile', label: 'Profile' },
@@ -19,6 +20,7 @@ const TABS = [
   { key: 'activities', label: 'Activities' },
   { key: 'education', label: 'Education' },
   { key: 'projects', label: 'Projects' },
+  { key: 'competitions', label: 'Competitions' },
   { key: 'references', label: 'References' },
 ];
 
@@ -94,6 +96,30 @@ const Dashboard = () => {
                     {item.featured && <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">Featured</span>}
                   </div>
                   <div className="text-sm text-gray-600">{item.date}</div>
+                  <div className="text-sm text-gray-500 line-clamp-2 mt-1">{item.description}</div>
+                </div>
+              </div>
+            )}
+          />
+        );
+      case 'competitions':
+        return (
+          <ItemList
+            table="competitions"
+            FormComponent={CompetitionForm}
+            renderSummary={(item) => (
+              <div className="flex gap-3">
+                {item.image_urls && item.image_urls[0] && (
+                  <img src={item.image_urls[0]} alt="" className="w-20 h-20 rounded object-cover shrink-0" />
+                )}
+                <div>
+                  <div className="font-semibold text-gray-800">
+                    {item.title}
+                    {item.placement && <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">{item.placement}</span>}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    {[item.event, item.date].filter(Boolean).join(' | ')}
+                  </div>
                   <div className="text-sm text-gray-500 line-clamp-2 mt-1">{item.description}</div>
                 </div>
               </div>
