@@ -1,0 +1,6 @@
+/cvdl       /CVDL/index.html  200
+/cvdl/      /CVDL/index.html  200
+/cvdl/*     /CVDL/:splat      200
+/Cvdl       /CVDL/index.html  200
+/Cvdl/      /CVDL/index.html  200
+/Cvdl/*     /CVDL/:splat      200
