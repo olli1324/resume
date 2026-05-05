@@ -1695,7 +1695,7 @@ const CONTENT = {
 
       <h3>1. Mean Squared Error (MSE)</h3>
       <div class="formula-block"><div class="label">Formel og derivert</div>$$L = \\frac{1}{2}(a - y)^2, \\qquad \\frac{\\partial L}{\\partial a} = a - y$$</div>
-      <p>Intuisjon: Kvadrer feilen, så tar du gjennomsnittet. Store feil blir straffet veldig hard (kvadrering), små feil blir straffet mild. Veldig simpel og geometrisk tolkning: du minimerer euklidsk avstand til target.</p>
+      <p>Intuisjon: Kvadrer feilen, så tar du gjennomsnittet. Store feil blir straffet veldig hardt (kvadrering), små feil blir straffet mildt. Veldig enkel og geometrisk tolkning: du minimerer euklidsk avstand til target.</p>
 
       <p>Numerisk eksempel: Hvis nettet predikerer $a = 2.0$ og true target er $y = 5.0$, så:</p>
       <ul>
@@ -1767,7 +1767,7 @@ const CONTENT = {
         <li>Korrekt prediksjon ($p_t$ nær 1): $(1 - p_t)$ nær 0, så hele tapet blir dempet. Eksempel: hvis $p_t = 0.9$ og $\\gamma = 2$, multipliserer du CE-tapet med $(0.1)^2 = 0.01$.</li>
         <li>Feil prediksjon ($p_t$ nær 0): $(1 - p_t)$ nær 1, så tapet blir ikke dempet. Hvis $p_t = 0.1$ og $\\gamma = 2$, multipliserer du med $(0.9)^2 = 0.81$, som er nær 1.</li>
       </ul>
-      <p>Resultat: «Lette» eksempler (som nettverket allerede klassifiserer riktig) bidrar lite til trening. «Vanskelige» eksempler (som nettverket får galt) bidrar veldig. Dette fokuserer treningen på schwakhetene.</p>
+      <p>Resultat: «Lette» eksempler (som nettverket allerede klassifiserer riktig) bidrar lite til trening. «Vanskelige» eksempler (som nettverket får galt) bidrar veldig. Dette fokuserer treningen på svakhetene.</p>
 
       <p>Numerisk eksempel (lett vs vanskelig eksempel): La $\\gamma = 2$ (standard).</p>
       <p>Lett eksempel, $p_t = 0.9$:</p>
@@ -1784,7 +1784,7 @@ const CONTENT = {
       </ul>
       <p>Konklusjon: Lett eksempel får tap 0.001, vanskelig får 1.9. Forholdet er 1900x — nettverket fokuserer på det vanskelige eksemplet.</p>
 
-      <p>Brukes for: Klassifisering med kraftig klasseulbalanse (f.eks. objektdeteksjon hvor 99% av boksene er bakgrunn). Focal Loss ble introdusert i RetinaNet. Ikke nødvendig hvis datasett er balansert.</p>
+      <p>Brukes for: Klassifisering med kraftig klasseubalanse (f.eks. objektdeteksjon hvor 99% av boksene er bakgrunn). Focal Loss ble introdusert i RetinaNet. Ikke nødvendig hvis datasett er balansert.</p>
 
       <p>Valg av $\\gamma$: Standard $\\gamma = 2$ fungerer bra. Høyere $\\gamma$ fokuserer enda hardere på vanskelige eksempler, lavere gjør det mindre aggressivt.</p>
 
@@ -1794,7 +1794,7 @@ const CONTENT = {
         <tr><td>Regresjon</td><td>Linear</td><td>MSE</td><td>Alltid. Kontinuerlig output.</td></tr>
         <tr><td>Binær klassifisering</td><td>Sigmoid</td><td>Binary CE</td><td>To klasser, $y \\in \\{0, 1\\}$.</td></tr>
         <tr><td>Multiklasse klassifisering</td><td>Softmax</td><td>Cross Entropy</td><td>3+ klasser, one-hot label.</td></tr>
-        <tr><td>Klassifisering med klasseulbalanse</td><td>Softmax</td><td>Focal Loss</td><td>Når noen klasser er mye vanligere enn andre.</td></tr>
+        <tr><td>Klassifisering med klasseubalanse</td><td>Softmax</td><td>Focal Loss</td><td>Når noen klasser er mye vanligere enn andre.</td></tr>
       </table></div>
 
       <h3>Softmax + Cross Entropy — perfekt kombinasjon</h3>
@@ -1873,7 +1873,7 @@ const CONTENT = {
       </div>
 
       <h3>Intuisjon: Hva gjør konvolusjon?</h3>
-      <p>En konvolusjon er en glidende filter. Vi tar en liten matrisefilter (f.eks. 3×3), plaserer den på øvre venstre hjørne av bildet, multipliserer element-for-element med bildet og summerer resultatet. Så glider vi filteret ett hakk til høyre (eller ned), og gjentar. Hvert hakk produserer ett tall i output-bildet.</p>
+      <p>En konvolusjon er et glidende filter. Vi tar et lite matrisefilter (f.eks. 3×3), plasserer det på øvre venstre hjørne av bildet, multipliserer element-for-element med bildet og summerer resultatet. Så glider vi filteret ett hakk til høyre (eller ned), og gjentar. Hvert hakk produserer ett tall i output-bildet.</p>
 
       <p>Hva detekterer filteret? Hvis filteret inneholder verdier som <code>[-1, 0, 1]</code> horisontalt, vil det reagere sterkt på vertikale kanter (skarpe endringer fra sort til hvitt). Et annet filter kan detektere horisontale kanter, rundinger, teksturer, osv. I CNN lærer vi hundrevis av disse filterene fra data.</p>
 
@@ -2035,7 +2035,7 @@ const CONTENT = {
       <p>Parameterdelering: Det samme 5×5-filteret brukes på <em>alle</em> posisjoner i bildet. Det er kun $5 \\times 5 = 25$ vektparametere per filter (pluss bias), ikke $H_{out} \\times W_{out} \\times 25$ som i FCNN. Derfor blir CNN-er så effektive.</p>
 
       <h3>Telling multiplikasjoner — FLOPs for konvolusjon</h3>
-      <p>For hvert sted filteret plaseres, gjør vi en prikk-produkt med størrelse $F \\times F \\times C_{in}$ multiplikasjoner. Vi gjør dette $H_{out} \\times W_{out}$ ganger for hver av $K$ filtre:</p>
+      <p>For hvert sted filteret plasseres, gjør vi et prikk-produkt med størrelse $F \\times F \\times C_{in}$ multiplikasjoner. Vi gjør dette $H_{out} \\times W_{out}$ ganger for hver av $K$ filtre:</p>
       <div class="formula-block"><div class="label">Multiplikasjoner per konvolag</div>
       $$\\text{FLOPs} = H_{out} \\times W_{out} \\times K \\times (F \\times F \\times C_{in})$$
       </div>
@@ -2191,7 +2191,7 @@ const CONTENT = {
 
       <p>2. Glemmer bias i parameter-telling: $(F \\times F \\times C_{in} + 1) \\times K$. Den +1 er kritisk!</p>
 
-      <p>3. Confunderer multiplikasjoner med parametere: Multiplikasjoner = $H_{out} \\times W_{out} \\times K \\times (F \\times F \\times C_{in})$. Parametere = $(F \\times F \\times C_{in} + 1) \\times K$. Multiplikasjoner er mye større fordi du gjør operasjonen på mange steder.</p>
+      <p>3. Forveksler multiplikasjoner med parametere: Multiplikasjoner = $H_{out} \\times W_{out} \\times K \\times (F \\times F \\times C_{in})$. Parametere = $(F \\times F \\times C_{in} + 1) \\times K$. Multiplikasjoner er mye større fordi du gjør operasjonen på mange steder.</p>
 
       <p>4. Padding-mismatch: Hvis du sier "same padding" eller "valid padding", vær sikker på hva det betyr. Same = output samme størrelse som input. Valid = bare hvor filteret passer helt (P=0).</p>
 
@@ -2297,17 +2297,17 @@ const CONTENT = {
   
       <h3>Multi-Head Attention — Flere "Søkemotorer"</h3>
       <p>Idé: I stedet for én attention-mekanisme, bruk flere parallelt. Hver "hode" lærer sin egen måte å oppmerksomme på.</p>
-      <p>Med $h$ hoder, splitt embedding-dimensjonen: hver hode får $d_k = d_v = d_{model}/h$. Kjør self-attention parallelt på hver hode, konkatener outputtene, og projiser tilbake til $d_{model}$.</p>
+      <p>Med $h$ hoder, splitt embedding-dimensjonen: hvert hode får $d_k = d_v = d_{model}/h$. Kjør self-attention parallelt på hvert hode, konkatener outputtene, og projiser tilbake til $d_{model}$.</p>
       <div class="formula-block">$$\\text{MultiHead}(Q, K, V) = \\text{Concat}(\\text{head}_1, \\ldots, \\text{head}_h) W_O$$</div>
       <p>der hver $\\text{head}_i = \\text{Attention}(Q W_Q^{(i)}, K W_K^{(i)}, V W_V^{(i)})$.</p>
-      <p>Hva lærer hver hode? Eksempel med 8 hoder i BERT:</p>
+      <p>Hva lærer hvert hode? Eksempel med 8 hoder i BERT:</p>
       <ul>
         <li>Hode 1: "Se på neste ord" (kortrekkevidt, grammatikk)</li>
         <li>Hode 2: "Se på ord som ligner meg" (semantikk)</li>
         <li>Hode 3: "Oppmerksomhet på hele setningen" (globalt kontekst)</li>
         <li>Osv.</li>
       </ul>
-      <p>Hver hode spesialiserer seg. Transformeren lærer å fytte sammen disse speesialiserte visningene.</p>
+      <p>Hvert hode spesialiserer seg. Transformeren lærer å knytte sammen disse spesialiserte visningene.</p>
   
       <h3>Positional Encoding — Uten Det, Forsvinner Orden</h3>
       <p>Problemet: Attention er invariant under permutasjon. Hvis du bytter omkring ordene i inngangen, uten positional info, ville attention-vektene være helt like! Modellen "vet" ikke hvor ord er i sekvensen.</p>
@@ -2467,8 +2467,8 @@ const CONTENT = {
           <path d="M 495 165 L 510 165" stroke="#a8431e" stroke-width="2.5" fill="none" marker-end="url(#arrowhead-accent-thick)"/>
 
           <!-- Variance note at bottom -->
-          <text x="300" y="270" font-size="12" fill="#4a4239" text-anchor="middle">Scaling kryssar det skarpe softmax-utgangspunktet — gradienter flyt betre</text>
-          <text x="300" y="300" font-size="12" fill="#4a4239" text-anchor="middle">Kvar ferd i sekvensen får eit vekta gjennomsnitt av alle verdiane</text>
+          <text x="300" y="270" font-size="12" fill="#4a4239" text-anchor="middle">Skaleringen demper det skarpe softmax-utgangspunktet — gradientene flyter bedre</text>
+          <text x="300" y="300" font-size="12" fill="#4a4239" text-anchor="middle">Hvert token i sekvensen får et vektet gjennomsnitt av alle verdiene</text>
 
           <!-- Arrowhead marker definitions -->
           <defs>
@@ -2489,7 +2489,7 @@ const CONTENT = {
       <div style="margin: 24px 0; padding: 20px; background: var(--bg-card-soft); border: 1px solid var(--line); border-radius: 4px;">
         <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto; display:block; margin:0 auto;">
           <!-- Title -->
-          <text x="210" y="25" font-size="16" font-weight="600" fill="#1a1612" text-anchor="middle">Attention Heatmap — Kvar ord attends til kvar</text>
+          <text x="210" y="25" font-size="16" font-weight="600" fill="#1a1612" text-anchor="middle">Attention Heatmap — Hvert ord attender til hvert annet</text>
 
           <!-- Token labels along top -->
           <text x="60" y="55" font-size="12" fill="#4a4239" text-anchor="middle" font-weight="600">The</text>
@@ -2539,9 +2539,9 @@ const CONTENT = {
           <rect x="325" y="230" width="20" height="20" fill="#a8431e" opacity="0.35"/>
 
           <!-- Legend -->
-          <text x="50" y="285" font-size="11" fill="#4a4239">Mørkare = høgare attention vekt | Diagonalen = ordet attends til seg sjøl | Cross-attentions = ord som ligner</text>
+          <text x="50" y="285" font-size="11" fill="#4a4239">Mørkere = høyere attention-vekt | Diagonalen = ordet attender til seg selv | Cross-attentions = ord som ligner</text>
         </svg>
-        <p style="margin-top: 14px; font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center;">Attention-vektene formar eit mønster: kvart ord fokuserer på seg sjøl og på semantisk relaterte ord.</p>
+        <p style="margin-top: 14px; font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center;">Attention-vektene former et mønster: hvert ord fokuserer på seg selv og på semantisk relaterte ord.</p>
       </div>
     `
   },
@@ -2558,7 +2558,7 @@ const CONTENT = {
         </ul>
       </div>
       <h3>Hvorfor ViT — Transformers på Bilder</h3>
-      <p>Motivasjon: CNNer har vært standard for vision fordi de har sterkt inductive bias — lokal konektivitet, deling av vekter, translasjonsinvarians. Men transformers vant på NLP fordi de tillater lang-rekkevidde avhengigheter og har lettere for å lære mønster fra data.</p>
+      <p>Motivasjon: CNNer har vært standard for vision fordi de har sterkt inductive bias — lokal konnektivitet, deling av vekter, translasjonsinvarians. Men transformers vant på NLP fordi de tillater lang-rekkevidde avhengigheter og har lettere for å lære mønster fra data.</p>
       <p>Spørsmålet: Kan vi bare bruke transformers på bilder? Transformers jobber på sekvenser, og et bilde er 2D. Løsningen: Del bildet i små patches og behandle det som en sekvens.</p>
       <p>Intuisjon: I stedet for konvolusjon over nabopiksler, lar vi hver patch "attende" til alle andre patches via self-attention. Patches langt fra hverandre kan direkte dele informasjon. CNNer trenger mange lag for at informasjon skal diffundere til hele bildet; ViT får global view på ett lag.</p>
       <p>Trade-off: ViT trenger MASSER av data (ImageNet-21k eller større) for å lære godt, fordi det ikke har CNNs inductive bias. Med lite data underperformerer ViT CNNer. Med mye data (fulle datasett eller pretrening), overgår ViT.</p>
@@ -2726,7 +2726,7 @@ const CONTENT = {
             </marker>
           </defs>
         </svg>
-        <p style="margin-top: 14px; font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center;">Flyt frå piksel til tokens: bilde blir delt i patches, kvar patch blir projisert til ein embedding, CLS blir prepended, og posisjonsinfo blir lagt til.</p>
+        <p style="margin-top: 14px; font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center;">Flyt fra piksel til tokens: bildet blir delt i patches, hver patch blir projisert til en embedding, CLS blir prepended, og posisjonsinfo blir lagt til.</p>
       </div>
 
       <h3>ViT Konfigurasjoner og Parametre</h3>
@@ -2741,7 +2741,7 @@ const CONTENT = {
       <h3>Inductive Bias — ViT vs CNN</h3>
       <p>CNN:</p>
       <ul>
-        <li>Lokal konektivitet: Hver pixel ser bare sine nabo-piksler via konvolusjon. Informasjon må diffundere lag-for-lag.</li>
+        <li>Lokal konnektivitet: Hver piksel ser bare sine nabo-piksler via konvolusjon. Informasjon må diffundere lag-for-lag.</li>
         <li>Vektzeling: Samme filter brukes på hele bildet (translasjonsinvarians).</li>
         <li>Hierarki: Feature-pyramide — lavnivå får små field-of-view, høynivå større.</li>
         <li>Resultat: Sterkt inductive bias. Trenger lite data for å lære, men kanskje ikke flexible nok.</li>
@@ -2938,7 +2938,7 @@ $$\\theta_{t+1} = \\theta_t - \\frac{\\alpha}{\\sqrt{v_t} + \\epsilon} g_t$$</di
       <p>$v_t$ akkumulerer kvadratet av gradienter. $\\sqrt{v_t}$ gir den karakteristiske størrelsen. Hvis en parameter gjennomsnittlig har gradient 0.1, så $\\sqrt{v_t} \\approx 0.1$, og vi deler på det. Hvis en annen har gradient 1.0, deler vi på større tall.</p>
       <ul>
         <li>Adaptive læringsrate: Hver parameter får sin egen effektiv læringsrate $\\frac{\\alpha}{\\sqrt{v_t} + \\epsilon}$</li>
-        <li>Akselererer når signal er clear: Parametere med små konsis tente gradienter får større steg</li>
+        <li>Akselererer når signalet er klart: Parametere med små konsistente gradienter får større steg</li>
         <li>Bremser når støy: Parametere med høy variasjon får mindre steg</li>
       </ul>
 
@@ -3140,7 +3140,7 @@ $$\\theta_{t+1} = \\theta_t - \\frac{\\alpha}{\\sqrt{\\hat{v}_t} + \\epsilon} \\
         <li>All vekter oppdateres identisk (samme endring)</li>
         <li>Etter oppdatering har alle nevroner fortsatt identiske vekter — nålk ikke "breaking symmetry"!</li>
       </ul>
-      <p>Resultat: nettverket lærer ingenting — hver neuron er identisk med alle andre. Derfor initialiserer vi med tilfeldige, små verdier.</p>
+      <p>Resultat: nettverket lærer ingenting — hvert nevron er identisk med alle andre. Derfor initialiserer vi med tilfeldige, små verdier.</p>
 
       <h3>Variance Preservation — Det magiske prinsippet</h3>
       <p>Tenk på ett lag med $n_{in}$ inputs og $n_{out}$ outputs:</p>
@@ -3622,7 +3622,7 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
         <div class="label">⚠️ Notasjons-felle på dropout</div>
         <p>Forelesning 6 og eksamen kan bruke ULIKE konvensjoner for $p$:</p>
         <ul>
-          <li>Convention A: $p$ = "keep probability" (sannsynlighet for å behold neuron). Drop med sannsynlighet $1-p$, skaler med $1/p$.</li>
+          <li>Convention A: $p$ = "keep probability" (sannsynlighet for å beholde nevron). Drop med sannsynlighet $1-p$, skaler med $1/p$.</li>
           <li>Convention B: $p$ = "drop probability" (sannsynlighet for å droppe). Skaler med $1/(1-p)$. DETTE ER MODERNE STANDARD.</li>
         </ul>
         <p>Eksempel: Hvis oppgaven sier "$p = 0.3$":</p>
@@ -3676,7 +3676,7 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <p>Top-1 accuracy: andelen bilder der riktig klasse er modellens første (høyeste konfidens) prediksjon.<br>
       Top-5 accuracy: andelen der riktig klasse er blant modellens 5 høyeste prediksjoner.</p>
 
-      <p>Hvorfor Top-5? ImageNet og andre klassifikasjonsdatasett er hierarkiske. En "Husky" og en "Malamute" er begge hundetyper og veldig visuelle like — et nettverk kan risikere å blande dem. Hvis vi tillater top-5, gir vi kredit hvis modellen plasserer den rette hundtypen i topp-5, selv om den klandrer en annen hundtype som antatt beste. Top-5-målet er derfor mer tolerant overfor disse fineret granulasjonsfeiler.</p>
+      <p>Hvorfor Top-5? ImageNet og andre klassifikasjonsdatasett er hierarkiske. En "Husky" og en "Malamute" er begge hundetyper og veldig visuelle like — et nettverk kan risikere å blande dem. Hvis vi tillater top-5, gir vi kreditt hvis modellen plasserer den rette hundetypen i topp-5, selv om den velger en annen hundetype som antatt beste. Top-5-målet er derfor mer tolerant overfor disse finere granulasjonsfeilene.</p>
 
       <div class="key-box">
         <div class="label">Eksempel (T06-Q01 V2025)</div>
@@ -3779,13 +3779,13 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <p>Nøkkel-innovation: Gruppekombinasjon — idéen om å dele konvolusjon inn i separate grupper av kanaler som konvolveres separat, så konkateneres. Dette er som å ha $\\sqrt[3]{C}$-ganger flere "ansiktligheter" i et ResNet-lag for samme antall parametere. Resultatet var bedre ytelse og bedre skalerbarhet med bredde.</p>
 
       <h4>MobileNet (2017)</h4>
-      <p>Nøkkel-innovation: Depthwise separable convolution — dele konvolvement i depthwise (samme på hver kanal separat) og pointwise (1×1-konvolvement). Dette reduserer FLOPs (floating point operasjoner) drastisk uten å miste vesentlig nøyaktighet. Designet spesielt for mobile og innebygde enheter. Trade-off: litt lavere nøyaktighet for veldig mye lavere computational cost.</p>
+      <p>Nøkkel-innovation: Depthwise separable convolution — dele konvolusjonen i depthwise (samme på hver kanal separat) og pointwise (1×1-konvolusjon). Dette reduserer FLOPs (floating point operasjoner) drastisk uten å miste vesentlig nøyaktighet. Designet spesielt for mobile og innebygde enheter. Trade-off: litt lavere nøyaktighet for veldig mye lavere computational cost.</p>
 
       <h4>EfficientNet (2019)</h4>
       <p>Nøkkel-innovation: Compound scaling — systematisk måte å skalere alle dimensjoner (dybde, bredde, oppløsning) balansert. I stedet for bare å gjøre nettverk dypere eller bredere, øker EfficientNet alle tre samtidig med kontrollert forhold. En skalerings-faktor $\\phi$ justerer dybde som $d = d_0 \\cdot \\phi^a$, bredde som $w = w_0 \\cdot \\phi^b$, og oppløsning som $r = r_0 \\cdot \\phi^c$ hvor $a, b, c$ finnes empirisk. Resulterte i bedre nøyaktighet-per-FLOP trade-off.</p>
 
       <h4>Vision Transformer (ViT) (2020)</h4>
-      <p>Nøkkel-innovation: Erstattet konvolusjon fullstendig med ren transformer-arkitektur. Bildet deles inn i ikke-overlappende patches (f.eks. 16×16), disse lineariseres og embeddes, deretter passes gjennom standard transformer-encoder-lager. Attention-mekanismen kan direkte relatere bilder og konsepter på globalt nivå uten å bygge opp lokal-til-global hierarki som CNN-er gjør. Krevde stort treningsdata, men når scaled opp slo den CNN-baselines.</p>
+      <p>Nøkkel-innovation: Erstattet konvolusjon fullstendig med ren transformer-arkitektur. Bildet deles inn i ikke-overlappende patches (f.eks. 16×16), disse lineariseres og embeddes, deretter sendes gjennom standard transformer-encoder-lag. Attention-mekanismen kan direkte relatere bilder og konsepter på globalt nivå uten å bygge opp lokal-til-global hierarki som CNN-er gjør. Krevde stort treningsdata, men når scaled opp slo den CNN-baselines.</p>
 
       <h4>Swin Transformer (2021)</h4>
       <p>Nøkkel-innovation: Hierarkisk transformer med window-basert attention. I stedet for global attention over alle patches, Swin deler inn bildet i "windows" (f.eks. 7×7 lokale områder) og gjør attention innen hvert vindu, plus noen cross-window connections. Dette gjør modellen mer effektiv (O(n) i stedet for O(n²) kompleksitet) og bygger opp et naturlig hierarki (små patches → store patches) som CNN-er gjør. Slo ViT på mange oppgaver.</p>
@@ -4052,7 +4052,7 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <ul>
         <li>R-CNN (2014): Bruk selektiv søk (ikke-dybde-lærings-metode) til å generere ~2000 proposals. For hver, klipp bildet, kjør CNN, klassifiser. Veldig langsomt — måtte kjøre CNN 2000 ganger per bilde.</li>
         <li>Fast R-CNN (2015): Kjør CNN en gang på hele bildet → get feature map. RoI pooling: for hver proposal, pool ut fast-størrelse features fra feature map. Så klassifiser. ~100× raskere.</li>
-        <li>Faster R-CNN (2015): Erstatt selektiv søk med RPN (Region Proposal Network). RPN er små konvolv-lag som prediker om hver anchor-boks er et objekt eller bakgrunn. Fullt differensierbar, end-to-end-trainbar. Standard today-detector.</li>
+        <li>Faster R-CNN (2015): Erstatter selektivt søk med RPN (Region Proposal Network). RPN er små konv-lag som predikerer om hver anchor-boks er et objekt eller bakgrunn. Fullt differensierbar, end-to-end-trenbar. Standarddetektor i dag.</li>
         <li>Mask R-CNN (2017): Legg til en forgrening som prediker piksel-masker for hver RoI. Dette muliggjør instance segmentation (klassifisering + segmentering av hvert objekt).</li>
       </ul>
 
@@ -4703,7 +4703,7 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <h4>Stacked Hourglass Networks (2016)</h4>
       <p>Hourglass-modul: symmetrisk encoder-decoder struktur:</p>
       <ul>
-        <li>Encoding: Sekvens av stride-2 konvolvenasjonslag som reduserer romlig oppløsning (downsampling) mens antall kanaler økes.</li>
+        <li>Encoding: Sekvens av stride-2 konvolusjons-lag som reduserer romlig oppløsning (downsampling) mens antall kanaler økes.</li>
         <li>Bottleneck: Smalt punkt ved laveste oppløsning, med bare konvolusjoner (no spatial reduction).</li>
         <li>Decoding: Sekvens av upsampling (nearest-neighbor eller transpose-convolution) som gjenoppretter romlig oppløsning.</li>
         <li>Skip-forbindelser: Koblinger fra encoder-lag til tilsvarende decoder-lag (feature-reuse).</li>
@@ -5193,14 +5193,14 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <div class="formula-block">$$q(x_t | x_{t-1}) = \\mathcal{N}(x_t; \\sqrt{1-\\beta_t} x_{t-1}, \\beta_t I)$$</div>
       <p>Her er $0 < \\beta_1 < \\beta_2 < \\cdots < \\beta_T$ en Schedule av små varians-tillegg. Etter $T$ steg (typisk 1000): $x_T \\approx \\mathcal{N}(0, I)$.</p>
 
-      <p>Markov-kjeden: hvert steg avhenger bare av forrige. Merk: hele kjeden er fiksert og ikke-lært — den er sannsynlighetsmatematikk, ikke en neural nett.</p>
+      <p>Markov-kjeden: hvert steg avhenger bare av forrige. Merk: hele kjeden er fiksert og ikke-lært — den er sannsynlighetsmatematikk, ikke et nevralt nett.</p>
 
       <p>Closed-form sampling: vi kan sample $x_t$ direkte fra $x_0$ uten å iterere alle steg:</p>
       <div class="formula-block">$$x_t = \\sqrt{\\bar{\\alpha}_t} x_0 + \\sqrt{1 - \\bar{\\alpha}_t} \\epsilon, \\quad \\epsilon \\sim \\mathcal{N}(0, I)$$</div>
       <p>hvor $\\bar{\\alpha}_t = \\prod_s (1 - \\beta_s)$ er et kumulativt produkt. Dette gjør trening effektiv — vi kan sample vilkårlig $t$ og lære på alle steg samtidig.</p>
 
       <h3>Diffusjon: Reverse Process — denoisering steg-for-steg</h3>
-      <p>For å generere: start med ren støy $x_T$ og gå bakover. Vi kan ikke beregne den sanne reverse Markov-kjeden $q(x_{t-1}|x_t)$ (for komplisert). I stedet lærer vi en neural nett til å approksimere den:</p>
+      <p>For å generere: start med ren støy $x_T$ og gå bakover. Vi kan ikke beregne den sanne reverse Markov-kjeden $q(x_{t-1}|x_t)$ (for komplisert). I stedet lærer vi et nevralt nett til å approksimere den:</p>
       <div class="formula-block">$$p_\\theta(x_{t-1} | x_t) = \\mathcal{N}(x_{t-1}; \\mu_\\theta(x_t, t), \\Sigma_\\theta(x_t, t))$$</div>
 
       <p>Hvordan trenes denne? Under trening:</p>
@@ -5686,7 +5686,7 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <h4>Idé</h4>
       <p>Trening på 400M bilde-tekst-par fra internett. Mål: lære representasjoner hvor matching (bilde, tekst)-par ligger tett i embedding-rommet, non-matching par ligger langt fra.</p>
       <div class="formula-block">$$L = -\\log \\frac{\\exp(\\text{sim}(I, T) / \\tau)}{\\sum_j \\exp(\\text{sim}(I, T_j) / \\tau)}$$</div>
-      <p>Træner med contrastive loss (som SimCLR fra selvovervåket learning).</p>
+      <p>Trener med contrastive loss (som SimCLR fra selvovervåket learning).</p>
 
       <h4>Kraft av CLIP</h4>
       <ul>
