@@ -800,6 +800,288 @@
   }
   .video-block a:hover { border-bottom-color: var(--accent); color: var(--accent); }
 
+
+  /* === Lecturer's note banner === */
+  .lecturer-note {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin: 0 0 36px;
+  }
+  .lecturer-note .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 12px;
+  }
+  .lecturer-note h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .lecturer-note p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .lecturer-note p:last-child { margin-bottom: 0; }
+  .lecturer-note em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* === Curriculum status section === */
+  .curriculum-status {
+    background: var(--bg-card-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin: 32px 0;
+  }
+  .curriculum-status h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .curriculum-status .status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 14px;
+  }
+  @media (max-width: 700px) {
+    .curriculum-status .status-grid { grid-template-columns: 1fr; }
+  }
+  .curriculum-status .status-col h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .curriculum-status .status-col.superficial h4 { color: var(--accent-soft); }
+  .curriculum-status .status-col.removed h4 { color: var(--red); }
+  .curriculum-status ul {
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .curriculum-status li {
+    font-size: 14.5px;
+    margin: 5px 0;
+    padding-left: 14px;
+    position: relative;
+    color: var(--ink-soft);
+  }
+  .curriculum-status li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  /* === Flashcards view === */
+  .flash-hero {
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+  .flash-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 4.5vw, 54px);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .flash-hero h1 em { color: var(--accent); font-style: italic; font-weight: 400; }
+  .flash-hero p {
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+  .flash-controls {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 36px;
+  }
+  .flash-controls label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-right: 6px;
+  }
+  .flash-controls select {
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .flash-stats {
+    display: flex;
+    gap: 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .flash-stats span strong {
+    color: var(--accent);
+    font-family: 'Fraunces', serif;
+  }
+  .flash-card-wrap {
+    perspective: 1600px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .flash-card {
+    position: relative;
+    min-height: 360px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  .flash-card.flipped { transform: rotateY(180deg); }
+  .flash-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(26, 22, 18, 0.04);
+  }
+  .flash-face.back { transform: rotateY(180deg); background: var(--bg-card-soft); }
+  .flash-meta {
+    position: absolute;
+    top: 18px;
+    left: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .flash-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .flash-topic {
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+  .flash-side-label {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .flash-content {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink);
+    text-align: center;
+    margin: 20px 0;
+    word-break: break-word;
+  }
+  .flash-face.back .flash-content {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    text-align: left;
+    white-space: pre-wrap;
+  }
+  .flash-hint {
+    position: absolute;
+    bottom: 18px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .flash-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .flash-nav-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--ink);
+  }
+  .flash-nav-btn:hover:not(:disabled) {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .flash-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .flash-nav-btn.know {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
+  }
+  .flash-nav-btn.know:hover:not(:disabled) {
+    opacity: 0.9;
+    background: var(--green);
+  }
+  .flash-nav-btn.dontknow {
+    background: var(--bg-card);
+    color: var(--red);
+    border-color: var(--red);
+  }
+  .flash-nav-btn.dontknow:hover:not(:disabled) {
+    background: var(--red);
+    color: white;
+  }
+  .flash-progress {
+    height: 4px;
+    background: var(--line-soft);
+    border-radius: 2px;
+    margin: 24px auto;
+    max-width: 760px;
+    overflow: hidden;
+  }
+  .flash-progress-bar {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
 </style>
 </head>
 <body>
@@ -817,6 +1099,7 @@
       <button class="nav-btn active" data-view="plan">Studieplan</button>
       <button class="nav-btn" data-view="read">Lesestoff</button>
       <button class="nav-btn" data-view="quiz">Quiz</button>
+      <button class="nav-btn" data-view="flash">Flashcards</button>
     </nav>
   </div>
 </header>
@@ -836,6 +1119,16 @@
     <div class="stat"><div class="stat-num">100<span style="font-size:24px;color:var(--muted)">p</span></div><div class="stat-label">Maks poeng på eksamen</div></div>
     <div class="stat"><div class="stat-num">4<span style="font-size:24px;color:var(--muted)">t</span></div><div class="stat-label">Eksamenstid</div></div>
     <div class="stat"><div class="stat-num" id="progress-num">0/17</div><div class="stat-label">Temaer fullført</div></div>
+  </div>
+
+  
+  <div class="lecturer-note">
+    <div class="label">▎ Beskjed fra foreleser (26. april 2026)</div>
+    <h3>Pensum dekkes av forelesningsfoilene — eksamen er på <em>høyt nivå</em></h3>
+    <p>"As previously stated, the curriculum for this course is covered in the lecture slides. If you understand the material there at the indicated level, you should be well prepared for the exam."</p>
+    <p>"Key questions you should be able to answer: <em>How do the methods work</em> (at a relatively high level — you are not expected to read or fully understand the papers)."</p>
+    <p>"I have chosen to keep the description of the curriculum simple this year. In my experience, the more detailed the description, the more questions it generates, and the bigger picture can easily get lost in the details."</p>
+    <p style="margin-top:14px;font-size:13px;color:var(--muted);">Tolk dette som: konseptuelle spørsmål, sammenligninger, hvilken modell hvor — ikke utledning av matematikk på paper-nivå. Studieplanen under kan brukes for dybde der du trenger det, men eksamen tester store-bildet.</p>
   </div>
 
   <!-- PHASE 1: KJERNE -->
@@ -866,6 +1159,41 @@
       <div class="phase-meta">Mellomprioritet · Mest konseptuelt</div>
     </div>
     <div class="topic-grid" id="grid-new"></div>
+  </div>
+
+  
+  <div class="curriculum-status">
+    <h3>Pensumstatus 2026 — fra Google Sheet</h3>
+    <p style="font-size:14px;color:var(--ink-soft);">Foreleserens Google Sheet markerer hvilke temaer som er dekket grundig, hvilke som er overflatiske, og hvilke som ikke er pensum i år.</p>
+    <div class="status-grid">
+      <div class="status-col superficial">
+        <h4>Overflatisk dekket (er pensum, men kun oversikt)</h4>
+        <ul>
+          <li>Kameraer, pinhole, image formation, fargerom (L01)</li>
+          <li>RNNs, LSTMs, GRUs, Attention from Alignment (L01)</li>
+          <li>Self-Supervised Learning (SSL)</li>
+          <li>Photogrammetri, SfM, Bundle Adjustment, SLAM (L11)</li>
+          <li>NeRFs, 3DGS, World Foundation Models (L11)</li>
+          <li>LVMs (Large Vision Models) (L13)</li>
+          <li>VLMs (Vision-Language Models, f.eks. CLIP) (L13)</li>
+          <li>LMMs (Large Multimodal Models) (L13)</li>
+        </ul>
+      </div>
+      <div class="status-col removed">
+        <h4>Ikke pensum 2026 — ikke bruk tid</h4>
+        <ul>
+          <li>Tradisjonell CV: Filtering, Canny, Harris, SIFT, Viola–Jones, HOG, DPM, Otsu, Region Growing, Morphology</li>
+          <li>Transformer Killers (Mamba osv.)</li>
+          <li>Reinforcement Learning og CV (value-based + policy/actor-critic)</li>
+          <li>GNNs (GCNs, GATs) og CV</li>
+          <li>Explainable AI (XAI) for CV</li>
+          <li>Super-Resolution og Style Transfer</li>
+          <li>Text-to-Video</li>
+          <li>Text-to-3D</li>
+          <li>"Looking Ahead" / fremtidige ideer</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="removed-section">
@@ -920,6 +1248,63 @@
 </section>
 
 </main>
+
+
+<!-- ============== FLASHCARDS VIEW ============== -->
+<section class="view" id="view-flash">
+  <div class="flash-hero">
+    <div class="plan-eyebrow">Flashcards</div>
+    <h1>Aktiv <em>repetisjon</em>.</h1>
+    <p>Klikk på kortet for å snu det. Marker som "kan" eller "kan ikke" — så kommer "kan ikke"-kortene tilbake oftere. 170 kort dekker alle 17 temaer.</p>
+  </div>
+
+  <div class="flash-controls">
+    <div>
+      <label for="flash-filter">Tema:</label>
+      <select id="flash-filter"></select>
+    </div>
+    <div class="flash-stats">
+      <span>Kan: <strong id="flash-know">0</strong></span>
+      <span>Kan ikke: <strong id="flash-dontknow">0</strong></span>
+      <span>Igjen: <strong id="flash-remaining">0</strong></span>
+    </div>
+    <button class="quiz-nav-btn" id="flash-reset" style="margin-left:auto">↻ Start på nytt</button>
+  </div>
+
+  <div class="flash-progress"><div class="flash-progress-bar" id="flash-progress-bar" style="width:0%"></div></div>
+
+  <div class="flash-card-wrap">
+    <div class="flash-card" id="flash-card">
+      <div class="flash-face front">
+        <div class="flash-meta">
+          <span class="flash-num" id="flash-num">№ 0/0</span>
+          <span class="flash-topic" id="flash-topic">—</span>
+        </div>
+        <div class="flash-side-label">Spørsmål</div>
+        <div class="flash-content" id="flash-front">Velg tema og klikk på kortet</div>
+        <div class="flash-hint">Klikk for å snu</div>
+      </div>
+      <div class="flash-face back">
+        <div class="flash-meta">
+          <span class="flash-num" id="flash-num-b">№ 0/0</span>
+          <span class="flash-topic" id="flash-topic-b">—</span>
+        </div>
+        <div class="flash-side-label">Svar</div>
+        <div class="flash-content" id="flash-back">—</div>
+        <div class="flash-hint">Klikk for å snu</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flash-nav">
+    <button class="flash-nav-btn" id="flash-prev">← Forrige</button>
+    <div style="display:flex;gap:10px;">
+      <button class="flash-nav-btn dontknow" id="flash-no">Kan ikke</button>
+      <button class="flash-nav-btn know" id="flash-yes">Kan ✓</button>
+    </div>
+    <button class="flash-nav-btn" id="flash-next">Neste →</button>
+  </div>
+</section>
 
 <script>
 // =================== DATA ===================
@@ -5637,6 +6022,182 @@ const QUIZ = [
     expl: 'Uten GT-depth kan modellen bare lære relativ dybde (skala-tvetydighet), og bevegelige objekter bryter view-synthesis-antagelsen.' },
 ];
 
+
+// =============== FLASHCARDS DATA ===============
+const FLASHCARDS = [
+  { topic: 'fcnn', front: 'Hva er formel for pre-aktivering og aktivering i ett nevron?', back: 'Pre-aktivering: $z = wx + b$\\nAktivering: $a = f(z)$ der $f$ er aktiveringsfunksjonen.' },
+  { topic: 'fcnn', front: 'Hvordan utleder du gradient for tap ved MSE?', back: 'MSE-tap: $L = \\\\frac{1}{2}(a-y)^2$\\nGradient mhp output: $\\\\frac{\\\\partial L}{\\\\partial a} = a - y$' },
+  { topic: 'fcnn', front: 'Forklar kjederegelen for backpropagation', back: 'For å finne $\\\\frac{\\\\partial L}{\\\\partial w}$, bruk: $\\\\frac{\\\\partial L}{\\\\partial w} = \\\\frac{\\\\partial L}{\\\\partial a} \\\\cdot \\\\frac{\\\\partial a}{\\\\partial z} \\\\cdot \\\\frac{\\\\partial z}{\\\\partial w}$' },
+  { topic: 'fcnn', front: 'Hva betyr $\\\\delta = \\\\frac{\\\\partial L}{\\\\partial z}$ i backprop?', back: 'Deltamengde er feilen ved pre-aktivasjonen. Brukes til: $\\\\frac{\\\\partial L}{\\\\partial w} = \\\\delta \\\\cdot x$ og $\\\\frac{\\\\partial L}{\\\\partial b} = \\\\delta$' },
+  { topic: 'fcnn', front: 'Forklar gradient descent vektoppdatering', back: 'Ny vekt = gammel vekt - læringsrate × gradient\\n$w_{\\\\text{new}} = w_{\\\\text{old}} - \\\\alpha \\\\frac{\\\\partial L}{\\\\partial w}$' },
+  { topic: 'fcnn', front: 'Hva er matrise-form av forward pass for lags $\\\\ell$?', back: '$z^\\\\ell = W^\\\\ell a^{\\\\ell-1} + b^\\\\ell$ der $W^\\\\ell$ er vektmatrise og $b^\\\\ell$ er bias-vektor.' },
+  { topic: 'fcnn', front: 'Hva er matrise-form av backprop-rekursjonen?', back: '$\\\\delta^\\\\ell = ((W^{\\\\ell+1})^\\\\top \\\\delta^{\\\\ell+1}) \\\\odot f\\\'(z^\\\\ell)$ der $\\\\odot$ er element-vis multiplikasjon.' },
+  { topic: 'fcnn', front: 'Hva er derivasjon av vektmatrise fra tap?', back: '$\\\\frac{\\\\partial L}{\\\\partial W^\\\\ell} = \\\\delta^\\\\ell (a^{\\\\ell-1})^\\\\top$ — outer product av delta og tidligere aktivering.' },
+  { topic: 'fcnn', front: 'Når er forward pass enkel vs når blir backprop komplisert?', back: 'Forward pass: lineær konvolusjon av input og vekter. Backprop: må beregne gradient gjennom alle avhengigheter — krever kjederegelen over alle lags.' },
+  { topic: 'fcnn', front: 'Typisk eksamensfeil i backprop: hva må du huske?', back: 'Produktregelen for derivasjoner, ikke glem minus-tegnet ved gradient descent, og sjekk at alle dimensjoner matcher.' },
+  { topic: 'af', front: 'Hvorfor trenger vi aktiveringsfunksjoner?', back: 'Uten dem ville stappede lineære transformasjoner bare gi én stor matrisemultiplikasjon. Aktiveringer introduserer ikke-linearitet som lar nettet lære komplekse funksjoner.' },
+  { topic: 'af', front: 'Hva er formel og derivert for ReLU?', back: '$\\\\text{ReLU}(z) = \\\\max(0, z)$\\nDerivativ: $1$ hvis $z > 0$, ellers $0$.' },
+  { topic: 'af', front: 'Når bruker du ReLU?', back: 'Standard valg for skjulte lag i moderne dype nett (CNN, FCNN, Transformers). Rask å beregne, unngår vanishing gradient.' },
+  { topic: 'af', front: 'Hva er "dead ReLU"-problem?', back: 'Hvis et lag får alle negative input, blir output og derivativ null. Laget lærer ikke. Løst med god initialisering (He-initialisering).' },
+  { topic: 'af', front: 'Formel og derivert for Sigmoid?', back: '$\\\\sigma(z) = \\\\frac{1}{1+e^{-z}}$\\nDerivativ: $\\\\sigma\\\'(z) = \\\\sigma(z)(1 - \\\\sigma(z))$' },
+  { topic: 'af', front: 'Hva er maksimal derivasjonsverdi for Sigmoid?', back: 'Ved $z=0$: $\\\\sigma\\\'(0) = 0.5 \\\\times 0.5 = 0.25$. Alltid $\\\\leq 0.25$, noe som forårsaker vanishing gradient.' },
+  { topic: 'af', front: 'Hvorfor bruker vi ikke Sigmoid i skjulte lag av dype nett?', back: 'Derivasjon makserer på 0.25. I lange kjeder: $0.25^{10} \\\\approx 10^{-6}$ — gradienter forsvinner, dype lags lærer ikke.' },
+  { topic: 'af', front: 'Hva er Softmax og når brukes den?', back: '$\\\\text{softmax}(z_i) = \\\\frac{e^{z_i}}{\\\\sum_j e^{z_j}}$ — output-lag for multiklasse-klassifisering. Gir sannsynlighetsfordeling.' },
+  { topic: 'af', front: 'Hva brukes Linear aktivering til?', back: 'Bare regresjons-output-lag. Gir ubegrenset output. Aldri i skjulte lag (hele nettverket blir lineært).' },
+  { topic: 'af', front: 'Hva er Leaky ReLU og hvorfor?', back: '$f(z) = \\\\max(\\\\alpha z, z)$ med små $\\\\alpha > 0$ (f.eks. 0.01). Unngår "dead ReLU" ved å gi små gradienter på negative input.' },
+  { topic: 'lf', front: 'Hva er Mean Squared Error (MSE) formel?', back: '$L = \\\\frac{1}{2}(a - y)^2$\\nDerivat: $\\\\frac{\\\\partial L}{\\\\partial a} = a - y$' },
+  { topic: 'lf', front: 'Når bruker du MSE?', back: 'Regresjonsoppgaver med kontinuerlig output. IKKE med klassifisering sammen med sigmoid — gir flat gradient.' },
+  { topic: 'lf', front: 'Hva er Binary Cross Entropy (BCE) formel?', back: '$L = -[y \\\\log(a) + (1-y)\\\\log(1-a)]$ der $a$ er sigmoid-output, $y \\\\in \\\\{0,1\\\\}$.' },
+  { topic: 'lf', front: 'Hva er intuisjon bak BCE?', back: 'Hvis $y=1$: tapet er $-\\\\log(a)$ — straffer lav sannsynlighet hard. Hvis $y=0$: tapet er $-\\\\log(1-a)$.' },
+  { topic: 'lf', front: 'Når bruker du BCE?', back: 'Binær klassifisering (to gjensidig utelukk Ående klasser) med sigmoid-output. Kombinasjon sigmoid+BCE gir fin gradient.' },
+  { topic: 'lf', front: 'Hva er Cross Entropy (CE) for multiklasse?', back: '$L = -\\\\sum_i y_i \\\\log(p_i)$ der $p$ er softmax-output. Forenkles til $L = -\\\\log(p_c)$ hvis one-hot.' },
+  { topic: 'lf', front: 'Hva er derivat av softmax + cross entropy mhp pre-aktivering?', back: '$\\\\frac{\\\\partial L}{\\\\partial z_i} = p_i - y_i$ der $p$ er softmax, $y$ er one-hot. Veldig pen formel!' },
+  { topic: 'lf', front: 'Hva er Focal Loss og når brukes den?', back: 'Modifikasjoner av CE for ubalanserte datasett: $L = -\\\\alpha (1-p_t)^\\\\gamma \\\\log(p_t)$. Fokuserer på vanskelige eksempler.' },
+  { topic: 'lf', front: 'Hva er problem med MSE + Sigmoid kombinasjon?', back: 'Sigmoid-derivat er minimal når output er nær 0 eller 1. MSE gir også flat gradient. Resultatet: ekstremt treg læring.' },
+  { topic: 'lf', front: 'Hvordan velger du loss basert på problem-type?', back: 'Regresjon → MSE. Binær klassifisering → BCE. Multiklasse → Cross Entropy. Ubalansert datasett → Focal Loss.' },
+  { topic: 'cnn', front: 'Hva er en konvolusjon i CNN? Formel?', back: 'Glidende filter på input: for hver posisjon, multipliserer filter-vekter med input-patch og summerer. Output[i,j] = $\\\\sum_a \\\\sum_b W[a,b] \\\\times X[i+a, j+b]$' },
+  { topic: 'cnn', front: 'Hva er padding og stride?', back: 'Padding: legger til nuller rundt kantene for å bevare størrelse. Stride: hvor mange piksler filter hopper. Output-størrelse = $\\\\lfloor \\\\frac{W - F + 2P}{S} \\\\rfloor + 1$' },
+  { topic: 'cnn', front: 'Hvor mange parametere har ett konvolusjons-lag?', back: 'Hver filter: $F \\\\times F \\\\times C_{\\\\text{in}} + 1$ (vekter + bias). Med $N$ filtre: $N \\\\times (F \\\\times F \\\\times C_{\\\\text{in}} + 1)$' },
+  { topic: 'cnn', front: 'Hva er flerdimensjonal konvolusjon for RGB-bilder?', back: 'Hver filter har dybde = antall input-kanaler. Output-kanal: $\\\\sum_{c} \\\\sum_a \\\\sum_b W[a,b,c] \\\\times X[i+a, j+b, c]$' },
+  { topic: 'cnn', front: 'Hva er pooling og hvorfor brukes det?', back: 'Reduserer romlig dimensjon (f.eks. max-pooling: tar maksimum over hver 2×2-patch). Mål: reduce antall parametere, får variansinvarians.' },
+  { topic: 'cnn', front: 'Forklar LeNet-5 arkitektur', back: 'Input (32×32) → Conv (6 filtre, 5×5) → Pool (2×2) → Conv (16 filtre, 5×5) → Pool → FC (120) → FC (84) → FC (10)' },
+  { topic: 'cnn', front: 'Hva er skipkobling (residual connection) og hvorfor?', back: 'Legger direkte input til output etter flere lag: $x + F(x)$. Tillater dypere nett uten degradering. Hjelper gradient-flow.' },
+  { topic: 'cnn', front: 'Hvor mange FLOPs for ett konvolusjons-lag?', back: '$O(N \\\\times H \\\\times W \\\\times F \\\\times F \\\\times C_{\\\\text{in}})$ der $N$ = filtre, $H,W$ = output-spatial, $F$ = filter-størrelse.' },
+  { topic: 'cnn', front: 'Hva er receptive field (mottaksielt felt)?', back: 'Område av input som påvirker en utgångs-enhet. Vokser med dybde: $RF = 1 + \\\\sum_\\\\ell (F_\\\\ell - 1) \\\\prod_{i=1}^{\\\\ell-1} S_i$' },
+  { topic: 'cnn', front: 'Vanlig eksamens-feil ved CNN: parametertelling', back: 'Glem ikke dybde-dimensjon (kanaler). Bias per filter, ikke per piksel. Total = (F×F×C_in + 1) × antall filtre.' },
+  { topic: 'transformer', front: 'Hva er Scaled Dot-Product Attention?', back: '$\\\\text{Attention}(Q, K, V) = \\\\text{softmax}\\\\left(\\\\frac{QK^\\\\top}{\\\\sqrt{d_k}}\\\\right) V$' },
+  { topic: 'transformer', front: 'Hvorfor skaleres med $\\\\sqrt{d_k}$ i attention?', back: 'Uten skalering blir varians av $QK^\\\\top$ proporsjonal med $d_k$, som driver softmax mot one-hot og gir små gradienter.' },
+  { topic: 'transformer', front: 'Hva er Multi-Head Attention (MHA)?', back: 'Flere parallelle attention-hoder: $\\\\text{MHA} = \\\\text{Concat}(h_1, ..., h_h) W^O$ der $h_i = \\\\text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$' },
+  { topic: 'transformer', front: 'Hva er Query, Key, Value projeksjoner?', back: '$Q$, $K$, $V$ er lineære projeksjoner av samme input (eller fra enkodar/dekodar). Tillater flexibel matching av input-sekvenser.' },
+  { topic: 'transformer', front: 'Hva er kompleksitet av multi-head attention?', back: '$O(n^2 d)$ der $n$ = sekvenslengde, $d$ = embedding-dim. Kvadratisk i sekvens grunnet $QK^\\\\top$.' },
+  { topic: 'transformer', front: 'Hva er Transformer-arkitektur (høyt nivå)?', back: 'Enkodar: lag av Multi-Head Attn + Feed-Forward, med residualer og LayerNorm. Dekodar: samme + Cross-Attention til enkodar-output.' },
+  { topic: 'transformer', front: 'Hva er Causal Masking og når brukes det?', back: 'I dekodar: maskerer fremtidigs posisjon i attention slik at Token $i$ kun attends til tokens $j \\\\leq i$. Sikrer autoregressive-genering.' },
+  { topic: 'transformer', front: 'Hva er Positional Encoding og hvorfor?', back: 'Transformer har ingen iboende rekkefølge-forståelse. Positional Encoding legger til posisjonsinformasjon: PE[t, 2k] = sin(t/10000^{2k/d}), etc.' },
+  { topic: 'transformer', front: 'Hva er Feed-Forward Network i Transformer lag?', back: 'To lineære lag med ReLU aktivering: $\\\\text{FFN}(x) = \\\\text{ReLU}(xW_1 + b_1)W_2 + b_2$. Expands fra $d$ til typisk $4d$, så tilbake til $d$.' },
+  { topic: 'transformer', front: 'Typisk eksamen-feil i Transformer: shape-sjekking', back: 'Sjekk: $Q,K \\\\in \\\\mathbb{R}^{n \\\\times d_k}$, $V \\\\in \\\\mathbb{R}^{n \\\\times d_v}$, output er $\\\\mathbb{R}^{n \\\\times d_v}$. Mismatch → matrise-multiplikasjon feiler.' },
+  { topic: 'vit', front: 'Hva er Vision Transformer (ViT)?', back: 'Deler bilde i overlappsfrie patches, flater hver patch til vektor, projiserer til embedding, og passer gjennom standard Transformer.' },
+  { topic: 'vit', front: 'Hvordan behandler ViT et 224×224 RGB-bilde?', back: 'Patch-størrelse (f.eks. 16×16): 196 patches. Hver patch → 16×16×3=768 dimensjoner → lineær projeksjon → 768-dim embedding → 196 tokens for Transformer.' },
+  { topic: 'vit', front: 'Hva er [CLS]-token i ViT?', back: 'Lærbar token prepended til patch-sekvens. Output fra [CLS] brukes for klassifisering. Vist å lære global representasjon.' },
+  { topic: 'vit', front: 'Hvordan håndterer ViT romlig relasjon uten konvolusjon?', back: 'Transformer har global receptive field via attention. Positional embeddings signaliserer patch-posisjon. Attention lærer å relater patches.' },
+  { topic: 'vit', front: 'Hva er Swin Transformer?', back: 'Hierarchical ViT med lokal attention-vinduer innen hver stage. Reduserer O(n²) kompleksitet ved å compute attention kun innen 4×4-vinduer.' },
+  { topic: 'vit', front: 'Hva er "shifted window" i Swin?', back: 'Forrige stage har overlappende vinduer. Neste stage shifter window-grensene for å tillate cross-window connectivitet.' },
+  { topic: 'vit', front: 'Hvor mange parametere har ViT-Base for 224×224?', back: '~86 millioner. Mer enn ResNet50 (~25M) fordi Transformers krever mer parametere for samme nøyaktighet.' },
+  { topic: 'vit', front: 'Trenger ViT mer data enn CNN?', back: 'Ja. ViT må pre-traineres på stort datasett (ImageNet-21K eller større) for å oppnå god nøyaktighet. CNNs krever mindre.' },
+  { topic: 'vit', front: 'Hvorfor funker ViT dårlig ved zero-shot transfer?', back: 'ViT lærer globale relasjon men kan misse lokale detaljer. Trenger fine-tuning eller adapter-lag for nye oppgaver.' },
+  { topic: 'opt', front: 'Hva er Stochastic Gradient Descent (SGD)?', back: '$w \\\\leftarrow w - \\\\alpha \\\\nabla L(w)$ der gradienten beregnes på mini-batch. Enkel, robust, men treg.' },
+  { topic: 'opt', front: 'Hva er Momentum i SGD?', back: '$v \\\\leftarrow \\\\beta v + \\\\nabla L(w)$, deretter $w \\\\leftarrow w - \\\\alpha v$. Akkumulerer tidligere gradienter, akselererer læring.' },
+  { topic: 'opt', front: 'Hva er Nesterov Momentum?', back: 'Evaluerer gradient på "look-ahead" posisjon: $v \\\\leftarrow \\\\beta v - \\\\alpha \\\\nabla L(w + \\\\beta v)$. Litt mer stabilt enn vanlig Momentum.' },
+  { topic: 'opt', front: 'Hva er RMSProp?', back: 'Root Mean Square Propagation: adaptive læringsrate per parameter. $s \\\\leftarrow \\\\rho s + (1-\\\\rho) g^2$, update: $w \\\\leftarrow w - \\\\alpha \\\\frac{g}{\\\\sqrt{s + \\\\epsilon}}$' },
+  { topic: 'opt', front: 'Hva er Adam Optimizer?', back: 'Adaptive Moment Estimation: kombinerer Momentum (m) + RMSProp (v).\\n$m \\\\leftarrow \\\\beta_1 m + (1-\\\\beta_1)g$, $v \\\\leftarrow \\\\beta_2 v + (1-\\\\beta_2)g^2$\\nUpdate: $w \\\\leftarrow w - \\\\alpha \\\\frac{m}{\\\\sqrt{v} + \\\\epsilon}$' },
+  { topic: 'opt', front: 'Hvilken optimizer brukes mest i praksis?', back: 'Adam. Robust standard-valg. SGD+Momentum kan gi bedre generalisering hvis tunet rett.' },
+  { topic: 'opt', front: 'Hva er Learning Rate Schedule?', back: 'Reduserer læringsrate over tid. Eksempler: Step decay ($\\\\alpha \\\\times 0.1$ hver N epoch), Cosine anneal, Warm restarts.' },
+  { topic: 'opt', front: 'Hva er Warmup i læringsrate?', back: 'Starter med lav læringsrate, lineært øker til full verdi første N iterasjoner. Hjelper stabilitet ved store batch-størrelser.' },
+  { topic: 'opt', front: 'Hva er Gradient Clipping og når brukes det?', back: 'Klipper normen av gradient hvis den overskrider terskel: $g \\\\leftarrow \\\\min(1, \\\\frac{\\\\text{threshold}}{\\\\|g\\\\|}) g$. Unngår exploding gradients.' },
+  { topic: 'opt', front: 'Hvordan velger du learning rate?', back: 'Start med $10^{-3}$ eller $10^{-4}$. Bruk learning rate range test (øk $\\\\alpha$ og plot loss). Søk rundt optimalt område.' },
+  { topic: 'opt', front: 'Hva er Problem med meget store learning rates?', back: 'Loss divergerer. Parametere blir NaN. Gradienter exploderer. Hjelp: reduser $\\\\alpha$, bruk gradient clipping, eller mindre batch size.' },
+  { topic: 'norm-init', front: 'Hva er Batch Normalization (BN)?', back: 'Normaliserer input til lag ved å trekke mean og dele på std per mini-batch: $\\\\frac{x - \\\\mu_B}{\\\\sqrt{\\\\sigma_B^2 + \\\\epsilon}}$. Legger til learnable $\\\\gamma, \\\\beta$.' },
+  { topic: 'norm-init', front: 'Hvorfor hjelper Batch Normalization?', back: 'Reduserer Internal Covariate Shift. Tillater høyere læringsrate. Har regulariserings-effekt (støy fra mini-batch). Akselererer konvergens.' },
+  { topic: 'norm-init', front: 'Hva er forskjell mellom BN training og inference?', back: 'Training: bruker mini-batch mean/std. Inference: bruker population mean/std (beregnet fra eksponentielt glidende gjennomsnitt under trening).' },
+  { topic: 'norm-init', front: 'Hva er Layer Normalization (LayerNorm)?', back: 'Normaliserer over features (ikke over batch): $\\\\frac{x - \\\\mu_\\\\text{features}}{\\\\sqrt{\\\\sigma_\\\\text{features}^2 + \\\\epsilon}}$. Brukt i Transformers, ikke avhengig av batch-størrelse.' },
+  { topic: 'norm-init', front: 'Når bruker du LayerNorm vs BatchNorm?', back: 'LayerNorm: Transformers, RNNs, når batch-størrelse er liten. BatchNorm: CNNer, når batch-størrelse er stor (≥32).' },
+  { topic: 'norm-init', front: 'Hva er Xavier/Glorot Initialization?', back: 'Vekter: $\\\\sim U[-\\\\sqrt{\\\\frac{6}{n_{in} + n_{out}}}, \\\\sqrt{\\\\frac{6}{n_{in} + n_{out}}}]$. Sikrer varianser konsistent gjennom lags.' },
+  { topic: 'norm-init', front: 'Hva er He Initialization og når brukes det?', back: 'Vekter: $\\\\sim N(0, \\\\sqrt{\\\\frac{2}{n_{in}}})$. Optimalt for ReLU-nettverk. Xavier gir for små vekter for ReLU.' },
+  { topic: 'norm-init', front: 'Hva skjer med dårlig initialisering?', back: 'For små vekter: svak signal, treg læring. For store: exploding aktivering, NaN. Bias initialiseres typisk til null.' },
+  { topic: 'norm-init', front: 'Hva er Group Normalization (GroupNorm)?', back: 'Deler kanaler i grupper, normaliserer innen hver gruppe. Uavhengig av batch-størrelse, funker bedre med små batches enn BN.' },
+  { topic: 'norm-init', front: 'Typisk eksamen-spørsmål: hvordan velger du initialization?', back: 'Xavier for tanh/sigmoid, He for ReLU, LayerNorm-weight-init for Transformers. Sjekk aktiering-fordeling i første lag.' },
+  { topic: 'reg', front: 'Hva er L2 Regularization (Weight Decay)?', back: 'Legger til penalty på vekt-norm til loss: $L_{\\\\text{total}} = L + \\\\lambda \\\\sum_w w^2$. Fjerner små vekter, forebygger overfitting.' },
+  { topic: 'reg', front: 'Hvordan påvirker L2 regularization gradientupdater?', back: 'Gradient får ekstra term: $\\\\nabla w = \\\\nabla L + 2\\\\lambda w$. Update: $w \\\\leftarrow w(1 - 2\\\\lambda \\\\alpha) - \\\\alpha \\\\nabla L$ — vekter krymper.' },
+  { topic: 'reg', front: 'Hva er L1 Regularization?', back: 'Legger til penalty på absoluttverdi: $L_{\\\\text{total}} = L + \\\\lambda \\\\sum |w|$. Gradient: $\\\\text{sign}(w)$. Resulterer i sparsitet (mange vekter blir 0).' },
+  { topic: 'reg', front: 'Når bruker du L1 vs L2?', back: 'L2: standard, jevn regularisering. L1: når du vil sparsitet (feature selection). Oftere L2 eller kombinert (Elastic Net).' },
+  { topic: 'reg', front: 'Hva er Dropout?', back: 'Training: sletter hver neuron med sannsynlighet $p$ (typisk 0.5), skalerer remaining: $x \\\\times \\\\frac{1}{1-p}$. Inference: ingen dropout.' },
+  { topic: 'reg', front: 'Hvorfor hjelper Dropout?', back: 'Forebygger co-adaptation. Tvinger nettverket til å lære redundant representasjon. Kan sees som implicit ensemble.' },
+  { topic: 'reg', front: 'Hva er Early Stopping?', back: 'Monitorerer validering-loss. Stopper trening når validering-loss slutter å forbedres. Enkel og effektiv regularisering.' },
+  { topic: 'reg', front: 'Hva er Data Augmentation?', back: 'Kunstig øker treningsdata: rotation, flip, crop, color jitter for images. Lærer invarianser, reduserer overfitting.' },
+  { topic: 'reg', front: 'Hva er Mixup og når brukes det?', back: 'Linear interpolasjon av bilder og labels: $x_{\\\\text{aug}} = \\\\lambda x_i + (1-\\\\lambda) x_j$, $y_{\\\\text{aug}} = \\\\lambda y_i + (1-\\\\lambda) y_j$. Regularisering gjennom konveks kombinasjoner.' },
+  { topic: 'reg', front: 'Hva er Batch Size som regulariserer?', back: 'Større batch → snappere konvergens men mulig overfitting. Mindre batch → mer støy, bedre generalisering. Typisk optimum rundt 32-256.' },
+  { topic: 'imclass', front: 'Hva er Top-1 vs Top-K Accuracy?', back: 'Top-1: predikert klasse må være riktig. Top-K: minst en av top-K predikerte klasser må være riktig. Top-5 brukes ofte for ImageNet.' },
+  { topic: 'imclass', front: 'Hva er ResNet og hvorfor revolusjonær?', back: 'Skip-connections: $x + F(x)$ tillater meget dype nett (152+ lag) uten degradering. Vant ImageNet 2015.' },
+  { topic: 'imclass', front: 'Hvordan velger du ResNet-dybde?', back: 'ResNet-18, 34, 50, 101, 152 (18-152 lag). 50 er sweet-spot: god balance mellom hastighet og nøyaktighet.' },
+  { topic: 'imclass', front: 'Hva er Bottleneck Block i ResNet-50+?', back: 'Projeksjons-sekvens: 1×1 (reduser dim) → 3×3 → 1×1 (ekspander). Færre FLOPs enn parallel 3×3. Skip-connection rundt hele blokk.' },
+  { topic: 'imclass', front: 'Hva er DenseNet og hva gjør den annerledes?', back: 'Hver lag får alle tidligere lags output (concatenated), ikke summert. Resulterer i dyktigere gradientflow, færre parametre enn ResNet.' },
+  { topic: 'imclass', front: 'Hva er MobileNet sitt hovedidé?', back: 'Depthwise Separable Convolution: separer spatial filtering (depthwise) fra feature mixing (1×1 pointwise). Drastisk færre parametere.' },
+  { topic: 'imclass', front: 'Hva er ImageNet datasett?', back: '~1.2 millioner treningsbilder, 1000 klasser. Standard benchmark for bildeklassifisering. Pre-trained vekter ofte brukt (transfer learning).' },
+  { topic: 'imclass', front: 'Hva er Transfer Learning og når bruker du det?', back: 'Bruk vekter fra pre-training (f.eks. ImageNet). Fine-tune på ditt datasett. Drastisk færre treningsdata og tid nødvendig.' },
+  { topic: 'imclass', front: 'Hva er EfficientNet og skalering?', back: 'Skalerer modell balansert: dybde, bredde, oppløsning samtidig. Gir bedre efficiency enn å skalere bare ett aspekt.' },
+  { topic: 'imclass', front: 'Hva er vanlig feil ved ImageNet-resultater?', back: 'Glemme å dele av 255 ved normalisering. Glemme data-augmentation ved testing. Glemme batch-norm-momentum-update ved inference.' },
+  { topic: 'objdet', front: 'Hva er mAP (mean Average Precision) og hvorfor brukes den?', back: 'Standard metrikk for deteksjon. Beregner AP per klasse ved IoU-terskel (typisk 0.5 eller 0.5:0.95), gjennomsnitter. Måler både klassifisering og lokalisering.' },
+  { topic: 'objdet', front: 'Hvordan beregnes IoU (Intersection over Union)?', back: '$\\\\text{IoU} = \\\\frac{\\\\text{Area}_{\\\\text{intersection}}}{\\\\text{Area}_{\\\\text{union}}}$. Sammenligner predikert bounding box mot ground truth. Terskel: typisk IoU > 0.5 = positiv deteksjon.' },
+  { topic: 'objdet', front: 'Hva er Recall og Precision i deteksjon?', back: 'Recall = detekterte objekter / alle objekter. Precision = riktige deteksjoner / alle predikerte deteksjoner. AP er område under Precision-Recall-kurven.' },
+  { topic: 'objdet', front: 'Hva er YOLO og hva gjør den?', back: '"You Only Look Once": splitter bilde i SxS grid, hver grid-celle predikterer bounding box + klassifisering direkte. One-shot, rask, ikke to-stage.' },
+  { topic: 'objdet', front: 'Hva er SSD (Single Shot Detector)?', back: 'Bruker konvolone lag på flere scale. Hver lag har forskellig receptive field. Tillater deteksjon av objekter i ulike størrelser effektivt.' },
+  { topic: 'objdet', front: 'Hva er R-CNN pipeline?', back: '1) Region Proposal (f.eks. Selective Search). 2) CNN feature extraction. 3) Klassifisering. 4) Bounding Box Regression. Sekvensielt, langsomt, men nøyaktig.' },
+  { topic: 'objdet', front: 'Hva er Faster R-CNN og Mask R-CNN?', back: 'Faster R-CNN: introduserer RPN (Region Proposal Network). Mask R-CNN: legger til instans-segmenterings-hode over ROI-Features.' },
+  { topic: 'objdet', front: 'Hva er Feature Pyramid Network (FPN)?', back: 'Bygger multiskala feature-pyramide top-down med lateral koneksjoner. Kjent arkitektur for å håndtere objekter i mange skalaer.' },
+  { topic: 'objdet', front: 'Hva er Non-Maximum Suppression (NMS)?', back: 'Post-processing: fjerner overlappende deteksjoner. Sort på confidence, fjern lavere-scored bboxes som overlapper (IoU > terskel).' },
+  { topic: 'objdet', front: 'Eksamen-tips: hvordan evalueres deteksjon?', back: 'mAP over IoU-terskler. Recall @ IoU=0.5 / 0.75. AP small/medium/large. Vanlig eksamen: beregn AP gitt deteksjoner og ground truth.' },
+  { topic: 'seg', front: 'Hva er Semantic Segmentation?', back: 'Klassifiserer hver piksel til én klasse. Output: samme romlig oppløsning som input, men C-kanaler (C = antall klasser).' },
+  { topic: 'seg', front: 'Hva er Instance Segmentation?', back: 'Klassifiserer og separerer hver objekt-instans individuelt. Output: maske per objekt, ikke bare per klasse. Vanskeligere enn semantic seg.' },
+  { topic: 'seg', front: 'Hva er IoU (Intersection over Union) for segmentasjon?', back: '$\\\\text{IoU} = \\\\frac{\\\\text{pixels}_{\\\\text{intersection}}}{\\\\text{pixels}_{\\\\text{union}}}$ per klasse. mIoU = gjennomsnitt over alle klasser.' },
+  { topic: 'seg', front: 'Hva er Dice Coefficient og når brukes det?', back: '$\\\\text{Dice} = \\\\frac{2|X \\\\cap Y|}{|X| + |Y|}$ per klasse. Måler overlap. Brukes når klasser er ubalansert (småomrader). Verdier 0-1.' },
+  { topic: 'seg', front: 'Hva er U-Net arkitektur?', back: 'Encoder-Decoder: downsampling (CNN) → bottleneck → upsampling (transpose convolution). Skip-connections fra enkodar til dekodar-nivåer. Standard for segmentasjon.' },
+  { topic: 'seg', front: 'Hva er Transpose Convolution (Deconvolution)?', back: 'Inverse av konvolusjon: øker spatial oppløsning. Kan ha striped overlapping som gir "checkboard" artifacts. Formula: output_size = (input - 1) × stride + kernel_size.' },
+  { topic: 'seg', front: 'Hva er Atrous (Dilated) Convolution?', back: 'Konvolusjon med hål i filteret. Øker receptive field uten å øke parametere. Dilation rate d: filter samples hver d-te posisjon.' },
+  { topic: 'seg', front: 'Hva er DeepLab og hva gjør Atrous Spatial Pyramid Pooling (ASPP)?', back: 'Flere parallelle atrous-konv med ulike dilation-rater, kombinert. Fanger multi-scale context. Standard i moderne segmenterings-modeller.' },
+  { topic: 'seg', front: 'Hva er Focal Loss for segmentasjon?', back: 'Modifikasjoner av Cross Entropy for ubalansert segmentasjon: fokuserer på vanskelige piksler. Eksempler: Focal Loss, Boundary Loss.' },
+  { topic: 'seg', front: 'Typisk eksamen-oppgave: Beregn mIoU gitt prediksjoner og ground truth', back: 'Per klasse: Intersection (overlap) / Union (begge). Gjennomsnitt over klasser. Beregn fra confusion-matrise eller piksel-weise.' },
+  { topic: 'depth', front: 'Hva er Pinhole Camera-modellen?', back: '$P = K [R | t]$ der K er intrinsic-matrise, R er rotasjon, t er translasjon. Projeksjon: $\\\\tilde{p} = K [I | 0] X$ (homogene koordinater).' },
+  { topic: 'depth', front: 'Hva er Intrinsic Matrix K og hva inneholder den?', back: '$K = \\\\begin{bmatrix} f & 0 & c_x \\\\ 0 & f & c_y \\\\ 0 & 0 & 1 \\\\end{bmatrix}$ der f = brennvidde, (c_x, c_y) = principal point (bilde-sentrum).' },
+  { topic: 'depth', front: 'Hva er Stereo Vision og disparitet?', back: 'To kameraer med kjent baseline B. Disparitet d = x_L - x_R. Dybde: $Z = \\\\frac{f \\\\times B}{d}$. Større disparitet → nærmere objekt.' },
+  { topic: 'depth', front: 'Hva er Epipolar Geometry?', back: 'Geometri mellom to view-punkter. Epilin: linje i annet bilde som punkt fra første bilde projiseres til. Fundamental matrise F: $p_2^\\\\top F p_1 = 0$.' },
+  { topic: 'depth', front: 'Hva er Monocular Depth Estimation?', back: 'CNN som predikterer dybde-kart fra enkelt RGB-bilde (uten stereo). Lærer fra mange bilder + depth-labels. Utfordring: ambiguo at struktur.' },
+  { topic: 'depth', front: 'Hva er NeRF (Neural Radiance Fields)?', back: 'Neural network som representerer 3D scene som funksjon av posisjon (x,y,z) og viewing direction. Output: farge og tetthet. Renderes gjennom volum-rendering.' },
+  { topic: 'depth', front: 'Hvordan fungerer NeRF rendering?', back: 'For hver stråle fra kamera: sample posisjoner langs strålen, query nettverket for farge+tetthet, integrer (volum-rendering) for final farge.' },
+  { topic: 'depth', front: 'Hva er 3D Gaussian Splatting (3DGS)?', back: 'Representerer scene som sett av 3D Gaussians. Raskere enn NeRF (ikke integrasjon), renderes som splatting av gaussiske representasjoner.' },
+  { topic: 'depth', front: 'Hva er Structure from Motion (SfM)?', back: 'Rekonstruerer 3D struktur fra flere 2D-bilder. Bruker feature matching, epipolar geometry, triangulering. Output: sparse 3D-punkter + kamera-poser.' },
+  { topic: 'depth', front: 'Eksamen-tips: stereo-disparitet beregning', back: 'Gitt venstre/høyre bilde, finn matching-piksler (disparitet), beregn dybde. NCC eller SSD for patch-matching. Handle okklusjoner.' },
+  { topic: 'pose', front: 'Hva er Pose Estimation og hva predikteres?', back: 'Predikterer 2D eller 3D posisjoner av keypoints (ledd, deler) på mennesker/objekter. Typisk: hofte, skulder, albue, etc. for mennesker.' },
+  { topic: 'pose', front: 'Hva er Heatmap-basert Pose Estimation?', back: 'Nettverket predikterer Gaussisk heatmap for hver keypoint. Peak av heatmap → keypoint-posisjon. Enkel post-processing for koordinat-ekstraksjonen.' },
+  { topic: 'pose', front: 'Hva er OpenPose?', back: 'Multi-person pose estimation. Bruker confidence-maps (heatmaps) + Part Affinity Fields (for delar-assosiasjoner). Hierarkisk matching for skelett-konstruksjon.' },
+  { topic: 'pose', front: 'Hva er HRNet (High-Resolution Network)?', back: 'Holder høy oppløsning gjennom hele nettverket (ikke progressiv downsampling). Multi-scale representasjoner. SOTA for pose estimation.' },
+  { topic: 'pose', front: 'Hva er 3D Pose Estimation fra bilde?', back: 'Predikterer 3D-koordinater av keypoints fra enkelt 2D-bilde. Kan bruke: lifting 2D→3D, eller direkte 3D-regresjon. Utfordring: dybde-ambiguitet.' },
+  { topic: 'pose', front: 'Hva er Temporal Consistency i video-pose?', back: 'Pose blir glattere når man bruker informasjon fra nabo-frames. Kan bruke Kalman-filter eller GRU. Utnytter at menneske beveger seg glatt.' },
+  { topic: 'pose', front: 'Hva er Hand Pose Estimation?', back: 'Estimerer 3D posisjoner av 21 keypoints (knuklene). Vanskelig: små område i image, selvocclusion, mange degrees-of-freedom.' },
+  { topic: 'pose', front: 'Hva er Skeletal Constraints?', back: 'Post-processing: påfør bone-length og joint-angle constraints. Gjør skjelettet fysisk realistisk selv om individuelle keypoints er feil.' },
+  { topic: 'pose', front: 'Eksamen-tips: hvordan evalueres pose-estimering?', back: 'PCK (Percentage of Correct Keypoints): keypoint innen avstand (f.eks. 5% av head-diameter). PCKh varierer terskelen. Gjennomsnitt over alle keypoints.' },
+  { topic: 'tracking', front: 'Hva er Multi-Object Tracking (MOT)?', back: 'Følger identitet (ID) av mennesker/objekter over tid gjennom video. Oppgaver: deteksjon + assosiasjon over frames.' },
+  { topic: 'tracking', front: 'Hva er SORT algoritme?', back: 'Simple Online and Realtime Tracking. Bruker Kalman-filter for posisjon-preduksjon, Hungarian-algoritmen for assosiasjon. Baseline MOT-metode.' },
+  { topic: 'tracking', front: 'Hva er DeepSORT?', back: 'SORT + dyp læring. Deep Appearance Feature (f.eks. CNN) for hver deteksjon. Assosiasjon: kombinerer Kalman-avstand + appearance-avstand.' },
+  { topic: 'tracking', front: 'Hva er Kalman-filter og hvor brukes det?', back: 'Predikterer neste posisjon basert på tidligere bevegelse. Antar lineær bevegelse + Gaussisk støy. Update når deteksjon kommer. Robust for korte occlusions.' },
+  { topic: 'tracking', front: 'Hva er Hungarian Algorithm?', back: 'Optimalt assignment av deteksjoner til tracks. Minimerer total matching-kostnad. Polynomial tid. Brukt for å koble deteksjoner på tvers av frames.' },
+  { topic: 'tracking', front: 'Hva er HOTA metrikk for MOT?', back: 'Higher Order Tracking Accuracy. Kombinerer deteksjon, assosiasjons-nøyaktighet, og ID-konsistens. Modernere alternativ til MOTA.' },
+  { topic: 'tracking', front: 'Hva er MOTA og IDF1 metrikkene?', back: 'MOTA: Multiple Object Tracking Accuracy — deteksjon + tracking-feil. IDF1: ID F-score — hvor ofte samme ID opprettholds.' },
+  { topic: 'tracking', front: 'Hva er Occlusion Handling i tracking?', back: 'Når objekt er skjult kort tid: Kalman-filter forutsier posisjon framover. Åpen matching-tid (f.eks. 30 frames) før linja blir borte.' },
+  { topic: 'tracking', front: 'Hva er Scene-Specific Tracking?', back: 'Tracking av spesifikke ting (f.eks. baller i sport). Kan bruke appearance + motion. Utfordring: hurtig bevegelse, små objekter.' },
+  { topic: 'tracking', front: 'Eksamen-tips: MOT evaluering', back: 'Gitt deteksjoner og ground-truth tracks over frames, beregn MOTA, MOTP, ID-switches. Bruk Hungarian algorithm for matching.' },
+  { topic: 'gen', front: 'Hva lærer generative vs diskriminative modeller?', back: 'Diskriminativ: $p(y|x)$ — klassifisering. Generativ: $p(x)$ eller $p(x|z)$ — hele datafordelingen. Generasjon er vanskeligere.' },
+  { topic: 'gen', front: 'Hva er Latent Variable Model?', back: 'Introduserer latent $z$ (lav-dim). Data generes som: $x = \\\\text{Decoder}(z)$ der $z \\\\sim p(z)$. Eksempler: VAE, GAN, Diffusjon.' },
+  { topic: 'gen', front: 'Hva er Autoencoder (AE)?', back: 'Enkodar: $x \\\\to z$. Dekodar: $z \\\\to x\\\'$. Loss: $\\\\|x - x\\\'\\\\|^2$. Problem: latent space er ikke regularisert — kan ikke sample direkte.' },
+  { topic: 'gen', front: 'Hva er Variational Autoencoder (VAE)?', back: 'AE + regulering: enkodar predikterer $(\\\\mu, \\\\sigma)$ av normalfordeling. Reparametrisering-trick: $z = \\\\mu + \\\\sigma \\\\odot \\\\epsilon$. Loss: rekonstruksjon + KL-divergens.' },
+  { topic: 'gen', front: 'Hva er KL-divergens i VAE og rolle?', back: '$D_{KL}(q(z|x) \\\\| p(z)) = \\\\frac{1}{2} \\\\sum_j (\\\\mu_j^2 + \\\\sigma_j^2 - 1 - 2\\\\log\\\\sigma_j)$. Tvinger posterior mot standard normal. Regulariserer latent space.' },
+  { topic: 'gen', front: 'Hvorfor ser VAE-genererte bilder uskarpe ut?', back: 'Rekonstruksjonsledd bruker MSE. Med usikkerhet blir optimalt svar gjennomsnitt av mulige bilder (eksempel: usikkert hår-piksel → grå).' },
+  { topic: 'gen', front: 'Hva er Generative Adversarial Network (GAN)?', back: 'To nett: Generator ($z \\\\to$ fake bilde) og Discriminator (ekte/fake). Minmax-spill: $\\\\min_G \\\\max_D \\\\mathbb{E}[\\\\log D(x)] + \\\\mathbb{E}[\\\\log(1-D(G(z)))]$' },
+  { topic: 'gen', front: 'Hva er utfordringer ved GAN-trening?', back: 'Mode collapse (generator lærer få modus), instabilitet, Discriminator blir for sterk eller svak. Løsninger: Wasserstein-loss, spektral normalisering.' },
+  { topic: 'gen', front: 'Hva er Diffusion Models kort og godt?', back: 'Stokastisk: korrup data med Gaussisk støy iterativt, lær å reversere prosessen. Sampling: start fra ren støy, denoisifiserer iterativt. SOTA for generasjon.' },
+  { topic: 'gen', front: 'Hvordan fungerer Diffusion modell sampling?', back: 'Start med $x_T \\\\sim N(0, I)$. For $t = T, T-1, ..., 1$: predikt støy, subtrahér og add litt nytt støy. Output $x_0$ er generert bilde.' },
+  { topic: 'gen', front: 'Eksamen-tips: GAN vs VAE vs Diffusjon?', back: 'GAN: rask, skarpe bilder, vanskelig å trene. VAE: stabil, uskarpe bilder, lett læringsrate-tuning. Diffusjon: best kvalitet, treg sampling.' },
+  { topic: 'multimodal', front: 'Hva er Multimodal Learning?', back: 'Lærer fra flere modaliteter samtidig: tekst, bilde, lyd. Eksempler: CLIP (vision-tekst), VideoMAE (video-audio). Kryssmodal representasjoner.' },
+  { topic: 'multimodal', front: 'Hva er CLIP (Contrastive Language-Image Pre-training)?', back: 'Lærer tekst-bilde representasjoner. Enkodar for bilde (CNN/ViT), enkodar for tekst (Transformer). Loss: likhet mellom matched par vs negativ eksempler.' },
+  { topic: 'multimodal', front: 'Hvordan funker CLIP similitude matching?', back: 'Bilder og tekster projiseres til felles latent space. Cosine-likhet mellom vektorer. Top-1 accuracy hvis korrekt bildetekst-par har høyest likhet.' },
+  { topic: 'multimodal', front: 'Hva er Zero-Shot Learning i CLIP?', back: 'Klassifiser bilde ved å sammenligne mot tekst-embeddings av klasse-navn direkte — uten å se noen treningssampler av nye klasser.' },
+  { topic: 'multimodal', front: 'Hva er Contrastive Learning loss?', back: 'InfoNCE: $L = -\\\\log \\\\frac{\\\\exp(\\\\text{sim}(\\\\text{pos})/\\\\tau)}{\\\\sum_i \\\\exp(\\\\text{sim}(i)/\\\\tau)}$. Trekker positive nær, negative langt vekk i latent space.' },
+  { topic: 'multimodal', front: 'Hva er Video Understanding?', back: 'Klassifiserer eller segmenterer videoklipp. Kan bruke: 3D CNN (spatio-temporal), Two-Stream (separate spatial/temporal), Transformer på frames.' },
+  { topic: 'multimodal', front: 'Hva er Audio-Visual Learning?', back: 'Lærer fra lyd + video samtidig. Eksempel: speaker-detektor fra ansikt + lyd. Kryssmodal preduksjon (hva ser jeg gitt hva jeg hører).' },
+  { topic: 'multimodal', front: 'Hva er Vision-Language Model (VLM)?', back: 'Kombinerer vision + språk, f.eks. BLIP, LLaVA. Kan beskrive bilder, svare spørsmål, generere tekst basert på bilde.' },
+  { topic: 'multimodal', front: 'Hva er End-to-End Multimodal Fusion?', back: 'Enkodera per modalitet, fusjon (konkatenering, attention, gating), felles dekodar. Alternativ: separate dekodarar per modalitet.' },
+  { topic: 'multimodal', front: 'Eksamen-tips: multimodal evaluering', back: 'Per modalitet metrics + kryssmodal metrikkene (f.eks. vision-to-text retrieval). Balansér modaliteter — hvilken bidrar mer?' }
+];
+
+
 // =================== STATE ===================
 const state = {
   view: 'plan',
@@ -5647,6 +6208,10 @@ const state = {
   quizAnswered: new Map(), // index -> {correct: bool}
   quizCorrect: 0,
   quizWrong: 0,
+  flashFilter: 'all',
+  flashIdx: 0,
+  flashFlipped: false,
+  flashAnswered: new Map(), // global flash index -> 'know' | 'dontknow'
 };
 
 // =================== RENDER PLAN ===================
@@ -5892,6 +6457,94 @@ function quizKey(q) {
   return `${q.topic}:${q.q}`;
 }
 
+
+// =================== RENDER FLASHCARDS ===================
+function renderFlashFilter() {
+  const sel = document.getElementById('flash-filter');
+  if (!sel) return;
+  sel.innerHTML = '<option value="all">Alle temaer</option>' +
+    TOPICS.map(t => `<option value="${t.id}">${t.title}</option>`).join('');
+  sel.value = state.flashFilter;
+}
+
+function getFlashCards() {
+  if (state.flashFilter === 'all') return FLASHCARDS;
+  return FLASHCARDS.filter(c => c.topic === state.flashFilter);
+}
+
+function flashKey(card) {
+  return `${card.topic}:${card.front}`;
+}
+
+function renderFlash() {
+  const cards = getFlashCards();
+  const total = cards.length;
+  const idx = total === 0 ? 0 : Math.min(state.flashIdx, total - 1);
+
+  // Stats
+  let knowCount = 0, dontCount = 0;
+  cards.forEach(c => {
+    const v = state.flashAnswered.get(flashKey(c));
+    if (v === 'know') knowCount++;
+    else if (v === 'dontknow') dontCount++;
+  });
+  const remaining = total - knowCount - dontCount;
+  document.getElementById('flash-know').textContent = knowCount;
+  document.getElementById('flash-dontknow').textContent = dontCount;
+  document.getElementById('flash-remaining').textContent = remaining;
+  document.getElementById('flash-progress-bar').style.width =
+    total === 0 ? '0%' : `${((knowCount + dontCount) / total) * 100}%`;
+
+  if (total === 0) {
+    document.getElementById('flash-front').textContent = 'Ingen kort for dette temaet.';
+    document.getElementById('flash-back').textContent = '—';
+    document.getElementById('flash-num').textContent = '0/0';
+    document.getElementById('flash-num-b').textContent = '0/0';
+    document.getElementById('flash-topic').textContent = '—';
+    document.getElementById('flash-topic-b').textContent = '—';
+    return;
+  }
+
+  const card = cards[idx];
+  const topicTitle = TOPICS.find(t => t.id === card.topic)?.title || '';
+  document.getElementById('flash-num').textContent = `№ ${idx + 1}/${total}`;
+  document.getElementById('flash-num-b').textContent = `№ ${idx + 1}/${total}`;
+  document.getElementById('flash-topic').textContent = topicTitle;
+  document.getElementById('flash-topic-b').textContent = topicTitle;
+  document.getElementById('flash-front').innerHTML = card.front;
+  // Convert literal backslash-n sequences in back to line breaks
+  document.getElementById('flash-back').innerHTML = card.back.replace(/\\n/g, '<br>');
+
+  // Reset flip state when changing card
+  const cardEl = document.getElementById('flash-card');
+  cardEl.classList.toggle('flipped', state.flashFlipped);
+
+  // Re-render KaTeX for both faces. Use setTimeout to ensure DOM is updated first.
+  if (window.renderMathInElement) {
+    setTimeout(() => {
+      try {
+        renderMathInElement(document.getElementById('flash-front'), {
+          delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+          throwOnError: false
+        });
+        renderMathInElement(document.getElementById('flash-back'), {
+          delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+          throwOnError: false
+        });
+      } catch (e) { console.error('KaTeX render error:', e); }
+    }, 0);
+  }
+
+  // Update next/prev buttons
+  document.getElementById('flash-prev').disabled = idx === 0;
+  document.getElementById('flash-next').disabled = idx === total - 1;
+
+  // Highlight know/dontknow if already answered
+  const ans = state.flashAnswered.get(flashKey(card));
+  document.getElementById('flash-yes').style.opacity = ans === 'know' ? '0.5' : '1';
+  document.getElementById('flash-no').style.opacity = ans === 'dontknow' ? '0.5' : '1';
+}
+
 // =================== VIEW SWITCHING ===================
 function switchView(name) {
   state.view = name;
@@ -5902,6 +6555,7 @@ function switchView(name) {
   });
   if (name === 'read') renderRead();
   if (name === 'quiz') renderQuiz();
+  if (name === 'flash') renderFlash();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -5926,6 +6580,69 @@ document.addEventListener('DOMContentLoaded', () => {
     state.quizWrong = 0;
     state.quizIdx = 0;
     renderQuiz();
+  });
+
+  // ============== FLASHCARD HANDLERS ==============
+  renderFlashFilter();
+
+  document.getElementById('flash-filter').addEventListener('change', e => {
+    state.flashFilter = e.target.value;
+    state.flashIdx = 0;
+    state.flashFlipped = false;
+    renderFlash();
+  });
+
+  document.getElementById('flash-card').addEventListener('click', () => {
+    state.flashFlipped = !state.flashFlipped;
+    document.getElementById('flash-card').classList.toggle('flipped');
+  });
+
+  document.getElementById('flash-prev').addEventListener('click', () => {
+    if (state.flashIdx > 0) {
+      state.flashIdx--;
+      state.flashFlipped = false;
+      renderFlash();
+    }
+  });
+
+  document.getElementById('flash-next').addEventListener('click', () => {
+    const total = getFlashCards().length;
+    if (state.flashIdx < total - 1) {
+      state.flashIdx++;
+      state.flashFlipped = false;
+      renderFlash();
+    }
+  });
+
+  document.getElementById('flash-yes').addEventListener('click', e => {
+    e.stopPropagation();
+    const cards = getFlashCards();
+    if (cards.length === 0) return;
+    state.flashAnswered.set(flashKey(cards[state.flashIdx]), 'know');
+    if (state.flashIdx < cards.length - 1) {
+      state.flashIdx++;
+      state.flashFlipped = false;
+    }
+    renderFlash();
+  });
+
+  document.getElementById('flash-no').addEventListener('click', e => {
+    e.stopPropagation();
+    const cards = getFlashCards();
+    if (cards.length === 0) return;
+    state.flashAnswered.set(flashKey(cards[state.flashIdx]), 'dontknow');
+    if (state.flashIdx < cards.length - 1) {
+      state.flashIdx++;
+      state.flashFlipped = false;
+    }
+    renderFlash();
+  });
+
+  document.getElementById('flash-reset').addEventListener('click', () => {
+    state.flashAnswered.clear();
+    state.flashIdx = 0;
+    state.flashFlipped = false;
+    renderFlash();
   });
 });
 </script>
