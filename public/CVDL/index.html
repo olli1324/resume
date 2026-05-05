@@ -3029,25 +3029,40 @@ $$\\theta_{t+1} = \\theta_t - \\frac{\\alpha}{\\sqrt{\\hat{v}_t} + \\epsilon} \\
       </ul>
 
       <div style="margin: 24px 0; padding: 20px; background: var(--bg-card-soft); border: 1px solid var(--line); border-radius: 4px;">
-        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto; display:block; margin:0 auto;">
-          <ellipse cx="300" cy="200" rx="140" ry="90" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.6"/>
-          <ellipse cx="300" cy="200" rx="110" ry="70" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.6"/>
-          <ellipse cx="300" cy="200" rx="80" ry="50" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.6"/>
-          <ellipse cx="300" cy="200" rx="50" ry="30" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.8"/>
-          <circle cx="300" cy="200" r="3" fill="#a8431e"/>
-          <path d="M 80 80 L 100 95 L 95 120 L 115 130 L 110 155 L 130 170 L 125 190 L 140 205 L 135 225 L 150 240 L 145 260 L 160 275 L 165 290 L 175 305 L 190 320" stroke="#4a4239" stroke-width="2" fill="none" stroke-dasharray="5,5" opacity="0.8"/>
-          <circle cx="80" cy="80" r="2.5" fill="#4a4239"/>
-          <path d="M 80 80 Q 150 120 200 160 Q 240 185 280 200 Q 290 202 300 202" stroke="#c9683e" stroke-width="2.5" fill="none" opacity="0.9"/>
-          <circle cx="80" cy="80" r="2.5" fill="#c9683e"/>
-          <path d="M 80 80 Q 120 110 180 170 Q 250 190 300 200" stroke="#a8431e" stroke-width="2.5" fill="none" opacity="0.95"/>
-          <circle cx="80" cy="80" r="2.5" fill="#a8431e"/>
-          <g font-family="DM Sans" font-size="13" fill="#1a1612">
-            <line x1="30" y1="345" x2="55" y2="345" stroke="#4a4239" stroke-width="2" stroke-dasharray="5,5"/>
-            <text x="65" y="350">SGD (zigzaggy)</text>
-            <line x1="30" y1="370" x2="55" y2="370" stroke="#c9683e" stroke-width="2"/>
-            <text x="65" y="375">Momentum (smooth)</text>
-            <line x1="30" y1="395" x2="55" y2="395" stroke="#a8431e" stroke-width="2"/>
-            <text x="65" y="400">Adam (fastest)</text>
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+          <!-- Loss contours -->
+          <ellipse cx="380" cy="180" rx="180" ry="110" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.5"/>
+          <ellipse cx="380" cy="180" rx="140" ry="85" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.55"/>
+          <ellipse cx="380" cy="180" rx="100" ry="60" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.6"/>
+          <ellipse cx="380" cy="180" rx="60" ry="35" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.7"/>
+          <ellipse cx="380" cy="180" rx="25" ry="15" fill="none" stroke="#c9bfaa" stroke-width="1" opacity="0.85"/>
+          <circle cx="380" cy="180" r="3" fill="#a8431e"/>
+
+          <!-- SGD: zigzag converging into the bowl -->
+          <path d="M 90 80 L 130 130 L 110 165 L 165 175 L 145 205 L 200 200 L 180 225 L 235 215 L 220 235 L 270 220 L 260 195 L 305 195 L 295 175 L 335 178 L 360 180 L 378 180" stroke="#4a4239" stroke-width="2" fill="none" stroke-dasharray="5,4" opacity="0.85"/>
+          <circle cx="90" cy="80" r="3" fill="#4a4239"/>
+
+          <!-- Momentum: smooth gliding curve -->
+          <path d="M 90 80 Q 180 130 260 180 Q 330 200 378 182" stroke="#c9683e" stroke-width="2.5" fill="none" opacity="0.9"/>
+
+          <!-- Adam: most direct path -->
+          <path d="M 90 80 Q 200 100 300 165 Q 350 180 378 180" stroke="#a8431e" stroke-width="2.5" fill="none" opacity="0.95"/>
+
+          <!-- Start label -->
+          <text x="100" y="72" font-family="DM Sans, sans-serif" font-size="11" fill="#4a4239">start</text>
+          <!-- Min label -->
+          <text x="388" y="172" font-family="DM Sans, sans-serif" font-size="11" fill="#a8431e" font-style="italic">min</text>
+
+          <!-- Legend (bottom) -->
+          <g font-family="DM Sans, sans-serif" font-size="13" fill="#1a1612">
+            <line x1="40" y1="320" x2="80" y2="320" stroke="#4a4239" stroke-width="2" stroke-dasharray="5,4"/>
+            <text x="90" y="325">SGD (zigzaggy)</text>
+
+            <line x1="240" y1="320" x2="280" y2="320" stroke="#c9683e" stroke-width="2.5"/>
+            <text x="290" y="325">Momentum (smooth)</text>
+
+            <line x1="450" y1="320" x2="490" y2="320" stroke="#a8431e" stroke-width="2.5"/>
+            <text x="500" y="325">Adam (fastest)</text>
           </g>
         </svg>
         <p style="margin-top: 14px; font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center;">Tap-landskap med tre optimizers. SGD oscillerer i smale daler, Momentum gir smidig gliding, Adam konvergerer raskest fra samme startpunkt.</p>
@@ -3336,7 +3351,7 @@ $$y_j = \\gamma_j \\hat{x}_j + \\beta_j$$</div>
 
       <h3>Bias-Variance Tradeoff</h3>
       <p>For enhver modell kan vi dekomponere test-feilen:</p>
-      <div class="formula-block">\\text{Test Error} = \\text{Bias}^2 + \\text{Variance} + \\text{Irreducible Noise}$$</div>
+      <div class="formula-block">$$\\text{Test Error} = \\text{Bias}^2 + \\text{Variance} + \\text{Irreducible Noise}$$</div>
 
       <ul>
         <li>Bias: Modellens systematiske feil (f.eks. fitting en lineær modell til kvadratisk data)</li>
