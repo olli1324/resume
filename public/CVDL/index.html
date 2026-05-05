@@ -1595,7 +1595,7 @@ const CONTENT = {
       <p>Klasse 2 har høyest «stemme», men klassene 1 og 3 får også anständig sannsynlighet.</p>
 
       <p>Derivasjonen (Jacobi-matrise): Softmax er en vektor-til-vektor funksjon, så derivasjonen er en matrise:</p>
-      <div class="formula-block"><div class="label">Softmax Jacobian</div>$$\\frac{\\partial S_i}{\\partial z_j} = \\begin{cases} S_i(1 - S_i) & i = j \\ -S_i S_j & i \\neq j \\end{cases}$$</div>
+      <div class="formula-block"><div class="label">Softmax Jacobian</div>$$\\frac{\\partial S_i}{\\partial z_j} = \\begin{cases} S_i(1 - S_i) & i = j \\\\ -S_i S_j & i \\neq j \\end{cases}$$</div>
       <p>Intuisjon bak formelen: Diagonalen sier: hvis du øker $z_i$, øker $S_i$ proporsjonalt med $S_i(1 - S_i)$ (lignende sigmoid). Off-diagonalen sier: hvis du øker $z_j$, reduseres $S_i$ proporsjonalt, fordi sannsynlighetene må holde sum = 1.</p>
 
       <p>Brukes for: Utgangslaget i multiklasse-klassifisering (når det finnes 2+ klasser som gjensidig utelukker hverandre).</p>
@@ -2282,9 +2282,9 @@ const CONTENT = {
         <tr><td>Word 2</td><td>[0, 1, 0, 1]</td></tr>
         <tr><td>Word 3</td><td>[1, 1, 0, 0]</td></tr>
       </table>
-      <p>$X = \\begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 1 & 0 & 0 \\end{pmatrix}$ (3×4)</p>
-      <p>Anta tilfeldige vekter: $W_Q = \\begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 1 & 1 \\ 0 & 1 \\end{pmatrix}$ (4×2). Da $Q = X W_Q$:</p>
-      <p>$Q = \\begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 1 & 1 \\end{pmatrix}$ (3×2)</p>
+      <p>$X = \\begin{pmatrix} 1 & 0 & 1 & 0 \\\\ 0 & 1 & 0 & 1 \\\\ 1 & 1 & 0 & 0 \\end{pmatrix}$ (3×4)</p>
+      <p>Anta tilfeldige vekter: $W_Q = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ (4×2). Da $Q = X W_Q$:</p>
+      <p>$Q = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{pmatrix}$ (3×2)</p>
       <p>Samme prosess for $K$ og $V$. Deretter: $QK^\\top$ gir en 3×3 matrise av scores. Softmax normaliserer hver rad. Output har shape 3×2 (samme som $V$).</p>
   
       <h3>Hvorfor Scaled Dot-Product: Variansargumentet</h3>
@@ -2342,7 +2342,7 @@ const CONTENT = {
       <h3>Encoder vs Decoder — Masked Attention</h3>
       <p>Encoder: Alle tokens kan attende til alle andre tokens (både før og etter). Self-attention uten masker.</p>
       <p>Decoder: Når vi genererer ord sekvensielt, kan et ord IKKE attende til ord som kommer senere (de finnes ikke ennå). Vi bruker causal masking: sett scores til $-\\infty$ for framtidigs tokens før softmax, slik at deres attention-vekter blir 0.</p>
-      <div class="formula-block">$$\\text{mask} = \\begin{pmatrix} 0 & -\\infty & -\\infty \\ 0 & 0 & -\\infty \\ 0 & 0 & 0 \\end{pmatrix} \\quad \\text{(for 3 tokens)}$$</div>
+      <div class="formula-block">$$\\text{mask} = \\begin{pmatrix} 0 & -\\infty & -\\infty \\\\ 0 & 0 & -\\infty \\\\ 0 & 0 & 0 \\end{pmatrix} \\quad \\text{(for 3 tokens)}$$</div>
       <p>Legger til mask før softmax: $\\text{softmax}(\\text{scores} + \\text{mask})$.</p>
   
       <h3>Computational Cost — O(n²d) Attention</h3>
@@ -3806,11 +3806,11 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
       <p>Tradisjonelt, når man ønsket en større modell, valgte en: skal jeg gjøre det dypere? Bredere (flere kanaler)? Eller inputt høyere oppløsning? EfficientNet sin innsikt: alle tre bør skaleres balansert.</p>
 
       <p>Gitt en skaleringsfaktor $\\phi$, skaleres:</p>
-      <div class="formula-block">\\begin{align}
+      <div class="formula-block">$$\\begin{aligned}
       \\text{Dybde:} \\quad d &= d_0 \\cdot \\phi^a \\\\
       \\text{Bredde:} \\quad w &= w_0 \\cdot \\phi^b \\\\
       \\text{Oppløsning:} \\quad r &= r_0 \\cdot \\phi^c
-      \\end{align}</div>
+      \\end{aligned}$$</div>
 
       <p>Hvor $a, b, c$ er hyperparametre som bestemmes empirisk på en baseline-modell. For EfficientNet-B0 til B7, gjøres en kontinuerlig skalering med samme forhold. Fordel: du får jevn forbedring i nøyaktighet etter hvert som du øker modellstørrelse, i stedet for uforutsigbare "cliffs" hvor bredde eller dybde alene ikke hjelper.</p>
 
@@ -3893,10 +3893,10 @@ $$y' = \\lambda y_i + (1-\\lambda) y_j, \\quad \\lambda = \\text{(area ratio)}$$
 
       <h3>Precision, Recall, og Precision-Recall-kurven</h3>
       <p>Når vi rangerer prediksjoner og ser på TP/FP kumulativt:</p>
-      <div class="formula-block">\\begin{align}
+      <div class="formula-block">$$\\begin{aligned}
       \\text{Precision@rank } k &= \\frac{\\text{TP}_k}{\\text{TP}_k + \\text{FP}_k} \\quad \\text{(andel av prediksjoner som er korrekt)} \\\\
       \\text{Recall@rank } k &= \\frac{\\text{TP}_k}{\\text{TP}_k + \\text{FN}_\\text{total}} \\quad \\text{(andel av GT-objekter som ble funnet)}
-      \\end{align}</div>
+      \\end{aligned}$$</div>
 
       <p>Trade-off: Som vi øker konfidens-terskel, blir færre prediksjoner akseptert, så Precision går opp men Recall går ned (vi mister objekter). Plot av Precision mot Recall danner en kurve som synker (type-forming). Modeller som "tar flere risker" og predikerer lavere-konfidens-objekter har høyere Recall men lavere Precision.</p>
 
