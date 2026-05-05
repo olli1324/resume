@@ -1,10 +1,11 @@
 import React from 'react';
+import { useList } from '../hooks/useContent';
 
-const EducationItem = ({ title, institution, date, description, skills }) => (
+const EducationItem = ({ degree, institution, date, description, skills }) => (
   <div className="mb-8">
-    <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+    <h3 className="text-xl font-semibold text-gray-800">{degree}</h3>
     <p className="text-gray-600 mb-2">{institution} | {date}</p>
-    <p className="text-gray-700 mb-2">{description}</p>
+    <p className="text-gray-700 mb-2 whitespace-pre-line">{description}</p>
     {skills && skills.length > 0 && (
       <div>
         <div className="flex flex-wrap gap-2">
@@ -20,27 +21,21 @@ const EducationItem = ({ title, institution, date, description, skills }) => (
 );
 
 const Education = () => {
+  const { items } = useList('education', { onlyVisible: true });
+
   return (
     <section id="education" className="mb-16">
       <h2 className="text-3xl font-bold mb-6 text-gray-800">Education</h2>
-      <EducationItem
-        title="M.Sc. Cybernetics and Robotics"
-        institution="NTNU Trondheim"
-        date="Aug. 2022 – Present"
-        description="
-        5-year Engineering Master's program.
-
-        Combining mathematics, control systems, natural sciences, and computer technology to analyze dynamic systems. Specializing in machine learning and autonomous systems.
-        Experience from comprehensive labs with everything from developing distributed systems of three synced elevators, to regulating a helicopter's flight dynamics."
-        skills={["Control Systems", "Machine Learning", "Mathematics", "Computer Science", "Robotics", "PID"]}
-      />
-      <EducationItem
-        title="Folk High School"
-        institution="Valdres Folkehøgskole"
-        date="Aug. 2021 – Jun. 2022"
-        description="Paragliding class of 2021. Lushoto Committee member."
-        skills={["Paragliding", "Team Collaboration"]}
-      />
+      {items.map(item => (
+        <EducationItem
+          key={item.id}
+          degree={item.degree}
+          institution={item.institution}
+          date={item.date}
+          description={item.description}
+          skills={item.skills}
+        />
+      ))}
     </section>
   );
 };
