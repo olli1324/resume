@@ -2145,7 +2145,7 @@ const CONTENT = {
 
       <p>Average Pooling: Ta gjennomsnittet: fra samme blokk → output = (1+2+3+4)/4 = 2.5. Glattere sammenfatting.</p>
 
-      <p>Stride i pooling: Hvis pool-størrelse er 2×2 og stride = 2, beveger vi pooling-vinduet 2 hakk av gangen → ingen overlapping. Output størrelse = $(H_{in} / \\text{pool\_size})$ omtrent.</p>
+      <p>Stride i pooling: Hvis pool-størrelse er 2×2 og stride = 2, beveger vi pooling-vinduet 2 hakk av gangen → ingen overlapping. Output størrelse = $(H_{in} / P_{\\text{size}})$ omtrent.</p>
 
       <h3>Kanal-blanding: 1×1 konvolusjoner</h3>
       <p>Et 1×1-filter med $K$ filtre på input med $C_{in}$ kanaler:</p>
@@ -2576,7 +2576,7 @@ const CONTENT = {
   
       <h4>Steg 3: Lineær Projeksjon (Patch Embedding)</h4>
       <p>Projiser hver flatet patch til embedding-dimensjon $D$ (vanligvis 768 for ViT-Base). Dette gjøres via ett lineært lag.</p>
-      <div class="formula-block">$$\\text{patch\_emb}^{(i)} = \\text{Flatten}(\\text{patch}^{(i)}) \\cdot W_e + b_e$$</div>
+      <div class="formula-block">$$e^{(i)} = \\text{Flatten}(\\text{patch}^{(i)}) \\, W_e + b_e$$</div>
       <p>hvor $W_e \\in \\mathbb{R}^{P^2 C \\times D}$ og $b_e \\in \\mathbb{R}^D$.</p>
       <p>Resultat: $N$ embeddings, hver av størrelse $D$, altså shape $(N, D)$.</p>
   
@@ -2595,12 +2595,12 @@ const CONTENT = {
   
       <h4>Steg 7: Klassifisering</h4>
       <p>Ta CLS-tokenet (første token av output fra steg 6) og send det gjennom et klassifiseringshode (enkelt lineært lag) for å produsere logits for hver klasse.</p>
-      <div class="formula-block">$$\\text{logits} = \\text{CLS\_output} \\cdot W_c + b_c$$</div>
+      <div class="formula-block">$$\\text{logits} = z_{\\text{CLS}} \\, W_c + b_c$$</div>
       <p>der $W_c \\in \\mathbb{R}^{D \\times K}$ ($K$ = antall klasser).</p>
   
       <h3>Patch Embedding i Praksis — Kort Versjon</h3>
       <p>I PyTorch eller andre frameworks gjøres ofte steg 1-3 som én operasjon: Conv2d med stride og kernel lik patch-størrelse.</p>
-      <div class="formula-block">$$\\text{patches} = \\text{Conv2d}(\\text{image}, \\text{kernel}=P, \\text{stride}=P, \\text{out\_channels}=D)$$</div>
+      <div class="formula-block">$$\\text{patches} = \\text{Conv2d}(\\text{image},\\ \\text{kernel}{=}P,\\ \\text{stride}{=}P,\\ C_{\\text{out}}{=}D)$$</div>
       <p>Dette tar image $(C, H, W)$ og gir ut $(D, H/P, W/P)$. Reshape til $(H/P \\cdot W/P, D) = (N, D)$.</p>
   
       <h3>CLS Token — Hva og Hvorfor</h3>
