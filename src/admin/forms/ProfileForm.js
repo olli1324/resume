@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Button, Card } from '../ui';
+import { Input, Button, Card, Toggle } from '../ui';
 import { useSingleton } from '../../hooks/useContent';
-import { updateSingleton, uploadProjectImage } from '../../lib/api';
+import { updateSingleton, uploadProjectImage, uploadCv } from '../../lib/api';
 
 const ProfileForm = () => {
   const { data, refresh } = useSingleton('profile');
   const [form, setForm] = useState({});
   const [busy, setBusy] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadingCv, setUploadingCv] = useState(false);
   const [msg, setMsg] = useState(null);
   const [error, setError] = useState(null);
 
@@ -29,6 +30,22 @@ const ProfileForm = () => {
       setError(err.message);
     } finally {
       setUploading(false);
+      e.target.value = '';
+    }
+  };
+
+  const onUploadCv = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingCv(true);
+    setError(null);
+    try {
+      const url = await uploadCv(file);
+      setForm((f) => ({ ...f, cv_url: url }));
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setUploadingCv(false);
       e.target.value = '';
     }
   };
@@ -72,10 +89,39 @@ const ProfileForm = () => {
         <Input label="GitHub URL" type="url" value={form.github_url || ''} onChange={set('github_url')} />
         <Input label="LinkedIn URL" type="url" value={form.linkedin_url || ''} onChange={set('linkedin_url')} />
 
+        <div className="mb-4 pt-3 border-t border-gray-200">
+          <span className="block text-sm font-medium text-gray-700 mb-2">CV (PDF)</span>
+          <div className="flex items-center gap-3 mb-2 flex-wrap">
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={onUploadCv}
+              disabled={uploadingCv}
+              className="text-sm"
+            />
+            {uploadingCv && <span className="text-sm text-gray-500">Uploading…</span>}
+            {form.cv_url && (
+              <a
+                href={form.cv_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-gray-700 underline"
+              >
+                View current CV
+              </a>
+            )}
+          </div>
+          <Toggle
+            checked={form.cv_enabled}
+            onChange={(v) => setForm((f) => ({ ...f, cv_enabled: v }))}
+            label="Show download button on site"
+          />
+        </div>
+
         {error && <p className="text-red-600 text-sm mb-2">{error}</p>}
         {msg && <p className="text-green-600 text-sm mb-2">{msg}</p>}
         <div className="flex justify-end">
-          <Button type="submit" disabled={busy || uploading}>{busy ? 'Saving…' : 'Save'}</Button>
+          <Button type="submit" disabled={busy || uploading || uploadingCv}>{busy ? 'Saving…' : 'Save'}</Button>
         </div>
       </form>
     </Card>
