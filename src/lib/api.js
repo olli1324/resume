@@ -81,14 +81,22 @@ export async function moveItem(table, items, index, direction) {
   }
 }
 
-export async function uploadProjectImage(file) {
+export async function uploadFile(file, { bucket = 'project-images' } = {}) {
   const ext = file.name.split('.').pop();
   const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const { error } = await supabase.storage.from('project-images').upload(path, file, {
+  const { error } = await supabase.storage.from(bucket).upload(path, file, {
     cacheControl: '3600',
     upsert: false,
   });
   if (error) throw error;
-  const { data } = supabase.storage.from('project-images').getPublicUrl(path);
+  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
   return data.publicUrl;
+}
+
+export async function uploadProjectImage(file) {
+  return uploadFile(file);
+}
+
+export async function uploadCv(file) {
+  return uploadFile(file);
 }
