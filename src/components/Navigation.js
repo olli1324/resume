@@ -16,7 +16,8 @@ const Navigation = ({ sections = [] }) => {
   const handleDownload = async () => {
     if (!profile?.cv_url) return;
     const url = profile.cv_url;
-    const filename = url.split('/').pop()?.split('?')[0] || 'CV.pdf';
+    const name = profile.name?.trim() || 'CV';
+    const filename = /\bCV\b/i.test(name) ? `${name}.pdf` : `${name} CV.pdf`;
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error('fetch failed');
