@@ -24,6 +24,22 @@
       "dest": "/CVDL/index.html"
     },
     {
+      "src": "/convopt/*",
+      "dest": "/convopt/$1"
+    },
+    {
+      "src": "/convopt",
+      "dest": "/convopt/index.html"
+    },
+    {
+      "src": "/nonlinear/*",
+      "dest": "/nonlinear/$1"
+    },
+    {
+      "src": "/nonlinear",
+      "dest": "/nonlinear/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }
