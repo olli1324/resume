@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-transition, Sustainability and Economics — Study Plan & Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+<style>
+  :root {
+    --bg: #f4eee2;
+    --bg-card: #ebe2cf;
+    --bg-card-soft: #f0e8d6;
+    --ink: #1a1612;
+    --ink-soft: #4a4239;
+    --muted: #7a7164;
+    --accent: #2a6b3a;
+    --accent-soft: #4a8b58;
+    --green: #4a6b3a;
+    --red: #a13a2e;
+    --line: #c9bfaa;
+    --line-soft: #ddd2bd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(42,107,58,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(168,67,30,0.03) 0%, transparent 40%);
+  }
+  h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+  header { border-bottom: 1px solid var(--line); padding: 28px 48px 24px; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); background: rgba(244, 238, 226, 0.92); }
+  .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: baseline; gap: 14px; }
+  .logo-mark { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 900; font-style: italic; color: var(--accent); letter-spacing: -0.02em; }
+  .logo-text { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: var(--ink); letter-spacing: 0.02em; }
+  .logo-sub { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; margin-left: 8px; }
+  nav { display: flex; gap: 4px; background: var(--bg-card); padding: 4px; border-radius: 999px; border: 1px solid var(--line-soft); }
+  .nav-btn { background: transparent; border: none; padding: 9px 22px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink-soft); cursor: pointer; border-radius: 999px; transition: all 0.2s; }
+  .nav-btn:hover { color: var(--ink); }
+  .nav-btn.active { background: var(--ink); color: var(--bg); }
+  main { max-width: 1400px; margin: 0 auto; padding: 48px; }
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.4s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); }}
+
+  .plan-hero { margin-bottom: 56px; max-width: 800px; }
+  .plan-eyebrow { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; margin-bottom: 16px; }
+  .plan-hero h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 500; margin-bottom: 20px; }
+  .plan-hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .plan-hero p { font-size: 18px; color: var(--ink-soft); max-width: 640px; }
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; margin: 56px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat { padding: 24px 28px; border-right: 1px solid var(--line-soft); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 500; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+  .stat-num em { color: var(--accent); font-style: normal; }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
+  .phase { margin-bottom: 64px; }
+  .phase-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+  .phase-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 56px; font-weight: 400; color: var(--accent); line-height: 1; }
+  .phase-title { font-size: 28px; font-weight: 500; }
+  .phase-meta { margin-left: auto; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+  .topic-card { background: var(--bg); padding: 24px 26px; cursor: pointer; transition: background 0.2s; position: relative; display: flex; flex-direction: column; min-height: 180px; }
+  .topic-card:hover { background: var(--bg-card-soft); }
+  .topic-card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .topic-priority { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 10px; border-radius: 999px; }
+  .priority-core { background: var(--accent); color: var(--bg); }
+  .priority-new { background: var(--green); color: var(--bg); }
+  .priority-light { background: var(--bg-card); color: var(--muted); border: 1px solid var(--line); }
+  .topic-checkbox { width: 20px; height: 20px; border: 1.5px solid var(--line); border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s; background: var(--bg); }
+  .topic-checkbox.checked { background: var(--ink); border-color: var(--ink); }
+  .topic-checkbox.checked::after { content: '\2713'; color: var(--bg); font-size: 13px; font-weight: 700; }
+  .topic-card h3 { font-size: 19px; font-weight: 500; margin-bottom: 10px; margin-top: 4px; }
+  .topic-desc { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; flex: 1; }
+  .topic-actions { display: flex; gap: 14px; margin-top: auto; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .topic-actions a { color: var(--accent); text-decoration: none; font-weight: 600; cursor: pointer; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .topic-actions a:hover { border-bottom-color: var(--accent); }
+  .removed-section { background: var(--bg-card); padding: 28px 32px; border-left: 3px solid var(--accent); margin-top: 32px; }
+  .removed-section h3 { font-size: 18px; color: var(--accent); margin-bottom: 8px; }
+  .removed-section p { color: var(--ink-soft); font-size: 14.5px; }
+  .removed-section ul { margin-top: 12px; margin-left: 20px; color: var(--ink-soft); font-size: 14px; }
+  .removed-section li { margin-bottom: 4px; }
+
+  .read-layout { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+  .read-sidebar { position: sticky; top: 120px; border-right: 1px solid var(--line-soft); padding-right: 24px; max-height: calc(100vh - 140px); overflow-y: auto; }
+  .sidebar-section { margin-bottom: 24px; }
+  .sidebar-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 10px; font-weight: 600; }
+  .sidebar-link { display: block; padding: 7px 0; font-size: 14px; color: var(--ink-soft); cursor: pointer; border-left: 2px solid transparent; padding-left: 12px; margin-left: -12px; transition: all 0.15s; text-decoration: none; }
+  .sidebar-link:hover { color: var(--ink); }
+  .sidebar-link.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  .read-content { max-width: 760px; padding-bottom: 120px; }
+  .topic-section { display: none; animation: fadeIn 0.3s; }
+  .topic-section.active { display: block; }
+  .topic-section h2 { font-size: 38px; font-weight: 500; margin-bottom: 8px; line-height: 1.15; }
+  .topic-section h2 em { color: var(--accent); font-style: italic; font-weight: 400; }
+  .topic-section .lead { font-size: 17px; color: var(--ink-soft); margin-bottom: 36px; font-style: italic; border-left: 3px solid var(--accent); padding-left: 16px; }
+  .topic-section h3 { font-size: 23px; margin-top: 40px; margin-bottom: 12px; font-weight: 500; }
+  .topic-section h4 { font-size: 17px; margin-top: 24px; margin-bottom: 8px; font-weight: 600; color: var(--ink); }
+  .topic-section p { margin-bottom: 14px; color: var(--ink-soft); font-size: 15.5px; }
+  .topic-section strong { color: var(--ink); font-weight: 600; }
+  .topic-section ul, .topic-section ol { margin: 12px 0 18px 24px; color: var(--ink-soft); }
+  .topic-section li { margin-bottom: 6px; font-size: 15.5px; }
+  .topic-section li strong { color: var(--ink); }
+  .formula-block { background: var(--bg-card); border-left: 3px solid var(--ink); padding: 18px 22px; margin: 18px 0; border-radius: 0 4px 4px 0; overflow-x: auto; }
+  .formula-block .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+  .key-box { background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-soft) 100%); border: 1px solid var(--line); padding: 22px 26px; margin: 24px 0; border-radius: 4px; }
+  .key-box .label { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--accent); margin-bottom: 8px; }
+  .key-box ul { margin-left: 18px; }
+  table.calc-table { border-collapse: collapse; margin: 16px 0; width: 100%; font-size: 14px; background: var(--bg-card-soft); }
+  table.calc-table th, table.calc-table td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+  table.calc-table th { background: var(--bg-card); font-weight: 600; font-size: 13px; color: var(--ink); }
+  code { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--bg-card); padding: 1px 6px; border-radius: 3px; color: var(--ink); }
+  .diagram-wrap { margin: 24px 0; padding: 20px; background: var(--bg-card-soft); border: 1px solid var(--line); border-radius: 4px; }
+  .diagram-wrap svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  .diagram-caption { margin-top: 14px; font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center; }
+
+  .quiz-hero { margin-bottom: 32px; max-width: 780px; }
+  .quiz-hero h1 { font-size: clamp(36px, 4vw, 52px); font-weight: 500; margin-bottom: 12px; }
+  .quiz-hero h1 em { font-style: italic; color: var(--accent); }
+  .quiz-hero p { color: var(--ink-soft); font-size: 16px; }
+  .quiz-controls { display: flex; gap: 24px; margin-bottom: 32px; align-items: center; flex-wrap: wrap; padding: 18px 22px; background: var(--bg-card); border: 1px solid var(--line-soft); border-radius: 4px; }
+  .quiz-control-group { display: flex; align-items: center; gap: 10px; }
+  .quiz-control-group label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; }
+  .quiz-select { background: var(--bg); border: 1px solid var(--line); color: var(--ink); padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border-radius: 4px; cursor: pointer; }
+  .quiz-stats { margin-left: auto; display: flex; gap: 28px; font-size: 13px; }
+  .quiz-stats .num { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: var(--ink); margin-right: 4px; }
+  .quiz-stats .num.correct { color: var(--green); }
+  .quiz-stats .num.wrong { color: var(--red); }
+  .quiz-card { background: var(--bg); border: 1px solid var(--line); padding: 36px 40px; margin-bottom: 24px; position: relative; border-radius: 4px; box-shadow: 0 1px 0 var(--line-soft); }
+  .quiz-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--line-soft); }
+  .quiz-q-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--accent); }
+  .quiz-q-topic { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); font-weight: 600; background: var(--bg-card); padding: 5px 12px; border-radius: 999px; }
+  .quiz-question { font-size: 17.5px; color: var(--ink); margin-bottom: 24px; line-height: 1.55; }
+  .quiz-question p { margin-bottom: 10px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .quiz-option { background: var(--bg); border: 1px solid var(--line); padding: 14px 18px; text-align: left; cursor: pointer; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink); transition: all 0.15s; display: flex; align-items: center; gap: 14px; }
+  .quiz-option:hover:not(:disabled) { border-color: var(--ink); background: var(--bg-card-soft); }
+  .quiz-option .marker { font-family: 'Fraunces', serif; font-style: italic; color: var(--muted); font-weight: 500; width: 20px; }
+  .quiz-option.correct { background: rgba(74, 107, 58, 0.1); border-color: var(--green); color: var(--green); }
+  .quiz-option.correct .marker { color: var(--green); }
+  .quiz-option.wrong { background: rgba(161, 58, 46, 0.08); border-color: var(--red); color: var(--red); }
+  .quiz-option.wrong .marker { color: var(--red); }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-input-wrap { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; }
+  .quiz-input { flex: 1; background: var(--bg); border: 1px solid var(--line); color: var(--ink); padding: 12px 16px; font-family: 'JetBrains Mono', monospace; font-size: 16px; border-radius: 4px; max-width: 280px; }
+  .quiz-input:focus { outline: none; border-color: var(--accent); }
+  .quiz-submit { background: var(--ink); color: var(--bg); border: none; padding: 12px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: background 0.15s; }
+  .quiz-submit:hover { background: var(--accent); }
+  .quiz-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .quiz-feedback { padding: 18px 22px; margin-top: 8px; border-radius: 4px; border-left: 3px solid; }
+  .quiz-feedback.correct { background: rgba(74, 107, 58, 0.08); border-color: var(--green); }
+  .quiz-feedback.wrong { background: rgba(161, 58, 46, 0.06); border-color: var(--red); }
+  .quiz-feedback .verdict { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; font-style: italic; margin-bottom: 8px; }
+  .quiz-feedback.correct .verdict { color: var(--green); }
+  .quiz-feedback.wrong .verdict { color: var(--red); }
+  .quiz-feedback p { color: var(--ink-soft); font-size: 14.5px; margin-bottom: 8px; }
+  .quiz-feedback .answer-box { margin-top: 10px; padding: 10px 14px; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 3px; font-size: 14px; }
+  .quiz-feedback .answer-box strong { color: var(--ink); font-weight: 600; }
+  .quiz-nav { display: flex; justify-content: space-between; margin-top: 24px; }
+  .quiz-nav-btn { background: transparent; border: 1px solid var(--line); color: var(--ink); padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 4px; transition: all 0.15s; }
+  .quiz-nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--bg); }
+  .quiz-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .quiz-progress { height: 3px; background: var(--line-soft); border-radius: 2px; overflow: hidden; margin-bottom: 24px; }
+  .quiz-progress-bar { height: 100%; background: var(--accent); transition: width 0.3s; }
+  .quiz-empty { text-align: center; padding: 80px 20px; color: var(--muted); }
+  .quiz-empty h3 { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
+
+  @media (max-width: 900px) {
+    main { padding: 32px 24px; }
+    header { padding: 20px 24px; }
+    .read-layout { grid-template-columns: 1fr; }
+    .read-sidebar { position: static; max-height: none; border-right: none; padding-right: 0; border-bottom: 1px solid var(--line-soft); padding-bottom: 24px; margin-bottom: 24px; }
+    .quiz-card { padding: 24px 22px; }
+  }
+
+  .lecturer-note { background: var(--bg-card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 22px 26px; margin: 0 0 36px; }
+  .lecturer-note .label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 12px; }
+  .lecturer-note h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; margin-bottom: 12px; color: var(--ink); }
+  .lecturer-note p { font-size: 15px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
+  .lecturer-note p:last-child { margin-bottom: 0; }
+  .lecturer-note em { color: var(--accent); font-style: italic; }
+
+  .curriculum-status { background: var(--bg-card-soft); border: 1px solid var(--line-soft); border-radius: 6px; padding: 22px 26px; margin: 32px 0; }
+  .curriculum-status h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; margin-bottom: 14px; color: var(--ink); }
+  .curriculum-status .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 14px; }
+  @media (max-width: 700px) { .curriculum-status .status-grid { grid-template-columns: 1fr; } }
+  .curriculum-status .status-col h4 { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 10px; }
+  .curriculum-status .status-col.superficial h4 { color: var(--accent-soft); }
+  .curriculum-status ul { list-style: none; margin: 0; padding: 0; }
+  .curriculum-status li { font-size: 14.5px; margin: 5px 0; padding-left: 14px; position: relative; color: var(--ink-soft); }
+  .curriculum-status li::before { content: '\00B7'; position: absolute; left: 0; color: var(--muted); }
+  .curriculum-status li strong { color: var(--ink); }
+
+  .flash-hero { margin-bottom: 36px; max-width: 720px; }
+  .flash-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(34px, 4.5vw, 54px); font-weight: 500; margin-bottom: 14px; }
+  .flash-hero h1 em { color: var(--accent); font-style: italic; font-weight: 400; }
+  .flash-hero p { font-size: 17px; color: var(--ink-soft); }
+  .flash-controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 36px; }
+  .flash-controls label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-right: 6px; }
+  .flash-controls select { padding: 8px 12px; border: 1px solid var(--line); background: var(--bg-card); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); cursor: pointer; }
+  .flash-stats { display: flex; gap: 18px; font-size: 14px; color: var(--ink-soft); }
+  .flash-stats span strong { color: var(--accent); font-family: 'Fraunces', serif; }
+  .flash-card-wrap { perspective: 1600px; max-width: 760px; margin: 0 auto; }
+  .flash-card { position: relative; min-height: 360px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+  .flash-card.flipped { transform: rotateY(180deg); }
+  .flash-face { position: absolute; inset: 0; backface-visibility: hidden; background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 6px 20px rgba(26, 22, 18, 0.04); }
+  .flash-face.back { transform: rotateY(180deg); background: var(--bg-card-soft); }
+  .flash-meta { position: absolute; top: 18px; left: 24px; display: flex; gap: 14px; align-items: center; }
+  .flash-num { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; }
+  .flash-topic { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; }
+  .flash-side-label { position: absolute; top: 18px; right: 24px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; }
+  .flash-content { font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.5; color: var(--ink); text-align: center; margin: 20px 0; word-break: break-word; }
+  .flash-face.back .flash-content { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.65; text-align: left; white-space: pre-wrap; }
+  .flash-hint { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
+  .flash-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .flash-nav-btn { padding: 10px 20px; border: 1px solid var(--line); background: var(--bg-card); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; transition: all 0.15s; color: var(--ink); }
+  .flash-nav-btn:hover:not(:disabled) { background: var(--ink); color: var(--bg); }
+  .flash-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .flash-nav-btn.know { background: var(--green); color: white; border-color: var(--green); }
+  .flash-nav-btn.know:hover:not(:disabled) { opacity: 0.9; background: var(--green); }
+  .flash-nav-btn.dontknow { background: var(--bg-card); color: var(--red); border-color: var(--red); }
+  .flash-nav-btn.dontknow:hover:not(:disabled) { background: var(--red); color: white; }
+  .flash-progress { height: 4px; background: var(--line-soft); border-radius: 2px; margin: 24px auto; max-width: 760px; overflow: hidden; }
+  .flash-progress-bar { height: 100%; background: var(--accent); transition: width 0.3s ease; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-mark">E&middot;T</span>
+      <div>
+        <span class="logo-text">E-transition, Sustainability &amp; Economics</span>
+        <span class="logo-sub">PoliTO &middot; AY 2025/2026</span>
+      </div>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-view="plan">Study Plan</button>
+      <button class="nav-btn" data-view="read">Curriculum</button>
+      <button class="nav-btn" data-view="quiz">Quiz</button>
+      <button class="nav-btn" data-view="flash">Flashcards</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="view active" id="view-plan">
+  <div class="plan-hero">
+    <div class="plan-eyebrow">Course companion &middot; project work and exam prep</div>
+    <h1>The energy transition, sorted the way <em>Bompard &amp; Grosso</em> teach it.</h1>
+    <p>Built from lectures L0&ndash;L17 and PW1 in your course folder. Click a topic to read it, take a quick quiz, or run flashcards to drill the indicators and definitions PW1 expects on the exam and in the project work.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num"><em>16</em></div><div class="stat-label">Main topics</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Worked exercises (E1&ndash;E5)</div></div>
+    <div class="stat"><div class="stat-num">L0&ndash;L18</div><div class="stat-label">Lectures covered</div></div>
+    <div class="stat"><div class="stat-num" id="progress-num">0/16</div><div class="stat-label">Topics completed</div></div>
+  </div>
+
+  <div class="lecturer-note">
+    <div class="label">&#9614; How to use this</div>
+    <h3>Three loops, not one straight pass</h3>
+    <p>The course pulls together five different things into one story: thermodynamic energy concepts, climate policy, electricity-market microeconomics, optimisation, and investment finance. The failure mode under exam pressure is mixing them up, so the work here is <em>disambiguation</em>: every topic page leads with the one-line tell that separates it from its neighbours.</p>
+    <p>Loop 1: read each topic once, in order. Loop 2: do the quiz with topic filter ALL, until you score above 80&nbsp;%. Loop 3: flashcards for the confused pairs (GDP nominal vs PPP, energy intensity vs carbon intensity, LP vs MIP, NPV vs LCOE).</p>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">I.</div>
+      <div class="phase-title">Energy fundamentals &amp; indicators</div>
+      <div class="phase-meta">PW1 &middot; required for the project</div>
+    </div>
+    <div class="topic-grid" id="grid-fundamentals"></div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">II.</div>
+      <div class="phase-title">The transition imperative</div>
+      <div class="phase-meta">L2, L3, L5 &middot; trilemma &amp; geopolitics</div>
+    </div>
+    <div class="topic-grid" id="grid-transition"></div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">III.</div>
+      <div class="phase-title">Electricity markets</div>
+      <div class="phase-meta">L4, L8&ndash;L12, L14 &middot; core block</div>
+    </div>
+    <div class="topic-grid" id="grid-markets"></div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">IV.</div>
+      <div class="phase-title">Optimisation &amp; investment</div>
+      <div class="phase-meta">L13, L16, L17 &middot; PW Section 8</div>
+    </div>
+    <div class="topic-grid" id="grid-optfin"></div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">V.</div>
+      <div class="phase-title">Sector coupling &amp; the course exercise</div>
+      <div class="phase-meta">L18 &middot; Optimization.xlsx</div>
+    </div>
+    <div class="topic-grid" id="grid-coupling"></div>
+  </div>
+
+  <div class="curriculum-status">
+    <h3>Project work map</h3>
+    <p style="font-size:14px;color:var(--ink-soft);">Which topics drive which sections of your country-level project work.</p>
+    <div class="status-grid">
+      <div class="status-col">
+        <h4>PW Sections 1&ndash;4</h4>
+        <ul>
+          <li><strong>1 Macro:</strong> GDP types &middot; indicators</li>
+          <li><strong>2 Energy char:</strong> TPES/TFC &middot; intensities &middot; CO2</li>
+          <li><strong>3 Balance:</strong> energy balance identity &middot; Sankey</li>
+          <li><strong>4 Import dep:</strong> Shannon &middot; geopolitics &middot; WGI</li>
+        </ul>
+      </div>
+      <div class="status-col superficial">
+        <h4>PW Sections 5&ndash;8</h4>
+        <ul>
+          <li><strong>5 Plans:</strong> trilemma &middot; transition drivers</li>
+          <li><strong>6 Trajectories:</strong> scenarios &middot; KPIs</li>
+          <li><strong>7 Power system:</strong> markets &middot; capacity</li>
+          <li><strong>8 Optimisation:</strong> LP &middot; LCOE &middot; KKT</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="removed-section">
+    <h3>What to drill before the project deadline and the exam</h3>
+    <p>Two recognition tests separate strong projects from weak ones. First, can you state any indicator (TPES per capita, energy intensity, carbon intensity, Shannon index, LCOE) <em>from its formula</em> and explain what each variable means? Second, can you classify any electricity market description as day-ahead, intraday, balancing, or capacity within ten seconds?</p>
+    <ul>
+      <li>Indicators (PW1): GDP nominal/real/PPP, VA, TPES, TFC, energy intensity, carbon intensity of TPES, carbon intensity of GDP, CO2 per capita, Shannon diversification.</li>
+      <li>Markets: which auction model (pay-as-bid vs uniform), what is bid (block bid, complex order), and what makes the price (marginal cost of the marginal accepted bid).</li>
+      <li>Finance: NPV cash-flow layout, IRR existence and uniqueness, LCOE numerator-denominator structure.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="view" id="view-read">
+  <div class="read-layout">
+    <aside class="read-sidebar" id="sidebar"></aside>
+    <div class="read-content" id="read-content"></div>
+  </div>
+</section>
+
+<section class="view" id="view-quiz">
+  <div class="quiz-hero">
+    <h1>Test <em>yourself</em>.</h1>
+    <p>Numeric and conceptual questions on the same indicators and definitions that PW1 and the project work require. Pick a topic to focus, or take them all.</p>
+  </div>
+
+  <div class="quiz-controls">
+    <div class="quiz-control-group">
+      <label>Topic</label>
+      <select class="quiz-select" id="quiz-filter"><option value="all">All topics</option></select>
+    </div>
+    <div class="quiz-control-group">
+      <button class="quiz-nav-btn" id="quiz-reset">&#8635; Restart</button>
+    </div>
+    <div class="quiz-stats">
+      <div><span class="num correct" id="stat-correct">0</span><span style="color:var(--muted)">correct</span></div>
+      <div><span class="num wrong" id="stat-wrong">0</span><span style="color:var(--muted)">wrong</span></div>
+      <div><span class="num" id="stat-total">0</span><span style="color:var(--muted)">/ <span id="stat-max">0</span></span></div>
+    </div>
+  </div>
+
+  <div class="quiz-progress"><div class="quiz-progress-bar" id="progress-bar" style="width: 0%"></div></div>
+  <div id="quiz-container"></div>
+</section>
+
+</main>
+
+<section class="view" id="view-flash">
+  <div class="flash-hero">
+    <div class="plan-eyebrow">Flashcards</div>
+    <h1>Active <em>recall</em>.</h1>
+    <p>Click a card to flip. Mark "Know" or "Don't know". The deck weighs the indicator definitions and the trilemma dimensions, where most confusion lives.</p>
+  </div>
+
+  <div class="flash-controls">
+    <div>
+      <label for="flash-filter">Topic:</label>
+      <select id="flash-filter"></select>
+    </div>
+    <div class="flash-stats">
+      <span>Know: <strong id="flash-know">0</strong></span>
+      <span>Don't know: <strong id="flash-dontknow">0</strong></span>
+      <span>Left: <strong id="flash-remaining">0</strong></span>
+    </div>
+    <button class="quiz-nav-btn" id="flash-reset" style="margin-left:auto">&#8635; Restart</button>
+  </div>
+
+  <div class="flash-progress"><div class="flash-progress-bar" id="flash-progress-bar" style="width:0%"></div></div>
+
+  <div class="flash-card-wrap">
+    <div class="flash-card" id="flash-card">
+      <div class="flash-face front">
+        <div class="flash-meta">
+          <span class="flash-num" id="flash-num">No. 0/0</span>
+          <span class="flash-topic" id="flash-topic">&mdash;</span>
+        </div>
+        <div class="flash-side-label">Question</div>
+        <div class="flash-content" id="flash-front">Pick a topic and click the card</div>
+        <div class="flash-hint">Click to flip</div>
+      </div>
+      <div class="flash-face back">
+        <div class="flash-meta">
+          <span class="flash-num" id="flash-num-b">No. 0/0</span>
+          <span class="flash-topic" id="flash-topic-b">&mdash;</span>
+        </div>
+        <div class="flash-side-label">Answer</div>
+        <div class="flash-content" id="flash-back">&mdash;</div>
+        <div class="flash-hint">Click to flip</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flash-nav">
+    <button class="flash-nav-btn" id="flash-prev">&larr; Previous</button>
+    <div style="display:flex;gap:10px;">
+      <button class="flash-nav-btn dontknow" id="flash-no">Don't know</button>
+      <button class="flash-nav-btn know" id="flash-yes">Know &#10003;</button>
+    </div>
+    <button class="flash-nav-btn" id="flash-next">Next &rarr;</button>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

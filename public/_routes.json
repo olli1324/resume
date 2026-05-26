@@ -40,6 +40,14 @@
       "dest": "/nonlinear/index.html"
     },
     {
+      "src": "/etransition/*",
+      "dest": "/etransition/$1"
+    },
+    {
+      "src": "/etransition",
+      "dest": "/etransition/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }

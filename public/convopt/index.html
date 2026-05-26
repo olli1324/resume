@@ -757,6 +757,51 @@
     overflow: hidden;
   }
   .flash-progress-bar { height: 100%; background: var(--accent); transition: width 0.3s ease; }
+
+  /* === Detailed schedule, scoring, diagnostic === */
+  .week-block { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px dashed var(--line-soft); }
+  .week-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .week-block .week-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+  .week-block h4 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--accent); margin: 0; }
+  .week-block .week-dates { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .week-block .goal { font-size: 13.5px; color: var(--ink-soft); font-style: italic; margin-bottom: 10px; }
+  .week-block ul { list-style: none; margin: 0; padding: 0; }
+  .week-block li { font-size: 14.5px; color: var(--ink-soft); margin: 5px 0; padding-left: 16px; position: relative; line-height: 1.55; }
+  .week-block li::before { content: '·'; position: absolute; left: 4px; color: var(--accent); font-weight: bold; }
+  .week-block li strong { color: var(--ink); }
+
+  .plan-details { background: var(--bg-card-soft); border: 1px solid var(--line-soft); border-radius: 6px; padding: 0; margin: 24px 0; overflow: hidden; }
+  .plan-details > summary { padding: 18px 26px; cursor: pointer; font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .plan-details > summary::-webkit-details-marker { display: none; }
+  .plan-details > summary::after { content: '+'; font-family: 'DM Sans', sans-serif; font-size: 22px; color: var(--accent); font-weight: 500; }
+  .plan-details[open] > summary::after { content: '\2212'; }
+  .plan-details > summary:hover { background: var(--bg-card); }
+  .plan-details-body { padding: 4px 26px 24px; }
+  .plan-details-body h4 { font-size: 15px; font-weight: 600; margin-top: 18px; margin-bottom: 6px; color: var(--ink); }
+  .plan-details-body p { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 10px; line-height: 1.55; }
+  .plan-details-body ul, .plan-details-body ol { margin: 6px 0 12px 22px; }
+  .plan-details-body li { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.55; }
+  .plan-details-body strong { color: var(--ink); font-weight: 600; }
+  .plan-details-body code { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; background: var(--bg-card); padding: 1px 5px; border-radius: 3px; color: var(--ink); }
+
+  .scoring-table { border-collapse: collapse; width: 100%; margin: 12px 0 16px; font-size: 14px; }
+  .scoring-table th, .scoring-table td { border: 1px solid var(--line); padding: 7px 12px; text-align: right; }
+  .scoring-table th { background: var(--bg-card); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
+  .scoring-table tr:nth-child(even) { background: var(--bg-card-soft); }
+
+  .leverage-box { background: var(--bg-card); border: 2px solid var(--accent); border-radius: 6px; padding: 22px 26px; margin: 28px 0; }
+  .leverage-box h3 { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 500; color: var(--accent); margin-bottom: 6px; }
+  .leverage-box p.subtle { font-size: 13.5px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+  .leverage-box ol { margin: 8px 0 0 22px; }
+  .leverage-box li { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
+  .leverage-box li strong { color: var(--ink); }
+
+  .diagnostic-list { counter-reset: dq; list-style: none; padding: 0; margin: 0; }
+  .diagnostic-list > li { counter-increment: dq; margin: 18px 0; padding-left: 38px; position: relative; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
+  .diagnostic-list > li::before { content: counter(dq); position: absolute; left: 0; top: -2px; font-family: 'Fraunces', serif; font-style: italic; font-size: 24px; color: var(--accent); font-weight: 500; }
+  .diagnostic-answer { margin-top: 10px; padding: 10px 14px; background: var(--bg); border-left: 3px solid var(--green); border-radius: 0 3px 3px 0; font-size: 13.5px; color: var(--ink-soft); }
+  .diagnostic-answer strong { color: var(--ink); }
+  .diagnostic-answer .label { display: inline-block; font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; color: var(--green); margin-right: 6px; }
 </style>
 </head>
 <body>
@@ -835,36 +880,216 @@
 
   <div class="curriculum-status">
     <h3>The five-week schedule</h3>
-    <p style="font-size:14px;color:var(--ink-soft);">Roughly 5&ndash;10 hours a week. Diagnose first, then drill recognition, then time yourself on past papers.</p>
-    <div class="status-grid">
-      <div class="status-col">
-        <h4>Weeks 1&ndash;3 &mdash; build and disambiguate</h4>
-        <ul>
-          <li><strong>Week 1:</strong> diagnostic under timed conditions, then rebuild the linear-algebra bedrock (gradients, Hessians, SVD, PSD).</li>
-          <li><strong>Week 2:</strong> convexity recognition and standard forms. Classify any problem as LP / QP / SOCP / GP / SDP within 30 seconds.</li>
-          <li><strong>Week 3:</strong> duality, GP, SDP. Write the Lagrangian and dual for a small LP and QP without thinking.</li>
-        </ul>
-      </div>
-      <div class="status-col superficial">
-        <h4>Weeks 4&ndash;5 &mdash; algorithms and mock exams</h4>
-        <ul>
-          <li><strong>Week 4:</strong> gradient vs Newton vs interior point. Recognize which method a problem calls for; run one or two iterations by hand.</li>
-          <li><strong>Week 5:</strong> stop learning new material. Full mocks under exam conditions, gap-closing, exam tactics. Light review the day before, sleep.</li>
-        </ul>
-      </div>
+    <p style="font-size:14px;color:var(--ink-soft);margin-bottom:18px;">Roughly 5&ndash;10 hours a week, ~35&ndash;50 hours total. Diagnose first, then disambiguate, then time yourself on past papers.</p>
+
+    <div class="week-block">
+      <div class="week-head"><h4>Week 1</h4><span class="week-dates">May 13&ndash;19 &middot; diagnose &amp; reset</span></div>
+      <div class="goal">Find out where the confusion actually lives. Don't restudy what you already know.</div>
+      <ul>
+        <li><strong>Day 1 (~1.5h):</strong> take the diagnostic below under timed conditions. Score it honestly. Tag each missed question with its topic.</li>
+        <li><strong>Day 2 (~1h):</strong> reread the cheatsheet end-to-end. Mark every line you can't immediately justify.</li>
+        <li><strong>Day 3&ndash;4 (~3h):</strong> rebuild the linear-algebra bedrock from L2&ndash;L4. Focus only on: gradient and Hessian of $\tfrac12 x^\top Q x + r^\top x$, SVD definition, Rayleigh quotient, projection onto a subspace, when a matrix is PSD.</li>
+        <li><strong>Day 5 (~1.5h):</strong> practice 1 and practice 2 fully by hand. Check against the solution PDFs.</li>
+      </ul>
     </div>
+
+    <div class="week-block">
+      <div class="week-head"><h4>Week 2</h4><span class="week-dates">May 20&ndash;26 &middot; convexity &amp; standard forms</span></div>
+      <div class="goal">Classify any problem (LP / QP / SOCP / GP / SDP) within 30 seconds.</div>
+      <ul>
+        <li><strong>Day 1 (~1.5h):</strong> reread L6 (convexity) and L7 (standard form). Build the disambiguation table from memory before checking it.</li>
+        <li><strong>Day 2 (~1.5h):</strong> L8 (QP) and practice 4. Watch for QPs in disguise.</li>
+        <li><strong>Day 3 (~1.5h):</strong> L9 (LP) and practice 5. Drill the $\ell_1$ vs Chebyshev reformulations &mdash; they get confused on exams.</li>
+        <li><strong>Day 4 (~1h):</strong> L10 (SOCP) and practice 6.</li>
+        <li><strong>Day 5 (~1h):</strong> mixed-classification drill. Write 10 problems on paper and classify each as LP / QP / QCQP / SOCP / SDP / GP / none.</li>
+      </ul>
+    </div>
+
+    <div class="week-block">
+      <div class="week-head"><h4>Week 3</h4><span class="week-dates">May 27 &ndash; Jun 2 &middot; duality, GP, SDP</span></div>
+      <div class="goal">Write the Lagrangian and the dual for a small LP and a small QP without thinking.</div>
+      <ul>
+        <li><strong>Day 1 (~1.5h):</strong> reread L12 (duality). Re-derive the dual of $\min c^\top x$ s.t. $Ax \leq b$. Then the dual of $\min \tfrac12 x^\top Q x + c^\top x$ s.t. $Ax = b$. Don't peek.</li>
+        <li><strong>Day 2 (~1.5h):</strong> practice 7 and 8. KKT on small examples.</li>
+        <li><strong>Day 3 (~1.5h):</strong> L11 (GP). Posynomial recognition: which of $2x+3y$, $x^{-1}+y$, $-x+y$, $x^{0.5}y^2$ is a posynomial?</li>
+        <li><strong>Day 4 (~1.5h):</strong> SDP and LMI from the Stanford slides. Schur complement is the one trick that does most of the work.</li>
+        <li><strong>Day 5 (~1h):</strong> practice 9 and 9bis.</li>
+      </ul>
+    </div>
+
+    <div class="week-block">
+      <div class="week-head"><h4>Week 4</h4><span class="week-dates">Jun 3&ndash;9 &middot; algorithms &amp; mixed practice</span></div>
+      <div class="goal">Recognize when a problem calls for gradient vs Newton vs interior point. Run one or two iterations by hand.</div>
+      <ul>
+        <li><strong>Day 1 (~1.5h):</strong> L13 (gradient methods). Step-size choices: fixed, exact line search, backtracking. When does the rate go from $O(1/k)$ to $O(1/k^2)$ (Nesterov)?</li>
+        <li><strong>Day 2 (~1.5h):</strong> L14 (Newton). Newton step formula, affine invariance, quadratic local convergence. Practice 11.</li>
+        <li><strong>Day 3 (~1.5h):</strong> L15 (constrained, barrier, interior point). Practice 12 and 13. Concepts (log-barrier, central path, phase 1) show up in multiple-choice.</li>
+        <li><strong>Day 4 (~1.5h):</strong> full pass through one of your past failed exams under timed conditions (55 min, no notes). Score before peeking at solutions.</li>
+        <li><strong>Day 5 (~1.5h):</strong> review every miss. For each, write one sentence on what you confused it with.</li>
+      </ul>
+    </div>
+
+    <div class="week-block">
+      <div class="week-head"><h4>Week 5</h4><span class="week-dates">Jun 10&ndash;18 &middot; mocks, gap-closing, tactics</span></div>
+      <div class="goal">Stop learning new material. Drill exam reflexes.</div>
+      <ul>
+        <li><strong>Mon Jun 15 (~1.5h):</strong> second full mock under exam conditions on the second past exam.</li>
+        <li><strong>Tue Jun 16 (~1.5h):</strong> review and add to the disambiguation table.</li>
+        <li><strong>Wed Jun 17 (~1.5h):</strong> cheatsheet review and the question types you keep missing. If you have a third past exam, swap in another mock here.</li>
+        <li><strong>Thu Jun 18 (~45min):</strong> light review only. Sleep 8+ hours.</li>
+        <li><strong>Fri Jun 19:</strong> exam day.</li>
+      </ul>
+    </div>
+  </div>
+
+  <details class="plan-details">
+    <summary>The skill inventory &mdash; what the exam actually tests, and which session drills each</summary>
+    <div class="plan-details-body">
+      <p>Pulled from the Calafiore &amp; El Ghaoui exercise book and all 13 weekly practices. Ten areas, each with the skills and the specific session to drill them.</p>
+
+      <h4>1. Linear algebra and geometry</h4>
+      <p><strong>You need to:</strong> write a word problem in standard form; project a point onto a line, hyperplane, affine subspace, or column space of $A$ ($A(A^\top A)^{-1}A^\top p$); compute the distance from a point to a hyperplane $|a^\top x - b|/\lVert a\rVert_2$; gradients and Hessians of $\tfrac12 x^\top Q x + r^\top x$, $\lVert Ax-b\rVert_2^2$, log-sum-exp, $\log\det X$; recognize subspaces, half-spaces, polyhedra, ellipsoids, simplices, norm balls.</p>
+      <p><strong>Drill with:</strong> Practice 1 (thruster), Practice 2, Practice 3. Skip if the diagnostic showed no foundation gaps.</p>
+
+      <h4>2. Symmetric matrices, eigenvalues, SVD</h4>
+      <p><strong>You need to:</strong> diagonalize a 2x2 or 3x3 symmetric matrix by hand; identify PSD via eigenvalues, leading principal minors, or $x^\top A x \geq 0$; apply Rayleigh ($\lambda_{\max} = \max_{\lVert x\rVert=1} x^\top A x$); compute the SVD and read off rank, range, nullspace, condition number, pseudoinverse; use $\log\det X^{-1} = -\sum\log\lambda_i$.</p>
+      <p><strong>Drill with:</strong> Practice 4, Practice 5.</p>
+
+      <h4>3. Least squares</h4>
+      <p><strong>You need to:</strong> solve $\min \lVert Ax-b\rVert_2^2$ via $A^\top A x = A^\top b$ and say when the solution is unique; write the minimum-norm solution $x^\star = A^\top(AA^\top)^{-1}b$; set up Tikhonov / ridge; spot LS hiding inside a different-looking problem (weighted, constrained, total).</p>
+      <p><strong>Drill with:</strong> Practice 6, exercise book chapter 6. (The minimum-norm formula is diagnostic question 5.)</p>
+
+      <h4>4. Convexity recognition</h4>
+      <p><strong>You need to:</strong> prove convexity from the chord definition; use the Hessian PSD test; know the operations that preserve convexity (nonneg sum, max, affine composition, perspective, partial minimization); identify convex sets (sublevel sets, half-space intersections, second-order cones, PSD cone).</p>
+      <p><strong>Drill with:</strong> Practice 7 (squared norm, log-sum-exp, Young's inequality).</p>
+
+      <h4>5. Standard-form classification &mdash; the highest-leverage skill</h4>
+      <p>Given a problem on paper, decide in under a minute: LP, QP, QCQP, SOCP, SDP, GP, or non-convex.</p>
+      <ul>
+        <li>$\min \lVert Ax-b\rVert_\infty$ &rarr; LP, scalar auxiliary $t$.</li>
+        <li>$\min \lVert Ax-b\rVert_1$ &rarr; LP, vector auxiliary $t$.</li>
+        <li>$\min \lVert Ax-b\rVert_2$ &rarr; SOCP (unsquared norm).</li>
+        <li>$\min \lVert Ax-b\rVert_2^2$ &rarr; QP or LS.</li>
+        <li>$\min \lVert Ax-b\rVert_2^2 + \lambda \lVert x\rVert_1$ &rarr; QP (Lasso shape).</li>
+        <li>$\min \lVert Ax-b\rVert_2^2 + \lambda \lVert x\rVert_2^2$ &rarr; QP (ridge).</li>
+        <li>$\min \lVert Ax-b\rVert_2^2 + \lambda \lVert x\rVert_1^2$ &rarr; not a QP; separate handling.</li>
+      </ul>
+      <p><strong>For SOCP specifically:</strong> squaring $c^\top x \geq \lVert x\rVert_2$ is not equivalent (the squared version is non-convex). Cast robust sphere-enclosure, facility-location, and portfolio-with-variance constraints as SOCP.</p>
+      <p><strong>Drill with:</strong> Practice 8 exercise 1 (the four-function table) &mdash; the single most exam-predictive exercise in your folder. Then Practice 10 (SOCP) and Practice 9 (LP-shape reformulations).</p>
+
+      <h4>6. Duality and KKT</h4>
+      <p><strong>You need to:</strong> write the Lagrangian; derive the dual $g(\lambda,\nu) = \inf_x L$; three canonical ones cold: $\min \tfrac12\lVert x\rVert^2$ s.t. $Ax=b$, $\min c^\top x$ s.t. $Ax\leq b$, $\min \lVert x-p\rVert^2$ s.t. $x \geq 0, \mathbf{1}^\top x = 1$; state and use the four KKT conditions; interpret a dual variable as a shadow price; know when strong duality holds (convex + Slater, LP whenever either side is feasible).</p>
+      <p><strong>Drill with:</strong> Practice 11 &mdash; all three exercises. The LP sensitivity one is the one most likely to trip up "concept confusion".</p>
+
+      <h4>7. Geometric programming</h4>
+      <p><strong>You need to:</strong> tell a monomial from a posynomial (positive coefficients only; any real exponents allowed; first minus sign breaks it); convert a GP via $y_i = \log x_i$; spot GP applications (positive variables, products, ratios).</p>
+      <p><strong>Drill with:</strong> Exercise book chapter 9. No dedicated GP practice session beyond L11.</p>
+
+      <h4>8. Semidefinite programming and LMIs</h4>
+      <p><strong>You need to:</strong> recognize an LMI $F(x) = F_0 + \sum x_i F_i \succeq 0$; apply the Schur complement to convert quadratic constraints into LMIs; cast eigenvalue min/max as an SDP.</p>
+      <p><strong>Drill with:</strong> Exercise book chapter 11. Schur complement appears in multiple-choice as "is this convex?".</p>
+
+      <h4>9. Algorithms</h4>
+      <p>The exam asks conceptual questions about algorithms more than numerical ones. Practice 12 question 1 is the canonical example.</p>
+      <p><strong>You need to:</strong> for gradient descent, identify a descent direction ($v^\top \nabla f &lt; 0$), state the rates ($O(1/k)$ convex L-smooth, linear $1 - m/L$ strongly convex), and the descent-lemma step $t \leq 1/L$; for Newton, write $-(\nabla^2 f)^{-1}\nabla f$, affine invariance, quadratic local convergence; for Nesterov, $O(1/k^2)$ at the same per-iteration cost; for barrier, $-\sum\log(-g_i)$, central path, phase 1; for projected gradient, $x_{k+1} = P_C(x_k - t_k\nabla f)$ and projection onto box, ball, simplex, half-space.</p>
+      <p><strong>Drill with:</strong> Practice 12 question 1 (true/false in exam format). Practice 13 for Nesterov and barrier.</p>
+
+      <h4>10. Applications</h4>
+      <p>The exam wraps the core math in an application skin. Undress them:</p>
+      <ul>
+        <li>Markowitz portfolio: QP, or SOCP with a standard-deviation constraint.</li>
+        <li>SVM (soft-margin hinge): QP.</li>
+        <li>Facility location with Euclidean distances: SOCP.</li>
+        <li>Chebyshev approximation: LP via the scalar-$t$ trick.</li>
+        <li>Regression: LS, ridge, or Lasso depending on regularizer.</li>
+        <li>Robust LS with stochastic $A$: take the expected value, get a QP (Practice 8 exercise 2).</li>
+      </ul>
+      <p><strong>Drill with:</strong> Practice 10 ex 4 (portfolio), Practice 9 ex 3&ndash;4 (LP applications), exercise book chapters 13&ndash;16.</p>
+    </div>
+  </details>
+
+  <div class="leverage-box">
+    <h3>Highest-leverage exercises if time is tight</h3>
+    <p class="subtle">If you can only do three things from your folder, do these in order.</p>
+    <ol>
+      <li><strong>Practice 8 exercise 1</strong> &mdash; the four-function reformulation table. You will see something with this shape on the exam.</li>
+      <li><strong>Practice 11 exercise 3</strong> &mdash; LP sensitivity / $p^\star(b)$ as a function of $b$. Pulls duality, KKT, and shadow prices together &mdash; the exact pattern that causes concept-confusion failures.</li>
+      <li><strong>Practice 12 exercise 1</strong> &mdash; four-statement true/false on descent directions. Cleanest example of the exam's actual multiple-choice format.</li>
+    </ol>
   </div>
 
   <div class="removed-section">
     <h3>Exam-day tactics</h3>
-    <p>The marking is +1 / &minus;&frac13; / 0 over roughly 11&ndash;12 multiple-choice questions. A blind guess on 4 options breaks even, so never guess blind &mdash; but if you can eliminate even one option, answering has positive expected value.</p>
+    <p>The marking is +1 / &minus;&frac13; / 0 over roughly 11&ndash;12 multiple-choice questions. A blind random guess on 4 options has EV $(1/4)(+1) + (3/4)(-1/3) = 0$ &mdash; it breaks even, so never guess blind. But eliminate even one option and EV becomes $(1/3)(+1) + (2/3)(-1/3) = +1/9$ per question. Answer those.</p>
+
+    <p style="margin-top:14px;"><strong>What "pass" actually looks like</strong> (assuming linear mapping where 12/12 maps to 30):</p>
+    <table class="scoring-table">
+      <thead><tr><th>Right</th><th>Wrong</th><th>Blank</th><th>Raw</th><th>Normalized</th></tr></thead>
+      <tbody>
+        <tr><td>8</td><td>0</td><td>4</td><td>8.00</td><td>20</td></tr>
+        <tr><td>8</td><td>2</td><td>2</td><td>7.33</td><td>18.3</td></tr>
+        <tr><td>9</td><td>3</td><td>0</td><td>8.00</td><td>20</td></tr>
+        <tr><td>10</td><td>2</td><td>0</td><td>9.33</td><td>23</td></tr>
+      </tbody>
+    </table>
+    <p>Target: 8 correct, &le;2 wrong, rest blank. Clears 18 with margin. <em>Leaving 3&ndash;4 blanks is fine, even smart.</em></p>
+
     <ul>
-      <li>Read all questions first. Mark each E (easy), M (medium), or H (hard). Do all the E's, then the M's, then the H's only where you can eliminate an option.</li>
-      <li>Leaving 3&ndash;4 blanks is fine. Eight correct with two wrong already clears 18.</li>
-      <li>About 4&ndash;5 minutes per question. If you have spent 7 on one, flag it and move on.</li>
-      <li>Do not change answers on instinct at the end &mdash; only change if you find a concrete mistake.</li>
+      <li>Read all questions first. Mark each E (easy), M (medium), or H (hard) on the first read &mdash; takes 4 minutes, saves you from getting stuck.</li>
+      <li>Order of attack: all the E's, then the M's, then the H's only where you can eliminate at least one option. Topics you have no opinion on: leave blank.</li>
+      <li>About 4&ndash;5 minutes per question. If you've spent 7 on one, flag it and move on.</li>
+      <li>If you finish early, do not change answers on instinct. Only change if you find a concrete mistake &mdash; first-instinct corrections usually hurt.</li>
+      <li>Bring: scientific calculator, the cheatsheet (paper notes are allowed), the disambiguation table.</li>
+      <li>The night before: no studying after 8 pm. Sleep matters more than three extra hours of review.</li>
     </ul>
   </div>
+
+  <details class="plan-details">
+    <summary>The diagnostic &mdash; 10 questions, 45 min, no notes</summary>
+    <div class="plan-details-body">
+      <p>Time yourself, no calculator at first. Tag each miss with its topic from the disambiguation table &mdash; that tagging is more useful than the score itself.</p>
+      <ol class="diagnostic-list">
+        <li>Which of these sets is convex? (a) $\{x \in \mathbb{R}^2 : x_1^2 + x_2^2 \leq 1\}$, (b) $\{x : x_1^2 + x_2^2 \geq 1\}$, (c) $\{x : x_1 x_2 \geq 1, x \geq 0\}$, (d) $\{x : x_1^2 + x_2^2 = 1\}$.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> (a) only. (b) is the complement of a disk &mdash; non-convex. (c) is above a hyperbola in the positive orthant &mdash; non-convex (the segment between $(1,1)$ and $(100,0.01)$ exits the set). (d) is a circle, not a disk &mdash; non-convex.</div>
+        </li>
+        <li>Which of these functions is convex on its domain? (a) $f(x)=x^3$ on $\mathbb{R}$, (b) $f(x)=x^3$ on $\mathbb{R}_+$, (c) $f(x)=\log x$ on $\mathbb{R}_+$, (d) $f(x)=\max(x, x^2)$ on $\mathbb{R}$.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> (b) and (d). (a) is concave for $x &lt; 0$. (c) is concave. (d) is the max of two convex functions, hence convex.</div>
+        </li>
+        <li>Classify in the tightest class (LP / QP / QCQP / SOCP / SDP / GP / non-convex): $\min x_1+x_2$ s.t. $\lVert(x_1,x_2)\rVert_2 \leq x_3$, $x_3 \leq 5$.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> SOCP. The constraint is exactly norm $\leq$ affine. Not an LP (norm is nonlinear), not a QP (constraints aren't quadratic in standard QP form).</div>
+        </li>
+        <li>Classify: $\min x_1^2 + 2x_1 x_2 + 3x_2^2$ s.t. $x_1+x_2=1$. Convex?
+          <div class="diagnostic-answer"><span class="label">Answer.</span> QP. $Q = \begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}$; eigenvalues $2 \pm \sqrt{2}$ are both positive, so $Q \succ 0$ and the problem is convex.</div>
+        </li>
+        <li>Write the KKT conditions for $\min \tfrac12\lVert x\rVert^2$ s.t. $Ax = b$. Solve them.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> $L = \tfrac12\lVert x\rVert^2 + \lambda^\top(Ax-b)$. Stationarity: $x + A^\top\lambda = 0$, so $x = -A^\top\lambda$. Feasibility: $Ax = b \Rightarrow -AA^\top \lambda = b \Rightarrow \lambda = -(AA^\top)^{-1}b$. So $x^\star = A^\top(AA^\top)^{-1}b$ &mdash; the minimum-norm solution.</div>
+        </li>
+        <li>Compute $\nabla f$ and $\nabla^2 f$ for $f(x) = \tfrac12 x^\top Q x - b^\top x + c$ with $Q \succeq 0$.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> $\nabla f = Qx - b$. $\nabla^2 f = Q$.</div>
+        </li>
+        <li>Let $A = \begin{bmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{bmatrix}$. Find eigenvalues and the SVD.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> Eigenvalues 4 and 2 (trace 6, det 8, $\lambda^2-6\lambda+8=0$). Eigenvectors $(1,1)/\sqrt2$ for $\lambda=4$, $(1,-1)/\sqrt2$ for $\lambda=2$. For symmetric PSD: $U = V = \tfrac{1}{\sqrt2}\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}$, $\Sigma = \mathrm{diag}(4,2)$.</div>
+        </li>
+        <li>Write the Lagrange dual of $\min c^\top x$ s.t. $Ax \leq b$.
+          <div class="diagnostic-answer"><span class="label">Answer.</span> Standard form: $\max -b^\top\lambda$ s.t. $A^\top\lambda + c = 0$, $\lambda \geq 0$. Sign conventions vary between textbooks &mdash; what matters is that you can derive it.</div>
+        </li>
+        <li>Is $f(x,y) = 2x + 3y^2 + xy^{-1}$ (with $x, y &gt; 0$) a posynomial? Why?
+          <div class="diagnostic-answer"><span class="label">Answer.</span> Yes. A posynomial is a sum of monomials with positive coefficients over positive variables. Every term here qualifies, including $xy^{-1}$ (negative exponents are fine; only negative coefficients break the structure). If the first term were $-2x$ it wouldn't be a posynomial.</div>
+        </li>
+        <li>You're running gradient descent on a strongly convex $L$-smooth function with parameter $m$. Why pick $t = 1/L$ rather than $t = 1/m$?
+          <div class="diagnostic-answer"><span class="label">Answer.</span> $t = 1/L$ is what the descent lemma needs to guarantee $f(x_{k+1}) \leq f(x_k) - (1/2L)\lVert\nabla f\rVert^2$. With $t = 1/m$ (larger than $1/L$) the step is too big and you can overshoot. The condition number $\kappa = L/m$ governs the rate $(1 - m/L)^k$.</div>
+        </li>
+      </ol>
+
+      <h4>Scoring</h4>
+      <ul>
+        <li><strong>8&ndash;10:</strong> You know more than you think. Focus on disambiguation and timed practice.</li>
+        <li><strong>5&ndash;7:</strong> Standard starting point. Follow the schedule as written.</li>
+        <li><strong>0&ndash;4:</strong> More serious gaps. Spend Week 1 on L6&ndash;L7 (convexity) and the cheatsheet, then start the schedule from Week 2 with a slower pace.</li>
+      </ul>
+      <p>Whatever your score, tag every miss with the topic from the disambiguation table. That tagging is more useful than the score.</p>
+    </div>
+  </details>
 </section>
 
 <!-- ============== READ VIEW ============== -->
