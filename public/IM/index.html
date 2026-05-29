@@ -316,9 +316,11 @@
 </main>
 <script>
 // ---------- nav ----------
+const PLAN_URL='/IM/plan.html';
 const tabs=[["oversikt","Oversikt"],["naering","Næring"],["vekt","Vekt & mat"],["tid","Tidsestimat"],["okter","Økt-tips"],["transition","Veksling"],["racedag","Racedag"]];
 const nav=document.getElementById('nav');
 tabs.forEach(([id,label],i)=>{const b=document.createElement('button');b.textContent=label;b.onclick=()=>show(id,b);if(i===0)b.classList.add('active');nav.appendChild(b);});
+const planBtn=document.createElement('button');planBtn.textContent='📅 Treningsplan';planBtn.style.borderColor='var(--accent2)';planBtn.onclick=()=>location.href=PLAN_URL;nav.appendChild(planBtn);
 function show(id,btn){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.scrollTo(0,0);}
 
 // ---------- countdown ----------
