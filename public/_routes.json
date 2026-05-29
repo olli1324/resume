@@ -48,6 +48,14 @@
       "dest": "/etransition/index.html"
     },
     {
+      "src": "/IM/*",
+      "dest": "/IM/$1"
+    },
+    {
+      "src": "/IM",
+      "dest": "/IM/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }
