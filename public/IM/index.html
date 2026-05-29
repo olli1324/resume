@@ -91,6 +91,16 @@
     <div class="row"><span>🏃 Løp</span><span class="v">4 runder flatt langs Promenaden. Eksponert, 30–34°C — varmen avgjør</span></div>
   </div>
   <div class="card">
+    <h3 style="margin-top:0">🚵 Sykkelprofil — slik pacer du den</h3>
+    <ul>
+      <li><b>0–20 km:</b> flatt/rullende ut av Nice — hold ROLIG, 5–10W under mål. Ikke la adrenalinet ta deg.</li>
+      <li><b>~20–80 km:</b> den lange sammenhengende stigningen opp i fjellene — mesteparten av de 2400 hm. Maks Z3 (230–250W), jevn sittende effekt. <b>Her ødelegger folk racet.</b></li>
+      <li><b>Midtparti:</b> rullende med et par ekstra kneik — hold NP, spis/drikk jevnt.</li>
+      <li><b>~130–180 km:</b> lang teknisk nedkjøring + flat retur. Slipp effekt i utforkjøringene, fokuser linjevalg, fyll på næring før løpet.</li>
+    </ul>
+    <p class="note">Ruta varierer noe år til år — bekreft km-merkene mot offisielt 2026-kart. Prinsippet er likt: spar deg i den lange stigningen.</p>
+  </div>
+  <div class="card">
     <h3 style="margin-top:0">5-ukers plan i ett blikk</h3>
     <div class="weekbar">
       <div><span class="h">11t</span>Uke 1<br>nå</div>
@@ -187,6 +197,14 @@
       <li><b>IM-fart:</b> hold Z2/lav Z3. Hvis det føles "for lett" på langturen — bra, det er riktig.</li>
       <li><b>Cadence:</b> sikt 175–185 steg/min for å spare leddene over maraton.</li>
     </ul></div>
+  <div class="card"><h3 style="margin-top:0">👟 Konkurransesko (Alphafly 3)</h3>
+    <ul>
+      <li><b>Test på trøtte ben + varme</b> — aldri først på racedag.</li>
+      <li>Første test: moderat løp (f.eks. terskeløkt 3. juni) — sjekk hælfeste/tær/hotspots med race-sokkene.</li>
+      <li>Generalprøve: brick-løpene <b>6.</b> og <b>13. juni</b> av sykkelen, i IM-fart.</li>
+      <li>Så hvil dem til racet (ferskt skum) — kun én kort shakeout 24. juni.</li>
+      <li>Gnager de over 25–30 min → race i en pålitelig sko i stedet.</li>
+    </ul></div>
   <div class="card"><h3 style="margin-top:0">🔥 Varme</h3>
     <ul>
       <li>50 min lett trainer uten vifte, overkledd, ETTER nøkkeløkten. 3×/uke.</li>
@@ -243,6 +261,23 @@
     <div class="row"><span>Sykkel</span><span class="v">90–100 g karbo/t, 800–1000 ml, 700–1000 mg Na</span></div>
     <div class="row"><span>Løp</span><span class="v">60–90 g karbo/t, cola+gel annenhver stasjon</span></div>
     <div class="row"><span>Koffein</span><span class="v">Spar til siste 2–3t</span></div>
+  </div>
+  <div class="card"><h3 style="margin-top:0">🥤 Konkret racedag-fueling (sub-11)</h3>
+    <p style="font-size:14px">Sykkel ~5:45 @ 90–100 g/t ≈ <b>~545 g karbo</b>:</p>
+    <ul>
+      <li>2 flasker høy-karbo sportsdrikke (~80 g hver) = 160 g</li>
+      <li>~9–10 gels (~25 g) = 230–250 g</li>
+      <li>2–3 barer/banan (~40 g) = ~120 g</li>
+      <li>Natrium: 1 saltkapsel (~300–500 mg) per time</li>
+    </ul>
+    <p style="font-size:14px">Løp ~3:50 @ ~70 g/t ≈ <b>~270 g</b>: gel + cola annenhver aid-stasjon, vann/elektrolytt + salt jevnlig.</p>
+    <div class="note">Test NØYAKTIG dette på langturene 6. og 13. juni — 90–100 g/t krever trent mage.</div>
+  </div>
+  <div class="card"><h3 style="margin-top:0">⏱️ Cutoff-tider</h3>
+    <div class="row"><span>Svøm</span><span class="v">2:20 etter start</span></div>
+    <div class="row"><span>Sykkel (kumulativt)</span><span class="v">~10:30 etter start</span></div>
+    <div class="row"><span>Total / mål</span><span class="v">~17:00 (midnatt)</span></div>
+    <p class="note">For deg (sub-11) irrelevante, men greit å vite. Eksakte tider + mellomcutoffs står i arrangørens athlete guide for 2026.</p>
   </div>
   <div class="card"><h3 style="margin-top:0">✅ Pakkeliste (huk av)</h3>
     <ul class="check" id="packlist"></ul>
@@ -373,7 +408,7 @@ function calcNutrition(){
 function preset(p){
   if(p==='safe'){t_swim.value='2:05';t_t1.value=8;t_bike.value=27;t_t2.value=6;t_run.value='6:00'}
   if(p==='real'){t_swim.value='1:55';t_t1.value=6;t_bike.value=29;t_t2.value=4;t_run.value='5:30'}
-  if(p==='stretch'){t_swim.value='1:45';t_t1.value=5;t_bike.value=31.5;t_t2.value=3;t_run.value='5:05'}
+  if(p==='stretch'){t_swim.value='1:50';t_t1.value=5;t_bike.value=31;t_t2.value=3;t_run.value='5:25'}
   calcTime();
 }
 function calcTime(){
