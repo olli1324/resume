@@ -445,7 +445,7 @@ function calcWeight(){
 }
 
 // ---------- packlist ----------
-const packItems=["Våtdrakt","Svømmebriller (+ reserve)","Badehette (fra arrangør)","Tri-drakt","Sykkel (sjekket gir/bremser/dekk)","Hjelm","Sykkelsko","Sykkelflasker (forhåndsfylt)","Gels/barer/salt — hele racet","Garmin/klokke (ladet)","Løpesko + elastiske lisser","Caps/visir + solbriller","Startnummer-belte","Solkrem","Body Glide / anti-gnag","Tørt håndkle","Pumpe + reservedekk/CO2","Athlete guide / morgenrutine","Frokost + termos kaffe","Plaster/teip, ibux"];
+const packItems=["Våtdrakt","Svømmebriller (+ reserve)","Badehette (fra arrangør)","Tri-drakt","Sykkel (sjekket gir/bremser/dekk)","Hjelm","Sykkelsko","4× sykkelflasker (forhåndsfylt)","Gels/barer/salt — hele racet","Garmin/klokke (ladet)","Løpesko + elastiske lisser","Caps/visir + solbriller","Startnummer-belte","Solkrem ×2 (vanntett, faktor 50)","Body Glide / anti-gnag","Tørt håndkle","Pumpe + 2× CO2 + adapter + reservedekk","Athlete guide / morgenrutine","Frokost + termos kaffe","Plaster/teip, ibux","Swimskin (hvis vannet er for varmt for våtdrakt)","Sitronvann (drikkeblanding)","PFH gels — hele racet","PFH chews","Garmin sykkelcomputer (ladet)","Pedallader (power-pedaler)","Verktøy + verktøyboks","Softflasks: 1×500 ml + 2×250 ml","Rødbetpulver (start dosering dagene før)","Race-sokker"];
 const pl=document.getElementById('packlist');
 const saved=JSON.parse(localStorage.getItem('imn_pack')||'{}');
 packItems.forEach((it,i)=>{const li=document.createElement('li');const cb=`p${i}`;
