@@ -280,7 +280,7 @@
     <p class="note">For deg (sub-11) irrelevante, men greit å vite. Eksakte tider + mellomcutoffs står i arrangørens athlete guide for 2026.</p>
   </div>
   <div class="card"><h3 style="margin-top:0">✅ Pakkeliste (huk av)</h3>
-    <ul class="check" id="packlist"></ul>
+    <div id="packlist"></div>
   </div>
 </section>
 
@@ -446,12 +446,28 @@ function calcWeight(){
 
 // ---------- packlist ----------
 const packItems=["Våtdrakt","Svømmebriller (+ reserve)","Badehette (fra arrangør)","Tri-drakt","Sykkel (sjekket gir/bremser/dekk)","Hjelm","Sykkelsko","4× sykkelflasker (forhåndsfylt)","Gels/barer/salt — hele racet","Garmin/klokke (ladet)","Løpesko + elastiske lisser","Caps/visir + solbriller","Startnummer-belte","Solkrem ×2 (vanntett, faktor 50)","Body Glide / anti-gnag","Tørt håndkle","Pumpe + 2× CO2 + adapter + reservedekk","Athlete guide / morgenrutine","Frokost + termos kaffe","Plaster/teip, ibux","Swimskin (hvis vannet er for varmt for våtdrakt)","Sitronvann (drikkeblanding)","PFH gels — hele racet","PFH chews","Garmin sykkelcomputer (ladet)","Pedallader (power-pedaler)","Verktøy + verktøyboks","Softflasks: 1×500 ml + 2×250 ml","Rødbetpulver (start dosering dagene før)","Race-sokker","Vaselin","Imodium","Paracet","Melatonin","Ørepropper","AeroCalf sleeves"];
+const packGroups=[
+  {t:"🏊 Svøm / start",idx:[0,20,1,2,3,30]},
+  {t:"🚴 Sykkel (T1-bag)",idx:[4,5,6,7,24,25,16,26]},
+  {t:"🏃 Løp (T2-bag)",idx:[10,29,12,11,35]},
+  {t:"🍫 Ernæring & væske",idx:[8,22,23,27,21,28]},
+  {t:"🧴 Sol & anti-gnag",idx:[13,14]},
+  {t:"🌅 Morgen & logistikk",idx:[17,18,9,15]},
+  {t:"💊 Reise-/toalettmappe",idx:[19,32,31,33,34]},
+];
 const pl=document.getElementById('packlist');
 const saved=JSON.parse(localStorage.getItem('imn_pack')||'{}');
-packItems.forEach((it,i)=>{const li=document.createElement('li');const cb=`p${i}`;
+function mkPackItem(i){const it=packItems[i];const cb=`p${i}`;const li=document.createElement('li');
   li.innerHTML=`<input type="checkbox" id="${cb}" ${saved[cb]?'checked':''}><label for="${cb}">${it}</label>`;
-  pl.appendChild(li);
   li.querySelector('input').onchange=e=>{saved[cb]=e.target.checked;localStorage.setItem('imn_pack',JSON.stringify(saved));};
+  return li;}
+packGroups.forEach(g=>{
+  const h=document.createElement('h4');h.textContent=g.t;
+  h.style.cssText='margin:14px 0 4px;font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px';
+  pl.appendChild(h);
+  const ul=document.createElement('ul');ul.className='check';ul.style.margin='0';
+  g.idx.forEach(i=>ul.appendChild(mkPackItem(i)));
+  pl.appendChild(ul);
 });
 
 // ---------- restore + init ----------
