@@ -284,6 +284,32 @@
   </div>
 </section>
 
+<!-- ===== TRENINGSLOGG ===== -->
+<section id="logg">
+  <h2>Treningslogg</h2>
+  <div class="card">
+    <h3 style="margin-top:0">➕ Logg økt</h3>
+    <div class="field"><label class="muted">Dato</label><input type="date" id="lg_date"></div>
+    <div class="field"><label class="muted">Gren</label>
+      <select id="lg_sport">
+        <option value="swim">🏊 Svøm</option>
+        <option value="bike">🚴 Sykkel</option>
+        <option value="run">🏃 Løp</option>
+        <option value="heat">🔥 Varme</option>
+        <option value="strength">💪 Styrke</option>
+        <option value="brick">🔁 Brick</option>
+      </select></div>
+    <div class="field"><label class="muted">Varighet (min)</label><input type="number" id="lg_dur" placeholder="60"></div>
+    <div class="field"><label class="muted">Distanse (km, valgfritt)</label><input type="number" step="0.1" id="lg_dist" placeholder="10"></div>
+    <div class="field"><label class="muted">Notat (valgfritt)</label><input type="text" id="lg_note" placeholder="følelse, HR, kjernetemp, beinet…"></div>
+    <button class="kbtn" onclick="addLog()">Legg til økt</button>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">📒 Økter</h3>
+    <div id="logList"></div>
+  </div>
+</section>
+
 <!-- ===== VEKT & MAT ===== -->
 <section id="vekt">
   <h2>Vekt &amp; race-weight</h2>
@@ -352,7 +378,7 @@
 <script>
 // ---------- nav ----------
 const PLAN_URL='/IM/plan.html';
-const tabs=[["oversikt","Oversikt"],["naering","Næring"],["vekt","Vekt & mat"],["tid","Tidsestimat"],["okter","Økt-tips"],["transition","Veksling"],["racedag","Racedag"]];
+const tabs=[["oversikt","Oversikt"],["naering","Næring"],["vekt","Vekt & mat"],["tid","Tidsestimat"],["okter","Økt-tips"],["logg","Treningslogg"],["transition","Veksling"],["racedag","Racedag"]];
 const nav=document.getElementById('nav');
 tabs.forEach(([id,label],i)=>{const b=document.createElement('button');b.textContent=label;b.onclick=()=>show(id,b);if(i===0)b.classList.add('active');nav.appendChild(b);});
 const planBtn=document.createElement('button');planBtn.textContent='📅 Treningsplan';planBtn.style.borderColor='var(--accent2)';planBtn.onclick=()=>location.href=PLAN_URL;nav.appendChild(planBtn);
@@ -469,6 +495,49 @@ packGroups.forEach(g=>{
   g.idx.forEach(i=>ul.appendChild(mkPackItem(i)));
   pl.appendChild(ul);
 });
+
+// ---------- treningslogg ----------
+const SEED_LOG=[
+  {id:'s1',date:'2026-05-31',sport:'swim',dur:40,dist:1.9,note:'Brick del 1 — aerob/teknikk'},
+  {id:'s2',date:'2026-05-31',sport:'bike',dur:195,dist:90.2,note:'Brick del 2 — øvre Z2, IF 0,75'},
+  {id:'s3',date:'2026-05-31',sport:'run',dur:102,dist:21.2,note:'Brick del 3 — 33°C, HR 154 (lav Z2), <5% decoupling. Sterkt.'},
+  {id:'s4',date:'2026-06-02',sport:'heat',dur:36,dist:null,note:'Kjernetemp 39,8°C — for høyt, kuttet kort. For mye klær.'},
+  {id:'s5',date:'2026-06-03',sport:'swim',dur:36,dist:1.7,note:''},
+  {id:'s6',date:'2026-06-03',sport:'run',dur:57,dist:10.85,note:'Beinet føltes bra under + bedre etter'},
+  {id:'s7',date:'2026-06-04',sport:'bike',dur:108,dist:null,note:'Z4-intervaller 6-7-8-7-6 min @ 290W (~98% FTP)'},
+  {id:'s8',date:'2026-06-04',sport:'heat',dur:50,dist:null,note:'Kjernetemp 38,7-39,0°C siste 20 min — perfekt sone'},
+  {id:'s9',date:'2026-06-05',sport:'run',dur:35,dist:null,note:'Rolig gjeninnføring etter beinstress — smertefri-regelen'},
+  {id:'s10',date:'2026-06-05',sport:'swim',dur:null,dist:null,note:'Lett teknikk/aerob'}
+];
+const SPORT_META={swim:['🏊 Svøm','tag-swim'],bike:['🚴 Sykkel','tag-bike'],run:['🏃 Løp','tag-run'],heat:['🔥 Varme','tag-heat'],strength:['💪 Styrke','tag-bike'],brick:['🔁 Brick','tag-run']};
+function lgUser(){return JSON.parse(localStorage.getItem('imn_log')||'[]');}
+function lgHidden(){return JSON.parse(localStorage.getItem('imn_log_hidden')||'[]');}
+function lgAll(){const h=lgHidden();return [...SEED_LOG,...lgUser()].filter(e=>!h.includes(e.id)).sort((a,b)=>b.date.localeCompare(a.date));}
+function renderLog(){
+  const el=document.getElementById('logList');if(!el)return;const list=lgAll();
+  if(!list.length){el.innerHTML='<p class="muted">Ingen økter logget ennå.</p>';return;}
+  el.innerHTML='<table><thead><tr><th>Dato</th><th>Gren</th><th>Tid</th><th>Dist</th><th>Notat</th><th></th></tr></thead><tbody>'+
+    list.map(e=>{const m=SPORT_META[e.sport]||['?','muted'];
+      return `<tr><td>${e.date.slice(5)}</td><td><span class="pill ${m[1]}">${m[0]}</span></td><td>${e.dur?e.dur+' min':'–'}</td><td>${e.dist?e.dist+' km':'–'}</td><td>${e.note||''}</td><td><button onclick="delLog('${e.id}')" title="Slett" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px">✕</button></td></tr>`;}).join('')+
+    '</tbody></table>';
+}
+function addLog(){
+  const date=document.getElementById('lg_date').value||new Date().toISOString().slice(0,10);
+  const sport=document.getElementById('lg_sport').value;
+  const dur=+document.getElementById('lg_dur').value||null;
+  const dist=+document.getElementById('lg_dist').value||null;
+  const note=document.getElementById('lg_note').value.trim();
+  const u=lgUser();u.push({id:'u'+Date.now(),date,sport,dur,dist,note});
+  localStorage.setItem('imn_log',JSON.stringify(u));
+  document.getElementById('lg_dur').value='';document.getElementById('lg_dist').value='';document.getElementById('lg_note').value='';
+  renderLog();
+}
+function delLog(id){
+  if(id[0]==='u'){localStorage.setItem('imn_log',JSON.stringify(lgUser().filter(e=>e.id!==id)));}
+  else{const h=lgHidden();if(!h.includes(id)){h.push(id);localStorage.setItem('imn_log_hidden',JSON.stringify(h));}}
+  renderLog();
+}
+(function(){const d=document.getElementById('lg_date');if(d)d.value=new Date().toISOString().slice(0,10);renderLog();})();
 
 // ---------- restore + init ----------
 (function(){const n=JSON.parse(localStorage.getItem('imn_nut')||'null');if(n){n_sport.value=n.s;n_dur.value=n.d;n_int.value=n.i;n_temp.value=n.t}
