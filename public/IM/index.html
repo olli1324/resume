@@ -284,6 +284,15 @@
   </div>
 </section>
 
+<!-- ===== SESONG 2026 ===== -->
+<section id="sesong">
+  <h2>Sesong 2026</h2>
+  <div class="card" style="margin-bottom:12px">
+    <p class="note" style="margin:0">Konkurransene dine med distanser, estimert tid og prioritet. <b>A</b> = hovedmål, <b>B</b> = train-through / skarphet. Estimater er omtrentlige; distanser merket <b>*</b> er antatt — bekreft, så finjusterer jeg tidene.</p>
+  </div>
+  <div id="seasonList"></div>
+</section>
+
 <!-- ===== TRENINGSLOGG ===== -->
 <section id="logg">
   <h2>Treningslogg</h2>
@@ -378,7 +387,7 @@
 <script>
 // ---------- nav ----------
 const PLAN_URL='/IM/plan.html';
-const tabs=[["oversikt","Oversikt"],["naering","Næring"],["vekt","Vekt & mat"],["tid","Tidsestimat"],["okter","Økt-tips"],["logg","Treningslogg"],["transition","Veksling"],["racedag","Racedag"]];
+const tabs=[["oversikt","Oversikt"],["sesong","Sesong 2026"],["naering","Næring"],["vekt","Vekt & mat"],["tid","Tidsestimat"],["okter","Økt-tips"],["logg","Treningslogg"],["transition","Veksling"],["racedag","Racedag"]];
 const nav=document.getElementById('nav');
 tabs.forEach(([id,label],i)=>{const b=document.createElement('button');b.textContent=label;b.onclick=()=>show(id,b);if(i===0)b.classList.add('active');nav.appendChild(b);});
 const planBtn=document.createElement('button');planBtn.textContent='📅 Treningsplan';planBtn.style.borderColor='var(--accent2)';planBtn.onclick=()=>location.href=PLAN_URL;nav.appendChild(planBtn);
@@ -495,6 +504,39 @@ packGroups.forEach(g=>{
   g.idx.forEach(i=>ul.appendChild(mkPackItem(i)));
   pl.appendChild(ul);
 });
+
+// ---------- sesong 2026 ----------
+const SEASON=[
+  {date:'2026-06-28',name:'IRONMAN Nice',prio:'A',type:'Full Ironman',legs:'🏊 3,8 km · 🚴 180 km (2400 hm) · 🏃 42,2 km',est:'~11:00',goal:'sub-11',note:'Hovedmål. Varm, kupert sykkel — pace stigningen tålmodig.'},
+  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk *',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through, ikke full taper.'},
+  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Olympisk *',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through.'},
+  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint *',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5 km',est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
+  {date:'2026-09-06',name:'Trondheim halvmaraton',prio:'A',type:'Halvmaraton',legs:'🏃 21,1 km',est:'1:30',goal:'1:30 (4:16/km)',note:'Høstens A-løp. 1:30 er innen rekkevidde med riktig blokk.'},
+  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Supersprint *',legs:'🏊 ~0,4 km · 🚴 ~10 km · 🏃 ~2,5 km',est:'~35 min',note:'B — kort/gøy, rett etter HM.'}
+];
+function renderSeason(){
+  const el=document.getElementById('seasonList');if(!el)return;
+  const today=new Date();today.setHours(0,0,0,0);
+  el.innerHTML=SEASON.map(r=>{
+    const d=new Date(r.date+'T00:00:00');
+    const days=Math.round((d-today)/86400000);
+    const isA=r.prio==='A';
+    const when=days<0?'fullført':(days===0?'I DAG':`om ${days} dager`);
+    const dd=d.toLocaleDateString('no-NO',{day:'numeric',month:'short',year:'numeric'});
+    const goalTxt=(r.goal&&r.goal!==r.est)?` <span class="muted">(mål ${r.goal})</span>`:'';
+    return `<div class="card" style="border-left:4px solid ${isA?'var(--accent2)':'var(--border)'}">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+        <h3 style="margin:0">${r.name} <span class="pill" style="background:${isA?'rgba(245,158,11,.18)':'rgba(120,130,150,.18)'};color:${isA?'#fbbf24':'#9aa4b2'}">${r.prio}</span></h3>
+        <span class="muted" style="font-size:13px">${dd} · ${when}</span>
+      </div>
+      <div class="row"><span>Type</span><span class="v">${r.type}</span></div>
+      <div class="row"><span>Distanse</span><span class="v">${r.legs}</span></div>
+      <div class="row"><span>Estimert tid</span><span class="v" style="color:var(--accent2)">${r.est}${goalTxt}</span></div>
+      ${r.note?`<div class="note">${r.note}</div>`:''}
+    </div>`;
+  }).join('');
+}
+renderSeason();
 
 // ---------- treningslogg ----------
 const SEED_LOG=[
