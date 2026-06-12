@@ -1,3 +1,4 @@
+◐ Rendering training plan...
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,10 +73,10 @@ ${a.join(`
     "event": "Ironman Nice",
     "eventDate": "2026-06-28",
     "planStartDate": "2026-05-25",
-    "planEndDate": "2026-06-28",
+    "planEndDate": "2026-09-27",
     "createdAt": "2026-05-29T00:00:00Z",
-    "updatedAt": "2026-05-29T00:00:00Z",
-    "totalWeeks": 5,
+    "updatedAt": "2026-06-12T00:00:00Z",
+    "totalWeeks": 18,
     "generatedBy": "Claude Coach"
   },
   "preferences": {
@@ -86,23 +87,48 @@ ${a.join(`
   },
   "assessment": {
     "foundation": {
-      "raceHistory": ["Stor sykkelbase 2026: 254 km/9,4t-tur (mars), 201 km (april), sykkelleir Italia", "Lange langturer løp: 35 km, 32 km, 30 km (april-mai)", "Lengste sammenhengende svøm 4,05 km (mars)"],
+      "raceHistory": [
+        "Stor sykkelbase 2026: 254 km/9,4t-tur (mars), 201 km (april), sykkelleir Italia",
+        "Lange langturer løp: 35 km, 32 km, 30 km (april-mai)",
+        "Lengste sammenhengende svøm 4,05 km (mars)"
+      ],
       "peakTrainingLoad": 18,
       "foundationLevel": "advanced",
       "yearsInSport": 3
     },
     "currentForm": {
-      "weeklyVolume": { "total": 12, "swim": 1.5, "bike": 6, "run": 5 },
-      "longestSessions": { "swim": 4050, "bike": 254, "run": 35 },
+      "weeklyVolume": {
+        "total": 12,
+        "swim": 1.5,
+        "bike": 6,
+        "run": 5
+      },
+      "longestSessions": {
+        "swim": 4050,
+        "bike": 254,
+        "run": 35
+      },
       "consistency": 20
     },
     "strengths": [
-      { "sport": "bike", "evidence": "200km+ langturer og leiruker 20t+; svært høy aerob durabilitet" },
-      { "sport": "run", "evidence": "Konsistente 30-35 km langturer, terskelarbeid" }
+      {
+        "sport": "bike",
+        "evidence": "200km+ langturer og leiruker 20t+; svært høy aerob durabilitet"
+      },
+      {
+        "sport": "run",
+        "evidence": "Konsistente 30-35 km langturer, terskelarbeid"
+      }
     ],
     "limiters": [
-      { "sport": "swim", "evidence": "Falt fra 3x/uke (jan/apr) til 3 økter i mai; usikker på utholdenhet/rytme" },
-      { "sport": "heat", "evidence": "Ingen varmetrening gjort; Nice-løpet kan bli 30-34°C på eksponert asfalt" }
+      {
+        "sport": "swim",
+        "evidence": "Falt fra 3x/uke (jan/apr) til 3 økter i mai; usikker på utholdenhet/rytme"
+      },
+      {
+        "sport": "heat",
+        "evidence": "Ingen varmetrening gjort; Nice-løpet kan bli 30-34°C på eksponert asfalt"
+      }
     ],
     "constraints": [
       "Eksamen 17., 19. og 25. juni (leser nå) - hverdager presset 15.-25. juni",
@@ -117,11 +143,46 @@ ${a.join(`
       "hr": {
         "lthr": 179,
         "zones": [
-          { "zone": 1, "name": "Recovery", "percentLow": 0, "percentHigh": 84, "hrLow": 116, "hrHigh": 151 },
-          { "zone": 2, "name": "Aerobic", "percentLow": 85, "percentHigh": 89, "hrLow": 152, "hrHigh": 160 },
-          { "zone": 3, "name": "Tempo", "percentLow": 90, "percentHigh": 94, "hrLow": 161, "hrHigh": 169 },
-          { "zone": 4, "name": "Threshold", "percentLow": 95, "percentHigh": 99, "hrLow": 170, "hrHigh": 178 },
-          { "zone": 5, "name": "VO2", "percentLow": 100, "percentHigh": 110, "hrLow": 179, "hrHigh": 200 }
+          {
+            "zone": 1,
+            "name": "Recovery",
+            "percentLow": 0,
+            "percentHigh": 84,
+            "hrLow": 116,
+            "hrHigh": 151
+          },
+          {
+            "zone": 2,
+            "name": "Aerobic",
+            "percentLow": 85,
+            "percentHigh": 89,
+            "hrLow": 152,
+            "hrHigh": 160
+          },
+          {
+            "zone": 3,
+            "name": "Tempo",
+            "percentLow": 90,
+            "percentHigh": 94,
+            "hrLow": 161,
+            "hrHigh": 169
+          },
+          {
+            "zone": 4,
+            "name": "Threshold",
+            "percentLow": 95,
+            "percentHigh": 99,
+            "hrLow": 170,
+            "hrHigh": 178
+          },
+          {
+            "zone": 5,
+            "name": "VO2",
+            "percentLow": 100,
+            "percentHigh": 110,
+            "hrLow": 179,
+            "hrHigh": 200
+          }
         ]
       },
       "notes": "IM-maratonfart (flatt): ca 5:10-5:30/km. Legg til 15-30 s/km i varme >30°C. Hold puls <Z3 hele veien."
@@ -130,11 +191,46 @@ ${a.join(`
       "power": {
         "ftp": 295,
         "zones": [
-          { "zone": 1, "name": "Active Recovery", "percentLow": 0, "percentHigh": 55, "wattsLow": 0, "wattsHigh": 162 },
-          { "zone": 2, "name": "Endurance", "percentLow": 56, "percentHigh": 75, "wattsLow": 163, "wattsHigh": 221 },
-          { "zone": 3, "name": "Tempo", "percentLow": 76, "percentHigh": 90, "wattsLow": 222, "wattsHigh": 266 },
-          { "zone": 4, "name": "Threshold", "percentLow": 91, "percentHigh": 105, "wattsLow": 267, "wattsHigh": 310 },
-          { "zone": 5, "name": "VO2", "percentLow": 106, "percentHigh": 150, "wattsLow": 311, "wattsHigh": 450 }
+          {
+            "zone": 1,
+            "name": "Active Recovery",
+            "percentLow": 0,
+            "percentHigh": 55,
+            "wattsLow": 0,
+            "wattsHigh": 162
+          },
+          {
+            "zone": 2,
+            "name": "Endurance",
+            "percentLow": 56,
+            "percentHigh": 75,
+            "wattsLow": 163,
+            "wattsHigh": 221
+          },
+          {
+            "zone": 3,
+            "name": "Tempo",
+            "percentLow": 76,
+            "percentHigh": 90,
+            "wattsLow": 222,
+            "wattsHigh": 266
+          },
+          {
+            "zone": 4,
+            "name": "Threshold",
+            "percentLow": 91,
+            "percentHigh": 105,
+            "wattsLow": 267,
+            "wattsHigh": 310
+          },
+          {
+            "zone": 5,
+            "name": "VO2",
+            "percentLow": 106,
+            "percentHigh": 150,
+            "wattsLow": 311,
+            "wattsHigh": 450
+          }
         ]
       },
       "notes": "IM-effekt Nice: NP 195-205W (IF 0.66-0.70). På den lange stigningen: maks Z3 (~230-250W), IKKE Z4. Spar beina til retur + løp."
@@ -143,9 +239,24 @@ ${a.join(`
       "css": "1:40/100m",
       "cssSeconds": 100,
       "zones": [
-        { "zone": 1, "name": "Recovery", "paceOffset": 15, "pace": "1:55/100m" },
-        { "zone": 2, "name": "Aerobic", "paceOffset": 8, "pace": "1:48/100m" },
-        { "zone": 3, "name": "Tempo", "paceOffset": 3, "pace": "1:43/100m" }
+        {
+          "zone": 1,
+          "name": "Recovery",
+          "paceOffset": 15,
+          "pace": "1:55/100m"
+        },
+        {
+          "zone": 2,
+          "name": "Aerobic",
+          "paceOffset": 8,
+          "pace": "1:48/100m"
+        },
+        {
+          "zone": 3,
+          "name": "Tempo",
+          "paceOffset": 3,
+          "pace": "1:43/100m"
+        }
       ],
       "notes": "IM-svømmefart åpent vann: ~1:50-2:00/100m → 3,8 km på ~1:10-1:15. CSS estimert - valider gjerne."
     }
@@ -156,27 +267,116 @@ ${a.join(`
       "startWeek": 1,
       "endWeek": 1,
       "focus": "Fullføre denne uka og sette opp toppuka med en solid (men submaksimal) helg",
-      "weeklyHoursRange": { "low": 10, "high": 12 },
-      "keyWorkouts": ["Lør: 3,5-4t kupert ride + brick", "Søn: 20 km løp"],
-      "physiologicalGoals": ["Holde volum", "Komme uthvilt nok inn i toppuka"]
+      "weeklyHoursRange": {
+        "low": 10,
+        "high": 12
+      },
+      "keyWorkouts": [
+        "Lør: 3,5-4t kupert ride + brick",
+        "Søn: 20 km løp"
+      ],
+      "physiologicalGoals": [
+        "Holde volum",
+        "Komme uthvilt nok inn i toppuka"
+      ]
     },
     {
       "name": "Peak",
       "startWeek": 2,
       "endWeek": 3,
       "focus": "Maks aerob mengde + race-spesifikk klatring/brick + bygge svøm tilbake; start varmeakklimatisering",
-      "weeklyHoursRange": { "low": 15, "high": 18 },
-      "keyWorkouts": ["Lang klatre-langtur sykkel + brick", "Lang løp 28-32 km", "Lang sammenhengende svøm 3,5 km", "3x varmeøkt/uke"],
-      "physiologicalGoals": ["Topp aerob kapasitet", "Race-spesifikk durabilitet", "Gjenoppbygge svømrytme", "Starte varmeakklimatisering"]
+      "weeklyHoursRange": {
+        "low": 15,
+        "high": 18
+      },
+      "keyWorkouts": [
+        "Lang klatre-langtur sykkel + brick",
+        "Lang løp 28-32 km",
+        "Lang sammenhengende svøm 3,5 km",
+        "3x varmeøkt/uke"
+      ],
+      "physiologicalGoals": [
+        "Topp aerob kapasitet",
+        "Race-spesifikk durabilitet",
+        "Gjenoppbygge svømrytme",
+        "Starte varmeakklimatisering"
+      ]
     },
     {
       "name": "Taper",
       "startWeek": 4,
       "endWeek": 5,
       "focus": "Volum ned 40-60%, hold intensitet kort/skarp, full varmeakklimatisering (3x/uke), åpent vann + løypekjennskap",
-      "weeklyHoursRange": { "low": 5, "high": 11 },
-      "keyWorkouts": ["Korte race-power økter", "3x varmeøkt/uke", "Åpent vann sikting", "Løype-recon i Nice"],
-      "physiologicalGoals": ["Frisk form (TSB +15 til +25)", "Holde/toppe varmeadaptasjon mot racedag", "Race-skarphet"]
+      "weeklyHoursRange": {
+        "low": 5,
+        "high": 11
+      },
+      "keyWorkouts": [
+        "Korte race-power økter",
+        "3x varmeøkt/uke",
+        "Åpent vann sikting",
+        "Løype-recon i Nice"
+      ],
+      "physiologicalGoals": [
+        "Frisk form (TSB +15 til +25)",
+        "Holde/toppe varmeadaptasjon mot racedag",
+        "Race-skarphet"
+      ]
+    },
+    {
+      "name": "Restitusjon (post-Nice)",
+      "startWeek": 6,
+      "endWeek": 7,
+      "focus": "Full restitusjon etter Ironman — avlasting, lett aerob",
+      "weeklyHoursRange": {
+        "low": 3,
+        "high": 6
+      },
+      "keyWorkouts": []
+    },
+    {
+      "name": "Gjenoppbygg + HM-motor",
+      "startWeek": 8,
+      "endWeek": 10,
+      "focus": "Skift ultra→kortbane; bygg HM-terskel + langturer, tri-skarphet",
+      "weeklyHoursRange": {
+        "low": 7,
+        "high": 9
+      },
+      "keyWorkouts": []
+    },
+    {
+      "name": "August-tri + HM-blokk",
+      "startWeek": 11,
+      "endWeek": 14,
+      "focus": "B-triatlon som fart/skarphet + peak HM-langøkt; Hareid = HM-generalprøve",
+      "weeklyHoursRange": {
+        "low": 6,
+        "high": 10
+      },
+      "keyWorkouts": []
+    },
+    {
+      "name": "HM-taper + A-løp",
+      "startWeek": 15,
+      "endWeek": 15,
+      "focus": "Taper inn til Trondheim halvmaraton (A, mål 1:30)",
+      "weeklyHoursRange": {
+        "low": 5,
+        "high": 5
+      },
+      "keyWorkouts": []
+    },
+    {
+      "name": "Avslutning",
+      "startWeek": 16,
+      "endWeek": 18,
+      "focus": "Trisprinten + nedtrapping / overgang off-season",
+      "weeklyHoursRange": {
+        "low": 3,
+        "high": 5
+      },
+      "keyWorkouts": []
     }
   ],
   "heatProtocol": {
@@ -201,59 +401,159 @@ ${a.join(`
           "date": "2026-05-25",
           "dayOfWeek": "Monday",
           "workouts": [
-            { "id": "wc-mon-swim", "sport": "swim", "type": "speed", "name": "✓ Pool Swim: Speed Endurance 2,1 km", "description": "Gjennomført.", "durationMinutes": 43, "distanceMeters": 2100, "primaryZone": "Zone 4", "humanReadable": "Gjennomført: speed endurance, 2,1 km (200 Z3 / 100 Z4 / 50 Z5-sett).", "completed": true }
+            {
+              "id": "wc-mon-swim",
+              "sport": "swim",
+              "type": "speed",
+              "name": "✓ Pool Swim: Speed Endurance 2,1 km",
+              "description": "Gjennomført.",
+              "durationMinutes": 43,
+              "distanceMeters": 2100,
+              "primaryZone": "Zone 4",
+              "humanReadable": "Gjennomført: speed endurance, 2,1 km (200 Z3 / 100 Z4 / 50 Z5-sett).",
+              "completed": true
+            }
           ]
         },
         {
           "date": "2026-05-26",
           "dayOfWeek": "Tuesday",
           "workouts": [
-            { "id": "wc-tue-run", "sport": "run", "type": "endurance", "name": "✓ Løp 15,5 km", "description": "Gjennomført.", "durationMinutes": 76, "distanceKm": 15.5, "primaryZone": "Zone 2", "humanReadable": "Gjennomført: 15,5 km løp.", "completed": true }
+            {
+              "id": "wc-tue-run",
+              "sport": "run",
+              "type": "endurance",
+              "name": "✓ Løp 15,5 km",
+              "description": "Gjennomført.",
+              "durationMinutes": 76,
+              "distanceKm": 15.5,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Gjennomført: 15,5 km løp.",
+              "completed": true
+            }
           ]
         },
         {
           "date": "2026-05-27",
           "dayOfWeek": "Wednesday",
           "workouts": [
-            { "id": "wc-wed-bike", "sport": "bike", "type": "intervals", "name": "✓ Indoor + intervaller ~42 km", "description": "Gjennomført.", "durationMinutes": 83, "distanceKm": 42, "primaryZone": "Zone 3", "humanReadable": "Gjennomført: indoor cycling + intervalløkt, til sammen ~42 km.", "completed": true }
+            {
+              "id": "wc-wed-bike",
+              "sport": "bike",
+              "type": "intervals",
+              "name": "✓ Indoor + intervaller ~42 km",
+              "description": "Gjennomført.",
+              "durationMinutes": 83,
+              "distanceKm": 42,
+              "primaryZone": "Zone 3",
+              "humanReadable": "Gjennomført: indoor cycling + intervalløkt, til sammen ~42 km.",
+              "completed": true
+            }
           ]
         },
         {
           "date": "2026-05-28",
           "dayOfWeek": "Thursday",
           "workouts": [
-            { "id": "wc-thu-swim", "sport": "swim", "type": "aerobic", "name": "✓ Svøm 2,15 km", "description": "Gjennomført.", "durationMinutes": 45, "distanceMeters": 2150, "primaryZone": "Zone 2", "humanReadable": "Gjennomført: 2,15 km svøm.", "completed": true }
+            {
+              "id": "wc-thu-swim",
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "✓ Svøm 2,15 km",
+              "description": "Gjennomført.",
+              "durationMinutes": 45,
+              "distanceMeters": 2150,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Gjennomført: 2,15 km svøm.",
+              "completed": true
+            }
           ]
         },
         {
           "date": "2026-05-29",
           "dayOfWeek": "Friday",
           "workouts": [
-            { "id": "wc-fri-swim", "sport": "swim", "type": "recovery", "name": "Lett svøm 30 min (valgfri)", "description": "3. svøm denne uka - lett, eller hvil før helga.", "durationMinutes": 30, "distanceMeters": 1500, "primaryZone": "Zone 1", "humanReadable": "1500 lett med teknikkfokus. Holder svømfrekvensen oppe. Hopp over og hvil hvis du kjenner deg sliten - stor helg + toppuke kommer.", "completed": false }
+            {
+              "id": "wc-fri-swim",
+              "sport": "swim",
+              "type": "recovery",
+              "name": "Lett svøm 30 min (valgfri)",
+              "description": "3. svøm denne uka - lett, eller hvil før helga.",
+              "durationMinutes": 30,
+              "distanceMeters": 1500,
+              "primaryZone": "Zone 1",
+              "humanReadable": "1500 lett med teknikkfokus. Holder svømfrekvensen oppe. Hopp over og hvil hvis du kjenner deg sliten - stor helg + toppuke kommer.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-05-30",
           "dayOfWeek": "Saturday",
           "workouts": [
-            { "id": "wc-sat-bike", "sport": "bike", "type": "long", "name": "Kupert langtur 3,5-4t (submaksimal)", "description": "Solid volum, men IKKE max - du skal kunne starte toppuka mandag.", "durationMinutes": 225, "distanceKm": 105, "primaryZone": "Zone 2", "humanReadable": "3,5-4t Z2 i kupert terreng. Stigninger i Z3, ikke press. NP rundt 190-200W.\nØv ernæring (80g karbo/t) + full race-hydrering (750ml+/t) - dette er ernæringsøkt, IKKE varmeøkt.\nHold litt igjen - dette skal sette opp toppuka, ikke tømme deg.", "completed": false },
-            { "id": "wc-sat-run", "sport": "run", "type": "brick", "name": "Brick-løp 20 min", "description": "Kort løp av sykkelen.", "durationMinutes": 20, "distanceKm": 4, "primaryZone": "Zone 2", "humanReadable": "20 min IM-fart rett av sykkelen.", "completed": false }
+            {
+              "id": "wc-sat-bike",
+              "sport": "bike",
+              "type": "long",
+              "name": "Kupert langtur 3,5-4t (submaksimal)",
+              "description": "Solid volum, men IKKE max - du skal kunne starte toppuka mandag.",
+              "durationMinutes": 225,
+              "distanceKm": 105,
+              "primaryZone": "Zone 2",
+              "humanReadable": "3,5-4t Z2 i kupert terreng. Stigninger i Z3, ikke press. NP rundt 190-200W.\nØv ernæring (80g karbo/t) + full race-hydrering (750ml+/t) - dette er ernæringsøkt, IKKE varmeøkt.\nHold litt igjen - dette skal sette opp toppuka, ikke tømme deg.",
+              "completed": false
+            },
+            {
+              "id": "wc-sat-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick-løp 20 min",
+              "description": "Kort løp av sykkelen.",
+              "durationMinutes": 20,
+              "distanceKm": 4,
+              "primaryZone": "Zone 2",
+              "humanReadable": "20 min IM-fart rett av sykkelen.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-05-31",
           "dayOfWeek": "Sunday",
           "workouts": [
-            { "id": "wc-sun-run", "sport": "run", "type": "long", "name": "Langløp 20 km", "description": "Rolig langløp, kontrollert.", "durationMinutes": 105, "distanceKm": 20, "primaryZone": "Zone 2", "humanReadable": "105 min / ~20 km rolig Z2. Hold deg innenfor deg selv - beina skal være klare til toppuka. Ikke et maksløp.", "completed": false }
+            {
+              "id": "wc-sun-run",
+              "sport": "run",
+              "type": "long",
+              "name": "Langløp 20 km",
+              "description": "Rolig langløp, kontrollert.",
+              "durationMinutes": 105,
+              "distanceKm": 20,
+              "primaryZone": "Zone 2",
+              "humanReadable": "105 min / ~20 km rolig Z2. Hold deg innenfor deg selv - beina skal være klare til toppuka. Ikke et maksløp.",
+              "completed": false
+            }
           ]
         }
       ],
       "summary": {
         "totalHours": 11.0,
         "bySport": {
-          "swim": { "sessions": 3, "hours": 2.0, "km": 5.75 },
-          "bike": { "sessions": 2, "hours": 5.13, "km": 147 },
-          "run": { "sessions": 3, "hours": 3.35, "km": 39.5 }
+          "swim": {
+            "sessions": 3,
+            "hours": 2.0,
+            "km": 5.75
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 5.13,
+            "km": 147
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 3.35,
+            "km": 39.5
+          }
         }
       }
     },
@@ -270,65 +570,223 @@ ${a.join(`
           "date": "2026-06-01",
           "dayOfWeek": "Monday",
           "workouts": [
-            { "id": "w1-mon-swim", "sport": "swim", "type": "aerobic", "name": "Aerob svøm 3000m", "description": "Bygg svømrytme. Rolige, lange intervaller.", "durationMinutes": 60, "distanceMeters": 3000, "primaryZone": "Zone 2", "humanReadable": "WU: 400 lett + 6x50 drill\nHovedsett: 3x600 jevnt Z2 (30s pause), 4x100 Z3 (15s)\nNed: 200 lett", "completed": false },
-            { "id": "w1-mon-str", "sport": "strength", "type": "mobility", "name": "Aktivering + mobilitet (valgfri)", "description": "IKKE styrke - kun kroppsvekt. Skal aldri gi DOMS.", "durationMinutes": 15, "primaryZone": "N/A", "humanReadable": "10-15 min: glute bridges, clamshells, planke/sideplanke, hofte-/ankelmobilitet. Lett aktivering. Ekte styrke spares til etter racet.", "completed": false }
+            {
+              "id": "w1-mon-swim",
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Aerob svøm 3000m",
+              "description": "Bygg svømrytme. Rolige, lange intervaller.",
+              "durationMinutes": 60,
+              "distanceMeters": 3000,
+              "primaryZone": "Zone 2",
+              "humanReadable": "WU: 400 lett + 6x50 drill\nHovedsett: 3x600 jevnt Z2 (30s pause), 4x100 Z3 (15s)\nNed: 200 lett",
+              "completed": false
+            },
+            {
+              "id": "w1-mon-str",
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Aktivering + mobilitet (valgfri)",
+              "description": "IKKE styrke - kun kroppsvekt. Skal aldri gi DOMS.",
+              "durationMinutes": 15,
+              "primaryZone": "N/A",
+              "humanReadable": "10-15 min: glute bridges, clamshells, planke/sideplanke, hofte-/ankelmobilitet. Lett aktivering. Ekte styrke spares til etter racet.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-02",
           "dayOfWeek": "Tuesday",
           "workouts": [
-            { "id": "w1-tue-bike", "sport": "bike", "type": "tempo", "name": "Sub-terskel sykkel 2t", "description": "Race-spesifikk styrkeutholdenhet.", "durationMinutes": 120, "distanceKm": 58, "primaryZone": "Zone 3", "humanReadable": "WU: 15 min Z2\nHovedsett: 3x (15 min øvre Z3 ~250W + 3 min Z1)\nNed: 5 min lett", "completed": false },
-            { "id": "w1-tue-run", "sport": "run", "type": "brick", "name": "Brick-løp 15 min", "description": "Løp rett av sykkelen.", "durationMinutes": 15, "distanceKm": 3, "primaryZone": "Zone 2", "humanReadable": "15 min Z2 IM-fart rett av sykkelen.", "completed": false },
-            { "id": "w1-tue-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 1. Etter brick. Kontrollert dehydrering.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Innetrainer uten vifte, overkledd, varmt rom. 50 min lett Z1-Z2.\nDrikke: KUN ~2 dl underveis. Litt før, og fyll godt på (~3x) etter med natrium.\nVei deg før/etter. Avbryt ved svimmelhet.", "completed": false }
+            {
+              "id": "w1-tue-bike",
+              "sport": "bike",
+              "type": "tempo",
+              "name": "Sub-terskel sykkel 2t",
+              "description": "Race-spesifikk styrkeutholdenhet.",
+              "durationMinutes": 120,
+              "distanceKm": 58,
+              "primaryZone": "Zone 3",
+              "humanReadable": "WU: 15 min Z2\nHovedsett: 3x (15 min øvre Z3 ~250W + 3 min Z1)\nNed: 5 min lett",
+              "completed": false
+            },
+            {
+              "id": "w1-tue-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick-løp 15 min",
+              "description": "Løp rett av sykkelen.",
+              "durationMinutes": 15,
+              "distanceKm": 3,
+              "primaryZone": "Zone 2",
+              "humanReadable": "15 min Z2 IM-fart rett av sykkelen.",
+              "completed": false
+            },
+            {
+              "id": "w1-tue-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 1. Etter brick. Kontrollert dehydrering.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Innetrainer uten vifte, overkledd, varmt rom. 50 min lett Z1-Z2.\nDrikke: KUN ~2 dl underveis. Litt før, og fyll godt på (~3x) etter med natrium.\nVei deg før/etter. Avbryt ved svimmelhet.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-03",
           "dayOfWeek": "Wednesday",
           "workouts": [
-            { "id": "w1-wed-run", "sport": "run", "type": "threshold", "name": "Terskel/IM-fart løp", "description": "Kvalitetsløp.", "durationMinutes": 75, "distanceKm": 15, "primaryZone": "Zone 4", "humanReadable": "WU: 15 min Z2\nHovedsett: 4x (6 min øvre Z3/låg Z4 + 90s lett)\nNed: 10 min Z2", "completed": false },
-            { "id": "w1-wed-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 2. Etter løpet.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter. Hopp over hvis du er sliten - 2 varmeøkter holder også denne uka.", "completed": false }
+            {
+              "id": "w1-wed-run",
+              "sport": "run",
+              "type": "threshold",
+              "name": "Terskel/IM-fart løp",
+              "description": "Kvalitetsløp.",
+              "durationMinutes": 75,
+              "distanceKm": 15,
+              "primaryZone": "Zone 4",
+              "humanReadable": "WU: 15 min Z2\nHovedsett: 4x (6 min øvre Z3/låg Z4 + 90s lett)\nNed: 10 min Z2",
+              "completed": false
+            },
+            {
+              "id": "w1-wed-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 2. Etter løpet.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter. Hopp over hvis du er sliten - 2 varmeøkter holder også denne uka.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-04",
           "dayOfWeek": "Thursday",
           "workouts": [
-            { "id": "w1-thu-swim", "sport": "swim", "type": "recovery", "name": "Lett teknikk-svøm 40 min", "description": "Restitusjonssvøm, sparer beina før helga.", "durationMinutes": 40, "distanceMeters": 2000, "primaryZone": "Zone 1", "humanReadable": "400 lett + 8x50 drill + 6x100 Z2 + 200 lett. Rolig pust, lange tak. Lett dag for beina.", "completed": false }
+            {
+              "id": "w1-thu-swim",
+              "sport": "swim",
+              "type": "recovery",
+              "name": "Lett teknikk-svøm 40 min",
+              "description": "Restitusjonssvøm, sparer beina før helga.",
+              "durationMinutes": 40,
+              "distanceMeters": 2000,
+              "primaryZone": "Zone 1",
+              "humanReadable": "400 lett + 8x50 drill + 6x100 Z2 + 200 lett. Rolig pust, lange tak. Lett dag for beina.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-05",
           "dayOfWeek": "Friday",
           "workouts": [
-            { "id": "w1-fri-swim", "sport": "swim", "type": "endurance", "name": "LANG svøm 3500m sammenhengende", "description": "Nøkkeløkt: bygg IM-distanse + selvtillit.", "durationMinutes": 70, "distanceMeters": 3500, "primaryZone": "Zone 2", "humanReadable": "WU: 300\nHovedsett: 3000 SAMMENHENGENDE i jevn IM-fart (ingen pauser - simuler racet)\nNed: 200\nFokus: jevn rytme, pust hver 3.", "completed": false },
-            { "id": "w1-fri-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter svøm)", "description": "Varmeøkt nr. 3. Beina er ferske etter svøm.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter.", "completed": false }
+            {
+              "id": "w1-fri-swim",
+              "sport": "swim",
+              "type": "endurance",
+              "name": "LANG svøm 3500m sammenhengende",
+              "description": "Nøkkeløkt: bygg IM-distanse + selvtillit.",
+              "durationMinutes": 70,
+              "distanceMeters": 3500,
+              "primaryZone": "Zone 2",
+              "humanReadable": "WU: 300\nHovedsett: 3000 SAMMENHENGENDE i jevn IM-fart (ingen pauser - simuler racet)\nNed: 200\nFokus: jevn rytme, pust hver 3.",
+              "completed": false
+            },
+            {
+              "id": "w1-fri-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter svøm)",
+              "description": "Varmeøkt nr. 3. Beina er ferske etter svøm.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-06",
           "dayOfWeek": "Saturday",
           "workouts": [
-            { "id": "w1-sat-bike", "sport": "bike", "type": "long", "name": "LANG KLATRE-LANGTUR 5,5t", "description": "Race-sim: klatring som Nice (~1500-2000 hm), IM-effekt, full ernæringstest.", "durationMinutes": 330, "distanceKm": 150, "primaryZone": "Zone 2", "humanReadable": "5,5t kupert. 1-2 lange stigninger.\nKlatring: Z3 (~230-250W), IKKE spreng.\nFlatt/retur: NP 195-205W.\nØv nedkjøring.\nErnæring: 90-100g karbo/t + full hydrering 800ml+/t (race-hydrering, IKKE varmeprotokoll i dag).", "completed": false },
-            { "id": "w1-sat-run", "sport": "run", "type": "brick", "name": "Brick-løp 25 min", "description": "Løp av den lange turen på IM-fart.", "durationMinutes": 25, "distanceKm": 5, "primaryZone": "Zone 2", "humanReadable": "25 min IM-maratonfart (5:15-5:30/km) rett av sykkelen.", "completed": false }
+            {
+              "id": "w1-sat-bike",
+              "sport": "bike",
+              "type": "long",
+              "name": "LANG KLATRE-LANGTUR 5,5t",
+              "description": "Race-sim: klatring som Nice (~1500-2000 hm), IM-effekt, full ernæringstest.",
+              "durationMinutes": 330,
+              "distanceKm": 150,
+              "primaryZone": "Zone 2",
+              "humanReadable": "5,5t kupert. 1-2 lange stigninger.\nKlatring: Z3 (~230-250W), IKKE spreng.\nFlatt/retur: NP 195-205W.\nØv nedkjøring.\nErnæring: 90-100g karbo/t + full hydrering 800ml+/t (race-hydrering, IKKE varmeprotokoll i dag).",
+              "completed": false
+            },
+            {
+              "id": "w1-sat-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick-løp 25 min",
+              "description": "Løp av den lange turen på IM-fart.",
+              "durationMinutes": 25,
+              "distanceKm": 5,
+              "primaryZone": "Zone 2",
+              "humanReadable": "25 min IM-maratonfart (5:15-5:30/km) rett av sykkelen.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-07",
           "dayOfWeek": "Sunday",
           "workouts": [
-            { "id": "w1-sun-run", "sport": "run", "type": "long", "name": "LANG LØP 30 km", "description": "Lang aerob løp, Z2 hele veien.", "durationMinutes": 165, "distanceKm": 30, "primaryZone": "Zone 2", "humanReadable": "165 min / ~30 km rolig Z2.\nØv ernæring (60-80g karbo/t) og kjøling (vann over hodet).\nSiste 30 min: hold IM-fart selv om trøtt.", "completed": false }
+            {
+              "id": "w1-sun-run",
+              "sport": "run",
+              "type": "long",
+              "name": "LANG LØP 30 km",
+              "description": "Lang aerob løp, Z2 hele veien.",
+              "durationMinutes": 165,
+              "distanceKm": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "165 min / ~30 km rolig Z2.\nØv ernæring (60-80g karbo/t) og kjøling (vann over hodet).\nSiste 30 min: hold IM-fart selv om trøtt.",
+              "completed": false
+            }
           ]
         }
       ],
       "summary": {
         "totalHours": 17.8,
         "bySport": {
-          "swim": { "sessions": 3, "hours": 2.83, "km": 8.5 },
-          "bike": { "sessions": 5, "hours": 10.0, "km": 274 },
-          "run": { "sessions": 4, "hours": 4.7, "km": 53 },
-          "strength": { "sessions": 1, "hours": 0.25, "km": 0 }
+          "swim": {
+            "sessions": 3,
+            "hours": 2.83,
+            "km": 8.5
+          },
+          "bike": {
+            "sessions": 5,
+            "hours": 10.0,
+            "km": 274
+          },
+          "run": {
+            "sessions": 4,
+            "hours": 4.7,
+            "km": 53
+          },
+          "strength": {
+            "sessions": 1,
+            "hours": 0.25,
+            "km": 0
+          }
         }
       }
     },
@@ -345,65 +803,223 @@ ${a.join(`
           "date": "2026-06-08",
           "dayOfWeek": "Monday",
           "workouts": [
-            { "id": "w2-mon-swim", "sport": "swim", "type": "aerobic", "name": "Aerob svøm 2800m", "description": "Jevn aerob svøm.", "durationMinutes": 55, "distanceMeters": 2800, "primaryZone": "Zone 2", "humanReadable": "WU: 400\nHovedsett: 2x800 jevnt Z2 (20s) + 4x100 Z3\nNed: 200", "completed": false },
-            { "id": "w2-mon-str", "sport": "strength", "type": "mobility", "name": "Aktivering + mobilitet (valgfri)", "description": "IKKE styrke - kun kroppsvekt/mobilitet.", "durationMinutes": 15, "primaryZone": "N/A", "humanReadable": "10-15 min glute/kjerne-aktivering + mobilitet. Ingen DOMS.", "completed": false }
+            {
+              "id": "w2-mon-swim",
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Aerob svøm 2800m",
+              "description": "Jevn aerob svøm.",
+              "durationMinutes": 55,
+              "distanceMeters": 2800,
+              "primaryZone": "Zone 2",
+              "humanReadable": "WU: 400\nHovedsett: 2x800 jevnt Z2 (20s) + 4x100 Z3\nNed: 200",
+              "completed": false
+            },
+            {
+              "id": "w2-mon-str",
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Aktivering + mobilitet (valgfri)",
+              "description": "IKKE styrke - kun kroppsvekt/mobilitet.",
+              "durationMinutes": 15,
+              "primaryZone": "N/A",
+              "humanReadable": "10-15 min glute/kjerne-aktivering + mobilitet. Ingen DOMS.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-09",
           "dayOfWeek": "Tuesday",
           "workouts": [
-            { "id": "w2-tue-bike", "sport": "bike", "type": "tempo", "name": "Race-power sykkel 1,75t", "description": "Vennes til IM-effekt.", "durationMinutes": 105, "distanceKm": 50, "primaryZone": "Zone 3", "humanReadable": "WU: 15 min\nHovedsett: 3x (12 min @ IM-NP 200W + 4 min Z2)\nNed: 10 min", "completed": false },
-            { "id": "w2-tue-run", "sport": "run", "type": "brick", "name": "Brick-løp 15 min", "description": "Kort løp av sykkelen.", "durationMinutes": 15, "distanceKm": 3, "primaryZone": "Zone 2", "humanReadable": "15 min Z2 IM-fart rett av sykkelen.", "completed": false },
-            { "id": "w2-tue-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 1.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter.", "completed": false }
+            {
+              "id": "w2-tue-bike",
+              "sport": "bike",
+              "type": "tempo",
+              "name": "Race-power sykkel 1,75t",
+              "description": "Vennes til IM-effekt.",
+              "durationMinutes": 105,
+              "distanceKm": 50,
+              "primaryZone": "Zone 3",
+              "humanReadable": "WU: 15 min\nHovedsett: 3x (12 min @ IM-NP 200W + 4 min Z2)\nNed: 10 min",
+              "completed": false
+            },
+            {
+              "id": "w2-tue-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick-løp 15 min",
+              "description": "Kort løp av sykkelen.",
+              "durationMinutes": 15,
+              "distanceKm": 3,
+              "primaryZone": "Zone 2",
+              "humanReadable": "15 min Z2 IM-fart rett av sykkelen.",
+              "completed": false
+            },
+            {
+              "id": "w2-tue-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 1.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-10",
           "dayOfWeek": "Wednesday",
           "workouts": [
-            { "id": "w2-wed-run", "sport": "run", "type": "tempo", "name": "IM-fart progresjon 70 min", "description": "Progressivt løp.", "durationMinutes": 70, "distanceKm": 14, "primaryZone": "Zone 3", "humanReadable": "WU: 15 min Z2\n40 min progressiv: Z2 → IM-fart → øvre Z3 siste 10 min\nNed: 10 min", "completed": false },
-            { "id": "w2-wed-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 2.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.", "completed": false }
+            {
+              "id": "w2-wed-run",
+              "sport": "run",
+              "type": "tempo",
+              "name": "IM-fart progresjon 70 min",
+              "description": "Progressivt løp.",
+              "durationMinutes": 70,
+              "distanceKm": 14,
+              "primaryZone": "Zone 3",
+              "humanReadable": "WU: 15 min Z2\n40 min progressiv: Z2 → IM-fart → øvre Z3 siste 10 min\nNed: 10 min",
+              "completed": false
+            },
+            {
+              "id": "w2-wed-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 2.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-11",
           "dayOfWeek": "Thursday",
           "workouts": [
-            { "id": "w2-thu-swim", "sport": "swim", "type": "endurance", "name": "Svøm 3000m + sikting", "description": "Distanse + sikting.", "durationMinutes": 60, "distanceMeters": 3000, "primaryZone": "Zone 2", "humanReadable": "WU: 400\nHovedsett: 2000 sammenhengende, løft hodet for å 'sikte' hver 6.-9. tak\n6x100 Z3\nNed: 200", "completed": false }
+            {
+              "id": "w2-thu-swim",
+              "sport": "swim",
+              "type": "endurance",
+              "name": "Svøm 3000m + sikting",
+              "description": "Distanse + sikting.",
+              "durationMinutes": 60,
+              "distanceMeters": 3000,
+              "primaryZone": "Zone 2",
+              "humanReadable": "WU: 400\nHovedsett: 2000 sammenhengende, løft hodet for å 'sikte' hver 6.-9. tak\n6x100 Z3\nNed: 200",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-12",
           "dayOfWeek": "Friday",
           "workouts": [
-            { "id": "w2-fri-run", "sport": "run", "type": "recovery", "name": "Lett løp 45 min", "description": "Lett shakeout.", "durationMinutes": 45, "distanceKm": 8, "primaryZone": "Zone 2", "humanReadable": "45 min lett Z2. Hold rolig - stor helg i morgen.", "completed": false },
-            { "id": "w2-fri-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter løp)", "description": "Varmeøkt nr. 3.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.", "completed": false }
+            {
+              "id": "w2-fri-run",
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp 45 min",
+              "description": "Lett shakeout.",
+              "durationMinutes": 45,
+              "distanceKm": 8,
+              "primaryZone": "Zone 2",
+              "humanReadable": "45 min lett Z2. Hold rolig - stor helg i morgen.",
+              "completed": false
+            },
+            {
+              "id": "w2-fri-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter løp)",
+              "description": "Varmeøkt nr. 3.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-13",
           "dayOfWeek": "Saturday",
           "workouts": [
-            { "id": "w2-sat-bike", "sport": "bike", "type": "long", "name": "SISTE LANGTUR 4,5t race-sim", "description": "Siste lange klatreøkt. Generalprøve.", "durationMinutes": 270, "distanceKm": 125, "primaryZone": "Zone 2", "humanReadable": "4,5t kupert race-sim. NP 195-205W, Z3 på stigninger.\nKjør race-morgen-rutine: samme frokost, ernæring (90-100g/t), full hydrering, samme utstyr/drakt.\nGeneralprøve på sykkelernæring.", "completed": false },
-            { "id": "w2-sat-run", "sport": "run", "type": "brick", "name": "Brick-løp 30 min", "description": "Lengste brick - kritisk økt.", "durationMinutes": 30, "distanceKm": 6, "primaryZone": "Zone 2", "humanReadable": "30 min IM-fart rett av sykkelen. Føl løp på trøtte ben. Øv kjøling.", "completed": false }
+            {
+              "id": "w2-sat-bike",
+              "sport": "bike",
+              "type": "long",
+              "name": "SISTE LANGTUR 4,5t race-sim",
+              "description": "Siste lange klatreøkt. Generalprøve.",
+              "durationMinutes": 270,
+              "distanceKm": 125,
+              "primaryZone": "Zone 2",
+              "humanReadable": "4,5t kupert race-sim. NP 195-205W, Z3 på stigninger.\nKjør race-morgen-rutine: samme frokost, ernæring (90-100g/t), full hydrering, samme utstyr/drakt.\nGeneralprøve på sykkelernæring.",
+              "completed": false
+            },
+            {
+              "id": "w2-sat-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick-løp 30 min",
+              "description": "Lengste brick - kritisk økt.",
+              "durationMinutes": 30,
+              "distanceKm": 6,
+              "primaryZone": "Zone 2",
+              "humanReadable": "30 min IM-fart rett av sykkelen. Føl løp på trøtte ben. Øv kjøling.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-14",
           "dayOfWeek": "Sunday",
           "workouts": [
-            { "id": "w2-sun-run", "sport": "run", "type": "long", "name": "Lang løp 22 km", "description": "Siste lange løp. Z2, kontrollert.", "durationMinutes": 120, "distanceKm": 22, "primaryZone": "Zone 2", "humanReadable": "120 min rolig Z2. Ikke press - siste lange løp før taper. Avslutt med mer igjen.", "completed": false }
+            {
+              "id": "w2-sun-run",
+              "sport": "run",
+              "type": "long",
+              "name": "Lang løp 22 km",
+              "description": "Siste lange løp. Z2, kontrollert.",
+              "durationMinutes": 120,
+              "distanceKm": 22,
+              "primaryZone": "Zone 2",
+              "humanReadable": "120 min rolig Z2. Ikke press - siste lange løp før taper. Avslutt med mer igjen.",
+              "completed": false
+            }
           ]
         }
       ],
       "summary": {
         "totalHours": 15.0,
         "bySport": {
-          "swim": { "sessions": 2, "hours": 1.9, "km": 5.8 },
-          "bike": { "sessions": 5, "hours": 9.0, "km": 261 },
-          "run": { "sessions": 4, "hours": 4.2, "km": 53 },
-          "strength": { "sessions": 1, "hours": 0.25, "km": 0 }
+          "swim": {
+            "sessions": 2,
+            "hours": 1.9,
+            "km": 5.8
+          },
+          "bike": {
+            "sessions": 5,
+            "hours": 9.0,
+            "km": 261
+          },
+          "run": {
+            "sessions": 4,
+            "hours": 4.2,
+            "km": 53
+          },
+          "strength": {
+            "sessions": 1,
+            "hours": 0.25,
+            "km": 0
+          }
         }
       }
     },
@@ -420,63 +1036,207 @@ ${a.join(`
           "date": "2026-06-15",
           "dayOfWeek": "Monday",
           "workouts": [
-            { "id": "w3-mon-swim", "sport": "swim", "type": "aerobic", "name": "Svøm 2500m lett-jevn", "description": "Hold svømfølelsen, lavt stress.", "durationMinutes": 50, "distanceMeters": 2500, "primaryZone": "Zone 2", "humanReadable": "WU 300, 1500 jevnt Z2, 4x100 Z3, 200 lett.", "completed": false }
+            {
+              "id": "w3-mon-swim",
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm 2500m lett-jevn",
+              "description": "Hold svømfølelsen, lavt stress.",
+              "durationMinutes": 50,
+              "distanceMeters": 2500,
+              "primaryZone": "Zone 2",
+              "humanReadable": "WU 300, 1500 jevnt Z2, 4x100 Z3, 200 lett.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-16",
           "dayOfWeek": "Tuesday",
           "workouts": [
-            { "id": "w3-tue-bike", "sport": "bike", "type": "tempo", "name": "Skarphet: sykkel 75 min", "description": "Kort race-power for å holde beina skarpe.", "durationMinutes": 75, "distanceKm": 35, "primaryZone": "Zone 3", "humanReadable": "WU 15 min\n3x (8 min @ IM-NP 200W + 3 min Z2)\nNed 10 min. Skal føles lett.", "completed": false },
-            { "id": "w3-tue-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 1 - nå er det viktigst.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter. Akklimatiseringen toppes nå mot racet.", "completed": false }
+            {
+              "id": "w3-tue-bike",
+              "sport": "bike",
+              "type": "tempo",
+              "name": "Skarphet: sykkel 75 min",
+              "description": "Kort race-power for å holde beina skarpe.",
+              "durationMinutes": 75,
+              "distanceKm": 35,
+              "primaryZone": "Zone 3",
+              "humanReadable": "WU 15 min\n3x (8 min @ IM-NP 200W + 3 min Z2)\nNed 10 min. Skal føles lett.",
+              "completed": false
+            },
+            {
+              "id": "w3-tue-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 1 - nå er det viktigst.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x med natrium etter. Akklimatiseringen toppes nå mot racet.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-17",
           "dayOfWeek": "Wednesday",
           "workouts": [
-            { "id": "w3-wed-run", "sport": "run", "type": "recovery", "name": "EKSAMENSDAG: shakeout 30 min (valgfri)", "description": "Kort jogg for hodet.", "durationMinutes": 30, "distanceKm": 6, "primaryZone": "Zone 1", "humanReadable": "30 min lett jogg + 4x20s strides. Klarner hodet rundt eksamen. Valgfri.", "completed": false }
+            {
+              "id": "w3-wed-run",
+              "sport": "run",
+              "type": "recovery",
+              "name": "EKSAMENSDAG: shakeout 30 min (valgfri)",
+              "description": "Kort jogg for hodet.",
+              "durationMinutes": 30,
+              "distanceKm": 6,
+              "primaryZone": "Zone 1",
+              "humanReadable": "30 min lett jogg + 4x20s strides. Klarner hodet rundt eksamen. Valgfri.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-18",
           "dayOfWeek": "Thursday",
           "workouts": [
-            { "id": "w3-thu-run", "sport": "run", "type": "threshold", "name": "Skarphet løp 55 min", "description": "Korte terskeldrag.", "durationMinutes": 55, "distanceKm": 11, "primaryZone": "Zone 4", "humanReadable": "WU 15 min\n4x (3 min låg Z4 + 2 min lett)\nNed 10 min", "completed": false },
-            { "id": "w3-thu-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 2.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.", "completed": false }
+            {
+              "id": "w3-thu-run",
+              "sport": "run",
+              "type": "threshold",
+              "name": "Skarphet løp 55 min",
+              "description": "Korte terskeldrag.",
+              "durationMinutes": 55,
+              "distanceKm": 11,
+              "primaryZone": "Zone 4",
+              "humanReadable": "WU 15 min\n4x (3 min låg Z4 + 2 min lett)\nNed 10 min",
+              "completed": false
+            },
+            {
+              "id": "w3-thu-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 2.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-19",
           "dayOfWeek": "Friday",
           "workouts": [
-            { "id": "w3-fri-swim", "sport": "swim", "type": "recovery", "name": "EKSAMENSDAG: lett svøm 30 min (valgfri)", "description": "Avkobling, helt lett.", "durationMinutes": 30, "distanceMeters": 1500, "primaryZone": "Zone 1", "humanReadable": "1500 lett, teknikk. Løsne opp etter eksamen. Valgfri.", "completed": false }
+            {
+              "id": "w3-fri-swim",
+              "sport": "swim",
+              "type": "recovery",
+              "name": "EKSAMENSDAG: lett svøm 30 min (valgfri)",
+              "description": "Avkobling, helt lett.",
+              "durationMinutes": 30,
+              "distanceMeters": 1500,
+              "primaryZone": "Zone 1",
+              "humanReadable": "1500 lett, teknikk. Løsne opp etter eksamen. Valgfri.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-20",
           "dayOfWeek": "Saturday",
           "workouts": [
-            { "id": "w3-sat-bike", "sport": "bike", "type": "endurance", "name": "Medium-langtur 2,5t", "description": "Holder durabilitet uten å grave hull.", "durationMinutes": 150, "distanceKm": 65, "primaryZone": "Zone 2", "humanReadable": "2,5t Z2 med 2x10 min @ IM-NP 200W. Kupert hvis mulig. Øv ernæring.", "completed": false },
-            { "id": "w3-sat-run", "sport": "run", "type": "brick", "name": "Brick 15 min", "description": "Kort brick.", "durationMinutes": 15, "distanceKm": 3, "primaryZone": "Zone 2", "humanReadable": "15 min IM-fart av sykkelen.", "completed": false },
-            { "id": "w3-sat-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter brick)", "description": "Varmeøkt nr. 3.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.", "completed": false }
+            {
+              "id": "w3-sat-bike",
+              "sport": "bike",
+              "type": "endurance",
+              "name": "Medium-langtur 2,5t",
+              "description": "Holder durabilitet uten å grave hull.",
+              "durationMinutes": 150,
+              "distanceKm": 65,
+              "primaryZone": "Zone 2",
+              "humanReadable": "2,5t Z2 med 2x10 min @ IM-NP 200W. Kupert hvis mulig. Øv ernæring.",
+              "completed": false
+            },
+            {
+              "id": "w3-sat-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick 15 min",
+              "description": "Kort brick.",
+              "durationMinutes": 15,
+              "distanceKm": 3,
+              "primaryZone": "Zone 2",
+              "humanReadable": "15 min IM-fart av sykkelen.",
+              "completed": false
+            },
+            {
+              "id": "w3-sat-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter brick)",
+              "description": "Varmeøkt nr. 3.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-21",
           "dayOfWeek": "Sunday",
           "workouts": [
-            { "id": "w3-sun-swim", "sport": "swim", "type": "openwater", "name": "FØRSTE ÅPENT VANN + sikting", "description": "Første sjøsvøm - våtdrakt, salt, sikting.", "durationMinutes": 40, "distanceMeters": 2000, "primaryZone": "Zone 2", "humanReadable": "Åpent vann med våtdrakt. 2000m jevnt.\nØv: sikting hver 6.-9. tak, svømme rett, rolig pust i bølger. Start forsiktig.", "completed": false },
-            { "id": "w3-sun-run", "sport": "run", "type": "endurance", "name": "Rolig løp 60 min", "description": "Siste litt lengre løp, rolig.", "durationMinutes": 60, "distanceKm": 12, "primaryZone": "Zone 2", "humanReadable": "60 min Z2, avslappet. Beina skal kjennes ferske mot slutten.", "completed": false }
+            {
+              "id": "w3-sun-swim",
+              "sport": "swim",
+              "type": "openwater",
+              "name": "FØRSTE ÅPENT VANN + sikting",
+              "description": "Første sjøsvøm - våtdrakt, salt, sikting.",
+              "durationMinutes": 40,
+              "distanceMeters": 2000,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Åpent vann med våtdrakt. 2000m jevnt.\nØv: sikting hver 6.-9. tak, svømme rett, rolig pust i bølger. Start forsiktig.",
+              "completed": false
+            },
+            {
+              "id": "w3-sun-run",
+              "sport": "run",
+              "type": "endurance",
+              "name": "Rolig løp 60 min",
+              "description": "Siste litt lengre løp, rolig.",
+              "durationMinutes": 60,
+              "distanceKm": 12,
+              "primaryZone": "Zone 2",
+              "humanReadable": "60 min Z2, avslappet. Beina skal kjennes ferske mot slutten.",
+              "completed": false
+            }
           ]
         }
       ],
       "summary": {
         "totalHours": 10.0,
         "bySport": {
-          "swim": { "sessions": 3, "hours": 2.0, "km": 6 },
-          "bike": { "sessions": 5, "hours": 6.0, "km": 166 },
-          "run": { "sessions": 4, "hours": 2.5, "km": 32 }
+          "swim": {
+            "sessions": 3,
+            "hours": 2.0,
+            "km": 6
+          },
+          "bike": {
+            "sessions": 5,
+            "hours": 6.0,
+            "km": 166
+          },
+          "run": {
+            "sessions": 4,
+            "hours": 2.5,
+            "km": 32
+          }
         }
       }
     },
@@ -493,65 +1253,2496 @@ ${a.join(`
           "date": "2026-06-22",
           "dayOfWeek": "Monday",
           "workouts": [
-            { "id": "w4-mon-swim", "sport": "swim", "type": "openwater", "name": "Åpent vann 30 min", "description": "Andre sjøsvøm, kort.", "durationMinutes": 30, "distanceMeters": 1500, "primaryZone": "Zone 2", "humanReadable": "1500m lett i sjøen med våtdrakt. Sikting + rolig rytme.", "completed": false },
-            { "id": "w4-mon-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (siste blokk)", "description": "Varmeøkt nr. 1 i race-uka. Beina ferske etter svøm.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter. Siste varmeblokk før Nice.", "completed": false }
+            {
+              "id": "w4-mon-swim",
+              "sport": "swim",
+              "type": "openwater",
+              "name": "Åpent vann 30 min",
+              "description": "Andre sjøsvøm, kort.",
+              "durationMinutes": 30,
+              "distanceMeters": 1500,
+              "primaryZone": "Zone 2",
+              "humanReadable": "1500m lett i sjøen med våtdrakt. Sikting + rolig rytme.",
+              "completed": false
+            },
+            {
+              "id": "w4-mon-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (siste blokk)",
+              "description": "Varmeøkt nr. 1 i race-uka. Beina ferske etter svøm.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter. Siste varmeblokk før Nice.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-23",
           "dayOfWeek": "Tuesday",
           "workouts": [
-            { "id": "w4-tue-bike", "sport": "bike", "type": "tempo", "name": "Race-power touch 60 min", "description": "Hold beina skarpe.", "durationMinutes": 60, "distanceKm": 28, "primaryZone": "Zone 3", "humanReadable": "WU 15 min\n3x (3 min @ race-power 200-210W + 3 min lett)\nNed 10 min", "completed": false },
-            { "id": "w4-tue-run", "sport": "run", "type": "brick", "name": "Brick 10 min", "description": "Kort åpning av beina.", "durationMinutes": 10, "distanceKm": 2, "primaryZone": "Zone 2", "humanReadable": "10 min IM-fart av sykkelen + 3x20s strides.", "completed": false },
-            { "id": "w4-tue-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (etter økt)", "description": "Varmeøkt nr. 2.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.", "completed": false }
+            {
+              "id": "w4-tue-bike",
+              "sport": "bike",
+              "type": "tempo",
+              "name": "Race-power touch 60 min",
+              "description": "Hold beina skarpe.",
+              "durationMinutes": 60,
+              "distanceKm": 28,
+              "primaryZone": "Zone 3",
+              "humanReadable": "WU 15 min\n3x (3 min @ race-power 200-210W + 3 min lett)\nNed 10 min",
+              "completed": false
+            },
+            {
+              "id": "w4-tue-run",
+              "sport": "run",
+              "type": "brick",
+              "name": "Brick 10 min",
+              "description": "Kort åpning av beina.",
+              "durationMinutes": 10,
+              "distanceKm": 2,
+              "primaryZone": "Zone 2",
+              "humanReadable": "10 min IM-fart av sykkelen + 3x20s strides.",
+              "completed": false
+            },
+            {
+              "id": "w4-tue-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (etter økt)",
+              "description": "Varmeøkt nr. 2.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Trainer uten vifte, overkledd. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-24",
           "dayOfWeek": "Wednesday",
           "workouts": [
-            { "id": "w4-wed-run", "sport": "run", "type": "sharpening", "name": "Lett løp 35 min + strides", "description": "Holder nervesystemet våkent.", "durationMinutes": 35, "distanceKm": 7, "primaryZone": "Zone 2", "humanReadable": "30 min Z2 + 4x30s strides @ race-fart.", "completed": false },
-            { "id": "w4-wed-swim", "sport": "swim", "type": "openwater", "name": "Kort åpent vann 20 min", "description": "Siste sjøsvøm før reise.", "durationMinutes": 20, "distanceMeters": 1000, "primaryZone": "Zone 1", "humanReadable": "1000m lett, sikting.", "completed": false },
-            { "id": "w4-wed-heat", "sport": "bike", "type": "heat", "name": "🔥 VARME 50 min (siste varmeøkt)", "description": "Varmeøkt nr. 3 - siste før Nice. Naturlig varme tar over der.", "durationMinutes": 50, "distanceKm": 22, "primaryZone": "Zone 1", "humanReadable": "Siste trainer-varmeøkt. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter. Fra torsdag overtar den ekte varmen i Nice.", "completed": false }
+            {
+              "id": "w4-wed-run",
+              "sport": "run",
+              "type": "sharpening",
+              "name": "Lett løp 35 min + strides",
+              "description": "Holder nervesystemet våkent.",
+              "durationMinutes": 35,
+              "distanceKm": 7,
+              "primaryZone": "Zone 2",
+              "humanReadable": "30 min Z2 + 4x30s strides @ race-fart.",
+              "completed": false
+            },
+            {
+              "id": "w4-wed-swim",
+              "sport": "swim",
+              "type": "openwater",
+              "name": "Kort åpent vann 20 min",
+              "description": "Siste sjøsvøm før reise.",
+              "durationMinutes": 20,
+              "distanceMeters": 1000,
+              "primaryZone": "Zone 1",
+              "humanReadable": "1000m lett, sikting.",
+              "completed": false
+            },
+            {
+              "id": "w4-wed-heat",
+              "sport": "bike",
+              "type": "heat",
+              "name": "🔥 VARME 50 min (siste varmeøkt)",
+              "description": "Varmeøkt nr. 3 - siste før Nice. Naturlig varme tar over der.",
+              "durationMinutes": 50,
+              "distanceKm": 22,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Siste trainer-varmeøkt. 50 min Z1-Z2. ~2 dl under, rehydrer ~3x etter. Fra torsdag overtar den ekte varmen i Nice.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-25",
           "dayOfWeek": "Thursday",
           "workouts": [
-            { "id": "w4-thu-rest", "sport": "rest", "type": "rest", "name": "EKSAMEN + REISE TIL NICE", "description": "Eksamen og reisedag. Hvile beina.", "primaryZone": "N/A", "humanReadable": "Eksamen + reise. Full hvile fra trening. Gå/strekk lett etter flyet. Hydrer + salt godt, spis normalt.", "completed": false }
+            {
+              "id": "w4-thu-rest",
+              "sport": "rest",
+              "type": "rest",
+              "name": "EKSAMEN + REISE TIL NICE",
+              "description": "Eksamen og reisedag. Hvile beina.",
+              "primaryZone": "N/A",
+              "humanReadable": "Eksamen + reise. Full hvile fra trening. Gå/strekk lett etter flyet. Hydrer + salt godt, spis normalt.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-26",
           "dayOfWeek": "Friday",
           "workouts": [
-            { "id": "w4-fri-bike", "sport": "bike", "type": "recovery", "name": "Recon: spin på løypa 30 min", "description": "Kjenn sykkelløypa - spesielt nedkjøringen.", "durationMinutes": 30, "distanceKm": 14, "primaryZone": "Zone 1", "humanReadable": "30 min lett. Kjør gjerne deler av nedkjøringen / siste km for å lære linjene. Sjekk gir/utstyr.", "completed": false },
-            { "id": "w4-fri-run", "sport": "run", "type": "sharpening", "name": "Jogg på Promenaden 15 min", "description": "Føl løpsløypa og varmen.", "durationMinutes": 15, "distanceKm": 3, "primaryZone": "Zone 2", "humanReadable": "15 min lett langs Promenade des Anglais + 3x20s strides. Merk skygge/aid-plassering, kjenn på varmen.", "completed": false },
-            { "id": "w4-fri-swim", "sport": "swim", "type": "openwater", "name": "Svøm på startstranda 15 min", "description": "Bli kjent med startområdet.", "durationMinutes": 15, "distanceMeters": 800, "primaryZone": "Zone 1", "humanReadable": "800m lett der svømstarten går. Føl vann/bølger/inngang fra stranda.", "completed": false }
+            {
+              "id": "w4-fri-bike",
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Recon: spin på løypa 30 min",
+              "description": "Kjenn sykkelløypa - spesielt nedkjøringen.",
+              "durationMinutes": 30,
+              "distanceKm": 14,
+              "primaryZone": "Zone 1",
+              "humanReadable": "30 min lett. Kjør gjerne deler av nedkjøringen / siste km for å lære linjene. Sjekk gir/utstyr.",
+              "completed": false
+            },
+            {
+              "id": "w4-fri-run",
+              "sport": "run",
+              "type": "sharpening",
+              "name": "Jogg på Promenaden 15 min",
+              "description": "Føl løpsløypa og varmen.",
+              "durationMinutes": 15,
+              "distanceKm": 3,
+              "primaryZone": "Zone 2",
+              "humanReadable": "15 min lett langs Promenade des Anglais + 3x20s strides. Merk skygge/aid-plassering, kjenn på varmen.",
+              "completed": false
+            },
+            {
+              "id": "w4-fri-swim",
+              "sport": "swim",
+              "type": "openwater",
+              "name": "Svøm på startstranda 15 min",
+              "description": "Bli kjent med startområdet.",
+              "durationMinutes": 15,
+              "distanceMeters": 800,
+              "primaryZone": "Zone 1",
+              "humanReadable": "800m lett der svømstarten går. Føl vann/bølger/inngang fra stranda.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-27",
           "dayOfWeek": "Saturday",
           "workouts": [
-            { "id": "w4-sat-activate", "sport": "swim", "type": "openwater", "name": "Race-eve aktivering 20 min", "description": "Lett aktivering, så hvile resten av dagen.", "durationMinutes": 20, "distanceMeters": 600, "primaryZone": "Zone 1", "humanReadable": "Kort: 10 min lett spin + 10 min jogg m/ 4x20s strides + 5-10 min svøm hvis lyst. Resten: bag-drop, sjekk-in, beina i ro, hydrer + salt, normal middag.", "completed": false }
+            {
+              "id": "w4-sat-activate",
+              "sport": "swim",
+              "type": "openwater",
+              "name": "Race-eve aktivering 20 min",
+              "description": "Lett aktivering, så hvile resten av dagen.",
+              "durationMinutes": 20,
+              "distanceMeters": 600,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Kort: 10 min lett spin + 10 min jogg m/ 4x20s strides + 5-10 min svøm hvis lyst. Resten: bag-drop, sjekk-in, beina i ro, hydrer + salt, normal middag.",
+              "completed": false
+            }
           ]
         },
         {
           "date": "2026-06-28",
           "dayOfWeek": "Sunday",
           "workouts": [
-            { "id": "w4-sun-race", "sport": "race", "type": "race", "name": "🏁 IRONMAN NICE", "description": "Racedag. 3,8 km / 180 km / 42,2 km. Se race-strategi.", "primaryZone": "Race", "humanReadable": "Følg pacing- og ernæringsplanen. Konservativ svøm + stigning, disiplinert effekt, aggressiv kjøling på løpet. Du har gjort jobben.", "completed": false }
+            {
+              "id": "w4-sun-race",
+              "sport": "race",
+              "type": "race",
+              "name": "🏁 IRONMAN NICE",
+              "description": "Racedag. 3,8 km / 180 km / 42,2 km. Se race-strategi.",
+              "primaryZone": "Race",
+              "humanReadable": "Følg pacing- og ernæringsplanen. Konservativ svøm + stigning, disiplinert effekt, aggressiv kjøling på løpet. Du har gjort jobben.",
+              "completed": false
+            }
           ]
         }
       ],
       "summary": {
         "totalHours": 6.4,
         "bySport": {
-          "swim": { "sessions": 4, "hours": 1.4, "km": 3.9 },
-          "bike": { "sessions": 5, "hours": 4.2, "km": 130 },
-          "run": { "sessions": 3, "hours": 1.0, "km": 12 }
+          "swim": {
+            "sessions": 4,
+            "hours": 1.4,
+            "km": 3.9
+          },
+          "bike": {
+            "sessions": 5,
+            "hours": 4.2,
+            "km": 130
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 1.0,
+            "km": 12
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 6,
+      "startDate": "2026-06-29",
+      "endDate": "2026-07-05",
+      "phase": "Restitusjon (post-Nice)",
+      "focus": "Avlasting etter Ironman — nesten fri, lett aerob. La kroppen absorbere Nice.",
+      "targetHours": 3.5,
+      "isRecoveryWeek": true,
+      "days": [
+        {
+          "date": "2026-06-29",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a6-0-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-30",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a6-1-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-01",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a6-2-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-02",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Lett svøm",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Rolig, løsne opp. Ingen intensitet.",
+              "completed": false,
+              "distanceMeters": 1100,
+              "id": "a6-3-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-03",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett spinn",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Z1 ~130-160W, bare bevegelse.",
+              "completed": false,
+              "distanceKm": 15,
+              "id": "a6-4-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-04",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Lett svøm",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Rolig.",
+              "completed": false,
+              "distanceMeters": 1000,
+              "id": "a6-5-swim-0"
+            },
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Valgfri jogg",
+              "description": "",
+              "durationMinutes": 18,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Kun hvis beina er glade — ~5:30/km.",
+              "completed": false,
+              "distanceKm": 3,
+              "id": "a6-5-run-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-05",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "aerobic",
+              "name": "Rolig sykkel ute",
+              "description": "",
+              "durationMinutes": 60,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z1-2 ~150-185W, kos.",
+              "completed": false,
+              "distanceKm": 27,
+              "id": "a6-6-bike-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 2.7,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 0.83,
+            "km": 2.1
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 1.58,
+            "km": 42.0
+          },
+          "run": {
+            "sessions": 1,
+            "hours": 0.3,
+            "km": 3.0
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 7,
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-12",
+      "phase": "Restitusjon (post-Nice)",
+      "focus": "Lett aerob, gjenoppbygg struktur forsiktig.",
+      "targetHours": 5.5,
+      "isRecoveryWeek": true,
+      "days": [
+        {
+          "date": "2026-07-06",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk + skuldermobilitet.",
+              "completed": false,
+              "distanceMeters": 1800,
+              "id": "a7-0-swim-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Mobilitet",
+              "description": "",
+              "durationMinutes": 15,
+              "primaryZone": "N/A",
+              "humanReadable": "Skulder/thorax.",
+              "completed": false,
+              "id": "a7-0-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-07",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "aerobic",
+              "name": "Rolig løp",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~5:10-5:30/km.",
+              "completed": false,
+              "distanceKm": 6.5,
+              "id": "a7-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-08",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "aerobic",
+              "name": "Sykkel Z2",
+              "description": "",
+              "durationMinutes": 80,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~170-200W.",
+              "completed": false,
+              "distanceKm": 38,
+              "id": "a7-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus-tunge tåhev + hofte.",
+              "completed": false,
+              "id": "a7-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-09",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Aerob/teknikk.",
+              "completed": false,
+              "distanceMeters": 1900,
+              "id": "a7-3-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-10",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a7-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-11",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "endurance",
+              "name": "Sykkel Z2 ute",
+              "description": "",
+              "durationMinutes": 105,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~170-200W.",
+              "completed": false,
+              "distanceKm": 50,
+              "id": "a7-5-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-12",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "aerobic",
+              "name": "Rolig løp + strides",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 2",
+              "humanReadable": "~5:10-5:25/km + 4 strides (~3:40/km).",
+              "completed": false,
+              "distanceKm": 8.5,
+              "id": "a7-6-run-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 6.4,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 1.33,
+            "km": 3.7
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 3.08,
+            "km": 88.0
+          },
+          "run": {
+            "sessions": 2,
+            "hours": 1.33,
+            "km": 15.0
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 8,
+      "startDate": "2026-07-13",
+      "endDate": "2026-07-19",
+      "phase": "Gjenoppbygg + HM-motor",
+      "focus": "Struktur tilbake — skift fra ultra til kortbane. Start HM-terskel.",
+      "targetHours": 7.5,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-07-13",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk + mobilitet.",
+              "completed": false,
+              "distanceMeters": 2100,
+              "id": "a8-0-swim-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Mobilitet",
+              "description": "",
+              "durationMinutes": 10,
+              "primaryZone": "N/A",
+              "humanReadable": "Skulder.",
+              "completed": false,
+              "id": "a8-0-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-14",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "threshold",
+              "name": "Løp terskel",
+              "description": "",
+              "durationMinutes": 50,
+              "primaryZone": "Zone 4",
+              "humanReadable": "4 × 6 min @ terskel (~4:05-4:12/km, HR 165-172), 2 min jog.",
+              "completed": false,
+              "distanceKm": 9,
+              "id": "a8-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-15",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "threshold",
+              "name": "Sykkel sweet-spot",
+              "description": "",
+              "durationMinutes": 70,
+              "primaryZone": "Zone 3",
+              "humanReadable": "3 × 10 min @ 255-265W (sweet-spot).",
+              "completed": false,
+              "distanceKm": 33,
+              "id": "a8-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte/sete.",
+              "completed": false,
+              "id": "a8-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-16",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Frekvens.",
+              "completed": false,
+              "distanceMeters": 1900,
+              "id": "a8-3-swim-0"
+            },
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Rolig løp",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~5:15/km.",
+              "completed": false,
+              "distanceKm": 5.5,
+              "id": "a8-3-run-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-17",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a8-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-18",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "long",
+              "name": "Lang løp",
+              "description": "",
+              "durationMinutes": 75,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Rolig ~5:00-5:20/km.",
+              "completed": false,
+              "distanceKm": 14,
+              "id": "a8-5-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-19",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "endurance",
+              "name": "Sykkel aerob",
+              "description": "",
+              "durationMinutes": 120,
+              "primaryZone": "Zone 2",
+              "humanReadable": "~2t Z2 ~170-200W.",
+              "completed": false,
+              "distanceKm": 57,
+              "id": "a8-6-bike-0"
+            },
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Kort svøm",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Lett.",
+              "completed": false,
+              "distanceMeters": 1500,
+              "id": "a8-6-swim-1"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 8.2,
+        "bySport": {
+          "swim": {
+            "sessions": 3,
+            "hours": 1.92,
+            "km": 5.5
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 3.17,
+            "km": 90.0
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 2.58,
+            "km": 28.5
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 9,
+      "startDate": "2026-07-20",
+      "endDate": "2026-07-26",
+      "phase": "Gjenoppbygg + HM-motor",
+      "focus": "HM-bygg 1 — langtur vokser, tempo + VO2.",
+      "targetHours": 8.5,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-07-20",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk + mobilitet.",
+              "completed": false,
+              "distanceMeters": 2100,
+              "id": "a9-0-swim-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Mobilitet",
+              "description": "",
+              "durationMinutes": 10,
+              "primaryZone": "N/A",
+              "humanReadable": "Skulder.",
+              "completed": false,
+              "id": "a9-0-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-21",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "tempo",
+              "name": "Løp tempo",
+              "description": "",
+              "durationMinutes": 55,
+              "primaryZone": "Zone 3",
+              "humanReadable": "2 × 12 min @ tempo (~4:25/km), 3 min jog.",
+              "completed": false,
+              "distanceKm": 11,
+              "id": "a9-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-22",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "intervals",
+              "name": "Sykkel VO2",
+              "description": "",
+              "durationMinutes": 65,
+              "primaryZone": "Zone 5",
+              "humanReadable": "5 × 4 min @ 290-300W, lett mellom.",
+              "completed": false,
+              "distanceKm": 30,
+              "id": "a9-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte.",
+              "completed": false,
+              "id": "a9-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-23",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Frekvens.",
+              "completed": false,
+              "distanceMeters": 1900,
+              "id": "a9-3-swim-0"
+            },
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Rolig løp",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~5:15/km.",
+              "completed": false,
+              "distanceKm": 7.5,
+              "id": "a9-3-run-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-24",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a9-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-25",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "long",
+              "name": "Lang løp",
+              "description": "",
+              "durationMinutes": 82,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Siste 3 km progressivt mot ~4:30/km.",
+              "completed": false,
+              "distanceKm": 16,
+              "id": "a9-5-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-26",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "brick",
+              "name": "Sykkel aerob + brick",
+              "description": "",
+              "durationMinutes": 135,
+              "primaryZone": "Zone 2",
+              "humanReadable": "~2t Z2 (~170-200W) + 15 min brick-jogg (~5:10/km).",
+              "completed": false,
+              "distanceKm": 62,
+              "id": "a9-6-bike-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 8.3,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 1.42,
+            "km": 4.0
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 3.33,
+            "km": 92.0
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 2.95,
+            "km": 34.5
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 10,
+      "startDate": "2026-07-27",
+      "endDate": "2026-08-02",
+      "phase": "Gjenoppbygg + HM-motor",
+      "focus": "Tri-skarphet — brick, åpent vann, race-pace.",
+      "targetHours": 9.0,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-07-27",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk + mobilitet.",
+              "completed": false,
+              "distanceMeters": 2100,
+              "id": "a10-0-swim-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Mobilitet",
+              "description": "",
+              "durationMinutes": 10,
+              "primaryZone": "N/A",
+              "humanReadable": "Skulder.",
+              "completed": false,
+              "id": "a10-0-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-28",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "threshold",
+              "name": "Løp terskel",
+              "description": "",
+              "durationMinutes": 55,
+              "primaryZone": "Zone 4",
+              "humanReadable": "5 × 6 min @ terskel (~4:05-4:12/km), 90s jog.",
+              "completed": false,
+              "distanceKm": 11,
+              "id": "a10-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "threshold",
+              "name": "Sykkel sweet-spot",
+              "description": "",
+              "durationMinutes": 70,
+              "primaryZone": "Zone 3",
+              "humanReadable": "3 × 12 min @ 255-265W.",
+              "completed": false,
+              "distanceKm": 33,
+              "id": "a10-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte.",
+              "completed": false,
+              "id": "a10-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-30",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "openwater",
+              "name": "OW-svøm",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Åpent vann — sikting, dønning.",
+              "completed": false,
+              "distanceMeters": 2000,
+              "id": "a10-3-swim-0"
+            },
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Kort løp",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~5:15/km.",
+              "completed": false,
+              "distanceKm": 4.5,
+              "id": "a10-3-run-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a10-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-01",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "brick",
+              "name": "Brick: sykkel + løp",
+              "description": "",
+              "durationMinutes": 110,
+              "primaryZone": "Zone 3",
+              "humanReadable": "Sykkel 1,5t race-pace (~215-230W) + 5 km løp av sykkelen (~4:30/km).",
+              "completed": false,
+              "distanceKm": 45,
+              "id": "a10-5-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-02",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "long",
+              "name": "Lang løp",
+              "description": "",
+              "durationMinutes": 92,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Rolig ~5:00-5:20/km.",
+              "completed": false,
+              "distanceKm": 18,
+              "id": "a10-6-run-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 8.0,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 1.5,
+            "km": 4.1
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 3.0,
+            "km": 78.0
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 2.87,
+            "km": 33.5
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 11,
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-09",
+      "phase": "August-tri + HM-blokk",
+      "focus": "Oslo Triatlon-uke (B) — train-through + skarphet.",
+      "targetHours": 7.5,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-08-03",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk.",
+              "completed": false,
+              "distanceMeters": 1900,
+              "id": "a11-0-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "intervals",
+              "name": "Løp VO2",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 5",
+              "humanReadable": "4 × 3 min @ VO2/5K-fart (~3:55-4:05/km), 3 min jog.",
+              "completed": false,
+              "distanceKm": 9,
+              "id": "a11-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-05",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "threshold",
+              "name": "Sykkel sweet-spot kort",
+              "description": "",
+              "durationMinutes": 50,
+              "primaryZone": "Zone 3",
+              "humanReadable": "2-3 × 8 min @ 255-265W.",
+              "completed": false,
+              "distanceKm": 24,
+              "id": "a11-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte.",
+              "completed": false,
+              "id": "a11-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-06",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm lett",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Lett + 3 × 1 min pickups på sykkel etterpå (~280W).",
+              "completed": false,
+              "distanceMeters": 1600,
+              "id": "a11-3-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-07",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett spinn + strides",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Lett + 4 strides (~3:40/km) på løp.",
+              "completed": false,
+              "distanceKm": 11,
+              "id": "a11-4-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-08",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "race",
+              "type": "race",
+              "name": "🏁 Oslo Triatlon (olympisk)",
+              "description": "",
+              "durationMinutes": 139,
+              "primaryZone": "Race",
+              "humanReadable": "1,5/40/10. Race-craft; sykkel ~250-265W, løp ~4:15-4:25/km. Ikke full innsats om beina er tunge.",
+              "completed": false,
+              "id": "a11-5-race-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-09",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Rolig restitusjon",
+              "description": "",
+              "durationMinutes": 60,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Z1-2 ~150-180W el. lett svøm.",
+              "completed": false,
+              "distanceKm": 27,
+              "id": "a11-6-bike-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 7.0,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 1.25,
+            "km": 3.5
+          },
+          "bike": {
+            "sessions": 3,
+            "hours": 2.25,
+            "km": 62.0
+          },
+          "run": {
+            "sessions": 1,
+            "hours": 0.75,
+            "km": 9.0
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 12,
+      "startDate": "2026-08-10",
+      "endDate": "2026-08-16",
+      "phase": "August-tri + HM-blokk",
+      "focus": "HM-blokk — peak HM-uke. Den lange HM-økta er ukas viktigste.",
+      "targetHours": 9.5,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-08-10",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk + mobilitet.",
+              "completed": false,
+              "distanceMeters": 2100,
+              "id": "a12-0-swim-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Mobilitet",
+              "description": "",
+              "durationMinutes": 10,
+              "primaryZone": "N/A",
+              "humanReadable": "Skulder.",
+              "completed": false,
+              "id": "a12-0-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-11",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "threshold",
+              "name": "Løp terskel cruise",
+              "description": "",
+              "durationMinutes": 58,
+              "primaryZone": "Zone 4",
+              "humanReadable": "5 × 8 min @ terskel (~4:05-4:12/km), 2 min jog.",
+              "completed": false,
+              "distanceKm": 12,
+              "id": "a12-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-12",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "endurance",
+              "name": "Sykkel aerob",
+              "description": "",
+              "durationMinutes": 90,
+              "primaryZone": "Zone 2",
+              "humanReadable": "1,5t Z2 ~170-200W.",
+              "completed": false,
+              "distanceKm": 42,
+              "id": "a12-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte.",
+              "completed": false,
+              "id": "a12-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-13",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Frekvens.",
+              "completed": false,
+              "distanceMeters": 1900,
+              "id": "a12-3-swim-0"
+            },
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Rolig løp",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~5:15/km.",
+              "completed": false,
+              "distanceKm": 7.5,
+              "id": "a12-3-run-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-14",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a12-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "long",
+              "name": "HM-nøkkeløkt",
+              "description": "",
+              "durationMinutes": 105,
+              "primaryZone": "Zone 3",
+              "humanReadable": "18-20 km med 2 × 4 km @ HM-pace (4:16/km, sone 4:13-4:20), resten ~5:00/km.",
+              "completed": false,
+              "distanceKm": 20,
+              "id": "a12-5-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-16",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "endurance",
+              "name": "Sykkel aerob",
+              "description": "",
+              "durationMinutes": 120,
+              "primaryZone": "Zone 2",
+              "humanReadable": "~2t Z2 ~170-200W.",
+              "completed": false,
+              "distanceKm": 57,
+              "id": "a12-6-bike-0"
+            },
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Kort svøm",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Lett.",
+              "completed": false,
+              "distanceMeters": 1500,
+              "id": "a12-6-swim-1"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 9.4,
+        "bySport": {
+          "swim": {
+            "sessions": 3,
+            "hours": 1.92,
+            "km": 5.5
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 3.5,
+            "km": 99.0
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 3.38,
+            "km": 39.5
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 13,
+      "startDate": "2026-08-17",
+      "endDate": "2026-08-23",
+      "phase": "August-tri + HM-blokk",
+      "focus": "Trondheim Triatlon-uke (B, Munkholmen 2,4/50/12).",
+      "targetHours": 7.5,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-08-17",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm teknikk",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk.",
+              "completed": false,
+              "distanceMeters": 1900,
+              "id": "a13-0-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-18",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "tempo",
+              "name": "Løp tempo",
+              "description": "",
+              "durationMinutes": 50,
+              "primaryZone": "Zone 3",
+              "humanReadable": "3 × 10 min @ HM-pace (4:16/km), 2-3 min jog.",
+              "completed": false,
+              "distanceKm": 10,
+              "id": "a13-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-19",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "threshold",
+              "name": "Sykkel sweet-spot kort",
+              "description": "",
+              "durationMinutes": 50,
+              "primaryZone": "Zone 3",
+              "humanReadable": "255-265W.",
+              "completed": false,
+              "distanceKm": 24,
+              "id": "a13-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte.",
+              "completed": false,
+              "id": "a13-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-20",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Lett.",
+              "completed": false,
+              "distanceMeters": 1600,
+              "id": "a13-3-swim-0"
+            },
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 ~5:20/km.",
+              "completed": false,
+              "distanceKm": 5.5,
+              "id": "a13-3-run-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-21",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett spinn + strides",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Lett + strides (~3:40/km).",
+              "completed": false,
+              "distanceKm": 11,
+              "id": "a13-4-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-22",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "race",
+              "type": "race",
+              "name": "🏁 Trondheim Triatlon (Munkholmen)",
+              "description": "",
+              "durationMinutes": 185,
+              "primaryZone": "Race",
+              "humanReadable": "2,4/50/12. B — jevnt hardt; sykkel ~230-245W, løp ~4:25-4:35/km.",
+              "completed": false,
+              "id": "a13-5-race-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-23",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a13-6-rest-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 7.3,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 1.25,
+            "km": 3.5
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 1.25,
+            "km": 35.0
+          },
+          "run": {
+            "sessions": 2,
+            "hours": 1.33,
+            "km": 15.5
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 14,
+      "startDate": "2026-08-24",
+      "endDate": "2026-08-30",
+      "phase": "August-tri + HM-blokk",
+      "focus": "Hareid-uke — sprint som HM-generalprøve (8 dager før HM).",
+      "targetHours": 6.5,
+      "isRecoveryWeek": false,
+      "days": [
+        {
+          "date": "2026-08-24",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm lett",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Lett + mobilitet.",
+              "completed": false,
+              "distanceMeters": 1600,
+              "id": "a14-0-swim-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Mobilitet",
+              "description": "",
+              "durationMinutes": 10,
+              "primaryZone": "N/A",
+              "humanReadable": "Skulder.",
+              "completed": false,
+              "id": "a14-0-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-25",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "threshold",
+              "name": "Løp terskel",
+              "description": "",
+              "durationMinutes": 45,
+              "primaryZone": "Zone 4",
+              "humanReadable": "3 × 6 min @ terskel (~4:05-4:12/km) — siste skarphet.",
+              "completed": false,
+              "distanceKm": 8,
+              "id": "a14-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-26",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Sykkel lett",
+              "description": "",
+              "durationMinutes": 60,
+              "primaryZone": "Zone 2",
+              "humanReadable": "1t Z2 ~150-180W.",
+              "completed": false,
+              "distanceKm": 27,
+              "id": "a14-2-bike-0"
+            },
+            {
+              "sport": "strength",
+              "type": "mobility",
+              "name": "Leggstyrke",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "N/A",
+              "humanReadable": "Soleus + hofte.",
+              "completed": false,
+              "id": "a14-2-strength-1"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-27",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Svøm lett",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Lett + 4 strides (~3:40/km).",
+              "completed": false,
+              "distanceMeters": 1400,
+              "id": "a14-3-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-28",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett 20 min",
+              "description": "",
+              "durationMinutes": 20,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Lett, åpne beina.",
+              "completed": false,
+              "distanceKm": 9,
+              "id": "a14-4-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-29",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "race",
+              "type": "race",
+              "name": "🏁 Hareid Triatlon (sprint)",
+              "description": "",
+              "durationMinutes": 70,
+              "primaryZone": "Race",
+              "humanReadable": "0,75/20/5,4. Race HARDT — HM-generalprøve. Løp ~4:05-4:15/km.",
+              "completed": false,
+              "id": "a14-5-race-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a14-6-rest-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 4.9,
+        "bySport": {
+          "swim": {
+            "sessions": 2,
+            "hours": 1.08,
+            "km": 3.0
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 1.33,
+            "km": 36.0
+          },
+          "run": {
+            "sessions": 1,
+            "hours": 0.75,
+            "km": 8.0
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 15,
+      "startDate": "2026-08-31",
+      "endDate": "2026-09-06",
+      "phase": "HM-taper + A-løp",
+      "focus": "Taper inn til Trondheim halvmaraton (A, mål 1:30).",
+      "targetHours": 5.0,
+      "isRecoveryWeek": true,
+      "days": [
+        {
+          "date": "2026-08-31",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Lett svøm",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Løsne opp etter Hareid.",
+              "completed": false,
+              "distanceMeters": 1400,
+              "id": "a15-0-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-01",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "sharpening",
+              "name": "HM-skarphet",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 3",
+              "humanReadable": "3 × 1,5 km @ HM-pace (4:16/km), full pause.",
+              "completed": false,
+              "distanceKm": 8,
+              "id": "a15-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-02",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Rolig løp",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "~5:20/km + 4 strides.",
+              "completed": false,
+              "distanceKm": 5.5,
+              "id": "a15-2-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-03",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett spinn",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 1",
+              "humanReadable": "~150-180W + 3 strides.",
+              "completed": false,
+              "distanceKm": 14,
+              "id": "a15-3-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-04",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a15-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-05",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "sharpening",
+              "name": "Åpne beina",
+              "description": "",
+              "durationMinutes": 18,
+              "primaryZone": "Zone 2",
+              "humanReadable": "15 min jog + 3 × 100m i HM-fart (~4:10/km).",
+              "completed": false,
+              "distanceKm": 3.5,
+              "id": "a15-5-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-06",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "race",
+              "type": "race",
+              "name": "🏁🎯 TRONDHEIM HALVMARATON (A)",
+              "description": "",
+              "durationMinutes": 90,
+              "primaryZone": "Race",
+              "humanReadable": "21,1 km — mål 1:30. 0-5 km @ 4:18, 5-15 km @ 4:16, 15-21 km @ 4:13/km hvis du har det.",
+              "completed": false,
+              "distanceKm": 21.1,
+              "id": "a15-6-race-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 4.0,
+        "bySport": {
+          "swim": {
+            "sessions": 1,
+            "hours": 0.5,
+            "km": 1.4
+          },
+          "bike": {
+            "sessions": 1,
+            "hours": 0.5,
+            "km": 14.0
+          },
+          "run": {
+            "sessions": 3,
+            "hours": 1.47,
+            "km": 17.0
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 16,
+      "startDate": "2026-09-07",
+      "endDate": "2026-09-13",
+      "phase": "Avslutning",
+      "focus": "Restituer HM + Trisprinten (B).",
+      "targetHours": 5.0,
+      "isRecoveryWeek": true,
+      "days": [
+        {
+          "date": "2026-09-07",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett gåtur/jog",
+              "description": "",
+              "durationMinutes": 25,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Restitusjon etter HM.",
+              "completed": false,
+              "distanceKm": 3,
+              "id": "a16-0-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-08",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Lett svøm",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Løsne opp.",
+              "completed": false,
+              "distanceMeters": 1400,
+              "id": "a16-1-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-09",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett spinn",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 1",
+              "humanReadable": "Z1-2 ~150-180W.",
+              "completed": false,
+              "distanceKm": 18,
+              "id": "a16-2-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp + strides",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 2",
+              "humanReadable": "~5:20/km + strides.",
+              "completed": false,
+              "distanceKm": 5.5,
+              "id": "a16-3-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-11",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "recovery",
+              "name": "Lett spinn + pickups",
+              "description": "",
+              "durationMinutes": 30,
+              "primaryZone": "Zone 1",
+              "humanReadable": "+ 3 pickups.",
+              "completed": false,
+              "distanceKm": 14,
+              "id": "a16-4-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-12",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "race",
+              "type": "race",
+              "name": "🏁 Trisprinten NTNUI (sprint)",
+              "description": "",
+              "durationMinutes": 57,
+              "primaryZone": "Race",
+              "humanReadable": "0,4/19/4,5. Kort/gøy, på følelse. Løp ~4:00-4:10/km.",
+              "completed": false,
+              "id": "a16-5-race-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-13",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a16-6-rest-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 3.5,
+        "bySport": {
+          "swim": {
+            "sessions": 1,
+            "hours": 0.5,
+            "km": 1.4
+          },
+          "bike": {
+            "sessions": 2,
+            "hours": 1.17,
+            "km": 32.0
+          },
+          "run": {
+            "sessions": 2,
+            "hours": 0.92,
+            "km": 8.5
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 17,
+      "startDate": "2026-09-14",
+      "endDate": "2026-09-20",
+      "phase": "Avslutning",
+      "focus": "Nedtrapping — lett, ustrukturert etter lyst.",
+      "targetHours": 4.0,
+      "isRecoveryWeek": true,
+      "days": [
+        {
+          "date": "2026-09-14",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a17-0-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 etter lyst.",
+              "completed": false,
+              "distanceKm": 6.5,
+              "id": "a17-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-16",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Lett svøm",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk.",
+              "completed": false,
+              "distanceMeters": 1700,
+              "id": "a17-2-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-17",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "aerobic",
+              "name": "Lett tur",
+              "description": "",
+              "durationMinutes": 60,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 etter lyst.",
+              "completed": false,
+              "distanceKm": 27,
+              "id": "a17-3-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a17-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2.",
+              "completed": false,
+              "distanceKm": 7.5,
+              "id": "a17-5-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-20",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a17-6-rest-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 2.8,
+        "bySport": {
+          "swim": {
+            "sessions": 1,
+            "hours": 0.58,
+            "km": 1.7
+          },
+          "bike": {
+            "sessions": 1,
+            "hours": 1.0,
+            "km": 27.0
+          },
+          "run": {
+            "sessions": 2,
+            "hours": 1.25,
+            "km": 14.0
+          }
+        }
+      }
+    },
+    {
+      "weekNumber": 18,
+      "startDate": "2026-09-21",
+      "endDate": "2026-09-27",
+      "phase": "Avslutning",
+      "focus": "Off-season / overgang — start på 1:20-prosjektet mot vinteren.",
+      "targetHours": 4.0,
+      "isRecoveryWeek": true,
+      "days": [
+        {
+          "date": "2026-09-21",
+          "dayOfWeek": "Monday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a18-0-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-22",
+          "dayOfWeek": "Tuesday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2.",
+              "completed": false,
+              "distanceKm": 6.5,
+              "id": "a18-1-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "dayOfWeek": "Wednesday",
+          "workouts": [
+            {
+              "sport": "swim",
+              "type": "aerobic",
+              "name": "Lett svøm",
+              "description": "",
+              "durationMinutes": 35,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Teknikk.",
+              "completed": false,
+              "distanceMeters": 1700,
+              "id": "a18-2-swim-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "dayOfWeek": "Thursday",
+          "workouts": [
+            {
+              "sport": "bike",
+              "type": "aerobic",
+              "name": "Lett tur",
+              "description": "",
+              "durationMinutes": 60,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2.",
+              "completed": false,
+              "distanceKm": 27,
+              "id": "a18-3-bike-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-25",
+          "dayOfWeek": "Friday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a18-4-rest-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "dayOfWeek": "Saturday",
+          "workouts": [
+            {
+              "sport": "run",
+              "type": "recovery",
+              "name": "Lett løp + strides",
+              "description": "",
+              "durationMinutes": 40,
+              "primaryZone": "Zone 2",
+              "humanReadable": "Z2 + strides. Begynn å bygge løpefrekvens mot 1:20.",
+              "completed": false,
+              "distanceKm": 7.5,
+              "id": "a18-5-run-0"
+            }
+          ]
+        },
+        {
+          "date": "2026-09-27",
+          "dayOfWeek": "Sunday",
+          "workouts": [
+            {
+              "sport": "rest",
+              "type": "rest",
+              "name": "Hviledag",
+              "description": "",
+              "durationMinutes": 0,
+              "primaryZone": "N/A",
+              "humanReadable": "Full hvile — restitusjon, søvn, ernæring.",
+              "completed": false,
+              "id": "a18-6-rest-0"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalHours": 2.8,
+        "bySport": {
+          "swim": {
+            "sessions": 1,
+            "hours": 0.58,
+            "km": 1.7
+          },
+          "bike": {
+            "sessions": 1,
+            "hours": 1.0,
+            "km": 27.0
+          },
+          "run": {
+            "sessions": 2,
+            "hours": 1.25,
+            "km": 14.0
+          }
         }
       }
     }
@@ -561,12 +3752,27 @@ ${a.join(`
       "name": "Ironman Nice",
       "date": "2026-06-28",
       "type": "Ironman",
-      "distances": { "swim": 3800, "bike": 180, "run": 42200 }
+      "distances": {
+        "swim": 3800,
+        "bike": 180,
+        "run": 42200
+      }
     },
     "pacing": {
-      "swim": { "target": "1:50-2:00/100m (~1:10-1:15)", "notes": "Start rolig i 200m, finn føtter å drafte bak, 2-takts spark for å spare beina. Sikt jevnlig - rett linje sparer tid og krefter." },
-      "bike": { "targetPower": "NP 195-205W (IF 0.66-0.70)", "targetHR": "<150 (under bike-LTHR 173)", "notes": "Første 30 min: 5-10W under mål. Den lange stigningen: maks Z3 ~230-250W, ALDRI Z4 - dette er fellen i Nice. Slipp effekt i nedkjøring, fokuser linjevalg. Sub-11/12 avgjøres ved å IKKE blåse beina på klatringen." },
-      "run": { "targetPace": "5:15-5:30/km flatt, +15-30s/km i varme >30°C", "targetHR": "<160 (Z2/lav Z3)", "notes": "Flatt 4-runders løp = lett å starte for fort. Første 5 km bevisst rolig. Gå gjennom HVER aid-stasjon (5-10s) for næring + kjøling. Hvis du har noe igjen på runde 4 - slipp den løs." }
+      "swim": {
+        "target": "1:50-2:00/100m (~1:10-1:15)",
+        "notes": "Start rolig i 200m, finn føtter å drafte bak, 2-takts spark for å spare beina. Sikt jevnlig - rett linje sparer tid og krefter."
+      },
+      "bike": {
+        "targetPower": "NP 195-205W (IF 0.66-0.70)",
+        "targetHR": "<150 (under bike-LTHR 173)",
+        "notes": "Første 30 min: 5-10W under mål. Den lange stigningen: maks Z3 ~230-250W, ALDRI Z4 - dette er fellen i Nice. Slipp effekt i nedkjøring, fokuser linjevalg. Sub-11/12 avgjøres ved å IKKE blåse beina på klatringen."
+      },
+      "run": {
+        "targetPace": "5:15-5:30/km flatt, +15-30s/km i varme >30°C",
+        "targetHR": "<160 (Z2/lav Z3)",
+        "notes": "Flatt 4-runders løp = lett å starte for fort. Første 5 km bevisst rolig. Gå gjennom HVER aid-stasjon (5-10s) for næring + kjøling. Hvis du har noe igjen på runde 4 - slipp den løs."
+      }
     },
     "heat": {
       "acclimation": "50 min varmeøkt 3x/uke på innetrainer uten vifte, ALLTID etter dagens nøkkeløkt. Kontrollert dehydrering: kun ~2 dl væske under, rehydrer ~3x etter med natrium. Adaptasjonen er nær full etter 10-14 dager - derfor tyngdepunkt uke 4-5. Ekte varme i Nice 26.-27. forsterker.",
@@ -585,47 +3791,29 @@ ${a.join(`
         "carbsPerHour": 90,
         "fluidPerHour": "800-1000ml (varmt vær)",
         "sodiumPerHour": "700-1000mg",
-        "products": ["Gels", "energibar", "banan", "sportsdrikke", "kald cola (siste 2-3t)", "salt-/elektrolyttkapsler"]
+        "products": [
+          "Gels",
+          "energibar",
+          "banan",
+          "sportsdrikke",
+          "kald cola (siste 2-3t)",
+          "salt-/elektrolyttkapsler"
+        ]
       },
       "notes": "Sykkel (~6t): 90-100g karbo/t, variér fast/flytende. Løp: 60-90g/t fra aid-stasjoner, cola + gel annenhver. KRITISK i varmen: 700-1000mg natrium/t - test på lørdagsbrickene 6. og 13. juni (full race-hydrering de dagene, IKKE varmeprotokoll). Trent mage tåler 90g/t; utrent mage kollapser."
     },
-    "caffeine": { "protocol": "Lite/ingen koffein de første 3-4t. Spar til siste 2-3t av sykkel + løp (koffeingels/cola).", "notes": "Test toleranse på langturer." },
+    "caffeine": {
+      "protocol": "Lite/ingen koffein de første 3-4t. Spar til siste 2-3t av sykkel + løp (koffeingels/cola).",
+      "notes": "Test toleranse på langturer."
+    },
     "taper": {
       "startDate": "2026-06-15",
       "volumeReduction": 55,
-      "notes": "2,5-ukers progressiv taper. Volum ned ~45% (uke 4) → ~65% (uke 5), intensitet holdes kort/skarp. Eksamensperioden gjør nedtrappingen lett. Varmeøktene fortsetter 3x/uke (lav belastning). Mål form (TSB) +15 til +25 på racedag. IKKE legg til 'litt ekstra' - tilliten ligger i jobben som er gjort." }
+      "notes": "2,5-ukers progressiv taper. Volum ned ~45% (uke 4) → ~65% (uke 5), intensitet holdes kort/skarp. Eksamensperioden gjør nedtrappingen lett. Varmeøktene fortsetter 3x/uke (lav belastning). Mål form (TSB) +15 til +25 på racedag. IKKE legg til 'litt ekstra' - tilliten ligger i jobben som er gjort."
+    }
   }
 }
-
-</script>
-<section style="max-width:900px;margin:48px auto;padding:0 16px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;color:#c9d1d9">
-  <h2 style="color:#fbbf24;border-bottom:1px solid #30363d;padding-bottom:8px">🍂 Høstplan 2026 — Nice → september</h2>
-  <p style="color:#8b949e;font-size:13px">Uke-for-uke fra restitusjon etter Nice til Trondheim HM (A) 6. sep. 🔑 = nøkkeløkt. <b>Interaktiv versjon med dine referanseverdier (FTP/pace) ligger på <a href="/IM" style="color:#fbbf24">olivere.no/IM → Høstplan</a>.</b></p>
-  <p style="color:#8b949e;font-size:12px"><b>Fartssoner løp:</b> Rolig/Z2 ~5:10-5:30 · Tempo ~4:25 · HM-pace 4:16 · Terskel ~4:05-4:12 · VO2 ~3:55-4:05/km. <b>Sykkel:</b> Z2 ~170-200W · sweet-spot 255-265W · VO2 290-300W (FTP 295).</p>
-  <div id="hp26"></div>
-</section>
-<script>
-(function(){
-var HP=[
- {wk:1,dates:'29.6–5.7',theme:'FASE 1 · Restitusjon — avlasting',hrs:'3-4t',days:[['Man-Ons','Fri / gåturer — spis, sov, absorber Nice'],['Tor','Lett svøm 20-30 min'],['Fre','Lett spinn 30-40 min Z1 (~130-160W)'],['Lør','Lett svøm + valgfri 15-20 min jogg (~5:30/km)'],['Søn','Rolig sykkel 1t Z1-2 (~150-185W)']]},
- {wk:2,dates:'6.–12.7',theme:'FASE 1 · Restitusjon — lett aerob',hrs:'5-6t',days:[['Man','Svøm teknikk 40 min + mobilitet'],['Tir','Rolig løp 30-40 min (~5:10-5:30/km)'],['Ons','Sykkel 1-1,5t Z2 (~170-200W) + leggstyrke'],['Tor','Svøm 40 min'],['Fre','Fri'],['Lør','Sykkel 1,5-2t Z2 (~170-200W)'],['Søn','Rolig løp 45 min + 4 strides']]},
- {wk:3,dates:'13.–19.7',theme:'FASE 2 · Gjenoppbygg',hrs:'7-8t',days:[['Man','Svøm teknikk + mobilitet'],['Tir','🔑 Løp terskel — 4 × 6 min @ ~4:05-4:12/km (HR 165-172)'],['Ons','Sykkel sweet-spot 3 × 10 min @ 255-265W + leggstyrke'],['Tor','Svøm + rolig løp 30 min'],['Fre','Fri / lett spinn'],['Lør','🔑 Lang løp 12-14 km (~5:00-5:20/km)'],['Søn','Sykkel ~2t aerob + kort svøm']]},
- {wk:4,dates:'20.–26.7',theme:'FASE 2 · HM-bygg 1',hrs:'8-9t',days:[['Man','Svøm teknikk + mobilitet'],['Tir','🔑 Løp tempo — 2 × 12 min @ ~4:25/km'],['Ons','Sykkel VO2 5 × 4 min @ 290-300W + leggstyrke'],['Tor','Svøm + rolig løp 40 min'],['Fre','Fri'],['Lør','🔑 Lang løp 15-16 km (siste 3 km progressivt mot ~4:30)'],['Søn','Sykkel ~2t aerob + brick-jogg 15 min']]},
- {wk:5,dates:'27.7–2.8',theme:'FASE 2 · Tri-skarphet',hrs:'9t',days:[['Man','Svøm teknikk + mobilitet'],['Tir','🔑 Løp terskel — 5 × 6 min @ ~4:05-4:12/km'],['Ons','Sykkel sweet-spot 3 × 12 min @ 255-265W + leggstyrke'],['Tor','OW-svøm + kort løp'],['Fre','Fri'],['Lør','🔑 Brick — sykkel 1,5t (~215-230W) + løp 5 km (~4:30/km)'],['Søn','Lang løp 16-18 km rolig']]},
- {wk:6,dates:'3.–9.8',theme:'FASE 3 · Oslo Triatlon (B, lør 8.8)',hrs:'7-8t',days:[['Man','Svøm teknikk'],['Tir','🔑 Løp 4 × 3 min @ VO2/5K (~3:55-4:05/km)'],['Ons','Sykkel kort sweet-spot + leggstyrke'],['Tor','Svøm lett + 3 × 1 min pickups sykkel'],['Fre','Lett spinn + 4 strides'],['Lør','🔑🏁 Oslo Triatlon (olympisk) — sykkel ~250-265W, løp ~4:15-4:25/km'],['Søn','Rolig restitusjon']]},
- {wk:7,dates:'10.–16.8',theme:'FASE 3 · HM-blokk (peak)',hrs:'9-10t',days:[['Man','Svøm teknikk + mobilitet'],['Tir','🔑 Løp cruise — 5 × 8 min @ terskel (~4:05-4:12/km)'],['Ons','Sykkel aerob 1,5t + leggstyrke'],['Tor','Svøm + rolig løp 40 min'],['Fre','Fri'],['Lør','🔑 Lang løp 18-20 km m/ 2 × 4 km @ HM-pace (4:16)'],['Søn','Sykkel ~2t aerob + kort svøm']]},
- {wk:8,dates:'17.–23.8',theme:'FASE 3 · Trondheim Triatlon (B, lør 22.8)',hrs:'7-8t',days:[['Man','Svøm teknikk'],['Tir','🔑 Løp tempo — 3 × 10 min @ HM-pace (4:16)'],['Ons','Sykkel sweet-spot kort + leggstyrke'],['Tor','Svøm + lett løp 30 min'],['Fre','Lett spinn + strides'],['Lør','🔑🏁 Trondheim Tri (Munkholmen 2,4/50/12) — sykkel ~230-245W, løp ~4:25-4:35/km'],['Søn','Fri / gåtur']]},
- {wk:9,dates:'24.–30.8',theme:'FASE 3 · Hareid = HM-generalprøve (B, lør 29.8)',hrs:'6-7t',days:[['Man','Svøm lett + mobilitet'],['Tir','🔑 Løp 3 × 6 min @ terskel'],['Ons','Sykkel lett 1t + leggstyrke'],['Tor','Svøm lett + 4 strides'],['Fre','Fri / 20 min lett'],['Lør','🔑🏁 Hareid Triatlon (sprint) — race HARDT, løp ~4:05-4:15/km'],['Søn','Rolig restitusjon']]},
- {wk:10,dates:'31.8–6.9',theme:'FASE 4 · HM-taper → Trondheim HM (A, søn 6.9) 🎯',hrs:'5t',days:[['Man','Fri / lett svøm'],['Tir','🔑 HM-skarphet — 3 × 1,5 km @ HM-pace (4:16)'],['Ons','Rolig løp 30 min + 4 strides'],['Tor','Lett spinn 30 min + 3 strides'],['Fre','Fri'],['Lør','15 min jog + 3 × 100m i HM-fart'],['Søn','🔑🏁🎯 TRONDHEIM HALVMARATON — mål 1:30. 0-5 km @ 4:18, 5-15 @ 4:16, 15-21 @ 4:13/km hvis du har det']]},
- {wk:11,dates:'7.–13.9',theme:'FASE 5 · Restituer + Trisprinten (B, lør 12.9)',hrs:'5t',days:[['Man-Ons','Lett (gåtur, svøm, spinn) — nettopp racet HM'],['Tor','Lett løp 30 min + strides'],['Fre','Lett spinn + 3 pickups'],['Lør','🔑🏁 Trisprinten NTNUI (sprint) — løp ~4:00-4:10/km'],['Søn','Fri']]},
- {wk:12,dates:'14.–20.9',theme:'FASE 5 · Nedtrapping',hrs:'lavt',days:[['Uka','Lett, ustrukturert trening etter lyst']]},
- {wk:13,dates:'21.–30.9',theme:'FASE 5 · Off-season',hrs:'lavt',days:[['Uka','Lett trening. Start på 1:20-prosjektet mot vinteren']]}
-];
-document.getElementById('hp26').innerHTML=HP.map(function(w){
- var rows=w.days.map(function(d){var key=d[1].indexOf('🔑')>=0;return '<div style="display:flex;gap:10px;padding:5px 0;border-bottom:1px solid #30363d;font-size:14px"><span style="min-width:62px;font-weight:600;color:#fbbf24;flex-shrink:0">'+d[0]+'</span><span style="flex:1'+(key?';font-weight:600':'')+'">'+d[1]+'</span></div>';}).join('');
- return '<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"><h3 style="margin:0;color:#e6edf3">Uke '+w.wk+' <span style="font-size:13px;font-weight:400;color:#8b949e">· '+w.dates+'</span></h3><span style="background:rgba(245,158,11,.14);color:#fbbf24;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700">'+w.hrs+'</span></div><div style="font-size:13px;color:#8b949e;margin:4px 0 6px">'+w.theme+'</div>'+rows+'</div>';
-}).join('');
-})();
 </script>
   </body>
 </html>
+
