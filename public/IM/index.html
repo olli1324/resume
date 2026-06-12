@@ -298,6 +298,21 @@
   <h2>Høstplan — Nice → september</h2>
   <div class="card" style="margin-bottom:12px">
     <p class="note" style="margin:0">Uke-for-uke fra restitusjon etter Nice til Trondheim HM (A) 6. sep. <b>🔑 = nøkkeløkt.</b> Faste elementer hver uke: svøm 3-4×, leggstyrke 2×, skuldermobilitet daglig. Ingen heat-økter (norsk høst). Løpevolum +~10 %/uke pga beinhistorikk.</p>
+    <p class="note" style="margin:8px 0 0"><b>Fartssoner løp:</b> Rolig/Z2 ~5:10-5:30 · Tempo ~4:25 · HM-pace 4:16 (4:13-4:20) · Terskel ~4:05-4:12 (HR 165-172) · VO2/5K ~3:55-4:05 per km. &nbsp;<b>Sykkel:</b> Z2 ~170-200W · sweet-spot 255-265W · VO2 290-300W (FTP 295).</p>
+  </div>
+  <div class="card" style="margin-bottom:12px">
+    <h3 style="margin-top:0">⚙️ Referanseverdier</h3>
+    <p class="note" style="margin:0 0 10px">Endre verdiene dine → alle sonene under oppdateres (lagres i nettleseren). Øktene i planen bruker disse sonenavnene.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="field" style="margin:0"><label class="muted">FTP (W)</label><input type="number" id="ref_ftp" value="295"></div>
+      <div class="field" style="margin:0"><label class="muted">Vekt (kg)</label><input type="number" id="ref_wt" value="82"></div>
+      <div class="field" style="margin:0"><label class="muted">Løpeterskel (min/km)</label><input type="text" id="ref_rthr" value="4:07"></div>
+      <div class="field" style="margin:0"><label class="muted">Svømmeterskel (/100m)</label><input type="text" id="ref_sthr" value="2:07"></div>
+      <div class="field" style="margin:0"><label class="muted">Terskel-puls løp</label><input type="number" id="ref_rhr" value="173"></div>
+      <div class="field" style="margin:0"><label class="muted">HM-mål (min/km)</label><input type="text" id="ref_hm" value="4:16"></div>
+    </div>
+    <button class="kbtn" onclick="calcRef()">Oppdater soner</button>
+    <div id="refOut" style="margin-top:12px"></div>
   </div>
   <div id="hostList"></div>
 </section>
@@ -516,12 +531,12 @@ packGroups.forEach(g=>{
 
 // ---------- sesong 2026 ----------
 const SEASON=[
-  {date:'2026-06-28',name:'IRONMAN Nice',prio:'A',type:'Full Ironman',legs:'🏊 3,8 km · 🚴 180 km (2400 hm) · 🏃 42,2 km',est:'~11:00',goal:'sub-11',note:'Hovedmål. Varm, kupert sykkel — pace stigningen tålmodig.'},
-  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through, ikke full taper.'},
-  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Munkholmen (hovuddist.)',legs:'🏊 2,4 km · 🚴 50 km · 🏃 12 km',est:'~3:05',note:'B — Munkholmen-svøm fra båt. Lengre enn olympisk (~3t) — gi litt ekstra restitusjon etterpå.'},
-  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5,4 km',est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
+  {date:'2026-06-28',name:'IRONMAN Nice',prio:'A',type:'Full Ironman (180,2 km sykkel)',legs:'🏊 3,8 km · 🚴 180 km (2400 hm) · 🏃 42,2 km',splits:[['🏊 Svøm','~1:10'],['T1','~5 min'],['🚴 Sykkel','~5:45'],['T2','~3 min'],['🏃 Løp','~3:50']],est:'~10:55',goal:'sub-11',note:'Hovedmål. Varm, kupert sykkel — pace stigningen tålmodig.'},
+  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',splits:[['🏊 Svøm','~29 min'],['T1','~2 min'],['🚴 Sykkel','~1:02'],['T2','~1,5 min'],['🏃 Løp','~44 min']],est:'~2:19',note:'B — train-through, ikke full taper.'},
+  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Munkholmen (hovuddist.)',legs:'🏊 2,4 km · 🚴 50 km · 🏃 12 km',splits:[['🏊 Svøm','~48 min'],['T1','~2,5 min'],['🚴 Sykkel','~1:19'],['T2','~1,5 min'],['🏃 Løp','~54 min']],est:'~3:05',note:'B — Munkholmen-svøm fra båt. Lengre enn olympisk (~3t) — gi litt ekstra restitusjon etterpå.'},
+  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5,4 km',splits:[['🏊 Svøm','~15 min'],['T1','~1,5 min'],['🚴 Sykkel','~30 min'],['T2','~1 min'],['🏃 Løp','~23 min']],est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
   {date:'2026-09-06',name:'Trondheim halvmaraton',prio:'A',type:'Halvmaraton',legs:'🏃 21,1 km',est:'1:30',goal:'1:30 (4:16/km)',note:'Høstens A-løp. 1:30 er innen rekkevidde med riktig blokk.'},
-  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Sprint',legs:'🏊 0,4 km · 🚴 19 km · 🏃 4,5 km',est:'~55 min',note:'B — kort/gøy, rett etter HM.'}
+  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Sprint',legs:'🏊 0,4 km · 🚴 19 km · 🏃 4,5 km',splits:[['🏊 Svøm','~8 min'],['T1','~1 min'],['🚴 Sykkel','~28 min'],['T2','~1 min'],['🏃 Løp','~19 min']],est:'~57 min',note:'B — kort/gøy, rett etter HM.'}
 ];
 function renderSeason(){
   const el=document.getElementById('seasonList');if(!el)return;
@@ -533,6 +548,7 @@ function renderSeason(){
     const when=days<0?'fullført':(days===0?'I DAG':`om ${days} dager`);
     const dd=d.toLocaleDateString('no-NO',{day:'numeric',month:'short',year:'numeric'});
     const goalTxt=(r.goal&&r.goal!==r.est)?` <span class="muted">(mål ${r.goal})</span>`:'';
+    const splitRows=(r.splits||[]).map(s=>`<div class="row" style="font-size:13px;padding:4px 0"><span class="muted">${s[0]}</span><span class="v" style="font-weight:600">${s[1]}</span></div>`).join('');
     return `<div class="card" style="border-left:4px solid ${isA?'var(--accent2)':'var(--border)'}">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
         <h3 style="margin:0">${r.name} <span class="pill" style="background:${isA?'rgba(245,158,11,.18)':'rgba(120,130,150,.18)'};color:${isA?'#fbbf24':'#9aa4b2'}">${r.prio}</span></h3>
@@ -540,7 +556,8 @@ function renderSeason(){
       </div>
       <div class="row"><span>Type</span><span class="v">${r.type}</span></div>
       <div class="row"><span>Distanse</span><span class="v">${r.legs}</span></div>
-      <div class="row"><span>Estimert tid</span><span class="v" style="color:var(--accent2)">${r.est}${goalTxt}</span></div>
+      ${splitRows}
+      <div class="row"><span>${r.splits?'Estimert total':'Estimert tid'}</span><span class="v" style="color:var(--accent2)">${r.est}${goalTxt}</span></div>
       ${r.note?`<div class="note">${r.note}</div>`:''}
     </div>`;
   }).join('');
@@ -551,87 +568,87 @@ renderSeason();
 const HOSTPLAN=[
  {wk:1,dates:'29.6–5.7',theme:'FASE 1 · Restitusjon — avlasting etter Nice',hrs:'3-4t',days:[
    {d:'Man-Ons',s:'Fri / gåturer. Ingen struktur — spis, sov, la kroppen absorbere Nice.'},
-   {d:'Tor',s:'Lett svøm 20-30 min'},
-   {d:'Fre',s:'Lett spinn 30-40 min Z1'},
-   {d:'Lør',s:'Lett svøm + valgfri 15-20 min rolig jogg (kun hvis beina er glade)'},
-   {d:'Søn',s:'Rolig sykkel 1t Z1-2 ute'}]},
- {wk:2,dates:'6.–12.7',theme:'FASE 1 · Restitusjon — lett aerob',hrs:'6-7t',days:[
+   {d:'Tor',s:'Lett svøm 20-30 min (rolig)'},
+   {d:'Fre',s:'Lett spinn 30-40 min Z1 (~130-160W)'},
+   {d:'Lør',s:'Lett svøm + valgfri 15-20 min rolig jogg (~5:30/km, kun hvis beina er glade)'},
+   {d:'Søn',s:'Rolig sykkel 1t Z1-2 ute (~150-185W)'}]},
+ {wk:2,dates:'6.–12.7',theme:'FASE 1 · Restitusjon — lett aerob',hrs:'5-6t',days:[
    {d:'Man',s:'Svøm teknikk 40 min + mobilitet'},
-   {d:'Tir',s:'Rolig løp 30-40 min Z2'},
-   {d:'Ons',s:'Sykkel 1-1,5t Z2 + leggstyrke'},
+   {d:'Tir',s:'Rolig løp 30-40 min Z2 (~5:10-5:30/km)'},
+   {d:'Ons',s:'Sykkel 1-1,5t Z2 (~170-200W) + leggstyrke'},
    {d:'Tor',s:'Svøm 40 min'},
    {d:'Fre',s:'Fri'},
-   {d:'Lør',s:'Sykkel 1,5-2t Z2 ute'},
-   {d:'Søn',s:'Rolig løp 45 min + 4 strides'}]},
- {wk:3,dates:'13.–19.7',theme:'FASE 2 · Gjenoppbygg — struktur tilbake',hrs:'9t',days:[
+   {d:'Lør',s:'Sykkel 1,5-2t Z2 (~170-200W) ute'},
+   {d:'Søn',s:'Rolig løp 45 min (~5:10-5:25/km) + 4 strides (~3:40/km)'}]},
+ {wk:3,dates:'13.–19.7',theme:'FASE 2 · Gjenoppbygg — struktur tilbake',hrs:'7-8t',days:[
    {d:'Man',s:'Svøm teknikk + mobilitet'},
-   {d:'Tir',k:1,s:'Løp terskel — 4 × 6 min @ terskel (HR ~165-170), 2 min jog'},
+   {d:'Tir',k:1,s:'Løp terskel — 4 × 6 min @ terskel (~4:05-4:12/km, HR 165-172), 2 min jog'},
    {d:'Ons',s:'Sykkel sweet-spot 3 × 10 min @ 255-265W + leggstyrke'},
-   {d:'Tor',s:'Svøm + rolig løp 30 min'},
+   {d:'Tor',s:'Svøm + rolig løp 30 min (~5:15/km)'},
    {d:'Fre',s:'Fri / lett spinn'},
-   {d:'Lør',k:1,s:'Lang løp 12-14 km rolig Z2'},
-   {d:'Søn',s:'Sykkel 2-2,5t aerob + kort svøm'}]},
- {wk:4,dates:'20.–26.7',theme:'FASE 2 · HM-bygg 1',hrs:'10-11t',days:[
+   {d:'Lør',k:1,s:'Lang løp 12-14 km rolig (~5:00-5:20/km)'},
+   {d:'Søn',s:'Sykkel ~2t aerob (~170-200W) + kort svøm'}]},
+ {wk:4,dates:'20.–26.7',theme:'FASE 2 · HM-bygg 1',hrs:'8-9t',days:[
    {d:'Man',s:'Svøm teknikk + mobilitet'},
-   {d:'Tir',k:1,s:'Løp tempo — 2 × 12 min @ HM-pace-følelse (4:20-4:30/km), 3 min jog'},
+   {d:'Tir',k:1,s:'Løp tempo — 2 × 12 min @ tempo (~4:25/km), 3 min jog'},
    {d:'Ons',s:'Sykkel VO2 5 × 4 min @ 290-300W + leggstyrke'},
-   {d:'Tor',s:'Svøm + rolig løp 40 min'},
+   {d:'Tor',s:'Svøm + rolig løp 40 min (~5:15/km)'},
    {d:'Fre',s:'Fri'},
-   {d:'Lør',k:1,s:'Lang løp 15-16 km (siste 3 km progressivt)'},
-   {d:'Søn',s:'Sykkel 2,5t aerob + brick-jogg 15 min'}]},
- {wk:5,dates:'27.7–2.8',theme:'FASE 2 · Tri-skarphet',hrs:'11t',days:[
+   {d:'Lør',k:1,s:'Lang løp 15-16 km (siste 3 km progressivt mot ~4:30/km)'},
+   {d:'Søn',s:'Sykkel ~2t aerob (~170-200W) + brick-jogg 15 min (~5:10/km)'}]},
+ {wk:5,dates:'27.7–2.8',theme:'FASE 2 · Tri-skarphet',hrs:'9t',days:[
    {d:'Man',s:'Svøm teknikk + mobilitet'},
-   {d:'Tir',k:1,s:'Løp terskel — 5 × 6 min @ terskel'},
-   {d:'Ons',s:'Sykkel sweet-spot 3 × 12 min + leggstyrke'},
-   {d:'Tor',s:'OW-svøm (åpent vann) + kort løp'},
+   {d:'Tir',k:1,s:'Løp terskel — 5 × 6 min @ terskel (~4:05-4:12/km), 90s jog'},
+   {d:'Ons',s:'Sykkel sweet-spot 3 × 12 min @ 255-265W + leggstyrke'},
+   {d:'Tor',s:'OW-svøm (åpent vann) + kort løp (~5:15/km)'},
    {d:'Fre',s:'Fri'},
-   {d:'Lør',k:1,s:'Brick — sykkel 1,5t race-pace + løp 5 km av sykkelen'},
-   {d:'Søn',s:'Lang løp 16-18 km rolig'}]},
- {wk:6,dates:'3.–9.8',theme:'FASE 3 · Oslo Triatlon (B, lør 8.8)',hrs:'9t',days:[
+   {d:'Lør',k:1,s:'Brick — sykkel 1,5t race-pace (~215-230W) + løp 5 km av sykkelen (~4:30/km)'},
+   {d:'Søn',s:'Lang løp 16-18 km rolig (~5:00-5:20/km)'}]},
+ {wk:6,dates:'3.–9.8',theme:'FASE 3 · Oslo Triatlon (B, lør 8.8)',hrs:'7-8t',days:[
    {d:'Man',s:'Svøm teknikk'},
-   {d:'Tir',k:1,s:'Løp — 4 × 3 min @ VO2/5K-fart'},
-   {d:'Ons',s:'Sykkel kort sweet-spot + leggstyrke'},
-   {d:'Tor',s:'Svøm lett + 3 × 1 min pickups på sykkel'},
-   {d:'Fre',s:'Lett 20 min spinn + 4 strides'},
-   {d:'Lør',k:1,s:'🏁 Oslo Triatlon (olympisk) — race-craft, ikke full innsats om beina er tunge'},
-   {d:'Søn',s:'Rolig restitusjon — sykkel 1t el. svøm'}]},
- {wk:7,dates:'10.–16.8',theme:'FASE 3 · HM-blokk — peak HM-uke',hrs:'11-12t',days:[
+   {d:'Tir',k:1,s:'Løp — 4 × 3 min @ VO2/5K-fart (~3:55-4:05/km), 3 min jog'},
+   {d:'Ons',s:'Sykkel kort sweet-spot (255-265W) + leggstyrke'},
+   {d:'Tor',s:'Svøm lett + 3 × 1 min pickups på sykkel (~280W)'},
+   {d:'Fre',s:'Lett 20 min spinn + 4 strides (~3:40/km)'},
+   {d:'Lør',k:1,s:'🏁 Oslo Triatlon (olympisk) — race-craft; sykkel ~250-265W, løp ~4:15-4:25/km'},
+   {d:'Søn',s:'Rolig restitusjon — sykkel 1t (~150-180W) el. svøm'}]},
+ {wk:7,dates:'10.–16.8',theme:'FASE 3 · HM-blokk — peak HM-uke',hrs:'9-10t',days:[
    {d:'Man',s:'Svøm teknikk + mobilitet'},
-   {d:'Tir',k:1,s:'Løp terskel cruise — 5 × 8 min @ terskel'},
-   {d:'Ons',s:'Sykkel aerob 2t + leggstyrke'},
-   {d:'Tor',s:'Svøm + rolig løp 40 min'},
+   {d:'Tir',k:1,s:'Løp terskel cruise — 5 × 8 min @ terskel (~4:05-4:12/km), 2 min jog'},
+   {d:'Ons',s:'Sykkel aerob 1,5t (~170-200W) + leggstyrke'},
+   {d:'Tor',s:'Svøm + rolig løp 40 min (~5:15/km)'},
    {d:'Fre',s:'Fri'},
-   {d:'Lør',k:1,s:'HM-nøkkeløkt: lang løp 18-20 km med 2 × 4 km @ HM-pace (4:16) inni'},
-   {d:'Søn',s:'Sykkel 2,5t aerob + kort svøm'}]},
- {wk:8,dates:'17.–23.8',theme:'FASE 3 · Trondheim Triatlon (B, lør 22.8)',hrs:'9t',days:[
+   {d:'Lør',k:1,s:'HM-nøkkeløkt: lang løp 18-20 km med 2 × 4 km @ HM-pace (4:16/km, sone 4:13-4:20), resten ~5:00/km'},
+   {d:'Søn',s:'Sykkel ~2t aerob (~170-200W) + kort svøm'}]},
+ {wk:8,dates:'17.–23.8',theme:'FASE 3 · Trondheim Triatlon (B, lør 22.8)',hrs:'7-8t',days:[
    {d:'Man',s:'Svøm teknikk'},
-   {d:'Tir',k:1,s:'Løp tempo — 3 × 10 min @ HM-pace'},
-   {d:'Ons',s:'Sykkel sweet-spot kort + leggstyrke'},
-   {d:'Tor',s:'Svøm + lett løp 30 min'},
-   {d:'Fre',s:'Lett spinn + strides'},
-   {d:'Lør',k:1,s:'🏁 Trondheim Triatlon (Munkholmen 2,4/50/12) — B, kjør jevnt hardt'},
+   {d:'Tir',k:1,s:'Løp tempo — 3 × 10 min @ HM-pace (4:16/km), 2-3 min jog'},
+   {d:'Ons',s:'Sykkel sweet-spot kort (255-265W) + leggstyrke'},
+   {d:'Tor',s:'Svøm + lett løp 30 min (~5:20/km)'},
+   {d:'Fre',s:'Lett spinn + strides (~3:40/km)'},
+   {d:'Lør',k:1,s:'🏁 Trondheim Triatlon (Munkholmen 2,4/50/12) — B, jevnt hardt; sykkel ~230-245W, løp ~4:25-4:35/km'},
    {d:'Søn',s:'Fri / gåtur — lengre race i går, prioriter restitusjon'}]},
- {wk:9,dates:'24.–30.8',theme:'FASE 3 · Hareid = HM-generalprøve (B, lør 29.8)',hrs:'8t',days:[
+ {wk:9,dates:'24.–30.8',theme:'FASE 3 · Hareid = HM-generalprøve (B, lør 29.8)',hrs:'6-7t',days:[
    {d:'Man',s:'Svøm lett + mobilitet'},
-   {d:'Tir',k:1,s:'Løp — 3 × 6 min @ terskel (siste skarphet)'},
-   {d:'Ons',s:'Sykkel lett 1t + leggstyrke'},
-   {d:'Tor',s:'Svøm lett + 4 strides'},
+   {d:'Tir',k:1,s:'Løp — 3 × 6 min @ terskel (~4:05-4:12/km), siste skarphet'},
+   {d:'Ons',s:'Sykkel lett 1t (~150-180W) + leggstyrke'},
+   {d:'Tor',s:'Svøm lett + 4 strides (~3:40/km)'},
    {d:'Fre',s:'Fri / 20 min lett'},
-   {d:'Lør',k:1,s:'🏁 Hareid Triatlon (sprint) — race hardt, dette er HM-generalprøven'},
+   {d:'Lør',k:1,s:'🏁 Hareid Triatlon (sprint) — race HARDT (HM-generalprøve); løp ~4:05-4:15/km'},
    {d:'Søn',s:'Rolig restitusjon — gåtur / lett svøm'}]},
- {wk:10,dates:'31.8–6.9',theme:'FASE 4 · HM-taper → Trondheim HM (A, søn 6.9) 🎯',hrs:'6t',days:[
+ {wk:10,dates:'31.8–6.9',theme:'FASE 4 · HM-taper → Trondheim HM (A, søn 6.9) 🎯',hrs:'5t',days:[
    {d:'Man',s:'Fri / lett svøm'},
-   {d:'Tir',k:1,s:'HM-skarphet — 3 × 1,5 km @ HM-pace (4:16), full pause'},
-   {d:'Ons',s:'Rolig løp 30 min + 4 strides'},
-   {d:'Tor',s:'Lett spinn 30 min + 3 strides'},
+   {d:'Tir',k:1,s:'HM-skarphet — 3 × 1,5 km @ HM-pace (4:16/km), full pause'},
+   {d:'Ons',s:'Rolig løp 30 min (~5:20/km) + 4 strides'},
+   {d:'Tor',s:'Lett spinn 30 min (~150-180W) + 3 strides'},
    {d:'Fre',s:'Fri'},
-   {d:'Lør',s:'15 min jog + 3 × 100m i HM-fart'},
-   {d:'Søn',k:1,s:'🏁🎯 TRONDHEIM HALVMARATON — mål 1:30 (4:16/km). Ut kontrollert, jevn, hold igjen til 15 km så gi.'}]},
- {wk:11,dates:'7.–13.9',theme:'FASE 5 · Restituer + Trisprinten (B, lør 12.9)',hrs:'6t',days:[
+   {d:'Lør',s:'15 min jog + 3 × 100m i HM-fart (~4:10/km)'},
+   {d:'Søn',k:1,s:'🏁🎯 TRONDHEIM HALVMARATON — mål 1:30. Plan: 0-5 km @ 4:18, 5-15 km @ 4:16, 15-21 km @ 4:13/km hvis du har det.'}]},
+ {wk:11,dates:'7.–13.9',theme:'FASE 5 · Restituer + Trisprinten (B, lør 12.9)',hrs:'5t',days:[
    {d:'Man-Ons',s:'Lett (gåtur, svøm, lett spinn) — nettopp racet HM'},
-   {d:'Tor',s:'Lett løp 30 min + strides'},
+   {d:'Tor',s:'Lett løp 30 min (~5:20/km) + strides'},
    {d:'Fre',s:'Lett spinn + 3 pickups'},
-   {d:'Lør',k:1,s:'🏁 Trisprinten NTNUI (sprint) — kort/gøy, på følelse'},
+   {d:'Lør',k:1,s:'🏁 Trisprinten NTNUI (sprint) — kort/gøy; løp ~4:00-4:10/km'},
    {d:'Søn',s:'Fri'}]},
  {wk:12,dates:'14.–20.9',theme:'FASE 5 · Nedtrapping',hrs:'lavt',days:[
    {d:'Uka',s:'Lett, ustrukturert trening etter lyst. Reflekter over sesongen.'}]},
@@ -652,6 +669,32 @@ function renderHost(){
   }).join('');
 }
 renderHost();
+
+// ---------- referanseverdier / soner ----------
+function fmtP(s){s=Math.round(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+function calcRef(){
+  const g=id=>document.getElementById(id);
+  const ftp=+g('ref_ftp').value||295, wt=+g('ref_wt').value||82, rhr=+g('ref_rhr').value||173;
+  const rthr=parsePace(g('ref_rthr').value)||247, sthr=parsePace(g('ref_sthr').value)||127, hm=parsePace(g('ref_hm').value)||256;
+  const W=(a,b)=>Math.round(ftp*a)+'-'+Math.round(ftp*b)+' W';
+  const R=(a,b)=>fmtP(rthr+a)+'-'+fmtP(rthr+b);
+  g('refOut').innerHTML=`
+    <div class="row"><span>W/kg (FTP)</span><span class="v">${(ftp/wt).toFixed(2)}</span></div>
+    <div class="row"><span>🚴 Z2 endurance</span><span class="v">${W(.56,.75)}</span></div>
+    <div class="row"><span>🚴 Sweet-spot</span><span class="v">${W(.88,.94)}</span></div>
+    <div class="row"><span>🚴 Terskel</span><span class="v">${W(.95,1.05)}</span></div>
+    <div class="row"><span>🚴 VO2</span><span class="v">${W(1.06,1.20)}</span></div>
+    <div class="row"><span>🏃 Rolig / Z2</span><span class="v">${R(60,80)} /km</span></div>
+    <div class="row"><span>🏃 HM-pace</span><span class="v">${fmtP(hm)} /km</span></div>
+    <div class="row"><span>🏃 Tempo</span><span class="v">${R(15,22)} /km</span></div>
+    <div class="row"><span>🏃 Terskel</span><span class="v">${R(-3,4)} /km · HR ${rhr-8}-${rhr-1}</span></div>
+    <div class="row"><span>🏃 VO2 / 5K</span><span class="v">${R(-13,-5)} /km</span></div>
+    <div class="row"><span>🏊 Rolig</span><span class="v">${fmtP(sthr+10)}-${fmtP(sthr+18)} /100m</span></div>`;
+  localStorage.setItem('imn_ref',JSON.stringify({ftp,wt,rhr,rthr:g('ref_rthr').value,sthr:g('ref_sthr').value,hm:g('ref_hm').value}));
+}
+(function(){const s=JSON.parse(localStorage.getItem('imn_ref')||'null');const g=id=>document.getElementById(id);
+  if(s){g('ref_ftp').value=s.ftp;g('ref_wt').value=s.wt;g('ref_rhr').value=s.rhr;g('ref_rthr').value=s.rthr;g('ref_sthr').value=s.sthr;g('ref_hm').value=s.hm;}
+  calcRef();})();
 
 // ---------- treningslogg ----------
 const SEED_LOG=[
