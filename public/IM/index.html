@@ -531,12 +531,12 @@ packGroups.forEach(g=>{
 
 // ---------- sesong 2026 ----------
 const SEASON=[
-  {date:'2026-06-28',name:'IRONMAN Nice',prio:'A',type:'Full Ironman (180,2 km sykkel)',legs:'🏊 3,8 km · 🚴 180 km (2400 hm) · 🏃 42,2 km',splits:[['🏊 Svøm','~1:10'],['T1','~5 min'],['🚴 Sykkel','~5:45'],['T2','~3 min'],['🏃 Løp','~3:50']],est:'~10:55',goal:'sub-11',note:'Hovedmål. Varm, kupert sykkel — pace stigningen tålmodig.'},
-  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',splits:[['🏊 Svøm','~29 min'],['T1','~2 min'],['🚴 Sykkel','~1:02'],['T2','~1,5 min'],['🏃 Løp','~44 min']],est:'~2:19',note:'B — train-through, ikke full taper.'},
-  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Munkholmen (hovuddist.)',legs:'🏊 2,4 km · 🚴 50 km · 🏃 12 km',splits:[['🏊 Svøm','~48 min'],['T1','~2,5 min'],['🚴 Sykkel','~1:19'],['T2','~1,5 min'],['🏃 Løp','~54 min']],est:'~3:05',note:'B — Munkholmen-svøm fra båt. Lengre enn olympisk (~3t) — gi litt ekstra restitusjon etterpå.'},
-  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5,4 km',splits:[['🏊 Svøm','~15 min'],['T1','~1,5 min'],['🚴 Sykkel','~30 min'],['T2','~1 min'],['🏃 Løp','~23 min']],est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
+  {date:'2026-06-28',name:'IRONMAN Nice',prio:'A',type:'Full Ironman (180,2 km sykkel)',legs:'🏊 3,8 km · 🚴 180 km (2400 hm) · 🏃 42,2 km',splits:[['🏊 Svøm','~1:10','~1:51/100m'],['T1','~5 min',''],['🚴 Sykkel','~5:45','~31 km/t'],['T2','~3 min',''],['🏃 Løp','~3:50','~5:27/km']],est:'~10:55',goal:'sub-11',note:'Hovedmål. Varm, kupert sykkel — pace stigningen tålmodig.'},
+  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',splits:[['🏊 Svøm','~29 min','~1:56/100m'],['T1','~2 min',''],['🚴 Sykkel','~1:02','~39 km/t'],['T2','~1,5 min',''],['🏃 Løp','~44 min','~4:24/km']],est:'~2:19',note:'B — train-through, ikke full taper.'},
+  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Munkholmen (hovuddist.)',legs:'🏊 2,4 km · 🚴 50 km · 🏃 12 km',splits:[['🏊 Svøm','~48 min','~2:00/100m'],['T1','~2,5 min',''],['🚴 Sykkel','~1:19','~38 km/t'],['T2','~1,5 min',''],['🏃 Løp','~54 min','~4:30/km']],est:'~3:05',note:'B — Munkholmen-svøm fra båt. Lengre enn olympisk (~3t) — gi litt ekstra restitusjon etterpå.'},
+  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5,4 km',splits:[['🏊 Svøm','~15 min','~2:00/100m'],['T1','~1,5 min',''],['🚴 Sykkel','~30 min','~40 km/t'],['T2','~1 min',''],['🏃 Løp','~23 min','~4:16/km']],est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
   {date:'2026-09-06',name:'Trondheim halvmaraton',prio:'A',type:'Halvmaraton',legs:'🏃 21,1 km',est:'1:30',goal:'1:30 (4:16/km)',note:'Høstens A-løp. 1:30 er innen rekkevidde med riktig blokk.'},
-  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Sprint',legs:'🏊 0,4 km · 🚴 19 km · 🏃 4,5 km',splits:[['🏊 Svøm','~8 min'],['T1','~1 min'],['🚴 Sykkel','~28 min'],['T2','~1 min'],['🏃 Løp','~19 min']],est:'~57 min',note:'B — kort/gøy, rett etter HM.'}
+  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Sprint',legs:'🏊 0,4 km · 🚴 19 km · 🏃 4,5 km',splits:[['🏊 Svøm','~8 min','~2:00/100m'],['T1','~1 min',''],['🚴 Sykkel','~28 min','~41 km/t'],['T2','~1 min',''],['🏃 Løp','~19 min','~4:13/km']],est:'~57 min',note:'B — kort/gøy, rett etter HM.'}
 ];
 function renderSeason(){
   const el=document.getElementById('seasonList');if(!el)return;
@@ -548,7 +548,7 @@ function renderSeason(){
     const when=days<0?'fullført':(days===0?'I DAG':`om ${days} dager`);
     const dd=d.toLocaleDateString('no-NO',{day:'numeric',month:'short',year:'numeric'});
     const goalTxt=(r.goal&&r.goal!==r.est)?` <span class="muted">(mål ${r.goal})</span>`:'';
-    const splitRows=(r.splits||[]).map(s=>`<div class="row" style="font-size:13px;padding:4px 0"><span class="muted">${s[0]}</span><span class="v" style="font-weight:600">${s[1]}</span></div>`).join('');
+    const splitRows=(r.splits||[]).map(s=>`<div class="row" style="font-size:13px;padding:4px 0"><span class="muted">${s[0]}</span><span class="v" style="font-weight:600">${s[1]}${s[2]?` <span class="muted" style="font-weight:400">· ${s[2]}</span>`:''}</span></div>`).join('');
     return `<div class="card" style="border-left:4px solid ${isA?'var(--accent2)':'var(--border)'}">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
         <h3 style="margin:0">${r.name} <span class="pill" style="background:${isA?'rgba(245,158,11,.18)':'rgba(120,130,150,.18)'};color:${isA?'#fbbf24':'#9aa4b2'}">${r.prio}</span></h3>
