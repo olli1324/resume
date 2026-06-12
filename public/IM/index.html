@@ -288,7 +288,7 @@
 <section id="sesong">
   <h2>Sesong 2026</h2>
   <div class="card" style="margin-bottom:12px">
-    <p class="note" style="margin:0">Konkurransene dine med distanser, estimert tid og prioritet. <b>A</b> = hovedmål, <b>B</b> = train-through / skarphet. Estimater er omtrentlige; distanser merket <b>*</b> er antatt — bekreft, så finjusterer jeg tidene.</p>
+    <p class="note" style="margin:0">Konkurransene dine med distanser, estimert tid og prioritet. <b>A</b> = hovedmål, <b>B</b> = train-through / skarphet. Distansene er bekreftet mot arrangørene; tidene er omtrentlige estimater fra dine egne tall (FTP, terskelpace, svømmefart).</p>
   </div>
   <div id="seasonList"></div>
 </section>
@@ -508,11 +508,11 @@ packGroups.forEach(g=>{
 // ---------- sesong 2026 ----------
 const SEASON=[
   {date:'2026-06-28',name:'IRONMAN Nice',prio:'A',type:'Full Ironman',legs:'🏊 3,8 km · 🚴 180 km (2400 hm) · 🏃 42,2 km',est:'~11:00',goal:'sub-11',note:'Hovedmål. Varm, kupert sykkel — pace stigningen tålmodig.'},
-  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk *',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through, ikke full taper.'},
-  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Olympisk *',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through.'},
-  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint *',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5 km',est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
+  {date:'2026-08-08',name:'Oslo Triatlon',prio:'B',type:'Olympisk',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through, ikke full taper.'},
+  {date:'2026-08-22',name:'Trondheim Triatlon',prio:'B',type:'Normal/olympisk',legs:'🏊 1,5 km · 🚴 40 km · 🏃 10 km',est:'~2:20',note:'B — train-through.'},
+  {date:'2026-08-29',name:'Hareid Triatlon',prio:'B',type:'Sprint',legs:'🏊 0,75 km · 🚴 20 km · 🏃 5,4 km',est:'~1:10',note:'B — fungerer som HM-generalprøve, 8 dager før HM.'},
   {date:'2026-09-06',name:'Trondheim halvmaraton',prio:'A',type:'Halvmaraton',legs:'🏃 21,1 km',est:'1:30',goal:'1:30 (4:16/km)',note:'Høstens A-løp. 1:30 er innen rekkevidde med riktig blokk.'},
-  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Supersprint *',legs:'🏊 ~0,4 km · 🚴 ~10 km · 🏃 ~2,5 km',est:'~35 min',note:'B — kort/gøy, rett etter HM.'}
+  {date:'2026-09-12',name:'Trisprinten NTNUI',prio:'B',type:'Sprint',legs:'🏊 0,4 km · 🚴 19 km · 🏃 4,5 km',est:'~55 min',note:'B — kort/gøy, rett etter HM.'}
 ];
 function renderSeason(){
   const el=document.getElementById('seasonList');if(!el)return;
