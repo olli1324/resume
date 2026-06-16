@@ -494,12 +494,6 @@
     }
   </style>
 
-  <div class="cheat-hero">
-    <div class="cheat-eyebrow">Exam &middot; cheat sheet &middot; condensed</div>
-    <h1>The whole course on <em>one screen</em>.</h1>
-    <p>Memorise top-down: conceptual core, electricity economics, formulas. The exam asks one MCQ block, one open-ended exercise, one oral. Each section below maps to one of those. Use the print button if you want it on paper.</p>
-  </div>
-
   <div class="cheat-layout">
     <aside class="cheat-toc">
       <h4>Sections</h4>
@@ -513,6 +507,12 @@
     </aside>
 
     <div class="cheat-body">
+      <div class="cheat-hero">
+        <div class="cheat-eyebrow">Exam &middot; cheat sheet &middot; condensed</div>
+        <h1>The whole course on <em>one screen</em>.</h1>
+        <p>Memorise top-down: conceptual core, electricity economics, formulas. The exam asks one MCQ block, one open-ended exercise, one oral. Each section below maps to one of those. Use the print button if you want it on paper.</p>
+      </div>
+
 
       <section id="cheat-s1">
         <h2><span class="section-num">&sect;1</span>Conceptual core</h2>
@@ -742,12 +742,12 @@
 
         <h4>Heat rate &rarr; variable cost</h4>
         <p>Thermal plant heat rate: $H(p) = a p^2 + b p + c$ in Gcal/h, with $p$ in MW. Variable cost (with fuel price $f$ in &euro;/Gcal):</p>
-        <div class="math-display">$$C^v(p) = f \cdot H(p) = f a p^2 + f b p + f c \quad [\text{\textsterling/h}]$$</div>
+        <div class="math-display">$$C^v(p) = f \cdot H(p) = f a p^2 + f b p + f c \quad [\text{\euro/h}]$$</div>
 
         <h4>Investment cost &rarr; hourly equivalent</h4>
         <p>With overnight CAPEX $I_w$ (&euro;/kW), size $P_{\max}$ (MW), availability $\alpha$, lifetime $L$ years:</p>
         <div class="math-display">$$t = 8760 \cdot \alpha \cdot L \quad [\text{operating hours}]$$</div>
-        <div class="math-display">$$C^f = I_w \cdot P_{\max} \cdot 1000 / t \quad [\text{\textsterling/h, sunk}]$$</div>
+        <div class="math-display">$$C^f = I_w \cdot P_{\max} \cdot 1000 / t \quad [\text{\euro/h, sunk}]$$</div>
 
         <h4>Total, marginal, average</h4>
         <p>Total cost: $C(p) = C^v(p) + C^f$. Marginal cost: $C^m(p) = dC/dp = 2 a' p + b'$, where primed coefficients are the variable-cost ones (so $a' = fa$, $b' = fb$). Average total: $\bar{C}(p) = C(p)/p$.</p>
