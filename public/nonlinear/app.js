@@ -871,7 +871,8 @@ function renderPlan() {
       </div>`;
   });
   PHASES.forEach(p => { document.getElementById(p.grid).innerHTML = grids[p.key]; });
-  document.getElementById('progress-num').textContent = `${state.completed.size}/${TOPICS.length}`;
+  const progressNum = document.getElementById('progress-num');
+  if (progressNum) progressNum.textContent = `${state.completed.size}/${TOPICS.length}`;
 
   document.querySelectorAll('[data-check]').forEach(el => {
     el.addEventListener('click', e => {
