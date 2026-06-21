@@ -1391,19 +1391,21 @@ final_euler = qua2euler(Q(end,:)', [3 2 1])</pre>
     <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Satellite mass $14164$ kg, at perigee $r_p = (6380434, 0, 0)$ m, $v_p = (0, 9692.8824, 0)$ m/s. Determine true anomaly $\theta$ after $0.7$ hours.&raquo;</p></div>
     <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
       <ol>
-        <li>Sjekk om orbit er lukket (energi):
-          <pre class="code-block">mu = 3.986e14;   % Earth's gravitational parameter
+        <li>Sjekk om orbit er lukket (energi):</li>
+      </ol>
+      <pre class="code-block">mu = 3.986e14;   % Earth's gravitational parameter
 r0 = [6380434; 0; 0];
 v0 = [0; 9692.8824; 0];
 energy = norm(v0)^2/2 - mu/norm(r0);
 % Hvis energy &gt;= 0 -&gt; ikke lukket, true anomaly udefinert</pre>
-        </li>
-        <li>Hvis lukket: integrer 2-legeme og finn vinkelen mellom $r_\text{perigee}$ og $r_\text{end}$:
-          <pre class="code-block">f = @(t, x) [x(4:6); -mu/norm(x(1:3))^3 * x(1:3)];
+      <ol start="2">
+        <li>Hvis lukket: integrer 2-legeme og finn vinkelen mellom $r_\text{perigee}$ og $r_\text{end}$:</li>
+      </ol>
+      <pre class="code-block">f = @(t, x) [x(4:6); -mu/norm(x(1:3))^3 * x(1:3)];
 [T, X] = ode45(f, [0 0.7*3600], [r0; v0], odeset('RelTol',1e-10));
 r_end = X(end, 1:3)';
 theta = acos(dot(r0, r_end) / (norm(r0) * norm(r_end))) * 180/pi</pre>
-        </li>
+      <ol start="3">
         <li>Sammenlign med svaralternativene.</li>
       </ol>
     </div>
