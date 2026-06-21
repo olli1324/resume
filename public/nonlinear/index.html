@@ -767,7 +767,7 @@
       <span class="logo-mark">NLC</span>
       <div>
         <span class="logo-text">Nonlinear Control &amp; Aerospace &mdash; Exam Prep</span>
-        <span class="logo-sub">25 June 2026</span>
+        <span class="logo-sub">25 June &middot; 17 July</span>
       </div>
     </div>
     <nav>
@@ -784,23 +784,24 @@
 <!-- ============== PLAN VIEW ============== -->
 <section class="view active" id="view-plan">
   <div class="plan-hero">
-    <div class="plan-eyebrow">Study plan &mdash; 25 June exam</div>
+    <div class="plan-eyebrow">Two-attempt plan &mdash; reconnaissance 25 June, real attempt 17 July</div>
     <h1>The nonlinear and aerospace material, sorted the way the <em>MATLAB exam</em> tests it.</h1>
-    <p>Built from the L00&ndash;L09 nonlinear lectures, the LS01&ndash;LS06 aerospace lectures, and the ex1&ndash;ex6 labs in your folder. Multiple choice plus open questions in MATLAB/Simulink. Click a topic to read it, or jump straight to the quiz.</p>
+    <p>The hardest parts are already pre-built in four course libraries (<code>lib_nmpc</code>, <code>lib_fl</code>, <code>lib_rotations</code>, <code>lib_aerospace</code>). The exam is mostly about knowing which function to call, not deriving algorithms from scratch.</p>
   </div>
 
   <div class="stats-row">
-    <div class="stat"><div class="stat-num"><em>14</em></div><div class="stat-label">Main topics</div></div>
-    <div class="stat"><div class="stat-num">7<span style="font-size:24px;color:var(--muted)">&ndash;11</span></div><div class="stat-label">Exam questions</div></div>
-    <div class="stat"><div class="stat-num">2<span style="font-size:24px;color:var(--muted)">h</span></div><div class="stat-label">Exam length</div></div>
-    <div class="stat"><div class="stat-num" id="progress-num">0/14</div><div class="stat-label">Topics completed</div></div>
+    <div class="stat"><div class="stat-num"><em>4</em></div><div class="stat-label">Days to first attempt</div></div>
+    <div class="stat"><div class="stat-num"><em>26</em></div><div class="stat-label">Days to second attempt</div></div>
+    <div class="stat"><div class="stat-num">17</div><div class="stat-label">Recurring patterns</div></div>
+    <div class="stat"><div class="stat-num">80<span style="font-size:24px;color:var(--muted)">%</span></div><div class="stat-label">Exam = pattern repeat</div></div>
   </div>
 
   <div class="lecturer-note">
-    <div class="label">&#9614; Why this plan is built around recipes and recognition</div>
-    <h3>Six methods, each with its own three-line recipe</h3>
-    <p>The exam is multiple choice plus a few open questions, written in MATLAB/Simulink. The failure mode is <em>method confusion under time pressure</em>: Jacobian vs feedback linearization, Lyapunov vs LaSalle, sliding mode vs NMPC, linear KF vs EKF, DCM vs quaternion, kinematics vs dynamics.</p>
-    <p>So each topic page leads with the one-line tell that separates it from its neighbours, then walks through the recipe you need to reproduce on paper or in Simulink. The quiz drills classification and small derivations; the flashcards hammer the confused pairs. The aerospace block is half the question pool by syllabus weight, so do not skimp on LS01&ndash;LS06.</p>
+    <div class="label">&#9614; Strategy: treat 25 June as reconnaissance, win 17 July</div>
+    <h3>Four days of prep with full-time work blocks does not pass the exam</h3>
+    <p>Today is Sunday 21 June. Mon&ndash;Wed are work days, leaving roughly 12&ndash;15 hours total before the first exam on Thursday. With 14 of 18 lectures still unread and no drilled templates, that is not enough to pass under exam-time pressure.</p>
+    <p>Plan: use 25 June to <em>see the exam structure in real time</em> and identify which patterns trip you up. Then use the 16 focused days between the e-transition oral (1 July) and the second attempt (17 July) to actually pass. This is not capitulation; it is using one attempt to gather data that makes the second attempt cheap.</p>
+    <p>The exam allows the four course libraries on the EXAM platform. <code>lib_fl/io_fl</code> computes feedback-linearization control laws automatically. <code>lib_nmpc</code> has a ready NMPC scaffold. <code>lib_rotations</code> has every DCM/quaternion conversion. <code>lib_aerospace</code> has the orbital primitives. Mastering these four libraries is more valuable than re-deriving anything by hand.</p>
   </div>
 
   <!-- PHASE I: NONLINEAR ANALYSIS -->
@@ -834,41 +835,53 @@
   </div>
 
   <div class="curriculum-status">
-    <h3>The dated schedule</h3>
-    <p style="font-size:14px;color:var(--ink-soft);">Today is 13 May 2026. The work block 20&ndash;25 June kills the post-convex-opt sprint, so all real learning must be done by 16 June. Five Phase A weeks at ~7 hours each, then five short evenings of recall.</p>
+    <h3>Two-phase schedule</h3>
+    <p style="font-size:14px;color:var(--ink-soft);">Phase A (now &ndash; 25 June): minimum viable prep for reconnaissance attempt. Phase B (2&ndash;16 July): real implementation, all 17 patterns drilled.</p>
     <div class="status-grid">
       <div class="status-col">
-        <h4>Phase A &mdash; 13 May to 16 June</h4>
+        <h4>Phase A &mdash; 21 to 25 June (reconnaissance)</h4>
         <ul>
-          <li><strong>Week 1 (13&ndash;19 May):</strong> L00&ndash;L04 foundations and Lyapunov direct method. Lab ex1 (Chua).</li>
-          <li><strong>Week 2 (20&ndash;26 May):</strong> L05, start L06, plus LS01&ndash;LS02 rotations. Lab ex2.</li>
-          <li><strong>Week 3 (27 May&ndash;2 June):</strong> finish L06, then L07 sliding mode, then LS03. Lab ex4.</li>
-          <li><strong>Week 4 (3&ndash;9 June):</strong> L08, L09 NMPC (convex opt overlap), LS04, Kalman. Lab ex5.</li>
-          <li><strong>Week 5 (10&ndash;16 June):</strong> LS05 attitude control, LS06 orbital. Lab ex6. First mock exam.</li>
+          <li><strong>Sun 21 June (6&ndash;8 h):</strong> Library orientation. Read every function in <code>lib_fl</code>, <code>lib_nmpc</code>, <code>lib_rotations</code>, <code>lib_aerospace</code>. Test <code>io_fl</code> on Q8 from sample. Test <code>axes2dcm</code> on Q5 from 2017. Memorize stability definitions.</li>
+          <li><strong>Mon 22 June evening (2&ndash;3 h):</strong> Drill linearization + <code>eig</code> on three different systems. Test <code>lib_nmpc</code> on Q1 from 2018.</li>
+          <li><strong>Tue 23 June evening (2&ndash;3 h):</strong> Half-mock with 2022_23_06 exam. Two-hour timer, libraries open. Note which patterns surprise you.</li>
+          <li><strong>Wed 24 June evening (1&ndash;2 h):</strong> Light review. Confirm libraries load on first try. Slides downloaded. Early sleep.</li>
+          <li><strong>Thu 25 June:</strong> Exam. Score what you can. Pay attention to question structure. Take mental notes immediately after.</li>
         </ul>
       </div>
       <div class="status-col superficial">
-        <h4>Phase B &mdash; 20 to 24 June (evenings only)</h4>
+        <h4>Phase B &mdash; 2 to 16 July (real attempt)</h4>
         <ul>
-          <li><strong>Sat 20 June:</strong> recall Lyapunov &amp; FL. Re-run a week-3 lab from memory.</li>
-          <li><strong>Sun 21 June:</strong> recall sliding mode &amp; NMPC. Write the NMPC problem from memory.</li>
-          <li><strong>Mon 22 June:</strong> EKF predict/update from memory. Sketch Euler's equation.</li>
-          <li><strong>Tue 23 June:</strong> second mock exam. Two-hour timer, slides only.</li>
-          <li><strong>Wed 24 June:</strong> light review. Slides downloaded, sleep early.</li>
+          <li><strong>2&ndash;5 July (4 days):</strong> Drill the 17 patterns systematically. Build a memorized recipe for each. Use libraries heavily.</li>
+          <li><strong>6&ndash;9 July (4 days):</strong> Work through all 6 past exams chronologically (2017, 2018, 2019, 2021, 2022, last_ex). One per day, timed.</li>
+          <li><strong>10&ndash;13 July (4 days):</strong> Patch weak spots identified from the first attempt and the chronological drill. Two full mocks under exam conditions.</li>
+          <li><strong>14&ndash;15 July:</strong> Light review and rest. Library cheat-sheet pinned somewhere visible.</li>
+          <li><strong>Thu 16 July:</strong> Final readiness check. Sleep.</li>
+          <li><strong>Fri 17 July:</strong> Second exam attempt. This is the real one.</li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="removed-section">
-    <h3>Exam-day tactics</h3>
-    <p>Computer lab-based, 2 to 2:15 hours, 7 to 11 questions. Multiple choice plus a few open questions with MATLAB/Simulink. Wrong answers carry a small negative score, so do not guess blind.</p>
+    <h3>The four exam libraries (allowed on EXAM platform)</h3>
+    <p>These cover most of the heavy lifting on the exam. Knowing which function to call is the actual skill being tested.</p>
     <ul>
-      <li>Read all questions first. Mark each as E (easy), M (medium), or H (hard). Clear all the E's first.</li>
-      <li>About 12 to 18 minutes per question average. Anything over 20 minutes, flag and move on.</li>
-      <li>Allowed material: teacher-selected slides, MATLAB libraries used in the course. Download these before you start.</li>
-      <li>The lab work counts toward the final grade, so the labs you did this semester already give you a baseline.</li>
-      <li>For the open questions, build the Simulink first, then check it before writing the explanation.</li>
+      <li><strong>lib_fl:</strong> <code>io_fl(f,g,h,'name')</code> returns control law, state transformation, and relative degree automatically. <code>lieder(f,h,m)</code> for raw Lie derivatives.</li>
+      <li><strong>lib_nmpc:</strong> <code>nmpc_design_template.m</code> is a ready scaffold. Fill in <code>pred_model.m</code> and <code>nlcon.m</code>, set (Ts, Tp, P, Q, R), call <code>nmpc_design_st2(par)</code>.</li>
+      <li><strong>lib_rotations:</strong> every conversion (<code>axes2dcm</code>, <code>dcm2qua</code>, <code>qua2dcm</code>, <code>qua2euler</code>, <code>euler2qua</code>), every operation (<code>quatprod</code>, <code>quat_error</code>, <code>vec_rot_quat</code>), kinematics (<code>kin_quat</code>, <code>kin_tb321</code>), Euler's equation (<code>euler_eq</code>).</li>
+      <li><strong>lib_aerospace:</strong> <code>oe2rv</code>, <code>rv2oe</code> for orbital elements; <code>spacecraft_dynamics</code> for ode45; <code>orb_control_blocks.slx</code> for Simulink.</li>
+    </ul>
+  </div>
+
+  <div class="removed-section">
+    <h3>Exam-day tactics</h3>
+    <p>Computer lab-based, 2 to 2:15 hours, 7 to 11 questions. Small negative score on wrong answers, so do not guess blind.</p>
+    <ul>
+      <li>Read all questions first. Mark each E (easy), M (medium), H (hard). Do E's first.</li>
+      <li>About 12 to 18 minutes per question. Over 20, flag and move on.</li>
+      <li>Open all four libraries to MATLAB path immediately. Have <code>nmpc_design_template.m</code>, <code>pred_model_template.m</code>, <code>nlcon_template.m</code> open in editor.</li>
+      <li>For open questions: build the Simulink first, verify it runs, then write the explanation.</li>
+      <li>The slides selected by the teacher are on the EXAM platform. Download immediately. Pin the rotation conversion table and the stability definitions.</li>
     </ul>
   </div>
 </section>
