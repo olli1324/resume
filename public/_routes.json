@@ -56,6 +56,14 @@
       "dest": "/IM/index.html"
     },
     {
+      "src": "/mlia/*",
+      "dest": "/mlia/$1"
+    },
+    {
+      "src": "/mlia",
+      "dest": "/mlia/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }

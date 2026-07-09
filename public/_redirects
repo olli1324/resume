@@ -4,3 +4,9 @@
 /Cvdl       /CVDL/index.html  200
 /Cvdl/      /CVDL/index.html  200
 /Cvdl/*     /CVDL/:splat      200
+/MLIA       /mlia/index.html  200
+/MLIA/      /mlia/index.html  200
+/MLIA/*     /mlia/:splat      200
+/Mlia       /mlia/index.html  200
+/Mlia/      /mlia/index.html  200
+/Mlia/*     /mlia/:splat      200
