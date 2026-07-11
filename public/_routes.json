@@ -56,6 +56,14 @@
       "dest": "/IM/index.html"
     },
     {
+      "src": "/plan/*",
+      "dest": "/plan/$1"
+    },
+    {
+      "src": "/plan",
+      "dest": "/plan/index.html"
+    },
+    {
       "src": "/mlia/*",
       "dest": "/mlia/$1"
     },
