@@ -529,39 +529,6 @@
   }
   .quiz-submit:hover { background: var(--accent); }
   .quiz-submit:disabled { opacity: 0.4; cursor: not-allowed; }
-  .quiz-hint-btn {
-    background: transparent;
-    border: 1px dashed var(--muted);
-    color: var(--muted);
-    padding: 8px 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 16px;
-    letter-spacing: 0.05em;
-    transition: all 0.15s;
-  }
-  .quiz-hint-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .quiz-hint {
-    background: var(--bg-card-soft);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent-soft);
-    padding: 14px 18px;
-    margin-bottom: 16px;
-    font-size: 14px;
-    color: var(--ink-soft);
-    border-radius: 4px;
-    line-height: 1.55;
-  }
-  .quiz-hint::before {
-    content: 'Hint: ';
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 500;
-    margin-right: 4px;
-  }
   .quiz-feedback { padding: 18px 22px; margin-top: 8px; border-radius: 4px; border-left: 3px solid; }
   .quiz-feedback.correct { background: rgba(74, 107, 58, 0.08); border-color: var(--green); }
   .quiz-feedback.wrong { background: rgba(161, 58, 46, 0.06); border-color: var(--red); }
@@ -673,165 +640,6 @@
   }
   .curriculum-status li::before { content: '\00B7'; position: absolute; left: 0; color: var(--muted); }
   .curriculum-status li strong { color: var(--ink); }
-
-  /* === Exam Practice view === */
-  .exam-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
-  @media (max-width: 900px) { .exam-layout { grid-template-columns: 1fr; } }
-  .exam-sidebar {
-    position: sticky;
-    top: 120px;
-    border-right: 1px solid var(--line-soft);
-    padding-right: 20px;
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
-  }
-  .exam-sidebar h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 14px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-  .exam-pattern {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 9px 12px;
-    font-size: 14px;
-    color: var(--ink-soft);
-    cursor: pointer;
-    border-left: 2px solid transparent;
-    margin-left: -12px;
-    transition: all 0.15s;
-    border-radius: 0 4px 4px 0;
-  }
-  .exam-pattern:hover { color: var(--ink); background: var(--bg-card-soft); }
-  .exam-pattern.active { color: var(--accent); border-left-color: var(--accent); background: var(--bg-card-soft); font-weight: 600; }
-  .exam-pattern-count {
-    font-size: 12px;
-    color: var(--muted);
-    background: var(--bg-card);
-    padding: 2px 8px;
-    border-radius: 999px;
-  }
-  .exam-content { padding-bottom: 120px; max-width: 780px; }
-  .exam-hero { margin-bottom: 24px; }
-  .exam-hero h1 { font-size: clamp(30px, 4vw, 44px); font-weight: 500; margin-bottom: 10px; }
-  .exam-hero h1 em { color: var(--accent); font-style: italic; }
-  .exam-hero p { color: var(--ink-soft); font-size: 15.5px; }
-  .exam-card {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    padding: 32px 34px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    box-shadow: 0 1px 0 var(--line-soft);
-  }
-  .exam-card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--line-soft);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .exam-num {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 24px;
-    color: var(--accent);
-    text-transform: none;
-    letter-spacing: 0;
-  }
-  .exam-source { color: var(--muted); font-weight: 500; }
-  .exam-question { font-size: 16px; line-height: 1.55; margin-bottom: 20px; color: var(--ink); }
-  .exam-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-  .exam-option {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    padding: 12px 16px;
-    text-align: left;
-    border-radius: 4px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14.5px;
-    color: var(--ink);
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    line-height: 1.5;
-  }
-  .exam-option.picked { border-color: var(--ink); background: var(--bg-card-soft); }
-  .exam-option.correct-shown { background: rgba(74,107,58,0.08); border-color: var(--green); }
-  .exam-option.wrong-shown { background: rgba(161,58,46,0.06); border-color: var(--red); opacity: 0.65; }
-  .exam-option .marker {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: var(--muted);
-    font-weight: 500;
-    min-width: 18px;
-  }
-  .exam-option.picked .marker { color: var(--ink); }
-  .exam-option.correct-shown .marker { color: var(--green); }
-  .exam-action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
-  .exam-btn {
-    padding: 8px 16px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    border-radius: 4px;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--ink-soft);
-    transition: all 0.15s;
-  }
-  .exam-btn:hover { border-color: var(--ink); color: var(--ink); }
-  .exam-btn.hint-btn { border-style: dashed; color: var(--muted); }
-  .exam-btn.hint-btn:hover { color: var(--accent); border-color: var(--accent); }
-  .exam-btn.answer-btn { border-color: var(--accent); color: var(--accent); }
-  .exam-btn.answer-btn:hover { background: var(--accent); color: var(--bg); }
-  .exam-hint-panel {
-    background: var(--bg-card-soft);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent-soft);
-    padding: 14px 18px;
-    margin: 12px 0;
-    border-radius: 4px;
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.55;
-  }
-  .exam-hint-panel::before {
-    content: 'Tip: ';
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .exam-answer-panel {
-    background: rgba(74,107,58,0.06);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--green);
-    padding: 16px 20px;
-    margin: 12px 0;
-    border-radius: 4px;
-    font-size: 14.5px;
-    color: var(--ink);
-    line-height: 1.55;
-  }
-  .exam-answer-panel .answer-label {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: var(--green);
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-  .exam-nav-row { display: flex; justify-content: space-between; margin-top: 24px; }
 
   /* === Flashcards view === */
   .flash-hero { margin-bottom: 36px; max-width: 720px; }
@@ -949,6 +757,69 @@
     overflow: hidden;
   }
   .flash-progress-bar { height: 100%; background: var(--accent); transition: width 0.3s ease; }
+
+  /* ============ PATTERNS VIEW ============ */
+  .patterns-hero { max-width: 840px; margin-bottom: 32px; }
+  .patterns-hero h1 { font-size: clamp(34px, 4vw, 50px); font-weight: 500; margin-bottom: 12px; }
+  .patterns-hero h1 em { font-style: italic; color: var(--accent); }
+  .patterns-hero p { color: var(--ink-soft); font-size: 16px; max-width: 740px; }
+  .pattern-toc { display: flex; flex-wrap: wrap; gap: 7px; margin: 24px 0 8px; max-width: 880px; }
+  .pattern-toc a {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 4px 9px; border: 1px solid var(--line); border-radius: 3px;
+    color: var(--ink-soft); text-decoration: none; background: var(--bg-card-soft);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .pattern-toc a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .pattern-group { margin: 52px 0 20px; padding-bottom: 12px; border-bottom: 2px solid var(--line); max-width: 880px; }
+  .pattern-group:first-of-type { margin-top: 20px; }
+  .pattern-group .pg-tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+  }
+  .pattern-group h2 { font-size: 28px; font-weight: 500; }
+  .pattern-group h2 .pg-count {
+    font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 12px;
+    font-family: 'DM Sans', sans-serif; letter-spacing: 0;
+  }
+  .pattern-card {
+    background: var(--bg-card-soft); border: 1px solid var(--line-soft); border-radius: 6px;
+    padding: 24px 28px; margin: 18px 0; max-width: 880px; scroll-margin-top: 110px;
+  }
+  .pattern-card .pat-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .pattern-card .pat-num {
+    flex: none; width: 34px; height: 34px; display: grid; place-items: center;
+    background: var(--accent); color: #fff; border-radius: 50%;
+    font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600;
+  }
+  .pattern-card .pat-head h3 { font-size: 20px; font-weight: 600; line-height: 1.25; }
+  .pat-label {
+    display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 700; color: var(--muted); margin-bottom: 6px;
+  }
+  .pat-label.trap { color: var(--red); }
+  .pat-block { margin: 16px 0; }
+  .pat-block:last-child { margin-bottom: 0; }
+  .pat-block p { color: var(--ink-soft); font-size: 15px; margin-bottom: 8px; }
+  .pat-block p:last-child { margin-bottom: 0; }
+  .pat-block.looks { border-left: 3px solid var(--accent-soft); padding-left: 16px; }
+  .pat-block.looks p { font-style: italic; }
+  .pat-block ol, .pat-block ul { margin: 8px 0 4px 22px; color: var(--ink-soft); font-size: 15px; }
+  .pat-block li { margin-bottom: 6px; }
+  .pat-block li strong { color: var(--ink); }
+  .pat-block.trap { background: rgba(161,58,46,0.05); border: 1px solid rgba(161,58,46,0.22); border-radius: 4px; padding: 14px 18px; }
+  .pat-def {
+    background: var(--bg-card); border-left: 3px solid var(--green);
+    padding: 14px 18px; margin: 10px 0; border-radius: 0 4px 4px 0;
+    font-size: 15px; color: var(--ink); font-style: italic;
+  }
+  .code-block {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.6;
+    background: var(--bg-card); color: var(--ink); border: 1px solid var(--line);
+    border-left: 3px solid var(--ink); padding: 14px 18px; border-radius: 0 4px 4px 0;
+    margin: 12px 0; overflow-x: auto; white-space: pre; tab-size: 2;
+  }
+  .pattern-flow { margin-top: 8px; }
 </style>
 </head>
 <body>
@@ -967,7 +838,7 @@
       <button class="nav-btn" data-view="read">Curriculum</button>
       <button class="nav-btn" data-view="quiz">Quiz</button>
       <button class="nav-btn" data-view="flash">Flashcards</button>
-      <button class="nav-btn" data-view="exam">Exam Practice</button>
+      <button class="nav-btn" data-view="patterns">17 Patterns</button>
     </nav>
   </div>
 </header>
@@ -1118,20 +989,6 @@
   <div id="quiz-container"></div>
 </section>
 
-<!-- ============== EXAM PRACTICE VIEW ============== -->
-<section class="view" id="view-exam">
-  <div class="exam-hero">
-    <div class="plan-eyebrow">Exam practice &mdash; real exam patterns</div>
-    <h1>Real <em>exam-style</em> questions, sorted by pattern.</h1>
-    <p>Pulled from the 6 past exams (2017&ndash;2022 + sample). Options are length-balanced &mdash; no cheating by picking the longest. Filter by pattern on the left. Click <em>Show tip</em> for a hint, then <em>Show answer</em> for the correct choice + explanation.</p>
-  </div>
-
-  <div class="exam-layout">
-    <aside class="exam-sidebar" id="exam-sidebar"></aside>
-    <div class="exam-content" id="exam-content"></div>
-  </div>
-</section>
-
 </main>
 
 <!-- ============== FLASHCARDS VIEW ============== -->
@@ -1187,6 +1044,385 @@
       <button class="flash-nav-btn know" id="flash-yes">Know &#10003;</button>
     </div>
     <button class="flash-nav-btn" id="flash-next">Next &rarr;</button>
+  </div>
+</section>
+
+<!-- ============== PATTERNS VIEW ============== -->
+<section class="view" id="view-patterns">
+  <div class="patterns-hero">
+    <div class="plan-eyebrow">Eksamen-mønstre med fremgangsmåte</div>
+    <h1>De <em>17 spørsmålstypene</em> som gjentar seg &mdash; gruppert, med oppskrift.</h1>
+    <p>For hvert mønster: hvordan det ser ut, hva du gjør, og hvilken funksjon du kaller. Rundt 80 % av eksamen er gjenbruk av disse. Kjenn igjen mønstret, åpne riktig template, fyll inn, kjør.</p>
+  </div>
+
+  <div class="pattern-toc">
+    <a href="#pat-1">1 Diskret rekursjon</a>
+    <a href="#pat-2">2 Kontinuerlig t</a>
+    <a href="#pat-3">3 Likevekt</a>
+    <a href="#pat-4">4 Stabilitet (linær.)</a>
+    <a href="#pat-5">5 Definisjoner</a>
+    <a href="#pat-6">6 Fase-portrett</a>
+    <a href="#pat-7">7 Relativ grad</a>
+    <a href="#pat-8">8 Feedback lin.</a>
+    <a href="#pat-9">9 Sliding mode</a>
+    <a href="#pat-10">10 NMPC</a>
+    <a href="#pat-11">11 Quaternion PD</a>
+    <a href="#pat-12">12 EKF</a>
+    <a href="#pat-13">13 Vektor-transf.</a>
+    <a href="#pat-14">14 Quaternion fra seq.</a>
+    <a href="#pat-15">15 Akse fra DCM</a>
+    <a href="#pat-16">16 Kinematikk-integ.</a>
+    <a href="#pat-17">17 True anomaly</a>
+  </div>
+
+  <!-- GRUPPE A -->
+  <div class="pattern-group">
+    <span class="pg-tag">Gruppe A</span>
+    <h2>Tilstandsanalyse <span class="pg-count">2&ndash;3 spørsmål per eksamen</span></h2>
+  </div>
+
+  <div class="pattern-card" id="pat-1">
+    <div class="pat-head"><span class="pat-num">1</span><h3>Diskret-tid rekursjon &mdash; regn $y(N)$</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Consider the discrete-time system $y(k+1) = \ldots y(k) + \ldots u(k) + \ldots$. Compute $y(5)$ for input sequence $u = [\ldots]$ and initial conditions $y(1) = \ldots, y(2) = \ldots$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Sett initialbetingelsene i en vektor <code>y(1), y(2), ...</code></li>
+        <li>For-løkke fra $k$ = nest siste kjente indeks opp til $N-1$.</li>
+        <li>Les av $y(5)$.</li>
+      </ol>
+      <pre class="code-block">y = zeros(N, 1);
+y(1) = -4.5; y(2) = -3.5;
+u = [-3.5 -1.75 -3.25 1.25];
+for k = 2:N-1
+    y(k+1) = y(k) + 2*y(k-1) - 2.5*u(k-1)^2 - 4*u(k-2);
+end
+y(5)</pre>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Svaralternativet &laquo;kan ikke beregnes fordi ulineært&raquo; er <strong>aldri</strong> riktig &mdash; numerikk fungerer på alle systemer. <strong>Indeks-felle:</strong> pass på om $u$ indekseres fra 1 eller 0, og om $u(k-1)$ er fortid eller fremtid.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-2">
+    <div class="pat-head"><span class="pat-num">2</span><h3>Kontinuerlig-tid system ved tid $t$</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Consider the system $\dot x_1 = \ldots, \dot x_2 = \ldots, y = \ldots$. Compute $y(t)$ for $t = 24$ s with initial state $x(0) = [\ldots]$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Skriv $f(t, x)$ som anonym funksjon.</li>
+        <li>Kjør <code>ode45</code> over tidsintervallet.</li>
+        <li>Les av siste verdi.</li>
+      </ol>
+      <pre class="code-block">f = @(t,x) [5*sin(6*t) - x(1); 3*x(1)*x(2) - 2*x(2) + 1];
+[T, X] = ode45(f, [0 24], [2; 1.5]);
+y_end = X(end, 2);   % y = x2 i dette tilfellet</pre>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Samme som mønster 1 &mdash; &laquo;kan ikke beregnes&raquo; er feil. Default ode45-toleranser er nok.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-3">
+    <div class="pat-head"><span class="pat-num">3</span><h3>Likevektspunkter</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Find the equilibrium points of the system $\dot x = [u - 6 x_1 + x_2;\; x_1^2 - x_2 - 5]$ for constant input $\bar u = 6$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Sett konstant input, løs $f(\bar x, \bar u) = 0$ med symbolic toolbox.</li>
+        <li>Hver rad i <code>xe</code> er ett likevektspunkt. Sammenlign med svaralternativene.</li>
+      </ol>
+      <pre class="code-block">syms x1 x2 real
+u_bar = 6;
+eq1 = u_bar - 6*x1 + x2 == 0;
+eq2 = x1^2 - x2 - 5 == 0;
+sol = solve([eq1, eq2], [x1, x2]);
+xe = double([sol.x1, sol.x2])</pre>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Det kan finnes flere likevektspunkter (vanlig 2 for kvadratiske systemer). Sjekk alle.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-4">
+    <div class="pat-head"><span class="pat-num">4</span><h3>Stabilitet via linærisering</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Given the nonlinear system $\dot x = \ldots$, study the stability of the equilibrium point at $\bar u = 2$, $\bar x = [16.6; -95.58]$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Beregn Jakobi-matrisen ved likevekt og finn egenverdiene.</li>
+        <li>Les av egenverdiene:
+          <ul>
+            <li>Alle $\mathrm{Re}(\lambda) &lt; 0$ &rarr; <strong>asymptotisk stabil</strong></li>
+            <li>Minst én $\mathrm{Re}(\lambda) &gt; 0$ &rarr; <strong>ustabil</strong></li>
+            <li>$\mathrm{Re}(\lambda) = 0$ (resten $\leq 0$) &rarr; <strong>marginalt stabil</strong> (eller inkonklusiv for ulineær)</li>
+          </ul>
+        </li>
+      </ol>
+      <pre class="code-block">syms x1 x2 u real
+f = [6*x1 - 2*u + x2; 2.5*x1^2 - x1 + 7*x2 - 3];
+J = jacobian(f, [x1; x2]);
+A = double(subs(J, [x1, x2, u], [16.6, -95.58, 2]))
+eig(A)</pre>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>&laquo;The system cannot be linearized&raquo; er nesten alltid feil. Du kan alltid linærisere.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-5">
+    <div class="pat-head"><span class="pat-num">5</span><h3>Stabilitets-definisjoner (bookwork)</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Let $\bar x$ be an equilibrium state of a nonlinear system. Choose the correct definition of <em>simply stable</em>.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; pugg dette</span>
+      <div class="pat-def">$\bar x$ is locally simply stable if, taking $x(0)$ <strong>sufficiently close to</strong> $\bar x$, $x(t)$ remains close to $\bar x$, $\forall t \geq 0$.</div>
+      <p><strong>Distraktorer som er feil:</strong></p>
+      <ul>
+        <li>&laquo;if $x(0) = \bar x$, then $x(t) = \bar x$&raquo; &mdash; trivielt, sier ingenting.</li>
+        <li>&laquo;if $x(0)$ in an <strong>arbitrary</strong> neighbourhood&raquo; &mdash; feil, må være &laquo;sufficiently close&raquo;.</li>
+      </ul>
+      <table class="calc-table">
+        <thead><tr><th>Type</th><th>Definisjon</th></tr></thead>
+        <tbody>
+          <tr><td>Stable (Lyapunov)</td><td>$x(0)$ nær &rarr; $x(t)$ nær</td></tr>
+          <tr><td>Asymptotisk</td><td>Stable + $x(t) \to \bar x$</td></tr>
+          <tr><td>Eksponensielt</td><td>$\lVert x(t) - \bar x\rVert \leq c\, e^{-\lambda t} \lVert x(0) - \bar x \rVert$</td></tr>
+          <tr><td>Lokal</td><td>Det over, for $x(0)$ i en omegn</td></tr>
+          <tr><td>Global</td><td>Det over, for <strong>alle</strong> $x(0)$</td></tr>
+          <tr><td>BIBO</td><td>Begrenset input &rarr; begrenset output</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pattern-card" id="pat-6">
+    <div class="pat-head"><span class="pat-num">6</span><h3>Fase-portrett identifikasjon</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Indicate which figure shows the trajectories of $\dot x = [\ldots; \ldots]$.&raquo; Fire bilder gitt.</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Finn likevektspunktet ved å sette $\dot x = 0$.</li>
+        <li>Klassifiser linæriseringen ved likevekt (egenverdier av Jakobi):
+          <ul>
+            <li>Komplekse med $\mathrm{Re} &lt; 0$ &rarr; stabil spiral</li>
+            <li>Komplekse med $\mathrm{Re} &gt; 0$ &rarr; ustabil spiral</li>
+            <li>Reelle med samme tegn &rarr; stabil/ustabil node</li>
+            <li>Reelle med motsatte tegn &rarr; saddel</li>
+          </ul>
+        </li>
+        <li>Match med tegningene: spiraler har sirkulær flow, noder har rette innstrøminger, sadler har korsstruktur.</li>
+      </ol>
+      <span class="pat-label">Snarvei &mdash; simuler raskt</span>
+      <pre class="code-block">f = @(t,x) [-3*x(1) - x(2); 4*x(1)^2 - x(2) - 5];
+for k = 1:5
+    [~, X] = ode45(f, [0 5], 10*rand(2,1));
+    plot(X(:,1), X(:,2)); hold on
+end</pre>
+    </div>
+  </div>
+
+  <!-- GRUPPE B -->
+  <div class="pattern-group">
+    <span class="pg-tag">Gruppe B</span>
+    <h2>Kontrolldesign <span class="pg-count">2&ndash;3 spørsmål per eksamen</span></h2>
+  </div>
+
+  <div class="pattern-card" id="pat-7">
+    <div class="pat-head"><span class="pat-num">7</span><h3>Relativ grad</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Consider $\dot x = f(x) + g(x) u$, $y = h(x)$ where $f(x) = [\ldots]$, $g(x) = [\ldots]$, $h(x) = x_4$. Determine the relative degree $\gamma$ of the system.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; bruk <code>lib_fl</code> direkte</span>
+      <pre class="code-block">syms x1 x2 x3 x4 u real
+x = [x1; x2; x3; x4];
+f = [x1^2 + 2*x4; x3^2; x1*x4 - 0.5*x3; x2 + 0.2*x4];
+g = [-1; 0; 0; 0];
+h = x4;
+[~, ~, gamma] = io_fl(f, g, h, 'sys');
+disp(gamma)</pre>
+    </div>
+    <div class="pat-block"><span class="pat-label">Manuell sjekk</span><p>Deriver $h$ langs $f$ til input dukker opp. $\dot y = L_f h = f_4 = x_2 + 0.2 x_4$ (ingen $u$); $\ddot y = L_f^2 h = \ldots$ (sjekk om $u$ dukker opp). Første gang $L_g L_f^{r-1} h \neq 0$ er $\gamma = r$.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-8">
+    <div class="pat-head"><span class="pat-num">8</span><h3>Feedback linearization kontroll-lov</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>Samme system som mønster 7, men nå: &laquo;Derive the control law for feedback linearization.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; samme <code>io_fl</code>-kall, returnerer $u$ direkte</span>
+      <pre class="code-block">[u_law, mu, gamma, a, b] = io_fl(f, g, h, 'sys');
+disp(u_law)</pre>
+      <p>Resultatet på formen $u = (-a + v) / b$ der $v$ er det nye lineariserende inputtet. Forenkle med <code>simplify(u_law)</code> og sammenlign termer mot svaralternativene.</p>
+    </div>
+  </div>
+
+  <div class="pattern-card" id="pat-9">
+    <div class="pat-head"><span class="pat-num">9</span><h3>Sliding mode controller-design</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Design a sliding mode controller for $\dot x = \ldots$ to regulate $y \to 0$ with $\eta = 1$. Choose $(K_1, K_2)$ that minimizes $J = t_c + 0.2 \lVert u \rVert$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Definer sliding surface $s(x)$ (vanligvis $s = x_2 + \lambda x_1$ for 2. orden).</li>
+        <li>For hvert svaralternativ $(K_1, K_2)$: bygg Simulink med plant + sliding mode kontroller <code>u = -K1*x1 - K2*x2 - eta*tanh(s)</code>, kjør med <code>ode4</code>, $T_s = 0.05$, $0 \leq t \leq 10$ s. Mål $t_c$ (når $|y| &lt; 0.001$) og $\lVert u \rVert_2$, regn $J = t_c + 0.2 \lVert u \rVert$.</li>
+        <li>Velg det med minste $J$.</li>
+      </ol>
+      <p>Vanlig: 4 svaralternativer der 1&ndash;2 er ubrukbare og du tester de andre.</p>
+    </div>
+  </div>
+
+  <div class="pattern-card" id="pat-10">
+    <div class="pat-head"><span class="pat-num">10</span><h3>NMPC orbital eller rover</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;A satellite is traveling on a circular orbit. Design an NMPC algorithm to transfer to a target orbit. Choose $(T_s, T_p, R, P)$ that achieves tracking error $&lt; \epsilon$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; bruk <code>lib_nmpc</code>-templates</span>
+      <pre class="code-block">% 1. Fyll inn pred_model.m med satellite-dynamikken (fra LS06)
+% 2. Fyll inn nlcon.m hvis det er constraints
+% 3. I nmpc_design_template.m, for hvert kandidat:
+par.Ts = 20; par.Tp = 90;
+par.R = diag([0.05 0.05 0.05]);
+par.P = diag([0.4 7e5 7e5 7e5 7e5]);
+par.Q = zeros(...);   % gitt
+par.lb = -132*[1;1;1]; par.ub = 132*[1;1;1];
+K = nmpc_design_st2(par);</pre>
+      <p>Simuler i Simulink med <code>nmpc_block_2025b.slx</code>, mål tracking error mot toleranse, velg kandidaten som passer.</p>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Et alternativ er ofte &laquo;kan ikke nås på grunn av propellant insufficiency&raquo;. Sjekk om initial propellant er nok.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-11">
+    <div class="pat-head"><span class="pat-num">11</span><h3>Quaternion PD attitude control</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;A satellite has inertia matrix $J = \mathrm{diag}(\ldots)$. Initial $q(0) = (1,0,0,0)$, $\omega(0) = 0$. Design $u = k_1 \tilde q - k_2 \omega$ to reach $q_f$. Convergence time $t_c &lt; T$, command $\lVert u \rVert_\infty &lt; U$. Choose $(k_1, k_2)$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Bygg Simulink-modell:
+          <ul>
+            <li>Quaternion error: <code>q_e = quatprod(quat_conj(q_ref), q)</code></li>
+            <li>Kontrolllov: <code>u = k1*q_e(2:4) - k2*omega</code></li>
+            <li>Dynamikk: <code>euler_eq(omega, J, u)</code> integrert</li>
+            <li>Kinematikk: <code>kin_quat(q, omega)</code> integrert</li>
+          </ul>
+        </li>
+        <li>For hvert kandidat-par $(k_1, k_2)$: simuler, mål $t_c$ (når $\lVert \tilde q\rVert_\infty &lt; 0.005$) og $\max \lVert u \rVert_\infty$.</li>
+        <li>Velg det som oppfyller begge spec.</li>
+      </ol>
+      <p>Snarvei: bruk <code>att_kin_dyn_2025a.slx</code> fra <code>lib_rotations</code> som ferdig oppsett.</p>
+    </div>
+  </div>
+
+  <!-- GRUPPE C -->
+  <div class="pattern-group">
+    <span class="pg-tag">Gruppe C</span>
+    <h2>Observer <span class="pg-count">1 spørsmål per eksamen</span></h2>
+  </div>
+
+  <div class="pattern-card" id="pat-12">
+    <div class="pat-head"><span class="pat-num">12</span><h3>EKF-design</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Consider SISO nonlinear system $\dot x = f(x, u) + w$, $y = h(x) + v$. Design discrete-time EKF with $T_s = 0.1$ s. Choose $(Q^d, R^d)$ minimizing RMS $= \lVert x - \hat x\rVert / \sqrt{L}$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Bygg Simulink-modell med plant + støy ($d_u$, $d_y$ som Random Number-blokker) og EKF-blokk:
+          <ul>
+            <li>Predict: $\hat x_{k+1|k} = \hat x_k + T_s f(\hat x_k, u_k)$</li>
+            <li>$F_k = I + T_s \frac{\partial f}{\partial x}\big|_{\hat x_k}$</li>
+            <li>$P_{k+1|k} = F_k P_k F_k^\top + Q^d$</li>
+            <li>$K = P_{k+1|k} H^\top (H P_{k+1|k} H^\top + R^d)^{-1}$</li>
+            <li>Update: $\hat x_{k+1} = \hat x_{k+1|k} + K(y - h(\hat x_{k+1|k}))$</li>
+          </ul>
+        </li>
+        <li>Bruk <code>ode4</code>, $T_s = 0.05$ s, sinusoidal $u$ med spec-amplitude, 60 s sim.</li>
+        <li>For hvert kandidat-par $(Q^d, R^d)$: kjør, regn RMS, sammenlign.</li>
+      </ol>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>&laquo;Estimated state diverges&raquo; er ofte et av svaralternativene &mdash; sjekk om EKF holder seg endelig.</p></div>
+  </div>
+
+  <!-- GRUPPE D -->
+  <div class="pattern-group">
+    <span class="pg-tag">Gruppe D</span>
+    <h2>Aerospace &mdash; rotasjoner <span class="pg-count">2&ndash;3 spørsmål per eksamen</span></h2>
+  </div>
+
+  <div class="pattern-card" id="pat-13">
+    <div class="pat-head"><span class="pat-num">13</span><h3>Vektor-transformasjon mellom rammer</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;F1 is rotated wrt F2 according to a 221 rotation with angles $(\phi, \theta, \psi) = (\ldots)$. A vector in F1 is $v_1 = (\ldots)$. Find $v_2$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; bruk <code>axes2dcm</code></span>
+      <pre class="code-block">phi = 2.1553; theta = 2.3531; psi = 3.0489;
+T = axes2dcm([2 2 1], [phi theta psi]);   % F2 fra F1
+v1 = [-0.6; -2; -5.3];
+v2 = T' * v1   % invers, fordi T tar F1 -&gt; F2</pre>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Konvensjons-spørsmål. Hvis oppgaven sier $I_k = T_{221} i_k$, går $T$ fra F2-akser til F1-akser. Vektor-transformasjon er motsatt: $v_2 = T \cdot v_1$ eller $T^\top \cdot v_1$ avhengig av definisjonen. Test begge mot svaralternativene.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-14">
+    <div class="pat-head"><span class="pat-num">14</span><h3>Kvaternion fra rotasjons-sekvens</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Consider a 132 rotation with angles $(\phi, \theta, \psi) = (\ldots)$. Compute the corresponding quaternion.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; bruk <code>axes2qua</code></span>
+      <pre class="code-block">q = axes2qua([1 3 2], [0.3927 3.1416 1.5708])</pre>
+      <p>Eller bygg manuelt fra elementære kvaternioner:</p>
+      <pre class="code-block">q1 = ele_quat(0.3927, 1);   % aksen 1
+q2 = ele_quat(3.1416, 3);   % aksen 3
+q3 = ele_quat(1.5708, 2);   % aksen 2
+q = quatprod(quatprod(q1, q2), q3)</pre>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Rekkefølge betyr alt. &laquo;132&raquo; betyr først om akse 1, så akse 3, så akse 2.</p></div>
+  </div>
+
+  <div class="pattern-card" id="pat-15">
+    <div class="pat-head"><span class="pat-num">15</span><h3>Akse av rotasjon fra DCM</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Compute the axis of rotation of $T = [\ldots]$.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; Eulers teorem</span>
+      <pre class="code-block">T = [0.99944 0.033412 0; -0.03324 0.99429 -0.10144; ...];
+cos_theta = (trace(T) - 1) / 2;
+theta = acos(cos_theta);
+% Aksen er egenvektoren til T med egenverdi 1
+[V, D] = eig(T);
+[~, idx] = min(abs(diag(D) - 1));
+axis = real(V(:, idx))</pre>
+      <p>Alternativt direkte via <code>qua2axes(dcm2qua(T))</code>.</p>
+    </div>
+  </div>
+
+  <div class="pattern-card" id="pat-16">
+    <div class="pat-head"><span class="pat-num">16</span><h3>Kinematic equation integration</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Consider kinematic equations for a 321 rotation. Initial $(\phi(0), \theta(0), \psi(0)) = (\ldots)$, input $\omega = (\ldots) \sin(t)$. Compute angles at $t = 24.8$ s.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte &mdash; integrer kinematikk-ligningen</span>
+      <pre class="code-block">phi0 = 0.31156; theta0 = 0.23895; psi0 = 0.2768;
+omega_amp = [0.1621; -0.40329; -0.47023];
+f = @(t, ang) kin_tb321(ang, omega_amp * sin(t));
+[T, ANG] = ode45(f, [0 24.8], [phi0; theta0; psi0]);
+final = ANG(end, :)</pre>
+      <p>Eller bruk kvaternion-versjonen for stabilitet:</p>
+      <pre class="code-block">q0 = euler2qua([phi0 theta0 psi0], [3 2 1]);
+f = @(t, q) kin_quat(q, omega_amp * sin(t));
+[T, Q] = ode45(f, [0 24.8], q0);
+final_euler = qua2euler(Q(end,:)', [3 2 1])</pre>
+    </div>
+  </div>
+
+  <!-- GRUPPE E -->
+  <div class="pattern-group">
+    <span class="pg-tag">Gruppe E</span>
+    <h2>Orbital <span class="pg-count">1&ndash;2 spørsmål per eksamen</span></h2>
+  </div>
+
+  <div class="pattern-card" id="pat-17">
+    <div class="pat-head"><span class="pat-num">17</span><h3>True anomaly fra perigee-tilstand</h3></div>
+    <div class="pat-block looks"><span class="pat-label">Ser ut som</span><p>&laquo;Satellite mass $14164$ kg, at perigee $r_p = (6380434, 0, 0)$ m, $v_p = (0, 9692.8824, 0)$ m/s. Determine true anomaly $\theta$ after $0.7$ hours.&raquo;</p></div>
+    <div class="pat-block"><span class="pat-label">Fremgangsmåte</span>
+      <ol>
+        <li>Sjekk om orbit er lukket (energi):</li>
+      </ol>
+      <pre class="code-block">mu = 3.986e14;   % Earth's gravitational parameter
+r0 = [6380434; 0; 0];
+v0 = [0; 9692.8824; 0];
+energy = norm(v0)^2/2 - mu/norm(r0);
+% Hvis energy &gt;= 0 -&gt; ikke lukket, true anomaly udefinert</pre>
+      <ol start="2">
+        <li>Hvis lukket: integrer 2-legeme og finn vinkelen mellom $r_\text{perigee}$ og $r_\text{end}$:</li>
+      </ol>
+      <pre class="code-block">f = @(t, x) [x(4:6); -mu/norm(x(1:3))^3 * x(1:3)];
+[T, X] = ode45(f, [0 0.7*3600], [r0; v0], odeset('RelTol',1e-10));
+r_end = X(end, 1:3)';
+theta = acos(dot(r0, r_end) / (norm(r0) * norm(r_end))) * 180/pi</pre>
+      <ol start="3">
+        <li>Sammenlign med svaralternativene.</li>
+      </ol>
+    </div>
+    <div class="pat-block trap"><span class="pat-label trap">Felle</span><p>Hvis hastigheten gir hyperbolsk orbit (energi $&gt; 0$), er riktig svar &laquo;true anomaly cannot be determined&raquo;. Sjekk alltid energien først.</p></div>
+  </div>
+
+  <!-- EKSAMEN-FLYT -->
+  <div class="key-box pattern-flow" style="max-width:880px;">
+    <div class="label">Generell eksamen-flyt &mdash; for hvert spørsmål</div>
+    <ol style="margin-left:18px;">
+      <li><strong>Identifiser mønstret</strong> (10&ndash;15 sek) &mdash; se på inputtype og hva som spørres etter.</li>
+      <li><strong>Åpne riktig template/funksjon</strong> (30 sek) &mdash; vit hvor <code>io_fl</code> og <code>nmpc_design_template.m</code> ligger.</li>
+      <li><strong>Fyll inn problemet</strong> (2&ndash;3 min) &mdash; symboler, parametre, initialbetingelser.</li>
+      <li><strong>Kjør</strong> (1&ndash;2 min) &mdash; vent på simulering.</li>
+      <li><strong>Sammenlign mot svaralternativer</strong> (30 sek) &mdash; velg den nærmeste.</li>
+    </ol>
+    <p style="margin-top:10px;color:var(--ink-soft);font-size:14.5px;">Total: 5&ndash;8 min per gjenkjent spørsmål. For 11 spørsmål: 1&ndash;1,5 t aktiv jobbing, 30&ndash;45 min sjekk. Gjenkjenner du ikke et mønster: hopp og kom tilbake &mdash; negativ score betyr ikke alltid prøv.</p>
   </div>
 </section>
 
