@@ -51,6 +51,12 @@ const Navigation = ({ sections = [] }) => {
                   {s.title}
                 </button>
               ))}
+              <a
+                href="/plan"
+                className="px-3 py-2 rounded-md text-sm font-semibold text-teal-700 hover:text-teal-900 focus:outline-none focus:ring-2 focus:ring-teal-300 transition-all duration-200 ease-in-out transform hover:scale-110"
+              >
+                Treningsplan
+              </a>
             </div>
           </div>
           <div className="hidden md:flex w-10 h-10 items-center justify-center">
