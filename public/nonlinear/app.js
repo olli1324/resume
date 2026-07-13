@@ -2218,6 +2218,12 @@ function switchView(name) {
   if (name === 'quiz') renderQuiz();
   if (name === 'flash') renderFlash();
   if (name === 'exam') { renderExamSidebar(); renderExamContent(); }
+  if (name === 'patterns' && window.renderMathInElement) {
+    renderMathInElement(document.getElementById('view-patterns'), {
+      delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+      throwOnError: false
+    });
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
