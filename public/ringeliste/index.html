@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ringeliste</title>
+<link rel="stylesheet" href="/ringeliste/style.css">
+</head>
+<body>
+<div id="login" class="skjerm">
+  <form id="login-form" class="kort">
+    <h1>Ringeliste</h1>
+    <p class="hjelp">Kontaktlogg for syretesten. Inneholder personopplysninger om
+      tredjeparter, så siden er lukket.</p>
+    <label for="passord">Passord</label>
+    <input id="passord" type="password" autocomplete="current-password" required>
+    <button type="submit">Logg inn</button>
+    <p id="login-feil" class="feil" hidden></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header>
+    <div class="tittel">
+      <h1>Ringeliste</h1>
+      <span id="oppdatert" class="hjelp"></span>
+    </div>
+    <nav class="faner">
+      <button class="fane aktiv" data-fane="liste">Kontakter</button>
+      <button class="fane" data-fane="referanse">Referanser</button>
+    </nav>
+  </header>
+
+  <section id="fane-liste">
+    <div class="verktoy">
+      <div id="statusfilter" class="filter"></div>
+      <div class="knapper">
+        <button id="oppdater" class="sekundar">Oppdater</button>
+        <a id="last-ned" class="knapp" href="/api/csv">Last ned CSV</a>
+      </div>
+    </div>
+    <p id="varsel" class="varsel" hidden></p>
+    <p id="status-linje" class="hjelp"></p>
+    <div id="laster" class="tom">Henter fra Linear …</div>
+    <div id="tom" class="tom" hidden>Ingen kontakter med de valgte statusene.</div>
+    <table id="tabell" hidden>
+      <thead>
+        <tr>
+          <th class="kol-id">Kort</th>
+          <th class="kol-kontakt">Kontakt</th>
+          <th class="kol-status">Status</th>
+          <th class="kol-notat">Oppsummering</th>
+        </tr>
+      </thead>
+      <tbody id="rader"></tbody>
+    </table>
+  </section>
+
+  <section id="fane-referanse" hidden>
+    <form id="ref-form" class="verktoy">
+      <input id="ref-url" type="url" placeholder="https://..." required>
+      <button type="submit">Lag referanse</button>
+    </form>
+    <p class="hjelp">Henter metadata fra siden selv. Felt som ikke lar seg
+      verifisere står tomme og markeres, i stedet for å gjettes.</p>
+    <div id="ref-laster" class="tom" hidden>Leser siden …</div>
+    <p id="ref-feil" class="feil" hidden></p>
+    <div id="ref-svar" hidden>
+      <p id="ref-mangler" class="varsel" hidden></p>
+      <h2>Lim inn i teksten</h2>
+      <div class="kopiboks"><pre id="ref-sitering"></pre>
+        <button class="kopier" data-mal="ref-sitering">Kopier</button></div>
+      <h2>Lim inn nederst i <code>bibliography.yml</code></h2>
+      <div class="kopiboks"><pre id="ref-yaml"></pre>
+        <button class="kopier" data-mal="ref-yaml">Kopier</button></div>
+    </div>
+  </section>
+</div>
+<script src="/ringeliste/app.js"></script>
+</body>
+</html>

@@ -1,6 +1,10 @@
 {
   "version": 1,
-  "include": ["/*"],
+  "include": [
+    "/api/*",
+    "/ringeliste",
+    "/ringeliste/*"
+  ],
   "exclude": [],
   "routes": [
     {
