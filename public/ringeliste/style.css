@@ -9,6 +9,10 @@
           --flate: #161f25; --aksent: #cfe3ef; --varsel-bg: #3a3010; --varsel: #f0d68a; }
 }
 * { box-sizing: border-box; }
+/* hidden-attributtet gir display:none fra nettleseren, men enhver egen
+   display-regel overstyrer det. .skjerm setter display:grid, så uten dette
+   blir innloggingsboksen liggende under den innloggede siden. */
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--tekst);
   font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 h1 { font-size: 18px; margin: 0; }
