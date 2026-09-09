@@ -6,6 +6,7 @@ export const TEAM = "Ringeliste";
 // ukontaktede, fordi den hører til et case gruppa har lagt bort.
 export const STATUS_REKKEFOLGE = [
   "Fullført lead",
+  "Fysiske møter",
   "Venter på svar",
   "Follow up / Ring igjen",
   "Skal ringe",
