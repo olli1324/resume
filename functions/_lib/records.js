@@ -11,9 +11,10 @@ export const STATUS_REKKEFOLGE = [
   "Follow up / Ring igjen",
   "Skal ringe",
   "Ikke tatt",
-  "Ukontaktet",
 ];
-export const NEDERST = ["Ikke relevante leads", "Ikke nyttig lead"];
+// Ukontaktede og skrinlagte hører sammen nederst, under alt annet inkludert
+// ukjente statuser. De er ikke gjennomførte kontakter.
+export const NEDERST = ["Ukontaktet", "Ikke relevante leads", "Ikke nyttig lead"];
 
 export const CSV_KOLONNER = [
   "Kort", "Ansvarlig", "Selskap", "Kontaktperson", "Stilling", "Kontaktinfo", "Status", "Notater",
@@ -145,7 +146,8 @@ export async function hentRecords(token) {
   // oppslagsliste, så R-1 kommer først og R-162 sist. statusIndeks brukes
   // fortsatt til å fange opp ukjente statuser, men ikke til rekkefølgen.
   records.sort((a, b) =>
-    kortnummer(a.id) - kortnummer(b.id)
+    statusIndeks(a.status) - statusIndeks(b.status)
+    || kortnummer(a.id) - kortnummer(b.id)
     || a.kontaktperson.localeCompare(b.kontaktperson, "nb"));
 
   return {

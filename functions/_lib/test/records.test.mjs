@@ -67,8 +67,9 @@ test("statusrekkefølge med skrinlagt case nederst", () => {
   assert.ok(statusIndeks("Ukontaktet") < statusIndeks("Ikke relevante leads"));
   assert.ok(statusIndeks("Ikke relevante leads") < statusIndeks("Ikke nyttig lead"));
   const ukjent = statusIndeks("Helt ny status");
-  assert.ok(statusIndeks("Ukontaktet") < ukjent);
-  assert.ok(ukjent < statusIndeks(NEDERST[0]));
+  assert.ok(statusIndeks("Skal ringe") < ukjent);
+  assert.ok(ukjent < statusIndeks("Ukontaktet"));
+  assert.equal(NEDERST[0], "Ukontaktet");
   assert.equal(STATUS_REKKEFOLGE[0], "Fysiske møter");
   assert.ok(statusIndeks("Fysiske møter") < statusIndeks("Fullført lead"));
 });
