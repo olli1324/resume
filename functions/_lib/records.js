@@ -5,8 +5,8 @@ export const TEAM = "Ringeliste";
 // Rekkefølgen radene står i. Den skrinlagte casen ligger nederst, under de
 // ukontaktede, fordi den hører til et case gruppa har lagt bort.
 export const STATUS_REKKEFOLGE = [
-  "Fullført lead",
   "Fysiske møter",
+  "Fullført lead",
   "Venter på svar",
   "Follow up / Ring igjen",
   "Skal ringe",

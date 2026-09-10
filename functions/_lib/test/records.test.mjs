@@ -69,7 +69,8 @@ test("statusrekkefølge med skrinlagt case nederst", () => {
   const ukjent = statusIndeks("Helt ny status");
   assert.ok(statusIndeks("Ukontaktet") < ukjent);
   assert.ok(ukjent < statusIndeks(NEDERST[0]));
-  assert.equal(STATUS_REKKEFOLGE[0], "Fullført lead");
+  assert.equal(STATUS_REKKEFOLGE[0], "Fysiske møter");
+  assert.ok(statusIndeks("Fysiske møter") < statusIndeks("Fullført lead"));
 });
 
 test("tittelparsing tåler gruppas ulike skrivemåter", () => {
