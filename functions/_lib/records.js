@@ -27,6 +27,12 @@ export function statusIndeks(status) {
   return STATUS_REKKEFOLGE.length; // ukjent status, rett over skrinlagt case
 }
 
+// R-162 blir 162. Uten dette havner R-100 mellom R-1 og R-2.
+export function kortnummer(kort) {
+  const m = String(kort || "").match(/\d+/);
+  return m ? Number(m[0]) : 0;
+}
+
 function fornavn(navn) {
   return navn ? String(navn).trim().split(/\s+/)[0] : "";
 }
@@ -135,10 +141,12 @@ export async function hentRecords(token) {
     records.push(rec);
   }
 
+  // Status bestemmer gruppen, kortnummeret rekkefølgen inni den. Relevans og
+  // dato ble brukt før, men med fulle referater i Notater-kolonnen er det
+  // viktigere å kunne slå opp et kortnummer enn å ha de beste øverst.
   records.sort((a, b) =>
     statusIndeks(a.status) - statusIndeks(b.status)
-    || a.relevans - b.relevans
-    || Date.parse(b.sistAktiv || 0) - Date.parse(a.sistAktiv || 0)
+    || kortnummer(a.id) - kortnummer(b.id)
     || a.kontaktperson.localeCompare(b.kontaktperson, "nb"));
 
   return {
