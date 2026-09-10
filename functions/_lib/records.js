@@ -16,7 +16,7 @@ export const STATUS_REKKEFOLGE = [
 export const NEDERST = ["Ikke relevante leads", "Ikke nyttig lead"];
 
 export const CSV_KOLONNER = [
-  "Ansvarlig", "Selskap", "Kontaktperson", "Stilling", "Kontaktinfo", "Status", "Notater",
+  "Kort", "Ansvarlig", "Selskap", "Kontaktperson", "Stilling", "Kontaktinfo", "Status", "Notater",
 ];
 
 export function statusIndeks(status) {
@@ -152,7 +152,7 @@ export async function hentRecords(token) {
 }
 
 export function tilCsv(records) {
-  const felt = r => [r.ansvarlig, r.selskap, r.kontaktperson, r.stilling,
+  const felt = r => [r.id, r.ansvarlig, r.selskap, r.kontaktperson, r.stilling,
                      r.kontaktinfo, r.status, r.notater];
   const escape = v => {
     const s = String(v ?? "");
