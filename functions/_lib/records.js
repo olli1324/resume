@@ -141,12 +141,11 @@ export async function hentRecords(token) {
     records.push(rec);
   }
 
-  // Status bestemmer gruppen, kortnummeret rekkefølgen inni den. Relevans og
-  // dato ble brukt før, men med fulle referater i Notater-kolonnen er det
-  // viktigere å kunne slå opp et kortnummer enn å ha de beste øverst.
+  // Ren stigende rekkefølge på kortnummer, uavhengig av status. Lista er en
+  // oppslagsliste, så R-1 kommer først og R-162 sist. statusIndeks brukes
+  // fortsatt til å fange opp ukjente statuser, men ikke til rekkefølgen.
   records.sort((a, b) =>
-    statusIndeks(a.status) - statusIndeks(b.status)
-    || kortnummer(a.id) - kortnummer(b.id)
+    kortnummer(a.id) - kortnummer(b.id)
     || a.kontaktperson.localeCompare(b.kontaktperson, "nb"));
 
   return {
