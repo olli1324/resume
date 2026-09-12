@@ -1,0 +1,140 @@
+/* Samme fargespråk som /ringeliste, men satt opp for lesing av lengre tekst:
+   smalere brødtekst, tydeligere overskrifter og en rolig sidemeny. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --tekst: #172129; --svak: #66737d; --linje: #d9e0e5;
+  --flate: #f5f8f9; --aksent: #16384c; --feil: #a3282d;
+  --merke: #fff3b8; --kode-bg: #f2f5f7;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #10161a; --tekst: #e6edf1; --svak: #8b99a3; --linje: #26333b;
+          --flate: #161f25; --aksent: #cfe3ef; --feil: #ff9d9d;
+          --merke: #4a3f0f; --kode-bg: #0b1115; }
+}
+
+* { box-sizing: border-box; }
+/* hidden-attributtet gir display:none fra nettleseren, men enhver egen
+   display-regel overstyrer det. .skjerm og .ramme setter display, så uten
+   dette blir innloggingsboksen liggende under den innloggede siden. */
+[hidden] { display: none !important; }
+
+body { margin: 0; background: var(--bg); color: var(--tekst);
+  font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+.hjelp { color: var(--svak); font-size: 12px; margin: 0; }
+.feil { color: var(--feil); font-size: 13px; }
+.tom { color: var(--svak); font-size: 13px; padding: 8px 0; }
+.tom.stor { display: grid; place-content: center; height: 60vh; text-align: center; gap: 6px; }
+
+input, button { font: inherit; }
+input { width: 100%; padding: 8px 10px; border: 1px solid var(--linje);
+  border-radius: 6px; background: var(--bg); color: var(--tekst); font-size: 14px; }
+input:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--aksent); outline-offset: 2px; }
+button { padding: 8px 13px; border: 1px solid var(--aksent); border-radius: 6px;
+  background: var(--aksent); color: var(--bg); font-size: 13px; cursor: pointer; }
+button.sekundar { background: transparent; color: var(--svak); border-color: var(--linje); }
+button.sekundar:hover { color: var(--tekst); border-color: var(--svak); }
+button.liten { padding: 3px 9px; font-size: 12px; }
+
+/* --- Innlogging --------------------------------------------------------- */
+
+.skjerm { display: grid; place-items: center; min-height: 100vh; padding: 20px; }
+.kort { width: min(360px, 100%); display: grid; gap: 10px; }
+.kort h1 { font-size: 20px; margin: 0; }
+.kort label { font-size: 12px; color: var(--svak); }
+
+/* --- Ramme -------------------------------------------------------------- */
+
+.ramme { display: grid; grid-template-columns: 264px minmax(0, 1fr); min-height: 100vh; }
+
+/* Full høyde, ikke bare så langt lista rekker: en halvhøy sidemeny ser ut som
+   om siden er kuttet av. Den ruller for seg selv når notatlista blir lang. */
+.sidemeny { border-right: 1px solid var(--linje); background: var(--flate);
+  padding: 16px 14px 40px; position: sticky; top: 0;
+  height: 100vh; overflow-y: auto; }
+.side-topp { display: grid; gap: 8px; margin-bottom: 14px; }
+.side-topp .tittel { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.side-topp h1 { font-size: 16px; margin: 0; letter-spacing: 0.02em; }
+
+.mappe { font-size: 11px; margin: 16px 0 5px; color: var(--svak);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.tre .mappe:first-child, .notatliste:first-child { margin-top: 0; }
+
+.notatliste, .omriss ul { list-style: none; margin: 0; padding: 0; }
+.notatliste a, .omriss a { display: block; padding: 4px 8px; border-radius: 5px;
+  color: var(--tekst); text-decoration: none; font-size: 13.5px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.notatliste a:hover, .omriss a:hover { background: var(--bg); }
+.notatliste a.aktiv { background: var(--aksent); color: var(--bg); font-weight: 600; }
+
+.omriss { margin-top: 22px; border-top: 1px solid var(--linje); padding-top: 6px; }
+.omriss a { font-size: 12.5px; color: var(--svak); }
+.omriss .niva-3 a { padding-left: 20px; }
+
+/* --- Notatet ------------------------------------------------------------ */
+
+.notat { padding: 34px 40px 90px; max-width: 760px; }
+.notat-topp { margin-bottom: 26px; }
+.notat-topp h1 { font-size: 30px; line-height: 1.2; margin: 0 0 5px; letter-spacing: -0.01em; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 12px 0 0;
+  padding: 9px 12px; background: var(--flate); border-radius: 7px; font-size: 12.5px; }
+.meta div { display: flex; gap: 6px; }
+.meta dt { color: var(--svak); margin: 0; }
+.meta dd { margin: 0; }
+
+.brod > *:first-child { margin-top: 0; }
+.brod h1 { font-size: 24px; margin: 34px 0 10px; }
+.brod h2 { font-size: 19px; margin: 30px 0 9px; padding-bottom: 5px;
+  border-bottom: 1px solid var(--linje); }
+.brod h3 { font-size: 16px; margin: 24px 0 7px; }
+.brod h4, .brod h5, .brod h6 { font-size: 14px; margin: 20px 0 6px; color: var(--svak); }
+.brod p { margin: 0 0 14px; }
+.brod ul, .brod ol { margin: 0 0 14px; padding-left: 24px; }
+.brod li { margin: 3px 0; }
+.brod li > ul, .brod li > ol { margin: 3px 0 0; }
+.brod a { color: var(--aksent); text-decoration-thickness: 1px;
+  text-underline-offset: 2px; }
+.brod a.wiki { text-decoration-style: dotted; }
+.dodlenke { color: var(--svak); border-bottom: 1px dotted var(--svak); cursor: help; }
+.vedlegg { color: var(--svak); font-style: italic; }
+
+.brod blockquote { margin: 0 0 14px; padding: 2px 0 2px 14px;
+  border-left: 3px solid var(--linje); color: var(--svak); }
+.brod hr { border: 0; border-top: 1px solid var(--linje); margin: 26px 0; }
+.brod img { max-width: 100%; border-radius: 7px; }
+.brod mark { background: var(--merke); color: inherit; padding: 0 2px; border-radius: 2px; }
+
+.brod code { background: var(--kode-bg); border: 1px solid var(--linje);
+  border-radius: 4px; padding: 0.1em 0.35em; font-size: 0.88em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.brod pre.kode { background: var(--kode-bg); border: 1px solid var(--linje);
+  border-radius: 8px; padding: 13px 15px; overflow-x: auto; margin: 0 0 16px;
+  font-size: 13px; line-height: 1.5; }
+.brod pre.kode code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+/* Brede tabeller skal rulle i sin egen boks, ikke dytte siden sidelengs. */
+.tabellramme { overflow-x: auto; margin: 0 0 16px; }
+.brod table { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+.brod th, .brod td { border: 1px solid var(--linje); padding: 6px 11px; text-align: left; }
+.brod th { background: var(--flate); font-weight: 600; }
+
+.brod li.oppgave { list-style: none; margin-left: -20px; }
+.brod li.oppgave.gjort { color: var(--svak); text-decoration: line-through; }
+.brod li.oppgave input { width: auto; margin-right: 7px; }
+
+#baklenker:not(:empty) { margin-top: 46px; padding-top: 14px;
+  border-top: 1px solid var(--linje); }
+#baklenker .notatliste a { padding-left: 0; color: var(--aksent); }
+
+/* --- Smale skjermer ----------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .ramme { grid-template-columns: 1fr; }
+  .sidemeny { position: static; height: auto; border-right: 0;
+    border-bottom: 1px solid var(--linje); padding-bottom: 18px; }
+  .notat { padding: 24px 18px 70px; }
+  .notat-topp h1 { font-size: 24px; }
+}

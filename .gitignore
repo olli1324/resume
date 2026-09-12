@@ -85,3 +85,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .dev.vars
+
+# Lokal wrangler-tilstand. Her havner bl.a. innholdet i simulerte R2-bøtter
+# når man kjører «wrangler pages dev», og repoet er offentlig.
+.wrangler

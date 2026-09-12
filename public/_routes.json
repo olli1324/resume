@@ -3,10 +3,20 @@
   "include": [
     "/api/*",
     "/ringeliste",
-    "/ringeliste/*"
+    "/ringeliste/*",
+    "/vault",
+    "/vault/*"
   ],
   "exclude": [],
   "routes": [
+    {
+      "src": "/vault/*",
+      "dest": "/vault/$1"
+    },
+    {
+      "src": "/vault",
+      "dest": "/vault/index.html"
+    },
     {
       "src": "/quizlet/*",
       "dest": "/quizlet/$1"
