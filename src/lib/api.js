@@ -1,61 +1,61 @@
-import { supabase } from './supabase';
+// Content API backed by the site's own Cloudflare Functions (D1 + R2).
+// The exported functions keep the signatures they had when this talked to
+// Supabase, so the admin forms and public components did not need to change.
+
+async function request(path, { method = 'GET', body, form } = {}) {
+  const res = await fetch(path, {
+    method,
+    credentials: 'same-origin',
+    headers: body !== undefined ? { 'Content-Type': 'application/json' } : undefined,
+    body: form || (body !== undefined ? JSON.stringify(body) : undefined),
+  });
+  const text = await res.text();
+  let data = null;
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {
+    data = null;
+  }
+  if (!res.ok) {
+    const err = new Error((data && data.feil) || `Request failed (${res.status})`);
+    err.status = res.status;
+    throw err;
+  }
+  return data;
+}
+
+const enc = encodeURIComponent;
 
 export async function listOrdered(table, { onlyVisible = false } = {}) {
-  let q = supabase.from(table).select('*').order('order_index', { ascending: true });
-  if (onlyVisible) q = q.eq('visible', true);
-  const { data, error } = await q;
-  if (error) throw error;
-  return data || [];
+  return (await request(`/api/innhold/${enc(table)}${onlyVisible ? '?synlige=1' : ''}`)) || [];
 }
 
 export async function getSingleton(table) {
-  const { data, error } = await supabase.from(table).select('*').eq('id', 1).maybeSingle();
-  if (error) throw error;
-  return data;
+  return request(`/api/innhold/${enc(table)}/1`);
 }
 
 export async function updateSingleton(table, patch) {
-  const { error } = await supabase.from(table).update(patch).eq('id', 1);
-  if (error) throw error;
+  await request(`/api/admin/${enc(table)}/1`, { method: 'PATCH', body: patch });
 }
 
 export async function listSections({ onlyVisible = false } = {}) {
-  let q = supabase.from('sections').select('*').order('order_index', { ascending: true });
-  if (onlyVisible) q = q.eq('visible', true);
-  const { data, error } = await q;
-  if (error) throw error;
-  return data || [];
+  return listOrdered('sections', { onlyVisible });
 }
 
 export async function upsertSection(section) {
-  const { error } = await supabase.from('sections').upsert(section);
-  if (error) throw error;
+  await request(`/api/admin/sections/${enc(section.key)}`, { method: 'PUT', body: section });
 }
 
 export async function insertItem(table, item) {
-  const { data: existing } = await supabase
-    .from(table)
-    .select('order_index')
-    .order('order_index', { ascending: false })
-    .limit(1);
-  const nextIndex = existing && existing.length > 0 ? (existing[0].order_index || 0) + 1 : 0;
-  const { data, error } = await supabase
-    .from(table)
-    .insert({ ...item, order_index: nextIndex })
-    .select()
-    .single();
-  if (error) throw error;
-  return data;
+  return request(`/api/admin/${enc(table)}`, { method: 'POST', body: item });
 }
 
 export async function updateItem(table, id, patch) {
-  const { error } = await supabase.from(table).update(patch).eq('id', id);
-  if (error) throw error;
+  await request(`/api/admin/${enc(table)}/${enc(id)}`, { method: 'PATCH', body: patch });
 }
 
 export async function deleteItem(table, id) {
-  const { error } = await supabase.from(table).delete().eq('id', id);
-  if (error) throw error;
+  await request(`/api/admin/${enc(table)}/${enc(id)}`, { method: 'DELETE' });
 }
 
 export async function toggleVisible(table, id, visible) {
@@ -81,16 +81,11 @@ export async function moveItem(table, items, index, direction) {
   }
 }
 
-export async function uploadFile(file, { bucket = 'project-images' } = {}) {
-  const ext = file.name.split('.').pop();
-  const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const { error } = await supabase.storage.from(bucket).upload(path, file, {
-    cacheControl: '3600',
-    upsert: false,
-  });
-  if (error) throw error;
-  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
-  return data.publicUrl;
+export async function uploadFile(file) {
+  const form = new FormData();
+  form.append('fil', file);
+  const { url } = await request('/api/admin/fil', { method: 'POST', form });
+  return url;
 }
 
 export async function uploadProjectImage(file) {
@@ -99,4 +94,23 @@ export async function uploadProjectImage(file) {
 
 export async function uploadCv(file) {
   return uploadFile(file);
+}
+
+// Admin session. The password never touches the browser's JS beyond the login
+// request; the session itself lives in an HttpOnly cookie set by the server.
+export async function getAdminSession() {
+  try {
+    await request('/api/admin/meg');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function adminLogin(password) {
+  await request('/api/login', { method: 'POST', body: { område: 'admin', passord: password } });
+}
+
+export async function adminLogout() {
+  await request('/api/logout', { method: 'POST', body: { område: 'admin' } });
 }

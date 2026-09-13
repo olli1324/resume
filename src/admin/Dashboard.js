@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { adminLogout } from '../lib/api';
 import { Button } from './ui';
 import ProfileForm from './forms/ProfileForm';
 import SectionsForm from './forms/SectionsForm';
@@ -24,11 +24,12 @@ const TABS = [
   { key: 'references', label: 'References' },
 ];
 
-const Dashboard = () => {
+const Dashboard = ({ onLogout }) => {
   const [tab, setTab] = useState('profile');
 
   const logout = async () => {
-    await supabase.auth.signOut();
+    await adminLogout();
+    onLogout();
   };
 
   const renderTab = () => {

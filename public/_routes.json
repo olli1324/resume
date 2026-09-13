@@ -5,7 +5,8 @@
     "/ringeliste",
     "/ringeliste/*",
     "/vault",
-    "/vault/*"
+    "/vault/*",
+    "/filer/*"
   ],
   "exclude": [],
   "routes": [
