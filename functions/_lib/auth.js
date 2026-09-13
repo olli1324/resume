@@ -5,9 +5,16 @@
 // signert inn i selve tokenet, slik at en gyldig ringeliste-cookie ikke kan
 // døpes om til en vault-cookie og slippe inn et sted den ikke hører hjemme.
 
+// Passordvariablene hvert område godtar, i prioritert rekkefølge.
+//
+// Private områder (vault, admin) kan falle tilbake på hverandre, men aldri på
+// SITE_PASSWORD: det passordet deles med andre, og en fallback dit ville sluppet
+// alle som kan ringeliste-passordet inn i private notater. Mangler variabelen,
+// stenger området i stedet.
 const OMRÅDER = {
-  ringeliste: "SITE_PASSWORD",
-  vault: "VAULT_PASSWORD",
+  ringeliste: ["SITE_PASSWORD"],
+  vault: ["VAULT_PASSWORD"],
+  admin: ["ADMIN_PASSWORD", "VAULT_PASSWORD"],
 };
 
 const MAX_ALDER = 60 * 60 * 24 * 30; // 30 dager
@@ -19,18 +26,23 @@ const enc = new TextEncoder();
 // treffer samme regel. Alt annet er ringeliste-siden, som var her først.
 export function områdeFor(sti) {
   const uten = sti.replace(/^\/api/, "");
-  return uten === "/vault" || uten.startsWith("/vault/") ? "vault" : "ringeliste";
+  for (const område of ["vault", "admin"]) {
+    if (uten === `/${område}` || uten.startsWith(`/${område}/`)) return område;
+  }
+  return "ringeliste";
 }
 
 export function erOmråde(navn) {
   return Object.prototype.hasOwnProperty.call(OMRÅDER, navn);
 }
 
-// Passordet for et område, med fall tilbake til SITE_PASSWORD. Fallbacken gjør
-// at vault virker også før VAULT_PASSWORD er satt i Cloudflare — da deler den
-// passord med ringeliste, slik den gjorde før områdene ble skilt.
+// Første satte passordvariabel for området, eller tom streng. Tom betyr at
+// området er stengt; innloggingen svarer da med en konfigurasjonsfeil.
 export function passordFor(env, område) {
-  return env[OMRÅDER[område]] || env.SITE_PASSWORD || "";
+  for (const navn of OMRÅDER[område] || []) {
+    if (env[navn]) return env[navn];
+  }
+  return "";
 }
 
 export function cookieNavn(område) {
