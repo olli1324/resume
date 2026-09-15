@@ -87,6 +87,14 @@
       "dest": "/mlia/index.html"
     },
     {
+      "src": "/ntnu-kart/*",
+      "dest": "/ntnu-kart/$1"
+    },
+    {
+      "src": "/ntnu-kart",
+      "dest": "/ntnu-kart/index.html"
+    },
+    {
       "src": "/*",
       "dest": "/index.html"
     }
