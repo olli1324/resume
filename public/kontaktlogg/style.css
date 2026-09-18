@@ -9,6 +9,11 @@
 
 * { box-sizing: border-box; }
 
+/* .skjerm og .filtre setter display, og det slår hidden-attributtet. Uten
+   dette ble innloggingsboksen liggende over siden etter vellykket innlogging,
+   slik at ingenting så ut til å skje. Samme feil traff /ringeliste. */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   padding: 0;
