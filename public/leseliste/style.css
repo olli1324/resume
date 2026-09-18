@@ -1,0 +1,107 @@
+/* Samme fargespråk som de andre lukkede sidene, satt opp for en liste man
+   skummer: tittelen først, alt annet dempet under. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --tekst: #172129; --svak: #66737d; --linje: #d9e0e5;
+  --flate: #f5f8f9; --aksent: #16384c; --feil: #a3282d;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #10161a; --tekst: #e6edf1; --svak: #8b99a3; --linje: #26333b;
+          --flate: #161f25; --aksent: #cfe3ef; --feil: #ff9d9d; }
+}
+
+* { box-sizing: border-box; }
+/* hidden-attributtet gir display:none, men egne display-regler overstyrer det,
+   og både skjermene og radene setter display. */
+[hidden] { display: none !important; }
+
+body { margin: 0; background: var(--bg); color: var(--tekst);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+.hjelp { color: var(--svak); font-size: 12.5px; margin: 0; }
+.feil { color: var(--feil); font-size: 13px; margin: 0; }
+.tom { color: var(--svak); font-size: 14px; padding: 34px 0; text-align: center; }
+
+input, button { font: inherit; }
+input { width: 100%; padding: 8px 11px; border: 1px solid var(--linje);
+  border-radius: 7px; background: var(--bg); color: var(--tekst); font-size: 14px; }
+input:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--aksent); outline-offset: 2px; }
+button, .knapp { padding: 8px 14px; border: 1px solid var(--aksent); border-radius: 7px;
+  background: var(--aksent); color: var(--bg); font-size: 13.5px; cursor: pointer;
+  white-space: nowrap; text-decoration: none; display: inline-block; }
+button.sekundar, .knapp.sekundar { background: transparent; color: var(--svak);
+  border-color: var(--linje); }
+button.sekundar:hover, .knapp.sekundar:hover { color: var(--tekst); border-color: var(--svak); }
+button.liten { padding: 4px 10px; font-size: 12px; }
+button:disabled { opacity: 0.6; cursor: default; }
+
+/* --- Innlogging --------------------------------------------------------- */
+
+.skjerm { display: grid; place-items: center; min-height: 100vh; padding: 20px; }
+.kort { width: min(360px, 100%); display: grid; gap: 10px; }
+.kort h1 { font-size: 20px; margin: 0; }
+.kort label { font-size: 12px; color: var(--svak); }
+
+/* --- Ramme -------------------------------------------------------------- */
+
+#app { max-width: 780px; margin: 0 auto; padding: 34px 22px 90px; }
+
+.topp { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.tittel { display: flex; align-items: baseline; gap: 11px; flex-wrap: wrap; }
+.topp h1 { font-size: 23px; margin: 0; letter-spacing: -0.01em; }
+.handlinger { display: flex; gap: 8px; }
+
+.ny { display: flex; gap: 8px; flex-wrap: wrap; }
+.ny #url { flex: 3 1 260px; }
+.ny #merkelapper { flex: 1 1 150px; }
+#ny-feil { margin-top: 8px; }
+
+.verktoy { display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.verktoy #sok { width: min(260px, 100%); flex: 1 1 180px; }
+.faner { display: flex; gap: 6px; }
+.fane { background: transparent; color: var(--svak); border-color: var(--linje);
+  padding: 6px 12px; font-size: 13px; }
+.fane.aktiv { color: var(--bg); background: var(--aksent); border-color: var(--aksent);
+  font-weight: 600; }
+
+.merkefilter { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+.merke { background: transparent; color: var(--svak); border: 1px solid var(--linje);
+  border-radius: 999px; padding: 2px 10px; font-size: 12px; cursor: pointer; }
+.merke:hover { color: var(--tekst); border-color: var(--svak); }
+.merke.valgt { background: var(--aksent); color: var(--bg); border-color: var(--aksent); }
+.merke .antall { opacity: 0.65; margin-left: 3px; }
+
+/* --- Lista -------------------------------------------------------------- */
+
+.liste { list-style: none; margin: 18px 0 0; padding: 0; }
+
+.rad { display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 4px; border-bottom: 1px solid var(--linje); }
+.rad:first-child { border-top: 1px solid var(--linje); }
+.rad .av { width: auto; margin: 3px 0 0; flex: none; cursor: pointer; }
+.innhold { flex: 1; min-width: 0; }
+
+.lenke { color: var(--tekst); text-decoration: none; font-weight: 600;
+  font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
+.lenke:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.under { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 10px;
+  margin-top: 4px; font-size: 12px; color: var(--svak); }
+.notat { margin: 6px 0 0; font-size: 13px; color: var(--svak); }
+
+/* Leste rader dempes, men forblir lesbare — de er fortsatt et arkiv. */
+.rad.lest .lenke { color: var(--svak); font-weight: 500; }
+
+.slett { visibility: hidden; flex: none; }
+.rad:hover .slett, .rad:focus-within .slett { visibility: visible; }
+
+@media (max-width: 620px) {
+  #app { padding: 24px 16px 70px; }
+  /* På touch finnes ingen hover, så sletteknappen må stå fremme. */
+  .slett { visibility: visible; }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Leseliste</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/leseliste/style.css">
+</head>
+<body>
+
+<div id="login" class="skjerm">
+  <form id="login-form" class="kort">
+    <h1>Leseliste</h1>
+    <p class="hjelp">Lenker å lese senere. Siden er lukket.</p>
+    <label for="passord">Passord</label>
+    <input id="passord" type="password" autocomplete="current-password" required autofocus>
+    <button type="submit">Logg inn</button>
+    <p id="login-feil" class="feil" hidden></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="topp">
+    <div class="tittel">
+      <h1>Leseliste</h1>
+      <span id="teller" class="hjelp"></span>
+    </div>
+    <div class="handlinger">
+      <a class="knapp sekundar" href="/hub/">Hub</a>
+      <button id="logg-ut" class="sekundar">Logg ut</button>
+    </div>
+  </header>
+
+  <form id="ny" class="ny">
+    <input id="url" type="text" inputmode="url" placeholder="Lim inn en adresse …" required
+           autocomplete="off" aria-label="Adresse">
+    <input id="merkelapper" type="text" placeholder="merkelapper, kommaseparert" autocomplete="off"
+           aria-label="Merkelapper">
+    <button type="submit" id="legg-til">Legg til</button>
+  </form>
+  <p id="ny-feil" class="feil" hidden></p>
+
+  <div class="verktoy">
+    <input id="sok" type="search" placeholder="Søk …" autocomplete="off" aria-label="Søk">
+    <nav class="faner" id="faner">
+      <button class="fane aktiv" data-fane="ulest">Uleste</button>
+      <button class="fane" data-fane="lest">Leste</button>
+      <button class="fane" data-fane="alle">Alle</button>
+    </nav>
+  </div>
+  <div id="merkefilter" class="merkefilter"></div>
+
+  <p id="laster" class="tom">Henter …</p>
+  <p id="tom" class="tom" hidden></p>
+  <ul id="liste" class="liste"></ul>
+</div>
+
+<script type="module" src="/leseliste/app.js"></script>
+</body>
+</html>

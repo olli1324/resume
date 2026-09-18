@@ -4,9 +4,9 @@ const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const vis = (el, på) => { el.hidden = !på; };
 
-// Områdene ett passord kan åpne. Vault og admin deler passord, ringeliste har
-// sitt eget, så vi prøver alle tre og låser opp dem som svarer ja.
-const OMRÅDER = ["admin", "vault", "ringeliste"];
+// Områdene ett passord kan åpne. Flere av dem deler passord, ringeliste har
+// sitt eget, så vi prøver alle og låser opp dem som svarer ja.
+const OMRÅDER = ["admin", "vault", "leseliste", "ringeliste"];
 
 // --- Søk -----------------------------------------------------------------
 

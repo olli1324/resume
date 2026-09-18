@@ -13,6 +13,9 @@ const LUKKEDE = {
   ringeliste: [
     { sti: "/ringeliste/", tittel: "Ringeliste", tekst: "Kontaktlogg for syretesten, hentet fra Linear." },
   ],
+  leseliste: [
+    { sti: "/leseliste/", tittel: "Leseliste", tekst: "Lenker å lese senere, med merkelapper og søk." },
+  ],
 };
 
 // GET /api/status → hvilke områder denne nettleseren er innlogget i, og

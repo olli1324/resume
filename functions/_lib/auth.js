@@ -7,7 +7,7 @@
 
 // Passordvariablene hvert område godtar, i prioritert rekkefølge.
 //
-// Private områder (vault, admin) kan falle tilbake på hverandre, men aldri på
+// De private områdene kan falle tilbake på hverandre, men aldri på
 // SITE_PASSWORD: det passordet deles med andre, og en fallback dit ville sluppet
 // alle som kan ringeliste-passordet inn i private notater. Mangler variabelen,
 // stenger området i stedet.
@@ -15,7 +15,12 @@ const OMRÅDER = {
   ringeliste: ["SITE_PASSWORD"],
   vault: ["VAULT_PASSWORD"],
   admin: ["ADMIN_PASSWORD", "VAULT_PASSWORD"],
+  leseliste: ["LESELISTE_PASSWORD", "VAULT_PASSWORD"],
 };
+
+// Ringeliste er standardområdet: den lå her før områdene ble skilt, og
+// endepunktene dens har ingen egen sti å kjenne igjen.
+const STANDARD = "ringeliste";
 
 const MAX_ALDER = 60 * 60 * 24 * 30; // 30 dager
 
@@ -23,13 +28,14 @@ const enc = new TextEncoder();
 
 // Hvilket område en forespørsel hører til. Vi fjerner et eventuelt /api-ledd
 // først, så både siden («/vault/app.js») og endepunktene («/api/vault/notat»)
-// treffer samme regel. Alt annet er ringeliste-siden, som var her først.
+// treffer samme regel.
 export function områdeFor(sti) {
   const uten = sti.replace(/^\/api/, "");
-  for (const område of ["vault", "admin"]) {
+  for (const område of Object.keys(OMRÅDER)) {
+    if (område === STANDARD) continue;
     if (uten === `/${område}` || uten.startsWith(`/${område}/`)) return område;
   }
-  return "ringeliste";
+  return STANDARD;
 }
 
 export function erOmråde(navn) {
