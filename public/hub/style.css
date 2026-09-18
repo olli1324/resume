@@ -1,0 +1,78 @@
+/* Samme fargespråk som de andre undersidene, men bygget som et startpunkt:
+   store klikkflater, rolig typografi og et søkefelt som dobler som hurtigvelger. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --tekst: #172129; --svak: #66737d; --linje: #d9e0e5;
+  --flate: #f5f8f9; --aksent: #16384c; --feil: #a3282d;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #10161a; --tekst: #e6edf1; --svak: #8b99a3; --linje: #26333b;
+          --flate: #161f25; --aksent: #cfe3ef; --feil: #ff9d9d; }
+}
+
+* { box-sizing: border-box; }
+/* hidden-attributtet gir display:none, men enhver egen display-regel
+   overstyrer det — og både kortene og gruppene setter display. */
+[hidden] { display: none !important; }
+
+body { margin: 0; background: var(--bg); color: var(--tekst);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+.hjelp { color: var(--svak); font-size: 13px; margin: 0; }
+.feil { color: var(--feil); font-size: 13px; margin: 0; }
+.tomt { color: var(--svak); font-size: 14px; text-align: center; padding: 40px 0; }
+
+input, button { font: inherit; }
+input { width: 100%; padding: 8px 11px; border: 1px solid var(--linje);
+  border-radius: 7px; background: var(--bg); color: var(--tekst); font-size: 14px; }
+input:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--aksent); outline-offset: 2px; }
+button { padding: 8px 14px; border: 1px solid var(--aksent); border-radius: 7px;
+  background: var(--aksent); color: var(--bg); font-size: 13.5px; cursor: pointer;
+  white-space: nowrap; }
+button.sekundar { background: transparent; color: var(--svak); border-color: var(--linje); }
+button.sekundar:hover { color: var(--tekst); border-color: var(--svak); }
+
+/* --- Topp ---------------------------------------------------------------- */
+
+.topp { display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 20px 24px; flex-wrap: wrap;
+  max-width: 1000px; margin: 0 auto; padding: 44px 24px 22px; }
+.topp h1 { font-size: 26px; margin: 0 0 3px; letter-spacing: -0.015em; }
+.verktoy { display: flex; gap: 8px; align-items: center; }
+.verktoy input { width: min(280px, 52vw); }
+
+.login { max-width: 1000px; margin: 0 auto; padding: 0 24px 18px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.login label { font-size: 13px; color: var(--svak); }
+.login input { width: min(220px, 60vw); }
+
+/* --- Kort ---------------------------------------------------------------- */
+
+main { max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; }
+
+section { margin-top: 30px; }
+section h2 { font-size: 11.5px; margin: 0 0 11px; color: var(--svak);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+
+.kort { display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); }
+
+.kort-lenke { display: flex; flex-direction: column; gap: 5px;
+  padding: 15px 17px; border: 1px solid var(--linje); border-radius: 11px;
+  background: var(--flate); color: inherit; text-decoration: none;
+  transition: border-color 0.12s ease, transform 0.12s ease; }
+.kort-lenke:hover { border-color: var(--aksent); transform: translateY(-1px); }
+
+.kort-tittel { font-weight: 600; font-size: 15px; line-height: 1.3; }
+.kort-tekst { color: var(--svak); font-size: 13px; line-height: 1.45; flex: 1; }
+.kort-sti { color: var(--svak); font-size: 11.5px; margin-top: 3px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+@media (max-width: 620px) {
+  .topp { padding: 28px 18px 16px; align-items: stretch; }
+  .verktoy { width: 100%; }
+  .verktoy input { flex: 1; width: auto; }
+  .login, main { padding-left: 18px; padding-right: 18px; }
+}

@@ -1,9 +1,10 @@
 import { erInnlogget, områdeFor } from "../_lib/auth.js";
 
-// Alt under /api krever innlogging i sitt eget område, med to unntak:
-// inn- og utlogging selv, og /api/innhold, som den offentlige porteføljen
-// leser fra. Innholdsendepunktene skiller selv mellom offentlig og admin.
-const ÅPNE = ["/api/login", "/api/logout"];
+// Alt under /api krever innlogging i sitt eget område, med tre unntak:
+// inn- og utlogging selv, /api/status, som bare røper innloggingen til den
+// som spør, og /api/innhold, som den offentlige porteføljen leser fra.
+// Innholdsendepunktene skiller selv mellom offentlig og admin.
+const ÅPNE = ["/api/login", "/api/logout", "/api/status"];
 const ÅPNE_PREFIKS = ["/api/innhold/"];
 
 export async function onRequest(context) {

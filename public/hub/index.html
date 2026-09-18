@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hub — olivere.no</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/hub/style.css">
+</head>
+<body>
+
+<header class="topp">
+  <div class="tittel">
+    <h1>olivere.no</h1>
+    <p class="hjelp">Alt som ligger her, på ett sted.</p>
+  </div>
+  <div class="verktoy">
+    <input id="sok" type="search" placeholder="Søk … (trykk /)" autocomplete="off" aria-label="Søk blant sidene">
+    <button id="laas-opp" class="sekundar">Logg inn</button>
+    <button id="logg-ut" class="sekundar" hidden>Logg ut</button>
+  </div>
+</header>
+
+<form id="login" class="login" hidden>
+  <label for="passord">Passord</label>
+  <input id="passord" type="password" autocomplete="current-password" required>
+  <button type="submit">Lås opp</button>
+  <button type="button" id="avbryt" class="sekundar">Avbryt</button>
+  <p id="login-feil" class="feil" hidden></p>
+</form>
+
+<main>
+  <section data-gruppe>
+    <h2>Portefølje</h2>
+    <div class="kort">
+      <a class="kort-lenke" href="/">
+        <span class="kort-tittel">Portefølje</span>
+        <span class="kort-tekst">Forsiden: bakgrunn, erfaring, utdanning og aktiviteter.</span>
+        <span class="kort-sti">olivere.no</span>
+      </a>
+      <a class="kort-lenke" href="/OliverEkelund_CV.pdf">
+        <span class="kort-tittel">CV</span>
+        <span class="kort-tekst">Siste versjon av CV-en som PDF.</span>
+        <span class="kort-sti">/OliverEkelund_CV.pdf</span>
+      </a>
+    </div>
+  </section>
+
+  <section data-gruppe>
+    <h2>Prosjekter</h2>
+    <div class="kort">
+      <a class="kort-lenke" href="/ntnu-kart/">
+        <span class="kort-tittel">NTNU Robotikk- og AI-kart</span>
+        <span class="kort-tekst">Søkbart kart over NTNU-forskere innen robotikk, autonomi og AI — publikasjoner, temaer, patenter og spin-offs.</span>
+        <span class="kort-sti">/ntnu-kart</span>
+      </a>
+      <a class="kort-lenke" href="/plan/">
+        <span class="kort-tittel">Treningsplan</span>
+        <span class="kort-tekst">Treningsplanen min. Den gamle /IM-adressen peker hit.</span>
+        <span class="kort-sti">/plan</span>
+      </a>
+    </div>
+  </section>
+
+  <section data-gruppe>
+    <h2>Studieverktøy</h2>
+    <div class="kort">
+      <a class="kort-lenke" href="/CVDL/">
+        <span class="kort-tittel">TDT4265 — Computer Vision &amp; Deep Learning</span>
+        <span class="kort-tekst">Studieplan og quiz for pensum.</span>
+        <span class="kort-sti">/CVDL</span>
+      </a>
+      <a class="kort-lenke" href="/convopt/">
+        <span class="kort-tittel">Convex Optimization</span>
+        <span class="kort-tekst">Studieplan og quiz.</span>
+        <span class="kort-sti">/convopt</span>
+      </a>
+      <a class="kort-lenke" href="/nonlinear/">
+        <span class="kort-tittel">Nonlinear Control &amp; Aerospace</span>
+        <span class="kort-tekst">Pensum sortert etter tema, med quiz.</span>
+        <span class="kort-sti">/nonlinear</span>
+      </a>
+      <a class="kort-lenke" href="/mlia/">
+        <span class="kort-tittel">MLIA</span>
+        <span class="kort-tekst">Studieplattform for Machine Learning in Analytics.</span>
+        <span class="kort-sti">/mlia</span>
+      </a>
+      <a class="kort-lenke" href="/etransition/">
+        <span class="kort-tittel">E-transition</span>
+        <span class="kort-tekst">Energiomstilling, bærekraft og økonomi — studieplan og quiz.</span>
+        <span class="kort-sti">/etransition</span>
+      </a>
+      <a class="kort-lenke" href="/quizlet/">
+        <span class="kort-tittel">Real Time Programming</span>
+        <span class="kort-tekst">Eksamensquizer i sanntidsprogrammering.</span>
+        <span class="kort-sti">/quizlet</span>
+      </a>
+      <a class="kort-lenke" href="/statistics/">
+        <span class="kort-tittel">TMA4245 Metodevelger</span>
+        <span class="kort-tekst">Finn riktig statistisk metode for oppgaven du står i.</span>
+        <span class="kort-sti">/statistics</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="mine" data-gruppe hidden>
+    <h2>Mine sider</h2>
+    <div class="kort" id="mine-kort"></div>
+  </section>
+
+  <p id="tomt" class="tomt" hidden>Ingen treff.</p>
+</main>
+
+<script src="/hub/app.js"></script>
+</body>
+</html>
