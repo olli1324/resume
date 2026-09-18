@@ -16,6 +16,9 @@ const OMRÅDER = {
   vault: ["VAULT_PASSWORD"],
   admin: ["ADMIN_PASSWORD", "VAULT_PASSWORD"],
   leseliste: ["LESELISTE_PASSWORD", "VAULT_PASSWORD"],
+  // Olivers egen kontaktlogg på tvers av syretester. Aldri SITE_PASSWORD:
+  // det deles med gruppa, og arkivet er hans private samling.
+  kontaktlogg: ["KONTAKTLOGG_PASSWORD", "VAULT_PASSWORD"],
 };
 
 // Ringeliste er standardområdet: den lå her før områdene ble skilt, og

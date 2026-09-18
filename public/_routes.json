@@ -8,7 +8,9 @@
     "/vault/*",
     "/filer/*",
     "/leseliste",
-    "/leseliste/*"
+    "/leseliste/*",
+    "/kontaktlogg",
+    "/kontaktlogg/*"
   ],
   "exclude": [],
   "routes": [

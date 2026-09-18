@@ -1,0 +1,148 @@
+:root {
+  --bg: #0f1216;
+  --kort: #171b21;
+  --kant: #262c35;
+  --tekst: #e7ecf2;
+  --svak: #97a3b2;
+  --aksent: #6ea8fe;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--tekst);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.skjerm {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.kort {
+  width: min(360px, 100%);
+  background: var(--kort);
+  border: 1px solid var(--kant);
+  border-radius: 12px;
+  padding: 24px;
+  display: grid;
+  gap: 10px;
+}
+
+h1 { font-size: 20px; margin: 0; }
+.hjelp { color: var(--svak); font-size: 13px; margin: 0; }
+.feil { color: #ff8a8a; font-size: 13px; margin: 0; }
+
+label { font-size: 13px; color: var(--svak); }
+
+input, button {
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--kant);
+  padding: 9px 12px;
+}
+
+input {
+  background: #10141a;
+  color: var(--tekst);
+  width: 100%;
+}
+
+input:focus-visible { outline: 2px solid var(--aksent); outline-offset: 1px; }
+
+button {
+  background: var(--aksent);
+  color: #0b0f14;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lenkeknapp {
+  background: none;
+  color: var(--svak);
+  border: 1px solid var(--kant);
+  font-weight: 400;
+}
+
+#app { max-width: 900px; margin: 0 auto; padding: 24px 20px 64px; }
+
+.topp {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.verktoy { display: grid; gap: 10px; margin-bottom: 18px; }
+
+.filtre { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.filtre button {
+  background: var(--kort);
+  color: var(--svak);
+  border: 1px solid var(--kant);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.filtre button[aria-pressed="true"] {
+  background: var(--aksent);
+  color: #0b0f14;
+  border-color: var(--aksent);
+  font-weight: 600;
+}
+
+.person {
+  border: 1px solid var(--kant);
+  border-radius: 10px;
+  background: var(--kort);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.person > summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  align-items: baseline;
+  list-style: none;
+}
+
+.person > summary::-webkit-details-marker { display: none; }
+.person[open] > summary { border-bottom: 1px solid var(--kant); }
+
+.navn { font-weight: 600; }
+.sted { color: var(--svak); font-size: 13px; grid-column: 1; }
+.merke { color: var(--svak); font-size: 12px; text-align: right; }
+
+.brod { padding: 14px; display: grid; gap: 12px; }
+.referat { white-space: pre-wrap; margin: 0; }
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  color: var(--svak);
+  font-size: 13px;
+}
+
+.meta a { color: var(--aksent); }
+.kontaktinfo { white-space: pre-wrap; }
+
+mark { background: #3a4a2a; color: inherit; border-radius: 2px; }
+
+@media (max-width: 560px) {
+  .person > summary { grid-template-columns: 1fr; }
+  .merke { text-align: left; }
+}

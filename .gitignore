@@ -89,3 +89,9 @@ dist
 # Lokal wrangler-tilstand. Her havner bl.a. innholdet i simulerte R2-bøtter
 # når man kjører «wrangler pages dev», og repoet er offentlig.
 .wrangler
+
+# Kontaktloggens data. Navn, telefonnumre og e-poster til navngitte personer i
+# Equinor, Statnett og andre selskaper. Repoet er offentlig — dataen hører
+# hjemme i D1, aldri i git.
+scripts/kontaktlogg/seed.json
+scripts/kontaktlogg/oppsett.sql

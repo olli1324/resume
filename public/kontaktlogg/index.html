@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kontaktlogg</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/kontaktlogg/style.css">
+</head>
+<body>
+
+<div id="login" class="skjerm">
+  <form id="login-form" class="kort">
+    <h1>Kontaktlogg</h1>
+    <p class="hjelp">Alle jeg har snakket med i syretestene. Siden er lukket.</p>
+    <label for="passord">Passord</label>
+    <input id="passord" type="password" autocomplete="current-password" required autofocus>
+    <button type="submit">Logg inn</button>
+    <p id="login-feil" class="feil" hidden></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="topp">
+    <div>
+      <h1>Kontaktlogg</h1>
+      <p id="oppsummering" class="hjelp"></p>
+    </div>
+    <button id="logg-ut" class="lenkeknapp" type="button">Logg ut</button>
+  </header>
+
+  <div class="verktoy">
+    <input id="sok" type="search" placeholder="Søk i navn, selskap, stilling og referat"
+           autocomplete="off" spellcheck="false">
+    <div id="filtre" class="filtre"></div>
+  </div>
+
+  <p id="status" class="hjelp" aria-live="polite"></p>
+  <div id="liste"></div>
+</div>
+
+<script src="/kontaktlogg/app.js" type="module"></script>
+</body>
+</html>

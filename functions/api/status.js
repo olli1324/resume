@@ -16,6 +16,9 @@ const LUKKEDE = {
   leseliste: [
     { sti: "/leseliste/", tittel: "Leseliste", tekst: "Lenker å lese senere, med merkelapper og søk." },
   ],
+  kontaktlogg: [
+    { sti: "/kontaktlogg/", tittel: "Kontaktlogg", tekst: "Alle jeg har snakket med i syretestene, på tvers av workspaces." },
+  ],
 };
 
 // GET /api/status → hvilke områder denne nettleseren er innlogget i, og
