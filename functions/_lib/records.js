@@ -1,6 +1,15 @@
-import { erFersk, fraTittel, hentIssues, hentStatuser, hentTeam, lesAiKommentar } from "./linear.js";
+import { erFersk, fraTittel, hentIssues, hentStatuser, hentTeamMedPrefiks, lesAiKommentar } from "./linear.js";
 
 export const TEAM = "Ringeliste";
+
+// Teamene vises i denne rekkefølgen. Robotikk er caset gruppa jobber med nå,
+// så det står øverst. Team som ikke står her kommer etterpå, alfabetisk.
+export const TEAM_REKKEFOLGE = ["Ringeliste robotikk", "Ringeliste gammel"];
+
+export function teamIndeks(team) {
+  const i = TEAM_REKKEFOLGE.findIndex(t => t.toLowerCase() === String(team || "").toLowerCase());
+  return i === -1 ? TEAM_REKKEFOLGE.length : i;
+}
 
 // Rekkefølgen radene står i. Den skrinlagte casen ligger nederst, under de
 // ukontaktede, fordi den hører til et case gruppa har lagt bort.
@@ -14,10 +23,10 @@ export const STATUS_REKKEFOLGE = [
 ];
 // Ukontaktede og skrinlagte hører sammen nederst, under alt annet inkludert
 // ukjente statuser. De er ikke gjennomførte kontakter.
-export const NEDERST = ["Ukontaktet", "Ikke relevante leads", "Ikke nyttig lead"];
+export const NEDERST = ["Ukontaktet", "Ukontaktet robotikk", "Ikke relevante leads", "Ikke nyttig lead"];
 
 export const CSV_KOLONNER = [
-  "Kort", "Ansvarlig", "Selskap", "Kontaktperson", "Stilling", "Kontaktinfo", "Status", "Notater",
+  "Kort", "Ansvarlig", "Selskap", "Kontaktperson", "Stilling", "Kontaktinfo", "Status", "Notater", "Nøkkelpunkter",
 ];
 
 export function statusIndeks(status) {
@@ -66,12 +75,15 @@ function relevans(rec) {
 }
 
 export async function hentRecords(token) {
-  const team = await hentTeam(token, TEAM);
-  if (!team) throw new Error(`Fant ikke teamet ${TEAM}`);
-  const [statuser, issues] = await Promise.all([
-    hentStatuser(token, team.id),
-    hentIssues(token, team.id),
-  ]);
+  const teams = await hentTeamMedPrefiks(token, TEAM);
+  if (!teams.length) throw new Error(`Fant ikke noe team som heter ${TEAM}`);
+  const perTeam = await Promise.all(teams.map(t => Promise.all([
+    hentStatuser(token, t.id),
+    hentIssues(token, t.id),
+  ])));
+  // Statusene slås sammen på navn, så samme status i to team vises én gang.
+  const statuser = [...new Map(perTeam.flatMap(([s]) => s).map(s => [s.name, s])).values()];
+  const issues = perTeam.flatMap(([, i]) => i);
 
   const records = [];
   const utelatt = [];
@@ -124,6 +136,7 @@ export async function hentRecords(token) {
     const rec = {
       id: issue.identifier,
       url: issue.url,
+      team: issue.team?.name || "",
       status,
       statusType: issue.state?.type || "",
       ansvarlig: forventet.Owner,
@@ -132,6 +145,7 @@ export async function hentRecords(token) {
       stilling: fallback.stilling,
       kontaktinfo: nyest?.metadata?.ContactInfo || forventet.ContactInfo,
       notater: fersk.fersk ? nyest.sammendrag : "",
+      nokkelpunkter: fersk.fersk ? nyest.nokkelpunkter : "",
       beskrivelse: issue.description || "",
       labels: (issue.labels?.nodes || []).map(l => l.name),
       sistAktiv: nyest?.createdAt || issue.updatedAt,
@@ -142,11 +156,13 @@ export async function hentRecords(token) {
     records.push(rec);
   }
 
-  // Ren stigende rekkefølge på kortnummer, uavhengig av status. Lista er en
-  // oppslagsliste, så R-1 kommer først og R-162 sist. statusIndeks brukes
-  // fortsatt til å fange opp ukjente statuser, men ikke til rekkefølgen.
+  // Først team (robotikk øverst), så status (Fysiske møter, Fullført lead,
+  // Venter på svar, Ring igjen, Skal ringe, Ukontaktet), så kortnummer.
+  // Samme rekkefølge brukes i CSV-en.
   records.sort((a, b) =>
-    statusIndeks(a.status) - statusIndeks(b.status)
+    teamIndeks(a.team) - teamIndeks(b.team)
+    || (teamIndeks(a.team) === TEAM_REKKEFOLGE.length ? a.team.localeCompare(b.team, "nb") : 0)
+    || statusIndeks(a.status) - statusIndeks(b.status)
     || kortnummer(a.id) - kortnummer(b.id)
     || a.kontaktperson.localeCompare(b.kontaktperson, "nb"));
 
@@ -162,7 +178,7 @@ export async function hentRecords(token) {
 
 export function tilCsv(records) {
   const felt = r => [r.id, r.ansvarlig, r.selskap, r.kontaktperson, r.stilling,
-                     r.kontaktinfo, r.status, r.notater];
+                     r.kontaktinfo, r.status, r.notater, r.nokkelpunkter];
   const escape = v => {
     const s = String(v ?? "");
     return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;

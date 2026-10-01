@@ -143,7 +143,19 @@ function tegnTabell() {
 
     const notat = document.createElement("td");
     notat.className = "notat";
-    notat.textContent = r.notater || "";
+    if (r.nokkelpunkter) {
+      notat.append(lag("div", "nokkelpunkter", r.nokkelpunkter));
+      if (r.notater) {
+        const d = document.createElement("details");
+        d.className = "referat";
+        const s = document.createElement("summary");
+        s.textContent = "Hele referatet";
+        d.append(s, lag("div", "referat-tekst", r.notater));
+        notat.append(d);
+      }
+    } else {
+      notat.textContent = r.notater || "";
+    }
 
     tr.append(id, kontakt, status, notat);
     kropp.append(tr);

@@ -1,11 +1,15 @@
 // Leser Ringeliste fra Linear. Tokenet ligger som Cloudflare-secret og
 // forlater aldri serveren.
 const ENDPOINT = "https://api.linear.app/graphql";
-export const TAG = "[AI-CONTACT-LOG:v1]";
+export const TAG = "[AI-CONTACT-LOG:v2]";
+// v1 hadde ingen nøkkelpunkter. Den leses, men regnes aldri som fersk.
+export const TAG_V1 = "[AI-CONTACT-LOG:v1]";
+export const NOKKELPUNKTER = "[NØKKELPUNKTER]";
 
 const ISSUE_FELT = `
   id identifier title description url updatedAt
   state { name type position }
+  team { name }
   labels { nodes { name } }
   assignee { name }
   comments { nodes { id body createdAt updatedAt } }
@@ -26,6 +30,14 @@ async function sporring(token, query, variables = {}) {
 export async function hentTeam(token, navn) {
   const d = await sporring(token, "{ teams { nodes { id key name } } }");
   return d.teams.nodes.find(t => t.name.toLowerCase() === navn.toLowerCase()) || null;
+}
+
+// Alle team som begynner med navnet. Gruppa døper om teamet når caset
+// skifter retning («Ringeliste gammel», «Ringeliste robotikk»).
+export async function hentTeamMedPrefiks(token, prefiks) {
+  const d = await sporring(token, "{ teams { nodes { id key name } } }");
+  const p = prefiks.toLowerCase();
+  return d.teams.nodes.filter(t => t.name.toLowerCase().startsWith(p));
 }
 
 export async function hentStatuser(token, teamId) {
@@ -56,8 +68,10 @@ export async function hentIssues(token, teamId) {
 // --- AI-kommentaren ------------------------------------------------------
 
 export function lesAiKommentar(body, id, createdAt) {
-  if (!body || !body.includes(TAG)) return null;
-  const etter = body.split(TAG)[1].replace(/^\n+/, "");
+  if (!body) return null;
+  const versjon = body.includes(TAG) ? 2 : body.includes(TAG_V1) ? 1 : 0;
+  if (!versjon) return null;
+  const etter = body.split(versjon === 2 ? TAG : TAG_V1)[1].replace(/^\n+/, "");
   const linjer = etter.split("\n");
   let metadata;
   try {
@@ -66,7 +80,14 @@ export function lesAiKommentar(body, id, createdAt) {
     return null;
   }
   if (typeof metadata !== "object" || metadata === null) return null;
-  return { id, createdAt, metadata, sammendrag: linjer.slice(1).join("\n").trim() };
+  let tekst = linjer.slice(1).join("\n");
+  let nokkelpunkter = "";
+  if (versjon === 2 && tekst.includes(NOKKELPUNKTER)) {
+    const i = tekst.indexOf(NOKKELPUNKTER);
+    nokkelpunkter = tekst.slice(i + NOKKELPUNKTER.length);
+    tekst = tekst.slice(0, i);
+  }
+  return { id, createdAt, metadata, versjon, sammendrag: tekst.trim(), nokkelpunkter: nokkelpunkter.trim() };
 }
 
 function tid(iso) {
@@ -78,6 +99,7 @@ function tid(iso) {
 // tidsstempler, aldri av noe vi har skrevet inn selv.
 export function erFersk(ai, menneskelige, issueUpdatedAt, forventet) {
   if (!ai) return { fersk: false, grunn: "ingen AI-kommentar" };
+  if ((ai.versjon ?? 2) < 2) return { fersk: false, grunn: "gammelt format uten nøkkelpunkter" };
   const aiTid = tid(ai.createdAt);
   if (aiTid === null) return { fersk: false, grunn: "ugyldig createdAt" };
 

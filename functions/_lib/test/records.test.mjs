@@ -1,15 +1,15 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { erFersk, fraTittel, lesAiKommentar, TAG } from "../linear.js";
-import { CSV_KOLONNER, NEDERST, STATUS_REKKEFOLGE, statusIndeks, tilCsv } from "../records.js";
+import { erFersk, fraTittel, lesAiKommentar, NOKKELPUNKTER, TAG, TAG_V1 } from "../linear.js";
+import { CSV_KOLONNER, NEDERST, STATUS_REKKEFOLGE, statusIndeks, teamIndeks, TEAM_REKKEFOLGE, tilCsv } from "../records.js";
 
 const META = {
   Owner: "Oliver", Company: "Descent AS", Contact: "Jesper Rudolfsen",
   ContactInfo: "922 14 398", Status: "Fullført lead",
 };
-const body = (meta = META, tekst = "Noe skjedde.") =>
-  `${TAG}\n${JSON.stringify(meta)}\n${tekst}`;
+const body = (meta = META, tekst = "Noe skjedde.", punkter = "Det viktigste.") =>
+  `${TAG}\n${JSON.stringify(meta)}\n${tekst}\n${NOKKELPUNKTER}\n${punkter}`;
 
 test("leser tagget kommentar", () => {
   const k = lesAiKommentar(body(), "c1", "2026-09-04T10:00:00Z");
@@ -109,4 +109,35 @@ test("html-entiteter dekodes, også numeriske", async () => {
     "Nærings- og fiskeridepartementet");
   assert.equal(avkod("Kaffe &amp; te"), "Kaffe & te");
   assert.equal(avkod("&#xe5;pen"), "åpen");
+});
+
+test("v2 skiller notater og nøkkelpunkter", () => {
+  const k = lesAiKommentar(body(META, "Første.\n\nAndre."), "c1", "2026-09-04T10:00:00Z");
+  assert.equal(k.sammendrag, "Første.\n\nAndre.");
+  assert.equal(k.nokkelpunkter, "Det viktigste.");
+  assert.equal(k.versjon, 2);
+});
+
+test("v1 leses, men er aldri fersk", () => {
+  const k = lesAiKommentar(`${TAG_V1}\n${JSON.stringify(META)}\nGammelt.`, "c1", "2026-09-04T12:00:00Z");
+  assert.equal(k.versjon, 1);
+  assert.equal(k.sammendrag, "Gammelt.");
+  assert.equal(erFersk(k, [], "2026-09-04T11:00:00Z", META).fersk, false);
+});
+
+test("CSV har Nøkkelpunkter sist", () => {
+  assert.equal(CSV_KOLONNER.at(-1), "Nøkkelpunkter");
+  assert.equal(CSV_KOLONNER.length, 9);
+});
+
+test("robotikk står før gammel, ukjente team sist", () => {
+  assert.ok(teamIndeks("Ringeliste robotikk") < teamIndeks("Ringeliste gammel"));
+  assert.equal(teamIndeks("Ringeliste noe annet"), TEAM_REKKEFOLGE.length);
+});
+
+test("statusrekkefølgen innen et team", () => {
+  const ønsket = ["Fysiske møter", "Fullført lead", "Venter på svar",
+                  "Follow up / Ring igjen", "Skal ringe", "Ukontaktet"];
+  const indekser = ønsket.map(statusIndeks);
+  assert.deepEqual([...indekser].sort((a, b) => a - b), indekser);
 });
