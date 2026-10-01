@@ -127,7 +127,7 @@ test("v1 leses, men er aldri fersk", () => {
 
 test("CSV har Nøkkelpunkter sist", () => {
   assert.equal(CSV_KOLONNER.at(-1), "Nøkkelpunkter");
-  assert.equal(CSV_KOLONNER.length, 9);
+  assert.equal(CSV_KOLONNER.length, 11);
 });
 
 test("robotikk står før gammel, ukjente team sist", () => {

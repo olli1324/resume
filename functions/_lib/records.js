@@ -26,8 +26,26 @@ export const STATUS_REKKEFOLGE = [
 export const NEDERST = ["Ukontaktet", "Ukontaktet robotikk", "Ikke relevante leads", "Ikke nyttig lead"];
 
 export const CSV_KOLONNER = [
-  "Kort", "Ansvarlig", "Selskap", "Kontaktperson", "Stilling", "Kontaktinfo", "Status", "Notater", "Nøkkelpunkter",
+  "Kort", "Dato", "Status", "Type", "Ansvarlig", "Selskap", "Kontaktperson", "Stilling",
+  "Kontaktinfo", "Notater", "Nøkkelpunkter",
 ];
+
+// Merkelappene som sier hva slags interessent kontakten er. Bransjelappene
+// (Offshore, Maritim og hav ...) er ikke type og hoppes over.
+export const TYPER = ["Kunde", "Bruker", "Partner", "Konkurrent", "Ekspert", "Myndighet", "Pårørende"];
+
+export function typeFra(labels) {
+  const lav = (labels || []).map(l => l.toLowerCase());
+  return TYPER.find(t => lav.includes(t.toLowerCase())) || "";
+}
+
+// Siste menneskelige kommentar, ellers sist kortet ble endret. AI-kommentaren
+// skrives av jobben og er ikke en samtale. Ukontaktede kort får ingen dato.
+export function samtaledato(statusType, menneskelige, updatedAt) {
+  if (["unstarted", "backlog"].includes(statusType)) return "";
+  const datoer = (menneskelige || []).map(k => k.createdAt).filter(Boolean).sort();
+  return (datoer.at(-1) || updatedAt || "").slice(0, 10);
+}
 
 export function statusIndeks(status) {
   const i = STATUS_REKKEFOLGE.findIndex(s => s.toLowerCase() === status.toLowerCase());
@@ -148,6 +166,8 @@ export async function hentRecords(token) {
       nokkelpunkter: fersk.fersk ? nyest.nokkelpunkter : "",
       beskrivelse: issue.description || "",
       labels: (issue.labels?.nodes || []).map(l => l.name),
+      type: typeFra((issue.labels?.nodes || []).map(l => l.name)),
+      dato: samtaledato(issue.state?.type, menneskelige, issue.updatedAt),
       sistAktiv: nyest?.createdAt || issue.updatedAt,
       antallKommentarer: menneskelige.length,
       utdatert: Boolean(nyest) && !fersk.fersk,
@@ -177,9 +197,9 @@ export async function hentRecords(token) {
 }
 
 export function tilCsv(records) {
-  // Kort-kolonnen får bare nummeret (SYR3R-52 blir 52).
-  const felt = r => [String(kortnummer(r.id) || r.id), r.ansvarlig, r.selskap, r.kontaktperson, r.stilling,
-                     r.kontaktinfo, r.status, r.notater, r.nokkelpunkter];
+  // Hele kort-ID-en. Rapporten nummererer radene selv og viser ID-en under.
+  const felt = r => [r.id, r.dato, r.status, r.type, r.ansvarlig, r.selskap,
+                     r.kontaktperson, r.stilling, r.kontaktinfo, r.notater, r.nokkelpunkter];
   const escape = v => {
     const s = String(v ?? "");
     return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;

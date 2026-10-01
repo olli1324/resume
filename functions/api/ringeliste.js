@@ -7,7 +7,7 @@ const CACHE_SEKUNDER = 120;
 // Cachen nøkles på URL alene, så en lagret payload overlever en utrulling.
 // Da vi la til statusen «Fysiske møter» ble den gamle sorteringen liggende
 // i edge-cachen. Bump denne når feltene eller rekkefølgen endres.
-const CACHE_VERSJON = "3";
+const CACHE_VERSJON = "4";
 
 export async function onRequestGet(context) {
   const token = context.env.LINEAR_API_TOKEN;
