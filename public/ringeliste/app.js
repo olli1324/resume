@@ -111,17 +111,21 @@ function tegnTabell() {
   vis($("#tom"), rader.length === 0);
   vis($("#tabell"), rader.length > 0);
 
+  let nr = 0;
   for (const r of rader) {
     const tr = document.createElement("tr");
 
+    // Løpende nummer så teksten kan vise til «kontakt 4», så Linear-ID og
+    // dato under. Samme oppsett som kontaktloggen i rapporten.
+    nr += 1;
     const id = document.createElement("td");
+    id.append(lag("div", "nr", String(nr)));
     const lenke = document.createElement("a");
     lenke.className = "id";
     lenke.href = r.url; lenke.target = "_blank"; lenke.rel = "noopener noreferrer";
-    // Bare nummeret. Prefikset (SYR3R-, RIN-) sier ikke leseren noe.
-    lenke.textContent = String(r.id || "").replace(/^[A-Z0-9]+-/, "");
-    lenke.title = r.id;
+    lenke.textContent = r.id;
     id.append(lenke);
+    if (r.dato) id.append(lag("div", "dato", r.dato.split("-").reverse().join(".")));
 
     const kontakt = document.createElement("td");
     kontakt.append(lag("div", "navn", r.kontaktperson || "—"));
@@ -141,6 +145,7 @@ function tegnTabell() {
 
     const status = document.createElement("td");
     status.append(lag("span", "pille", r.status));
+    if (r.type) status.append(lag("div", `type type-${r.type.toLowerCase()}`, r.type));
     if (r.utdatert) status.append(lag("div", "utdatert", "utdatert oppsummering"));
 
     const notat = document.createElement("td");
