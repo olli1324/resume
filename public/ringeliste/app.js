@@ -118,7 +118,9 @@ function tegnTabell() {
     const lenke = document.createElement("a");
     lenke.className = "id";
     lenke.href = r.url; lenke.target = "_blank"; lenke.rel = "noopener noreferrer";
-    lenke.textContent = r.id;
+    // Bare nummeret. Prefikset (SYR3R-, RIN-) sier ikke leseren noe.
+    lenke.textContent = String(r.id || "").replace(/^[A-Z0-9]+-/, "");
+    lenke.title = r.id;
     id.append(lenke);
 
     const kontakt = document.createElement("td");

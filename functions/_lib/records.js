@@ -177,7 +177,8 @@ export async function hentRecords(token) {
 }
 
 export function tilCsv(records) {
-  const felt = r => [r.id, r.ansvarlig, r.selskap, r.kontaktperson, r.stilling,
+  // Kort-kolonnen får bare nummeret (SYR3R-52 blir 52).
+  const felt = r => [String(kortnummer(r.id) || r.id), r.ansvarlig, r.selskap, r.kontaktperson, r.stilling,
                      r.kontaktinfo, r.status, r.notater, r.nokkelpunkter];
   const escape = v => {
     const s = String(v ?? "");
